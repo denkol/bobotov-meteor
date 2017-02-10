@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import ListeningPreviewIndex from './index/ListeningPreviewIndex.jsx';
+import ListeningPreviewSimple from './simple/ListeningPreviewSimple.jsx';
 
 export default class ListeningPreview extends Component {
   constructor(props) {
@@ -17,7 +18,12 @@ export default class ListeningPreview extends Component {
       return <ListeningPreviewMy data={data} />
     } else if (layout === "index") {
       return <ListeningPreviewIndex data={data} />
+    } else if (layout === "favorites") {
+      return <ListeningPreviewSimple data={data} />
+    } else if (layout === "history") {
+      return <ListeningPreviewSimple data={data} />
     }
+
   }
 }
 

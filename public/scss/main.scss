@@ -19,7 +19,6 @@
 @import "libs/semantic-ui/button";
 @import "libs/slick/all";
 
-
 .interface-width {
   margin: 0 auto;
   width: 1024px;
@@ -36,4 +35,9 @@
 
 .slick-arrow {
   display: none;
+}
+
+.disabled {
+  opacity: 0.2;
+  pointer-events: none;
 }

@@ -232,6 +232,42 @@ a {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+            transform: translate3d(0, 10%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+            transform: translate3d(0, 10%, 0); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); } }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.01, 1.01, 1.01);
+            transform: scale3d(1.01, 1.01, 1.01); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1); } }
+
+.pulse {
+  -webkit-animation: pulse 1s infinite ease;
+          animation: pulse 1s infinite ease; }
+
 .clearfix:after, .listening-preview-header:after, .listening-info-header:after, .listening-info-footer:after {
   content: "";
   display: block;
@@ -251,6 +287,9 @@ a {
 
 .ico-remove-wrapper .ico-remove {
   fill: #C1000B; }
+
+.loved {
+  fill: #D00273; }
 
 .ico-3d {
   width: 17px;
@@ -552,7 +591,7 @@ p.small-parag {
     width: 25px;
     height: 25px; }
     .main-menu__item:hover svg {
-      fill: #76abe9;
+      fill: #4A90E2;
       cursor: pointer; }
     .main-menu__item svg {
       fill: gray;
@@ -571,46 +610,54 @@ p.small-parag {
   position: relative;
   z-index: 6; }
   .main-content--slide-to-left {
-    background-color: white;
-    -webkit-animation: slideLeft 500ms ease both;
-    animation: slideLeft 500ms ease both; }
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+    opacity: 0.5; }
   .main-content--slide-to-right {
-    background-color: white;
-    -webkit-animation: slideRight 500ms ease both;
-    animation: slideRight 500ms ease both; }
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1; }
 
 @-webkit-keyframes slideLeft {
   0% {
     -webkit-transform: translateX(0);
-    transform: translateX(0); }
+    transform: translateX(0);
+    opacity: 1; }
   100% {
     -webkit-transform: translateX(-300px);
-    transform: translateX(-300px); } }
+    transform: translateX(-300px);
+    opacity: 0.5; } }
 
 @keyframes slideLeft {
   0% {
     -webkit-transform: translateX(0);
-    transform: translateX(0); }
+    transform: translateX(0);
+    opacity: 1; }
   100% {
     -webkit-transform: translateX(-300px);
-    transform: translateX(-300px); } }
+    transform: translateX(-300px);
+    opacity: 0.5; } }
 
 /* Generated with Bounce.js. Edit at https://goo.gl/bxhZ9i */
 @-webkit-keyframes slideRight {
   0% {
     -webkit-transform: translateX(-300px);
-    transform: translateX(-300px); }
+    transform: translateX(-300px);
+    opacity: 0.5; }
   100% {
     -webkit-transform: translateX(0);
-    transform: translateX(0); } }
+    transform: translateX(0);
+    opacity: 1; } }
 
 @keyframes slideRight {
   0% {
     -webkit-transform: translateX(-300px);
-    transform: translateX(-300px); }
+    transform: translateX(-300px);
+    opacity: 0.5; }
   100% {
     -webkit-transform: translateX(0);
-    transform: translateX(0); } }
+    transform: translateX(0);
+    opacity: 1; } }
 
 .profile {
   margin-right: 15px;
@@ -632,12 +679,12 @@ p.small-parag {
   margin-right: 5px;
   width: auto;
   height: 30px;
-  width: 30px; }
-  .profile-img img {
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    border: 1px solid #c6c6c6; }
+  width: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  border: 1px solid #c6c6c6; }
 
 .profile-name {
   white-space: nowrap;
@@ -1499,12 +1546,6 @@ p.small-parag {
   margin-bottom: 32px;
   height: 400px; }
   .slider .listening-preview:hover {
-    -webkit-transform: scale(0.99);
-            transform: scale(0.99);
-    -webkit-transition: -webkit-transform 0.2s;
-    transition: -webkit-transform 0.2s;
-    transition: transform 0.2s;
-    transition: transform 0.2s, -webkit-transform 0.2s;
     cursor: pointer; }
   .slider .listening-preview .listening-preview-footer {
     padding-right: 30px; }
@@ -1626,6 +1667,8 @@ p.small-parag {
   .input-message__item {
     font-size: 12px;
     color: #b3b3b3; }
+    .input-message__item--error {
+      color: #C1000B; }
 
 .input-labels {
   margin-bottom: 5px; }
@@ -1633,6 +1676,67 @@ p.small-parag {
     font-weight: bold;
     font-size: 12px;
     color: #686868; }
+
+.avatar-upload {
+  display: block;
+  width: 100%; }
+  .avatar-upload__image {
+    margin: 0 auto;
+    display: block;
+    background-color: #eee;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 15px;
+    background-image: url("/img/unknown.png");
+    border: 2px solid #eee;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s; }
+    .avatar-upload__image:hover {
+      cursor: pointer;
+      opacity: 0.8; }
+    .avatar-upload__image:active {
+      opacity: 0.5; }
+  .avatar-upload__text {
+    background-color: #eee;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    position: relative; }
+    .avatar-upload__text:after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent #eee transparent; }
+  .avatar-upload__loader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    width: 100%; }
+    .avatar-upload__loader--hide {
+      display: none; }
+    .avatar-upload__loader div {
+      margin: auto; }
+
+.upload-text {
+  color: grey;
+  font-size: 12px; }
+  .upload-text--hide {
+    display: none; }
 
 /*!
  * # Semantic UI 2.2.6 - Input
@@ -11894,3 +11998,7 @@ body.dimmable > .dimmer {
 
 .slick-arrow {
   display: none; }
+
+.disabled {
+  opacity: 0.2;
+  pointer-events: none; }

@@ -15,17 +15,17 @@ export default class MainMenu extends Component {
               <use xlinkHref="#ico-home" />
             </svg>
           </a>
-          <a href="#" className="main-menu__item">
+          <a href="/mylistenings" className="main-menu__item">
             <svg className="ico-receipt" role="img">
               <use xlinkHref="#ico-receipt" />
             </svg>
           </a>
-          <a href="#" className="main-menu__item">
+          <a href="/favorites" className="main-menu__item">
             <svg className="ico-love" role="img">
               <use xlinkHref="#ico-love" />
             </svg>
           </a>
-          <a href="#" className="main-menu__item">
+          <a href="/history" className="main-menu__item">
             <svg className="ico-history" role="img">
               <use xlinkHref="#ico-history" />
             </svg>

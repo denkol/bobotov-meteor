@@ -2,6 +2,7 @@
 import { Listenings } from '../imports/api/listenings.js';
 //Images collections
 import { Photos } from '../imports/api/photos.js';
+import { Avatars } from '../imports/api/avatars.js';
 
 Meteor.publish("listenings.all", function() {
   return Listenings.find({});
@@ -25,4 +26,8 @@ Meteor.publish('owner', function (authorId) {
 
 Meteor.publish('photos.public', function () {
   return Photos.find().cursor;
+});
+
+Meteor.publish('avatars.public', function () {
+  return Avatars.find().cursor;
 });

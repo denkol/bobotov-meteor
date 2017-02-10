@@ -14,13 +14,10 @@
   &__item {
     &:hover {
       svg {
-        fill: lighten($accent-blue, 10%);
+        fill: $accent-blue;
         cursor: pointer;
       }
     }
-    
-    
-    
     svg {
       fill: gray;
       width: 25px;

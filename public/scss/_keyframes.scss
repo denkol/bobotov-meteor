@@ -77,3 +77,39 @@
     transform: translateY(0);
   }
 }
+
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite ease ;
+}
+
+.pulse {
+
+}
