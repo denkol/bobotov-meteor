@@ -15,19 +15,19 @@ export default class Profile extends Component {
       userPhoto = data.profile.userPhoto ? data.profile.userPhoto : "/img/unknown.jpg";
       userName = data.profile.userName ? data.profile.userName : "Unknown";
       userDesc = data.profile.userDesc ? data.profile.userDesc : "Unknown";  
+      return (
+        <div onClick={this.props.onClick} className="profile">
+          <div className="profile-img">
+            <img src={userPhoto} alt=""/>
+          </div>
+          <div className="flex-clear">
+            <div className="profile-name">{userName}</div>
+            <div className="profile-desc">{userDesc}</div>
+          </div>
+          <div className="profile-icon"></div>
+        </div>
+      );
     }
-    return (
-      <div onClick={this.props.onClick} className="profile">
-        <div className="profile-img">
-          <img src={userPhoto} alt=""/>
-        </div>
-        <div className="flex-clear">
-          <div className="profile-name">{userName}</div>
-          <div className="profile-desc">{userDesc}</div>
-        </div>
-        <div className="profile-icon"></div>
-      </div>
-    );
   }
 }
 

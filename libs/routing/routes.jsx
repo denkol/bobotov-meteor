@@ -17,7 +17,6 @@ var publicRoutes = FlowRouter.group({
   name: 'public'
 });
 
-
 /* Routes */
 publicRoutes.route('/', {
   name: 'Home',
