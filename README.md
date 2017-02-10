@@ -1,2 +1,0 @@
-# bobotov-meteor
-Meteor application
