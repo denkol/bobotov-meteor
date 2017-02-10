@@ -1,0 +1,39 @@
+//All import
+@import "vars";
+@import "reset";
+@import "mixins";
+@import "base";
+@import "keyframes";
+//Other
+@import "other/all";
+//Components import
+@import "components/all";
+
+@import "libs/semantic-ui/input";
+@import "libs/semantic-ui/dropdown";
+@import "libs/semantic-ui/label";
+@import "libs/semantic-ui/loader";
+@import "libs/semantic-ui/icon";
+@import "libs/semantic-ui/modal";
+@import "libs/semantic-ui/dimmer";
+@import "libs/semantic-ui/button";
+@import "libs/slick/all";
+
+
+.interface-width {
+  margin: 0 auto;
+  width: 1024px;
+  height: 100%;
+  position: relative;
+}
+
+.center-wrapper {
+  display: flex;
+  .center {
+    margin: auto;
+  }
+}
+
+.slick-arrow {
+  display: none;
+}

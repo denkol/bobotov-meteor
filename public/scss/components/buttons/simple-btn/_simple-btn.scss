@@ -1,0 +1,111 @@
+.simple-btn {
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  background-color: darken($bg-grey, 5%);
+  font-size: 11px;
+  font-weight: normal;
+  &:hover {
+    background-color: darken(darken($bg-grey, 5%), 5%);
+  }
+  &:active {
+    background-color: darken(darken($bg-grey, 5%), 10%);
+  }
+  &_add {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: $accent-color;
+    color: $sky-light;
+    &:hover {
+      background-color: darken($accent-color, 5%);
+    }
+    &:active {
+      background-color: darken($accent-color, 10%);
+    }
+    .free {
+      font-weight: normal;
+      display: block;
+      font-size: 11px;
+    }
+  }
+  &_blue {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: $accent-blue;
+    color: $sky-light;
+    &:hover {
+      background-color: darken($accent-blue, 5%);
+    }
+    &:active {
+      background-color: darken($accent-blue, 10%);
+    }
+  }
+  &_vk, &_fb {
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    // text-align: center;
+    span {
+      // display: inline-block;
+      // line-height: 17px;
+      // vertical-align: top;
+    }
+    
+    
+    &__icon {
+      width: 17px;
+      height: 17px;
+      margin-right: 8px;
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+  &_vk {
+    background-color: #507299;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#507299, 5%);
+    }
+    &:active {
+      background-color: darken(#507299, 10%);
+    }
+    &__icon {
+      background-image: url("../img/vk-icon-light.png");
+    }
+  }
+  &_fb {
+    background-color: #3B5998;
+    &:hover {
+      cursor: pointer;
+      background-color: darken(#3B5998, 5%);
+    }
+    &:active {
+      background-color: darken(#3B5998, 10%);
+    }
+    &__icon {
+      background-image: url("../img/fb-icon-light.png");
+    }
+  }
+  &--full-width {
+    width: 100%;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,54 @@
+//Input placeholder
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+/*
+  
+  For example:  
+
+  @include input-placeholder {
+    color: $grey;
+  }
+*/
+
+//Media Query (very time saver)
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "tablet-wide":  1024px,
+  "desktop":      1248px,
+  "desktop-wide": 1440px,
+  "desktop-ultra-wide": 1550px
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+      $width: map_get($breakpoints, $width);
+      @if $type == max {
+          $width: $width - 1px;
+      }
+      @media only screen and (#{$type}-width: $width) {
+          @content;
+      }
+  }
+}
+
+/*
+  
+  For example:  
+  
+  .site-header {
+    padding: 2rem;
+    font-size: 1.8rem;
+    @include mq('tablet-wide', max) {
+      padding-top: 4rem;
+      font-size: 2.4rem;
+    } 
+  }
+*/

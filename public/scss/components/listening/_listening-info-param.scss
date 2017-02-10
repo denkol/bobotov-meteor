@@ -1,0 +1,14 @@
+.listening-info-param {
+  padding-right: 16px;
+  padding-bottom: 10px;
+  &__item {
+    font-size: 18px;
+
+    &:first-child {
+      font-weight: normal;
+    }
+    &:last-child {
+      font-weight: bold;
+    }
+  }
+}

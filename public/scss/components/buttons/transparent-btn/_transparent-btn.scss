@@ -1,0 +1,54 @@
+.transparent-btn {
+  padding: 10px;
+  // height: 40px;
+  border-radius: 3px;
+  border: 2px solid darken($bg-grey, 30%);
+  outline: none;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: bold;
+  color: darken($bg-grey, 30%);
+  &:hover {
+    // cursor: pointer;
+    color: white;
+    background-color: darken($bg-grey, 30%);
+  }
+  &:active {
+    background-color: darken($bg-grey, 25%);
+  }
+  &_add {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: $accent-color;
+    color: $sky-light;
+    &:hover {
+      background-color: darken($accent-color, 5%);
+    }
+    &:active {
+      background-color: darken($accent-color, 10%);
+    }
+    .free {
+      font-weight: normal;
+      display: block;
+      font-size: 11px;
+    }
+  }
+  &_blue {
+    border: 3px solid $accent-blue;
+    color: $sky-light;
+    &:hover {
+      background-color: darken($accent-blue, 5%);
+    }
+    &:active {
+      background-color: darken($accent-blue, 10%);
+    }
+  }
+  &--full-width {
+    width: 100%;
+  }
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

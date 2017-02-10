@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.29">
+        <g id="Главная" transform="translate(-29.000000, -125.000000)" fill="#000000">
+            <g id="sidebar-menu" transform="translate(26.000000, 66.000000)">
+                <g id="Мои-сообщения" transform="translate(2.000000, 58.000000)">
+                    <g id="ic_forum_black_18px">
+                        <g id="Group">
+                            <path d="M13.125,3.75 L11.875,3.75 L11.875,9.375 L3.75,9.375 L3.75,10.625 C3.75,10.96875 4.03125,11.25 4.375,11.25 L11.25,11.25 L13.75,13.75 L13.75,4.375 C13.75,4.03125 13.46875,3.75 13.125,3.75 L13.125,3.75 Z M10.625,7.5 L10.625,1.875 C10.625,1.53125 10.34375,1.25 10,1.25 L1.875,1.25 C1.53125,1.25 1.25,1.53125 1.25,1.875 L1.25,10.625 L3.75,8.125 L10,8.125 C10.34375,8.125 10.625,7.84375 10.625,7.5 L10.625,7.5 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="18px" viewBox="0 0 15 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.228374094">
+        <g id="Главная" transform="translate(-871.000000, -14.000000)" fill="#000000">
+            <g id="Header">
+                <g id="Profile" transform="translate(759.000000, 8.000000)">
+                    <g id="Motification" transform="translate(110.000000, 5.000000)">
+                        <g id="ic_add_alert_black_18px">
+                            <g id="Group">
+                                <path d="M7.92458333,16.6329167 C7.92458333,17.50375 8.62916667,18.2083333 9.5,18.2083333 C10.3708333,18.2083333 11.0754167,17.50375 11.0754167,16.6329167 L7.92458333,16.6329167 L7.92458333,16.6329167 Z M14.9466667,13.3158333 L14.9466667,8.70833333 C14.9466667,6.13541667 13.1654167,3.98208333 10.75875,3.41208333 L10.75875,2.84208333 C10.75875,2.14541667 10.1966667,1.58333333 9.5,1.58333333 C8.80333333,1.58333333 8.24125,2.14541667 8.24125,2.84208333 L8.24125,3.41208333 C5.83458333,3.98208333 4.05333333,6.13541667 4.05333333,8.70833333 L4.05333333,13.3158333 L2.375,14.9941667 L2.375,15.8333333 L16.625,15.8333333 L16.625,14.9941667 L14.9466667,13.3158333 L14.9466667,13.3158333 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

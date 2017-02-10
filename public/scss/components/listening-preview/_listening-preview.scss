@@ -1,0 +1,29 @@
+.listening-preview {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    cursor: pointer;
+    // .listening-preview-header {
+    //   display: block;
+    // }
+    // .listening-preview-footer {
+    //   display: block;
+    // }
+  }
+}
+
+.listening-preview-more {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  line-height: 38px;
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,10 @@
+.listening-photo-wrapper {
+  margin-top: 26px;
+  &__item {
+    height: 600px;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

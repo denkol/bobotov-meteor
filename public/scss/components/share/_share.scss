@@ -1,0 +1,44 @@
+$fb-url: url("../img/social/fb.svg");
+$vk-url: url("../img/social/vk.svg");
+$twitter-url: url("../img/social/twitter.svg");
+$gplus-url: url("../img/social/gplus.svg");
+
+.share {
+  &__item {
+    display: inline-block;
+    margin-right: 8px;
+    &_text {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 25px;
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+    &_fb, &_vk, &_twitter, &_gplus {
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      height: 30px;
+      width: 30px;
+      display: inline-block;
+      transition: opacity 0.2s;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+      }
+    }
+    &_fb {
+      background-image: $fb-url;
+    }
+    &_vk {
+      background-image: $vk-url;
+    }
+    &_twitter {
+      background-image: $twitter-url;
+    }
+    &_gplus {
+      background-image: $gplus-url;
+    }
+  }
+}

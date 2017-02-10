@@ -1,0 +1,98 @@
+.filter-wrapper {
+  position: absolute;
+  display: block;
+  // opacity: 0;
+  top: 60px;
+  right: 0;
+  width: 300px;
+  // @include mq('desktop-ultra-wide', min) {
+  //   right: -300px;
+  // }
+  z-index: 5;
+}
+
+.filter {
+  width: 100%;
+  padding: 0 16px;
+  display: none;
+  z-index: 0;
+  &--show {
+    display: block;
+    // visibility: visible;
+    transition: opacity 0.5s;
+    // display: block;
+    z-index: 0;
+  }
+}
+
+.filter-block {
+  padding: 10px 0;
+  border-radius: 5px;
+  &:first-child {
+    padding-top: 0;
+  }
+  //Modifications
+  &_double {
+    .filter-block-item {
+      width: 50%;
+    }
+    .filter-block-item__name {
+      max-width: 82px;
+      overflow: hidden;
+    }
+  }
+  &:hover {
+    // border: 1px solid $accent-color;
+  }
+}
+
+.filter-block-item {
+  // width: 50%;
+  width: 100%;
+  margin: 5px 0;
+  &__name {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  &__input {
+    // margin: 0 3px;
+    width: 60%;
+  }
+}
+
+.filter-items-wrapper {
+  // margin: 30px 0;
+}
+
+.filter-block-name {
+  z-index: 0;
+  display: inline-block;
+  height: 20px;
+  font-weight: bold;
+  // background-color: white;
+  // padding: 2px 5px;
+  // position: relative;
+  // top: -20px;
+}
+
+.filter-block-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // margin-top: -15px;
+}
+
+.filter-actions {
+  text-align: center;
+  &__item {
+    button {width: 100%;}
+    display: inline-block;
+    // width: 49.8%;
+
+    width: 49%;
+    padding-right: 10px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "_id": "RMhtb5ePKM62JkrX4",
+  "listeningInfo": {
+    "typeDeal": "sale",
+    "typeProperty": "house",
+    "country": "montenegro",
+    "region": "budva",
+    "country": "Черногория",
+    "city": "Будва",
+    "address": "",
+    "ratio": "232",
+    "price": "321",
+    "paymentPeriod": "За объект",
+    "comfortList": {
+      "comfortInternet": true,
+      "comfortDishwasher": true,
+      "comfortParking": true,
+      "comfortStove": true,
+      "comfortTv": true,
+      "comfortWifi": true,
+      "comfortWashingMachine": true,
+      "comfortСonditioning": true
+    },
+    "headline": "Сдаю квартиру в Будве",
+    "desc": "Описание большое"
+  },
+  "listeningPhotos": {
+    "main": "http://localhost:3000/cdn/storage/Photos/r6upEYoCdEHpB3Wc8/original/r6upEYoCdEHpB3Wc8.jpg",
+    "other": [
+      "http://localhost:3000/cdn/storage/Photos/GF73mJAGXWdiYn2mN/original/GF73mJAGXWdiYn2mN.jpg",
+      "http://localhost:3000/cdn/storage/Photos/EzqQcbaexnhCAyKDK/original/EzqQcbaexnhCAyKDK.jpg",
+      "http://localhost:3000/cdn/storage/Photos/jN7LyNBfJt8ayEveh/original/jN7LyNBfJt8ayEveh.jpg"
+    ]
+  },
+  "listeningContacts": [
+    {
+      "key": "contact-email",
+      "value": "dsa@dsa.ur"
+    }
+  ],
+  "listeningTech": {
+    "statusCode": 3,
+    "statusText": "Опубликовано",
+    "public": true,
+    "bonuses": {
+      "bonus1": false,
+      "bonus2": false,
+      "bonus3": false
+    },
+    "createdAt": "2017-02-02T11:38:20.381Z",
+    "lastChangeDate": "2 февраля 2017 г.",
+    "time": "12:34",
+    "ownerId": "ai6fSNxvBN3G8xj5W",
+    "ownerName": "Denis Kolpakov",
+    "views": 103
+  }
+}

@@ -1,0 +1,23 @@
+.header-menu {
+  &__item {
+    position: relative;
+    display: inline-block;
+    margin-right: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 42px;
+    padding: 12px 0;
+    &--active {
+        color: $accent-blue;
+      &:after {
+        content: "";
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        // background-color: $accent-blue;
+      }
+    }
+  }
+}

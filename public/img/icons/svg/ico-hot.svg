@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="28px" viewBox="0 0 20 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-222.000000, -68.000000)" fill="#F6A623">
+            <g id="main" transform="translate(217.000000, 68.000000)">
+                <g id="hot-headline">
+                    <g id="ic_whatshot_black_24px">
+                        <g id="Group">
+                            <path d="M16.875,0.8375 C16.875,0.8375 17.8,4.15 17.8,6.8375 C17.8,9.4125 16.1125,11.5 13.5375,11.5 C10.95,11.5 9,9.4125 9,6.8375 L9.0375,6.3875 C6.5125,9.3875 5,13.275 5,17.5 C5,23.025 9.475,27.5 15,27.5 C20.525,27.5 25,23.025 25,17.5 C25,10.7625 21.7625,4.75 16.875,0.8375 L16.875,0.8375 Z M14.6375,23.75 C12.4125,23.75 10.6125,22 10.6125,19.825 C10.6125,17.8 11.925,16.375 14.125,15.925 C16.3375,15.475 18.625,14.4125 19.9,12.7 C20.3875,14.3125 20.6375,16.0125 20.6375,17.75 C20.6375,21.0625 17.95,23.75 14.6375,23.75 L14.6375,23.75 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

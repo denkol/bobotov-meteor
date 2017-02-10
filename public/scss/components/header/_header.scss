@@ -1,0 +1,29 @@
+.header {
+  margin-top: 15px;
+  height: 50px;
+  display: block;
+  // position: fixed;
+  top: 0;
+  width: 100%;
+  // background-color: #eee;
+}
+
+.header-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__item {
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    &:last-child {
+      margin-right: 0;
+    }
+    &_controls {
+      float: right;
+      height: 100%;
+    }
+  }
+}

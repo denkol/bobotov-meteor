@@ -1,0 +1,19 @@
+.listening-info-block {
+  display: block;
+  margin: 16px 0;
+  h2.medium-headline {
+    margin-bottom: 16px;
+  }
+  &__item {
+
+    margin-bottom: 2px;
+  }
+  &--inline {
+    // @extend .clearfix;
+     .listening-info-block__item {
+        
+        display: inline-block;
+        margin-right: 5px;
+     }
+  }
+}

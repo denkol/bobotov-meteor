@@ -1,0 +1,45 @@
+.main-menu-wrapper {
+  position: fixed;
+  width: 0;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.main-menu {
+  position: relative;
+  top: 93px;
+  left: -560px;
+  width: 25px;
+  
+  &__item {
+    &:hover {
+      svg {
+        fill: lighten($accent-blue, 10%);
+        cursor: pointer;
+      }
+    }
+    
+    
+    
+    svg {
+      fill: gray;
+      width: 25px;
+      height: 25px;
+      transition: 0.2s;
+    }
+    display: block;
+    position: relative;
+    margin-bottom: 26px;
+    width: 25px;
+    height: 25px;
+
+    &--active {
+      -webkit-animation: animation 1000ms linear both;
+      animation: animation 1000ms linear both;
+      svg {
+        fill: $accent-blue;
+      }
+    }
+  }
+
+}

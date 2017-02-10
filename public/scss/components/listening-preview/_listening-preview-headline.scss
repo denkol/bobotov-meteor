@@ -1,0 +1,23 @@
+.listening-preview-headline {
+  &__text {
+    @include mq('desktop', max) {
+      
+    } 
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 5px;
+
+  }
+  &__desc {
+    @include mq('desktop', max) {
+      
+    } 
+    font-weight: normal;
+    font-size: 14px;
+    color: white;
+  }
+
+  
+}
+

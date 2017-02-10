@@ -1,0 +1,47 @@
+// Here not all styles for slider, more styles look in scss/lib/slick
+
+.slider {
+  .listening-preview {
+
+    &:hover {
+      transform: scale(0.99);
+      transition: transform 0.2s;
+      cursor: pointer;
+      // .listening-preview-header {
+      //   display: block;
+      // }
+      // .listening-preview-footer {
+      //   display: block;
+      // }
+    }
+    .listening-preview-footer {
+      // display: none;
+      // padding: 10px 50px;
+      padding-right: 30px;
+    }
+    .listening-preview-header {
+      // padding: 0 20px;
+      padding-right: 30px;
+    }
+  }
+
+  width: 100%;
+  padding: 0 5px;
+  // padding-bottom: 32px;
+  margin-bottom: 32px;
+  // border-bottom: 1px solid #eee;
+  height: 400px;
+  // width: 1010px;
+  &__item {
+    // width: 1010px;
+    height: 400px;
+  }
+}
+.slick-slider {
+  padding: 0 5px;
+  margin-bottom: 32px;
+  height: 400px;
+}
+.slick-list, .slick-track {
+  height: 100%;
+}

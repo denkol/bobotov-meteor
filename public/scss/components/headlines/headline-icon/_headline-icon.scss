@@ -1,0 +1,28 @@
+.headline-icon {
+  padding: 16px 0;
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 28px;
+    height: 28px;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  &__text {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
+
+.headline-icon--hot {
+  .headline-icon__icon {
+    svg {
+      fill: orange;
+    }
+  }
+}

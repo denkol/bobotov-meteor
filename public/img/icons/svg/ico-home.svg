@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="13px" viewBox="0 0 16 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.289685236">
+        <g id="Главная" transform="translate(-27.000000, -68.000000)" fill="#000000">
+            <g id="sidebar-menu" transform="translate(26.000000, 66.000000)">
+                <g id="Главная">
+                    <g id="ic_home_black_18px">
+                        <g id="Group">
+                            <polygon id="Shape" points="7.5 15 7.5 10.5 10.5 10.5 10.5 15 14.25 15 14.25 9 16.5 9 9 2.25 1.5 9 3.75 9 3.75 15"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

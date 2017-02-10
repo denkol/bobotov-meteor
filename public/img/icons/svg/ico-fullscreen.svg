@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Страница-объявления" transform="translate(-819.000000, -401.000000)" fill="#FFFFFF">
+            <g id="stream" transform="translate(309.000000, 66.000000)">
+                <g id="photo">
+                    <g id="photo-navigation" transform="translate(1.000000, 324.000000)">
+                        <g id="ic_fullscreen_white_24px" transform="translate(374.000000, 6.000000)">
+                            <g id="Group">
+                                <path d="M137,14 L135,14 L135,19 L140,19 L140,17 L137,17 L137,14 L137,14 Z M135,10 L137,10 L137,7 L140,7 L140,5 L135,5 L135,10 L135,10 Z M147,17 L144,17 L144,19 L149,19 L149,14 L147,14 L147,17 L147,17 Z M144,5 L144,7 L147,7 L147,10 L149,10 L149,5 L144,5 L144,5 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
