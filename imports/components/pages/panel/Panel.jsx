@@ -19,10 +19,6 @@ class Panel extends Component {
     if(loading) {
       return (
         <div>
-          <Header />
-          <div className="interface-width">
-            <div className="main-content">
-              <MainMenu />
               <div className="headline-icon">
                 <div className="headline-icon__icon">
                   
@@ -30,9 +26,6 @@ class Panel extends Component {
                 <div className="headline-icon__text">Мой профиль</div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </div>
       );
     } else {
       return (<div>Loading</div>);

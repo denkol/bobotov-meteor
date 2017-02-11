@@ -20,10 +20,7 @@ class Create extends Component {
     if(this.props.loading) {
       return (
         <div>
-          <Header />
-          <div className="interface-width">
-            <div className="main-content">
-              <MainMenu />
+          
               <div className="headline-icon">
                 <div className="headline-icon__icon">
                   
@@ -31,9 +28,6 @@ class Create extends Component {
                 <div className="headline-icon__text">Новое объявление</div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </div>
       );
     } else {
       return (<div>Loading</div>);

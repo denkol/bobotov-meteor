@@ -4,40 +4,77 @@ import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 import VkBtn from '../../../btn-vk/VkBtn.jsx';
 
 /* Semantic UI */
-import { Input, Label } from 'semantic-ui-react'
-
+import { Input } from 'semantic-ui-react'
 
 export default class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: {
-        error : false,
-        loading: false,
-        disabled: false,
-        message: ""
+        value: "",
+        error: false
       },
       password: {
-        error: false,
-        loading: false,
-        disabled: false,
-        message: ""
+        value: "",
+        error: false
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlerChangeEmail = this.handlerChangeEmail.bind(this);
+    this.handlerChangePassword = this.handlerChangePassword.bind(this);
+  }
+  validateEmail(value) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(value);
+  }
+  validatePassword(value) {
+    return true;
+  }
+  handlerChangeEmail(event, data) {
+    event.preventDefault();
+    if(this.validateEmail(data.value) && data.value) {
+      this.setState({
+        email: {
+          value: data.value,
+          error: false
+        }
+      });
+    } else {
+      this.setState({
+        email: {
+          value: data.value,
+          error: false
+        }
+      });
+    }
+  }
+  handlerChangePassword(event, data) {
+    event.preventDefault();
+    if(this.validatePassword(data.value) && data.value) {
+      this.setState({
+        password: {
+          value: data.value,
+          error: false
+        }
+      });
+    } else {
+      this.setState({
+        password: {
+          value: data.value,
+          error: false
+        }
+      });
+    }
   }
   handleSubmit(event) {
     event.preventDefault();
-    let that = this;
-    let email = that.refs.email.value.trim();
-    let password = that.refs.password.value.trim();
+
+    let emailValue = this.state.email.value.trim();
+    let passwordValue = this.state.password.value.trim();
     
-    Meteor.loginWithPassword(email, password, function(err) {
+    Meteor.loginWithPassword(emailValue, passwordValue, function(err) {
       if(err) {
-        that.setState({
-          error : true, 
-          errorMessage : err.reason
-        });
+        console.log(err);
       }
       var isVerificated = Meteor.user().emails[0].verified;
       if (!isVerificated) {
@@ -67,32 +104,32 @@ export default class SignIn extends Component {
                 <div className="input-wrapper">
                   <div className="input-labels">
                     <div className="input-labels__item">
-                      <label htmlFor="login" className="input-add-group__name">E-mail</label>
+                      <label htmlFor="email" className="input-add-group__name">Email</label>
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input fluid size='small' error={this.state.email.error} type="email" name="email" placeholder='example@mail.com' />
+                    <Input onChange={this.handlerChangeEmail} error={this.state.email.error} fluid type="email" id="email" name="email" placeholder='example@mail.com' />
                   </div>
                   <div className="input-message">
-                    <div className="input-message__item">
+                    <div className={this.state.email.error ? "input-message__item input-message__item--error" : "input-message__item"}>
                       {this.state.email.message}
                     </div>
                   </div>
                 </div>
               </div>
+
               <div className="login-item">
                 <div className="input-wrapper">
                   <div className="input-labels">
                     <div className="input-labels__item">
-                      <label htmlFor="login" className="input-add-group__name">Пароль</label>
+                      <label htmlFor="password" className="input-add-group__name">Пароль</label>
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input fluid size='small' error={this.state.password.error} type="password" name="password" placeholder='' />
+                    <Input onChange={this.handlerChangePassword} error={this.state.password.error} fluid type="password" id="password" name="password" placeholder='Ваш пароль' />
                   </div>
                   <div className="input-message">
-                    <div className="input-message__item">
-                      {this.state.password.message}
+                    <div className={this.state.password.error ? "input-message__item input-message__item--error" : "input-message__item"}>
                     </div>
                   </div>
                 </div>

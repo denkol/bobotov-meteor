@@ -3,8 +3,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 import React, { Component } from 'react';
 
-//App
+//Layouts
 import App from  '../../imports/components/App.jsx';
+import Layout from  '../../imports/components/Layout.jsx';
 
 //Pages
 import Index from '../../imports/components/pages/index/Index.jsx';
@@ -16,6 +17,8 @@ import My from '../../imports/components/pages/my/My.jsx';
 import Panel from '../../imports/components/pages/panel/Panel.jsx';
 import Create from '../../imports/components/pages/create/Create.jsx'; 
 
+//Additional components 
+import Filter from '../../imports/components/filter/Filter.jsx'; 
 
 /* Groups */
 var publicRoutes = FlowRouter.group({
@@ -26,8 +29,9 @@ var publicRoutes = FlowRouter.group({
 publicRoutes.route('/', {
   name: 'Home',
   action() {
-    mount(App, {
-      page: <Index />
+    mount(Layout, {
+      content: <Index />,
+      additionalContent: <Filter />
     });
   }
 });
@@ -35,48 +39,54 @@ publicRoutes.route('/', {
 publicRoutes.route('/listening/:_id', {
   action() {
     var listeningId = FlowRouter.getParam('_id');
-    mount(App, {
-      page: <Listening listeningId={listeningId}/>
+    mount(Layout, {
+      content: <Listening listeningId={listeningId} />,
+      additionalContent: ""
     });
   }
 });
 
 publicRoutes.route('/favorites', {
   action() {
-    mount(App, {
-      page: <Favorites />
+    mount(Layout, {
+      content: <Favorites />,
+      additionalContent: ""
     });
   }
 });
 
 publicRoutes.route('/history', {
   action() {
-    mount(App, {
-      page: <History />
+    mount(Layout, {
+      content: <History />,
+      additionalContent: ""
     });
   }
 });
 
 publicRoutes.route('/mylistenings', {
   action() {
-    mount(App, {
-      page: <My />
+    mount(Layout, {
+      content: <My />,
+      additionalContent: ""
     });
   }
 });
 
 publicRoutes.route('/create', {
   action() {
-    mount(App, {
-      page: <Create />
+    mount(Layout, {
+      content: <Create />,
+      additionalContent: ""
     });
   }
 });
 
 publicRoutes.route('/panel', {
   action() {
-    mount(App, {
-      page: <Panel />
+    mount(Layout, {
+      content: <Panel />,
+      additionalContent: ""
     });
   }
 });

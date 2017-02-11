@@ -11,21 +11,29 @@ export default class Profile extends Component {
     let userPhoto;
     let userName;
     let userDesc;
+    
     if(data) {
-      userPhoto = data.profile.userPhoto ? data.profile.userPhoto : "/img/unknown.jpg";
-      userName = data.profile.userName ? data.profile.userName : "Unknown";
-      userDesc = data.profile.userDesc ? data.profile.userDesc : "Unknown";
-      return (
-        <div onClick={this.props.onClick} className="profile">
-          <div className="profile-img" style={{backgroundImage: 'url('+userPhoto+')'}}></div>
-          <div className="flex-clear">
-            <div className="profile-name">{userName}</div>
-            <div className="profile-desc">{userDesc}</div>
-          </div>
-          <div className="profile-icon"></div>
-        </div>
-      );
+      userPhoto = data.profile.userPhoto;
+      userName = data.profile.userName;
+      userDesc = data.profile.userDesc;
+    } else {
+      userPhoto = "/img/unknown.jpg";
+      userName = "Unknown";
+      userDesc = "Unknown";
     }
+    
+
+    return (
+      <div onClick={this.props.onClick} className="profile">
+        <div className="profile-img" style={{backgroundImage: 'url('+userPhoto+')'}}></div>
+        <div className="flex-clear">
+          <div className="profile-name">{userName}</div>
+          <div className="profile-desc">{userDesc}</div>
+        </div>
+        <div className="profile-icon"></div>
+      </div>
+    );
+
   }
 }
 

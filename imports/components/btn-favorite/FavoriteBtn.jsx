@@ -25,7 +25,7 @@ export default class FavoriteBtn extends Component {
   }
   render() {
     return (
-      <div className="favorite-btn favorite-btn--active" onClick={this.handleFavoriteBtn}>
+      <div className={Meteor.userId() ? "favorite-btn" : "favorite-btn disabled"} onClick={this.handleFavoriteBtn}>
         <div className={this.state.isFavorite ? "favorite-btn__icon favorite-btn__icon--active" : "favorite-btn__icon"}>
           <svg className="ico-love" role="img">
             <use xlinkHref="#ico-love" />

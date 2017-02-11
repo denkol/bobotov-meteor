@@ -448,7 +448,10 @@
 *******************************/
 .ui.input input {
   font-family: 'PT Sans', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
+  border: 2px solid #cccccc;
+  border-radius: 2px;
+  padding: 0.67861429em 0.9em;
   /*margin: 0em;
   max-width: 100%;
   -webkit-box-flex: 1;
@@ -461,9 +464,9 @@
   font-family: 'PT Sans', sans-serif; 
   padding: 0.67861429em 1em;
   background: #FFFFFF;
-  border: 2px solid rgb(204, 204, 204);
+  
   color: rgba(0, 0, 0, 0.87);
-  border-radius: 3px;
+  
   -webkit-transition: box-shadow 0.1s ease, border-color 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   box-shadow: none;*/ }

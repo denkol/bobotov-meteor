@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 
-//Components
-import Header from '../../header/Header.jsx';
-import Footer from '../../footer/Footer.jsx';
-import MainMenu from '../../main-menu/MainMenu.jsx';
-
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 
 class History extends Component {
@@ -24,31 +19,24 @@ class History extends Component {
     if(loading) {
       return (
         <div>
-          <Header />
-          <div className="interface-width">
-            <div className="main-content">
-              <MainMenu />
-              <div className="headline-icon">
-                <div className="headline-icon__icon">
-                  <svg className="ico-history" role="img">
-                    <use xlinkHref="#ico-history"></use>
-                  </svg>
-                </div>
-                <div className="headline-icon__text">История:</div>
-              </div>
-              
-                <div className="favoritesList">
-                  {listneings.map((listening, index) => {
-                    return (
-                      <div key={"favoritesListItem" + index} className="favoritesList__item">
-                        <ListeningPreview listeningData={listening} layout="favorites"/>
-                      </div>
-                    );
-                  })}
-                </div>
+          <div className="headline-icon">
+            <div className="headline-icon__icon">
+              <svg className="ico-history" role="img">
+                <use xlinkHref="#ico-history"></use>
+              </svg>
             </div>
+            <div className="headline-icon__text">История:</div>
           </div>
-          <Footer />
+          
+            <div className="favoritesList">
+              {listneings.map((listening, index) => {
+                return (
+                  <div key={"favoritesListItem" + index} className="favoritesList__item">
+                    <ListeningPreview listeningData={listening} layout="favorites"/>
+                  </div>
+                );
+              })}
+            </div>
         </div>
       );
     } else {

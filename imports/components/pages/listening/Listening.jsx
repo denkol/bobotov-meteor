@@ -3,11 +3,15 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 
 //Components
-import Header from '../../header/Header.jsx';
-import Footer from '../../footer/Footer.jsx';
-import MainMenu from '../../main-menu/MainMenu.jsx';
-
+import Profile from '../../profile/Profile.jsx';
 import FavoriteBtn from '../../btn-favorite/FavoriteBtn.jsx';
+import ListeningPhotos from './ListeningPhotos.jsx';
+import ListeningOptions from './ListeningOptions.jsx';
+import ListeningComfort from './ListeningComfort.jsx';
+import ListeningContacts from './ListeningContacts.jsx';
+
+/* Semantic UI */
+import { Message } from 'semantic-ui-react';
 
 class Listening extends Component {
   constructor(props) {
@@ -31,7 +35,7 @@ class Listening extends Component {
       owner : this.props.owner,
       listeningId : this.props.listeningId
     }
-
+    console.log(data.owner)
     if(data.listening) {
       let listeningAutorName;
       let listeningAutorDesc;
@@ -44,177 +48,95 @@ class Listening extends Component {
         listeningAutorDesc = data.owner.profile.userType;  
       }
       
-      for(var value in listeningComfortList) { 
-        if (listeningComfortList.hasOwnProperty(value)) {
-          comfortItems.push(listeningComfortList[value]); 
-        }
-      }
-
+      // for(var value in listeningComfortList) { 
+      //   if (listeningComfortList.hasOwnProperty(value)) {
+      //     comfortItems.push(listeningComfortList[value]); 
+      //   }
+      // }
+      
       const listeningLastChange = data.listening.listeningTech.lastChangeDate + "";
       const listeningDesc = data.listening.listeningInfo.desc;
-      const listeningComfortList = data.listening.listeningInfo.comfortList;
+      // const listeningComfortList = data.listening.listeningInfo.comfortList;
       const listeningViews = data.listening.listeningTech.views;
       const listeningHeadline = data.listening.listeningInfo.headline;
       const listeningPrice = data.listening.listeningInfo.price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
       const listeningPeriod = data.listening.listeningInfo.paymentPeriod;
       const listeningsPhotos = data.listening.listeningPhotos;
-      const listeningContacts = data.listening.listeningContacts;
-      const listeningOptions = {
-        city : data.listening.listeningInfo.city,
-        ratio : data.listening.listeningInfo.ratio,
-        typeProperty : data.listening.listeningInfo.typeProperty,
-        typeDeal : data.listening.listeningInfo.typeDeal
-      }
+      
+      const listeningCountry = data.listening.listeningInfo.country;
+      const listeningCity = data.listening.listeningInfo.city;
+
+      const listeningComfortList = ['Холодильник', 'Стиральная машина'];
+      const listeningContacts = [
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+      ];
+      const listeningOptions = [
+        { optionName: "Площадь", optionValue: "32" },
+        { optionName: "ratio", optionValue: "32" },
+        { optionName: "ratio", optionValue: "32" }
+      ];
+
       if(loading) {
         return (
          <div>
-            <Header />
-            <div className="interface-width">
-              <div className="main-content">
-                <MainMenu />
-                <div className="listening-photo-wrapper">
-                  <div className="listening-photo-wrapper__item">
-                    <img src="/img/test.jpg" />
+          <ListeningPhotos photos={listeningsPhotos}/>
+          <div className="listening-info">
+            <div className="listening-info-header">
+              <div className="listening-info-header__item">
+                <h1 className="large-headline">{listeningHeadline}</h1>
+                <p className="medium-parag">{listeningCity}, {listeningCountry}</p>
+              </div>
+              <div className="listening-info-header__item">
+                <div className="price">
+                  <div className="price__text">
+                    <div className="currency">
+                      <svg className="ico-euro" role="img">
+                        <use xlinkHref="#ico-euro" />
+                      </svg>
+                    </div>{listeningPrice}
                   </div>
-                </div>
-                <div className="listening-info">
-                  <div className="listening-info-header">
-                    <div className="listening-info-header__item">
-                      <h1 className="large-headline">{listeningHeadline}</h1>
-                      <p className="medium-parag">Будва, Черногория</p>
-                    </div>
-                    <div className="listening-info-header__item">
-                      <div className="price">
-                        <div className="price__text">
-                          <div className="currency">
-                            <svg className="ico-euro" role="img">
-                              <use xlinkHref="#ico-euro" />
-                            </svg>
-                          </div>{listeningPrice}
-                        </div>
-                        <div className="price__desc">{listeningPeriod}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="listening-info-profile">
-                    <div className="profile">
-                      <div className="profile-img"><img src="/img/profile.jpeg" alt /></div>
-                      <div className="flex-clear">
-                        <div className="profile-name">Montenegro</div>
-                        <div className="profile-desc">Агенство</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="listening-info-block listening-info-block--inline">
-                    <h2 className="medium-headline">Общая информация</h2>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Тип предложения: </span><span className="listening-info-param__item">Аренда</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Срок: </span><span className="listening-info-param__item">До сезона</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Тип недвижимости: </span><span className="listening-info-param__item">Аппартаменты</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Площадь: </span><span className="listening-info-param__item">120 m²</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Кол-во спален: </span><span className="listening-info-param__item">3</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Кол-во санузлов: </span><span className="listening-info-param__item">2</span></div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-param"><span className="listening-info-param__item">Спальных мест: </span><span className="listening-info-param__item">8</span></div>
-                    </div>
-                  </div>
-                  <div className="listening-info-block listening-info-block--inline">
-                    <h2 className="medium-headline">Удобства:</h2>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Холодильник</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Плита</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Чайник</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Утюг</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Фен</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Холодильник</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Плита</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Чайник</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Утюг</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Фен</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Плита</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Чайник</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Утюг</div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="comfort-label">Фен</div>
-                    </div>
-                  </div>
-                  <div className="listening-info-block">
-                    <h2 className="medium-headline">Описание хозяина:</h2>
-                    <div className="listening-info-block__item">
-                      <p className="large-parag">Сдается в Баре на лето отдельный милый домик с прилегающей зеленой территорией (цитрусовые деревья, парковка, уличная мебель). Структура дома: коридор, санузел, гостиная с зоной кухни, 2 спальни ( в одной двуспальная кровать, в другой 2 односпальные). Предоставляется вся техника, кабельное тв, интернет, постельное, посуда. Расположение: центр города, частный сектор в р-не рынка, до моря 15 мин по тенистым улицам, рынок и супермаркеты в 5 минутах). При аренде на весь июнь (21-30 дней) цена 800 е СО всеми расходами (исключая туристический налог), при аренде на август 950 е также СО всеми включенными расходами.</p>
-                    </div>
-                  </div>
-                  <div className="listening-info-block">
-                    <h2 className="medium-headline">Контакты</h2>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-contacts">
-                        <div className="listening-info-contacts__item">Телефон: </div>
-                        <div className="listening-info-contacts__item">+7 (999) 455-455-32</div>
-                      </div>
-                    </div>
-                    <div className="listening-info-block__item">
-                      <div className="listening-info-contacts"><span className="listening-info-contacts__item">Facebook: </span><span className="listening-info-contacts__item"><a href="#">http://facebook.com/dsad/dasds </a></span></div>
-                    </div>
-                  </div>
-                  <div className="listening-info-footer">
-                    <div className="listening-info-footer__item">
-                      <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
-                    </div>
-                    <div className="listening-info-footer__item">
-                      <div className="share">
-                        <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
-                      </div>
-                    </div>
-                  </div>
+                  <div className="price__desc">{listeningPeriod}</div>
                 </div>
               </div>
             </div>
-            <Footer />
-         </div>
+            <div className="listening-info-profile">
+              <Profile data={data.owner}/>
+            </div>
+            <ListeningOptions options={listeningOptions} />
+            <ListeningComfort comforts={listeningComfortList} />
+            <div className="listening-info-block">
+              <h2 className="medium-headline">Описание хозяина:</h2>
+              <div className="listening-info-block__item">
+                <p className="large-parag">{listeningDesc}</p>
+              </div>
+            </div>
+            <ListeningContacts contacts={listeningContacts} />
+            <div className="listening-info-footer">
+              <div className="listening-info-footer__item">
+                <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+              </div>
+              <div className="listening-info-footer__item">
+                <div className="share">
+                  <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       );
       }else {
         return <div>Loading...</div>
       }
     } else {
-      return <div>loading</div>
+      return (
+        <Message warning>
+          <Message.Header>Что-то пошло не так, проверьте консоль</Message.Header>
+          <p>Обратится в службу тех поддержки по номеру +899393933445</p>
+        </Message>
+      );
     }
-    
   }
 }
 
@@ -229,16 +151,11 @@ export default createContainer(({ listeningId }) => {
   const userSubs = Meteor.subscribe('users.all');
   const loading = listeningSubs.ready() && userSubs.ready();
   /* Defining owner */
-  let owner = listening ? Meteor.users.findOne({_id: listening.listeningTech.ownerId}) : {};
-  
-  Meteor.call('usersGetOne', ownerId, ()=> {
-    
-  })
+  let owner = ownerId ? Meteor.users.findOne({_id: ownerId}) : {};
   
   const user = Meteor.user() ? Meteor.user() : {};
   const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
   const isFavorite = checkerFavorite(favoritesList, id);
-  console.log(favoritesList, isFavorite)
   function checkerFavorite(e, curId) {
     if(e && curId) {
       for(var i = 0; i < e.length; i++) {

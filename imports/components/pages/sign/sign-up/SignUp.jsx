@@ -66,16 +66,14 @@ export default class SignUp extends Component {
       this.setState({
         username: {
           value: data.value,
-          error: false,
-          ok: "check circle"
+          error: false
         }
       });
     } else {
       this.setState({
         username: {
           value: data.value,
-          error: false,
-          ok: false
+          error: false
         }
       });
     }
@@ -86,16 +84,14 @@ export default class SignUp extends Component {
       this.setState({
         email: {
           value: data.value,
-          error: false,
-          ok: "check circle"
+          error: false
         }
       });
     } else {
       this.setState({
         email: {
           value: data.value,
-          error: false,
-          ok: false
+          error: false
         }
       });
     }
@@ -106,16 +102,14 @@ export default class SignUp extends Component {
       this.setState({
         password: {
           value: data.value,
-          error: false,
-          ok: "check circle"
+          error: false
         }
       });
     } else {
       this.setState({
         password: {
           value: data.value,
-          error: false,
-          ok: false
+          error: false
         }
       });
     }
@@ -126,16 +120,14 @@ export default class SignUp extends Component {
       this.setState({
         passwordR: {
           value: data.value,
-          error: false,
-          ok: "check circle"
+          error: false
         }
       });
     } else {
       this.setState({
         passwordR: {
           value: data.value,
-          error: false,
-          ok: false
+          error: false
         }
       });
     }
@@ -201,7 +193,7 @@ export default class SignUp extends Component {
     Accounts.createUser(userInfo, (err) => {
       if (err) {
         console.log(err)
-        if(err.error == 403) {
+        if(err.reason == "Email already exists.") {
           this.setState({
             email: {
               error: true,
@@ -248,7 +240,7 @@ export default class SignUp extends Component {
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input onChange={this.handlerChangeName} icon={this.state.username.ok} error={this.state.username.error} fluid ref="username" type="text" name="username" id="username" placeholder='' />
+                    <Input onChange={this.handlerChangeName} error={this.state.username.error} fluid ref="username" type="text" name="username" id="username" placeholder='' />
                   </div>
                   <div className="input-message">
                     <div className={this.state.username.error ? "input-message__item input-message__item--error" : "input-message__item"}>
@@ -266,7 +258,7 @@ export default class SignUp extends Component {
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input onChange={this.handlerChangeEmail} icon={this.state.email.ok} error={this.state.email.error} fluid ref="email" type="email" id="email" name="email" placeholder='example@mail.com' />
+                    <Input onChange={this.handlerChangeEmail} error={this.state.email.error} fluid ref="email" type="email" id="email" name="email" placeholder='example@mail.com' />
                   </div>
                   <div className="input-message">
                     <div className={this.state.email.error ? "input-message__item input-message__item--error" : "input-message__item"}>
@@ -284,7 +276,7 @@ export default class SignUp extends Component {
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input onChange={this.handlerChangePassword} icon={this.state.password.ok} error={this.state.password.error} fluid type="password" ref="passwordR" id="password" name="password" placeholder='' />
+                    <Input onChange={this.handlerChangePassword} error={this.state.password.error} fluid type="password" ref="passwordR" id="password" name="password" placeholder='' />
                   </div>
                   <div className="input-message">
                     <div className={this.state.password.error ? "input-message__item input-message__item--error" : "input-message__item"}>
@@ -301,7 +293,7 @@ export default class SignUp extends Component {
                     </div>
                   </div>
                   <div className="input-default">
-                    <Input onChange={this.handlerChangePasswordR} icon={this.state.passwordR.ok} error={this.state.passwordR.error} fluid type="password" id="password-r" name="password-r" placeholder='' />
+                    <Input onChange={this.handlerChangePasswordR} error={this.state.passwordR.error} fluid type="password" id="password-r" name="password-r" placeholder='' />
                   </div>
                   <div className="input-message">
                     <div className={this.state.passwordR.error ? "input-message__item input-message__item--error" : "input-message__item"}>

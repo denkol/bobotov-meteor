@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 
-//Components
-import Header from '../../header/Header.jsx';
-import Footer from '../../footer/Footer.jsx';
-import MainMenu from '../../main-menu/MainMenu.jsx';
-
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 
 class My extends Component {
@@ -24,10 +19,6 @@ class My extends Component {
     if(loading) {
       return (
         <div>
-          <Header />
-          <div className="interface-width">
-            <div className="main-content">
-              <MainMenu />
               <div className="headline-icon">
                 <div className="headline-icon__icon">
                   <svg className="ico-receipt" role="img">
@@ -47,9 +38,6 @@ class My extends Component {
                   })}
                 </div>
             </div>
-          </div>
-          <Footer />
-        </div>
       );
     } else {
       return (<div>Loading</div>);
