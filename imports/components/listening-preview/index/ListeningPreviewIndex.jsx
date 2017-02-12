@@ -35,11 +35,12 @@ export default class ListeningPreviewIndex extends Component {
             <div className="listening-preview-header__item">
               <div className="price">
                 <div className="price__text">
+                  {listeningPrice}
                   <div className="currency">
                     <svg className="ico-euro" role="img">
                       <use xlinkHref="#ico-euro" />
                     </svg>
-                  </div>{listeningPrice}
+                  </div>
                 </div>
                 <div className="price__desc">В месяц</div>
               </div>

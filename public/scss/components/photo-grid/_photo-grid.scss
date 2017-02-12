@@ -11,6 +11,9 @@
     }
     .listening-preview-headline__text {
       font-size: 14px;
+      width: 200px;
+      max-height: 28px;
+      overflow: hidden;
     }
     .listening-preview-footer {
       display: none;

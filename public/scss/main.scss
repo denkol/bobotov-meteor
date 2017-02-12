@@ -6,20 +6,11 @@
 @import "keyframes";
 //Other
 @import "other/all";
+//Libs
+@import "libs/react-image-gallery/all";
+@import "libs/slick/all";
 //Components import
 @import "components/all";
-
-@import "libs/semantic-ui/input";
-@import "libs/semantic-ui/dropdown";
-@import "libs/semantic-ui/label";
-@import "libs/semantic-ui/loader";
-@import "libs/semantic-ui/icon";
-@import "libs/semantic-ui/modal";
-@import "libs/semantic-ui/dimmer";
-@import "libs/semantic-ui/button";
-@import "libs/semantic-ui/popup";
-@import "libs/semantic-ui/message";
-@import "libs/slick/all";
 
 .interface-width {
   margin: 0 auto;
@@ -35,11 +26,11 @@
   }
 }
 
-.slick-arrow {
-  display: none;
-}
 
 .disabled {
   opacity: 0.2;
   pointer-events: none;
+}
+.loved {
+  fill: $love-color;
 }

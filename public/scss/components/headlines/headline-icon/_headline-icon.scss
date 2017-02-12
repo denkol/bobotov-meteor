@@ -3,7 +3,7 @@
   &__icon {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 5px;
+    margin-right: 8px;
     width: 28px;
     height: 28px;
     svg {
@@ -21,6 +21,7 @@
 
 .headline-icon--hot {
   .headline-icon__icon {
+    margin-right: 5px;
     svg {
       fill: orange;
     }

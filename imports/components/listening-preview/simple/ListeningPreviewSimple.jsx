@@ -24,7 +24,46 @@ export default class ListeningPreviewSimple extends Component {
       let listeningPropertyType = this.props.data.listeningInfo.typeProperty;
       let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
       return (
-        <div>{listeningHeadline}</div>
+        <div className="listening-preview-simple">
+          <div className="listening-preview-simple__photo-block">
+            <div className="preview-simple-photo" />
+          </div>
+          <div className="listening-preview-simple__headline-block">
+            <div className="preview-simple-headline">
+              <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
+              <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
+            </div>
+          </div>
+          <div className="listening-preview-simple__items-block">
+            <div className="preview-simple-items">
+              <div className="preview-simple-items__item">d</div>
+              <div className="preview-simple-items__item">d</div>
+              <div className="preview-simple-items__item">d</div>
+            </div>
+          </div>
+          <div className="listening-preview-simple__price-block">
+            <div className="price">
+              <div className="price__text">
+                {listeningPrice}
+                <div className="currency">
+                  <svg className="ico-euro" role="img">
+                    <use xlinkHref="#ico-euro" />
+                  </svg>
+                </div>
+              </div>
+              <div className="price__desc">{listeningPaymentPeriod}</div>
+            </div>
+          </div>
+          <div className="listening-preview-simple__control-block">
+            <div className="remove-icon">
+              <div className="remove-icon__icon">
+                <svg className="ico-remove" role="img">
+                  <use xlinkHref="#ico-remove" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     } else {
       return (<div>Loading...</div>);

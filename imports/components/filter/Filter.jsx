@@ -9,12 +9,7 @@ export default class Filter extends Component {
   componentDidMount() {
     function toggleFilter() {
       $('.filter-btn').toggleClass('filter-btn--close');
-      if($('.main-content').hasClass("main-content--slide-to-left")) {
-        $('.main-content').toggleClass("main-content--slide-to-right");  
-      } else {
-        $('.main-content').toggleClass("main-content--slide-to-left");
-      }
-      
+      $('.main-content').toggleClass("main-content--slide-to-left");
       $('.filter').toggleClass("filter--show");
     }
 

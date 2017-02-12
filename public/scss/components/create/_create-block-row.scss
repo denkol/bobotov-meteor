@@ -1,0 +1,18 @@
+.create-block-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  width: 100%;
+  &__item {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: pink;
+    &:first-child {
+      // flex: none;
+      margin-right: 16px;
+      // width: 50%;
+    }
+  }
+}

@@ -20,7 +20,7 @@ class PhotoGrid extends Component {
       return (
         <div className="photo-grid">
           {listenings.map((listening, index) => {
-            return (<div className="photo-grid__item"> 
+            return (<div key={"photo-grid-" + index} className="photo-grid__item"> 
                       <ListeningPreview 
                         key={index}  
                         listeningData={listening} 

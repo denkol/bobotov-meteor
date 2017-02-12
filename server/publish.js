@@ -12,9 +12,13 @@ Meteor.publish("listenings.public", function() {
   return Listenings.find({"listeningTech.public" : "true"});
 });
 
-Meteor.publish('users.all', function (authorId) {
-  return Meteor.users.find({});
-});
+Meteor.publish("user", function (userId) {
+  // Make sure userId is a string.
+  // check(userId, String);
+  // console.log(userId)
+  // Publish a single user - make sure only allowed fields are sent.
+  return Meteor.users.find(userId, { fields: {'profile.userName': 1, 'profile.userDesc': 1, 'profile.userPhoto': 1} });
+})
 
 Meteor.publish('owner', function (authorId) {
   var returnedObj = Meteor.users.find({ _id : authorId });

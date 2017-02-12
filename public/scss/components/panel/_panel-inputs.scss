@@ -1,0 +1,9 @@
+.panel-inputs {
+  &__item {
+    margin: 16px 0;
+    .input-labels__item {
+      font-size: 18px;
+      font-weight: normal;
+    }
+  }
+}

@@ -3,6 +3,11 @@
   &__item {
     .large-headline {
       margin-bottom: 5px;
+      max-width: 800px;
+      line-height: 42px;
+    }
+    .medium-parag {
+      margin-bottom: 5px;
     }
     display: block;
     &:first-child {

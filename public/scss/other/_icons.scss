@@ -14,9 +14,6 @@
     fill: $remove-color;
   }
 }
-.loved {
-  fill: $love-color;
-}
 .ico-3d {
   width: 17px;
   height: 17px;
@@ -37,9 +34,19 @@
   height: 13px;
 }
 
+.ico-card {
+  width: 20px;
+  height: 16px;
+}
+
 .ico-cat {
   width: 413px;
   height: 413px;
+}
+
+.ico-close {
+  width: 14px;
+  height: 14px;
 }
 
 .ico-contacts {
@@ -65,6 +72,11 @@
 .ico-eye {
   width: 561px;
   height: 561px;
+}
+
+.ico-face {
+  width: 23px;
+  height: 23px;
 }
 
 .ico-favorite {
@@ -127,6 +139,11 @@
   height: 13px;
 }
 
+.ico-new {
+  width: 26px;
+  height: 26px;
+}
+
 .ico-next {
   width: 477.175px;
   height: 477.175px;
@@ -163,8 +180,8 @@
 }
 
 .ico-search {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
 }
 
 .ico-settings {

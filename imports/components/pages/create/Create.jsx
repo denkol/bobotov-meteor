@@ -1,23 +1,44 @@
-import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, { Component } from 'react'
 
-//Components
-import Header from '../../header/Header.jsx';
-import Footer from '../../footer/Footer.jsx';
-import MainMenu from '../../main-menu/MainMenu.jsx';
+import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea } from 'semantic-ui-react'
 
-class Create extends Component {
+const genders = [
+  { key: 'm', text: 'Male', value: 'male' },
+  { key: 'f', text: 'Female', value: 'female' },
+]
+
+const products = [
+  { key: 'hat', text: 'Hat', value: 'hat' },
+  { key: 'scarf', text: 'Scarf', value: 'scarf' },
+  { key: 'jacket', text: 'Jacket', value: 'jacket' },
+  { key: 't_shirt', text: 'T-Shirt', value: 't_shirt' },
+  { key: 'gloves', text: 'Gloves', value: 'gloves' },
+  { key: 'watch', text: 'Watch', value: 'watch' },
+  { key: 'belt', text: 'Belt', value: 'belt' },
+  { key: 'pants', text: 'Pants', value: 'pants' },
+  { key: 'shoes', text: 'Shoes', value: 'shoes' },
+  { key: 'socks', text: 'Socks', value: 'socks' },
+]
+
+
+export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = { formData: {} }
   }
   componentDidMount() {
     // this.saveToHistory({id: this.props.listeningId}); //save to history
   }
-
+  handleChange(e, { value }) {
+    this.setState({ value })
+  }
+  handleSubmit(e, { formData }) {
+    e.preventDefault()
+    this.setState({ formData })
+  }
   render() {
+    const { formData, value } = this.state
 
-    if(this.props.loading) {
       return (
         <div>
           
@@ -26,35 +47,42 @@ class Create extends Component {
                   
                 </div>
                 <div className="headline-icon__text">Новое объявление</div>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group widths='equal'>
+                    <Form.Input label='Name' name='name' placeholder='Name' />
+                    <Form.Select label='Gender' name='gender' options={genders} placeholder='Gender' />
+                  </Form.Group>
+                  <Form.Select label='Products' name='products' options={products} placeholder='Search...' search multiple />
+                  <Form.Group widths='2'>
+                    <Form.Field>
+                      <label>Plan</label>
+                      <Form.Group inline>
+                        <Form.Radio label='A' name='plan' value='a' checked={value === 'a'} onChange={this.handleChange} />
+                        <Form.Radio label='B' name='plan' value='b' checked={value === 'b'} onChange={this.handleChange} />
+                        <Form.Radio label='C' name='plan' value='c' checked={value === 'c'} onChange={this.handleChange} />
+                      </Form.Group>
+                    </Form.Field>
+                    <Form.Field>
+                      <label>Shipping Options</label>
+                      <Form.Group inline>
+                        <Form.Checkbox label='Expedite' name='shippingOptions' value='expedite' />
+                        <Form.Checkbox label='Gift Wrap' name='shippingOptions' value='giftWrap' />
+                        <Form.Checkbox label='C.O.D.' name='shippingOptions' value='cod' />
+                      </Form.Group>
+                    </Form.Field>
+                  </Form.Group>
+                  <Form.TextArea name='details' label='Details' placeholder='Anything else we should know?' rows='3' />
+                  <Form.Checkbox name='terms' label='I agree to the Terms and Conditions' />
+                  <Button primary type='submit'>Submit</Button>
+
+                  <Message>
+                    <pre>formData: {JSON.stringify(formData, null, 2)}</pre>
+                  </Message>
+                </Form>
               </div>
             </div>
       );
-    } else {
-      return (<div>Loading</div>);
-    }
   }
 }
 
 Create.propTypes = {};
-
-export default createContainer(({ params }) => {
-  const subscription = Meteor.subscribe('listenings.all');
-  const loading = subscription.ready();
-  const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
-  const listenings = listeningsSearchByArray(favoritesList);
-  
-  function listeningsSearchByArray(array) {
-    var cache = [];
-    if (array) {
-      array.map(function(err, key) {
-        var listeningObj = Listenings.find({
-          _id: array[key]
-        }).fetch();
-        cache.push(listeningObj[0]); // listeningObj return Object, we need a first element
-      });
-    }
-    return cache;
-  }
-
-  return {loading, listenings}
-}, Create);

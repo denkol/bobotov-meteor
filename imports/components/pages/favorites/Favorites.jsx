@@ -27,7 +27,6 @@ class Favorites extends Component {
             </div>
             <div className="headline-icon__text">Избранные объявления:</div>
           </div>
-          
             <div className="favoritesList">
               {listneings.map((listening, index) => {
                 return (

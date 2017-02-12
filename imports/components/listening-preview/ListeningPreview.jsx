@@ -15,7 +15,11 @@ export default class ListeningPreview extends Component {
     if(layout === "simple") {
       return <ListeningPreviewSimple data={data} />
     } else if (layout === "my") {
-      return <ListeningPreviewMy data={data} />
+      if(Meteor.userId()) {
+        return <ListeningPreviewSimple data={data} />
+      } else {
+        return <ListeningPreviewSimple data={data} />
+      }
     } else if (layout === "index") {
       return <ListeningPreviewIndex data={data} />
     } else if (layout === "favorites") {

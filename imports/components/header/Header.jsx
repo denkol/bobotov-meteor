@@ -31,10 +31,19 @@ class HeaderLayout extends Component {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
   }
-  openSubmenu() {
+  openSubmenu(e) {
+    var container = $('.profile-menu')
+    if (!container.is(e.target) // if the target of the click isn't the container...
+      && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        this.setState({
+          subMenuOpen: false
+        });
+    }
     this.setState({
       subMenuOpen: !this.state.subMenuOpen
     });
+    
   }
   logout() {
     this.setState({subMenuOpen: false});
@@ -70,7 +79,7 @@ class HeaderLayout extends Component {
     );
 
     return (
-      <header className="header">
+      <header className="layout-header">
         <div className="interface-width">
           <div className="header-content">
             <div className="header-content__item">

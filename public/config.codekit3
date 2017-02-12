@@ -5352,16 +5352,6 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/css\/main.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/css\/main-min.css",
-		"oF": 0,
-		"oS": 0
-		},
 	"\/fonts\/font-awesome\/fontawesome-webfont.eot": {
 		"ft": 8192,
 		"oA": 2,
@@ -6061,6 +6051,14 @@
 		"iS": 23937,
 		"oA": 0,
 		"oAP": "\/img\/logo100x100.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/img\/profile-header.png": {
+		"ft": 32768,
+		"iS": 9475,
+		"oA": 0,
+		"oAP": "\/img\/profile-header.png",
 		"oF": 0,
 		"opt": 0
 		},
@@ -6841,6 +6839,71 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/create\/_all.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/create\/_create-block-headline.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_create-block-headline.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/create\/_create-block-row.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_create-block-row.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/create\/_create-block.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_create-block.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/create\/_create.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_create.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/favorite-btn\/_all.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -7127,6 +7190,32 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/listening-preview-simple\/_all.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/listening-preview-simple\/_listening-preview-simple.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_listening-preview-simple.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/listening-preview\/_all.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -7400,6 +7489,97 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/panel\/_all.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel-body.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel-body.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel-header-balance.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel-header-balance.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel-header.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel-header.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel-inputs.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel-inputs.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel-photo.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel-photo.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/panel\/_panel.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_panel.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/photo-grid\/_all.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -7478,6 +7658,32 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/remove-icon\/_all.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/remove-icon\/_remove-icon.scss": {
+		"aP": 1,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_remove-icon.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/share\/_all.scss": {
 		"aP": 1,
 		"bl": 1,
@@ -7543,1397 +7749,103 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/accordion.css": {
+	"\/scss\/libs\/react-image-gallery\/_all.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/accordion-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/accordion.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/accordion-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/accordion.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/accordion.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/accordion.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/accordion.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/ad.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/ad-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/ad.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/ad.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/api.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/api-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/api.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/api.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/breadcrumb.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/breadcrumb-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/breadcrumb.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/breadcrumb.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/button-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/button-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/button.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/button-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/button.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/button.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/card.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/card-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/card.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/card.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/checkbox.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/checkbox-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/checkbox.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/checkbox-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/checkbox.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/checkbox.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/checkbox.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/checkbox.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/colorize.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/colorize-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/colorize.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/colorize.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/comment.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/comment-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/comment.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/comment.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/container.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/container-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/container.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/container.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dimmer.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dimmer-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dimmer.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dimmer-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dimmer.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dimmer.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dimmer.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dimmer.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/divider.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/divider-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/divider.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/divider.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dropdown.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dropdown-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dropdown.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dropdown-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dropdown.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dropdown.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/dropdown.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/dropdown.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/embed.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/embed-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/embed.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/embed-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/embed.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/embed.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/embed.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/embed.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/feed.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/feed-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/feed.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/feed.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/flag.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/flag-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/flag.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/flag.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/form.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/form-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/form.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/form-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/form.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/form.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/form.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/form.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/grid.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/grid-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/grid.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/grid.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/header.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/header-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/header.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/header.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/icon-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/icon-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/icon.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/icon-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/icon.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/icon.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/image.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/image-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/image.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/image.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/input-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/input-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/input.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/input-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/input.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/input.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/item.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/item-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/item.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/item.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/label.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/label-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/label.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/label.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/list.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/list-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/list.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/list.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/loader.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/loader-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/loader.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/loader.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/menu.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/menu-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/menu.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/menu.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/message.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/message-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/message.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/message.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/modal-min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/modal-min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/modal.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/modal-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/modal.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/modal-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/modal.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/modal.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/modal.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/modal.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/nag.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/nag-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/nag.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/nag-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/nag.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/nag.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/nag.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/nag.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/popup.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/popup-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/popup.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/popup-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/popup.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/popup.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/popup.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/popup.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/progress.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/progress-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/progress.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/progress-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/progress.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/progress.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/progress.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/progress.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rail.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rail-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rail.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rail.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rating.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rating-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rating.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rating-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rating.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rating.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/rating.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/rating.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/reset.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/reset-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/reset.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/reset.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/reveal.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/reveal-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/reveal.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/reveal.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/search.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/search-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/search.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/search-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/search.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/search.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/search.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/search.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/segment.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/segment-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/segment.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/segment.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/shape.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/shape-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/shape.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/shape-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/shape.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/shape.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/shape.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/shape.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sidebar.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sidebar-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sidebar.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sidebar-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sidebar.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sidebar.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sidebar.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sidebar.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/site.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/site-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/site.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/site-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/site.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/site.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/site.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/site.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/state.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/state-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/state.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/state.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/statistic.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/statistic-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/statistic.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/statistic.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/step.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/step-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/step.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/step.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sticky.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sticky-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sticky.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sticky-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sticky.min.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
-		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sticky.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/sticky.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/sticky.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/tab.css": {
-		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/tab-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/tab.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/tab-min.js",
+		"oA": 1,
+		"oAP": "\/scss\/libs\/css\/_all.css",
 		"oF": 0,
-		"sC": 1,
-		"tS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/tab.min.css": {
+	"\/scss\/libs\/react-image-gallery\/_ionicons-font.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/tab.min-min.css",
+		"oA": 1,
+		"oAP": "\/scss\/libs\/css\/_ionicons-font.css",
 		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/tab.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/tab.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/table.css": {
+	"\/scss\/libs\/react-image-gallery\/_ionicons-variables.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/table-min.css",
+		"oA": 1,
+		"oAP": "\/scss\/libs\/css\/_ionicons-variables.css",
 		"oF": 0,
-		"oS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/table.min.css": {
+	"\/scss\/libs\/react-image-gallery\/image-gallery-no-icon.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/table.min-min.css",
+		"oAP": "\/scss\/libs\/css\/image-gallery-no-icon.css",
 		"oF": 0,
-		"oS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/transition.css": {
+	"\/scss\/libs\/react-image-gallery\/image-gallery.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/transition-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/transition.js": {
-		"ft": 64,
-		"mi": 1,
 		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/transition-min.js",
+		"oAP": "\/scss\/libs\/css\/image-gallery.css",
 		"oF": 0,
-		"sC": 1,
-		"tS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/transition.min.css": {
+	"\/scss\/libs\/react-image-gallery\/ionicons.scss": {
 		"aP": 1,
-		"bl": 0,
-		"ft": 16,
+		"bl": 1,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
 		"ma": 0,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/transition.min-min.css",
-		"oF": 0,
-		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/transition.min.js": {
-		"ft": 64,
-		"mi": 1,
 		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/transition.min-min.js",
+		"oAP": "\/scss\/libs\/css\/ionicons.css",
 		"oF": 0,
-		"sC": 1,
-		"tS": 0
+		"oS": 0,
+		"uL": 1
 		},
-	"\/scss\/libs\/semantic-ui\/video.css": {
+	"\/scss\/libs\/semantic-min.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/video-min.css",
+		"oAP": "\/scss\/libs\/semantic-min-min.css",
 		"oF": 0,
 		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/video.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/video-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
 		},
-	"\/scss\/libs\/semantic-ui\/video.min.css": {
+	"\/scss\/libs\/semantic.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/video.min-min.css",
+		"oAP": "\/scss\/libs\/semantic-min.css",
 		"oF": 0,
 		"oS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/video.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/video.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/visibility.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/visibility-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/visibility.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/visibility.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/visit.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/visit-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scss\/libs\/semantic-ui\/visit.min.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/semantic-ui\/visit.min-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
 		},
 	"\/scss\/libs\/slick\/_all.scss": {
 		"aP": 1,
@@ -8973,42 +7885,6 @@
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
-		},
-	"\/scss\/libs\/slick\/ajax-loader.gif": {
-		"ft": 4194304,
-		"iS": 4178,
-		"oA": 0,
-		"oAP": "\/scss\/libs\/slick\/ajax-loader.gif",
-		"oF": 0,
-		"opt": 0
-		},
-	"\/scss\/libs\/slick\/fonts\/slick.eot": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/scss\/libs\/slick\/fonts\/slick.eot",
-		"oF": 0
-		},
-	"\/scss\/libs\/slick\/fonts\/slick.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/scss\/libs\/slick\/fonts\/slick.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"\/scss\/libs\/slick\/fonts\/slick.ttf": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/scss\/libs\/slick\/fonts\/slick.ttf",
-		"oF": 0
-		},
-	"\/scss\/libs\/slick\/fonts\/slick.woff": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/scss\/libs\/slick\/fonts\/slick.woff",
-		"oF": 0
 		},
 	"\/scss\/main.scss": {
 		"aP": 1,

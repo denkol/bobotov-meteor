@@ -12,7 +12,7 @@ export default class ListeningComfort extends Component {
     }
     return (
       <div className="listening-info-block listening-info-block--inline">
-        <h2 className="medium-headline">Удобства:</h2>
+        <h2 className="medium-headline">Удобства</h2>
         {comforts.map((comfort, index) => {
           return (
             <div key={"comfort-" + index} className="listening-info-block__item">

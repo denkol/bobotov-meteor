@@ -1,0 +1,56 @@
+.panel-header-balance {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  text-align: right;
+  z-index: 50;
+  &__top {
+    margin-bottom: 5px;
+  }
+  &__bottom {
+
+  }
+}
+
+.balance-icon {
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.balance-text {
+  font-size: 14px;
+  display: inline-block;
+    vertical-align: middle;
+  &__text {
+    display: inline-block;
+    vertical-align: middle;
+
+  }
+  &__sum {
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    svg {
+      display: inline-block;
+      vertical-align: top;
+      width: 10px;
+      margin-left: 0;
+    }
+    &--plus {
+      color: $accent-color;
+    }
+  }
+
+}
+
+.balance-up {
+  font-weight: bold;
+  color: $accent-blue;
+  font-size: 16px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

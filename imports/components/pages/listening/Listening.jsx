@@ -35,7 +35,6 @@ class Listening extends Component {
       owner : this.props.owner,
       listeningId : this.props.listeningId
     }
-    console.log(data.owner)
     if(data.listening) {
       let listeningAutorName;
       let listeningAutorDesc;
@@ -73,6 +72,8 @@ class Listening extends Component {
         { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
       ];
       const listeningOptions = [
+        { optionName: "Страна", optionValue: "Черногория" },
+        { optionName: "Город", optionValue: "Будва" },
         { optionName: "Площадь", optionValue: "32" },
         { optionName: "ratio", optionValue: "32" },
         { optionName: "ratio", optionValue: "32" }
@@ -86,16 +87,18 @@ class Listening extends Component {
             <div className="listening-info-header">
               <div className="listening-info-header__item">
                 <h1 className="large-headline">{listeningHeadline}</h1>
-                <p className="medium-parag">{listeningCity}, {listeningCountry}</p>
+                <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
+                
               </div>
               <div className="listening-info-header__item">
                 <div className="price">
                   <div className="price__text">
+                    {listeningPrice}
                     <div className="currency">
                       <svg className="ico-euro" role="img">
                         <use xlinkHref="#ico-euro" />
                       </svg>
-                    </div>{listeningPrice}
+                    </div>
                   </div>
                   <div className="price__desc">{listeningPeriod}</div>
                 </div>
@@ -107,7 +110,7 @@ class Listening extends Component {
             <ListeningOptions options={listeningOptions} />
             <ListeningComfort comforts={listeningComfortList} />
             <div className="listening-info-block">
-              <h2 className="medium-headline">Описание хозяина:</h2>
+              <h2 className="medium-headline">Описание автора</h2>
               <div className="listening-info-block__item">
                 <p className="large-parag">{listeningDesc}</p>
               </div>
@@ -148,12 +151,12 @@ export default createContainer(({ listeningId }) => {
   const listening = Listenings.findOne({_id: listeningId});
   const ownerId = listening ? listening.listeningTech.ownerId : "";
   const listeningSubs = Meteor.subscribe('listenings.all');
-  const userSubs = Meteor.subscribe('users.all');
+  const userSubs = Meteor.subscribe('user', ownerId);
   const loading = listeningSubs.ready() && userSubs.ready();
-  /* Defining owner */
-  let owner = ownerId ? Meteor.users.findOne({_id: ownerId}) : {};
+
+  const owner = Meteor.users.find({_id: ownerId}).fetch()[0];
   
-  const user = Meteor.user() ? Meteor.user() : {};
+
   const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
   const isFavorite = checkerFavorite(favoritesList, id);
   function checkerFavorite(e, curId) {
@@ -167,7 +170,7 @@ export default createContainer(({ listeningId }) => {
     return false;
   }
   
-  return { listeningId, owner, loading, listening, user, isFavorite };
+  return { listeningId, loading, owner, listening, isFavorite };
 
 }, Listening);
 
@@ -175,6 +178,5 @@ Listening.propTypes = {
   loading: React.PropTypes.bool,
   listening: React.PropTypes.object,
   owner : React.PropTypes.object,
-  user : React.PropTypes.object,
   isFavorite : React.PropTypes.bool
 };

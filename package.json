@@ -5,25 +5,18 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "autoprefixer": "^6.3.1",
     "babel-runtime": "6.18.0",
     "bcrypt": "^0.8.7",
     "material-ui": "^0.16.0-rc2",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.4.0",
-    "react-addons-css-transition-group": "^15.4.2",
-    "react-addons-pure-render-mixin": "^15.4.0",
     "react-addons-transition-group": "^15.4.0",
     "react-dom": "^15.4.0",
-    "react-dropzone": "^3.9.0",
-    "react-facebook": "^2.2.5",
-    "react-google-maps": "^6.0.1",
     "react-image-gallery": "^0.7.12",
     "react-mounter": "^1.2.0",
     "react-slick": "^0.14.5",
-    "react-tap-event-plugin": "^2.0.1",
+    "semantic-ui-css": "^2.2.4",
     "semantic-ui-react": "^0.64.7",
-    "slick-carousel": "^1.6.0",
-    "yandex-map-react": "^1.0.0-beta.13"
+    "slick-carousel": "^1.6.0"
   }
 }
