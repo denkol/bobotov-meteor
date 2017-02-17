@@ -11,7 +11,7 @@ import ListeningComfort from './ListeningComfort.jsx';
 import ListeningContacts from './ListeningContacts.jsx';
 
 /* Semantic UI */
-import { Message } from 'semantic-ui-react';
+import { Message, Dimmer, Loader } from 'semantic-ui-react';
 
 class Listening extends Component {
   constructor(props) {
@@ -78,65 +78,67 @@ class Listening extends Component {
         { optionName: "ratio", optionValue: "32" },
         { optionName: "ratio", optionValue: "32" }
       ];
-
       if(loading) {
         return (
-         <div>
-          <ListeningPhotos photos={listeningsPhotos}/>
-          <div className="listening-info">
-            <div className="listening-info-header">
-              <div className="listening-info-header__item">
-                <h1 className="large-headline">{listeningHeadline}</h1>
-                <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
-                
-              </div>
-              <div className="listening-info-header__item">
-                <div className="price">
-                  <div className="price__text">
-                    {listeningPrice}
-                    <div className="currency">
-                      <svg className="ico-euro" role="img">
-                        <use xlinkHref="#ico-euro" />
-                      </svg>
+          <div>
+            <ListeningPhotos photos={listeningsPhotos}/>
+            <div className="listening-info">
+              <div className="listening-info-header">
+                <div className="listening-info-header__item">
+                  <h1 className="large-headline">{listeningHeadline}</h1>
+                  <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
+                </div>
+                <div className="listening-info-header__item">
+                  <div className="price">
+                    <div className="price__text">
+                      {listeningPrice}
+                      <div className="currency">
+                        <svg className="ico-euro" role="img">
+                          <use xlinkHref="#ico-euro" />
+                        </svg>
+                      </div>
                     </div>
+                    <div className="price__desc">{listeningPeriod}</div>
                   </div>
-                  <div className="price__desc">{listeningPeriod}</div>
                 </div>
               </div>
-            </div>
-            <div className="listening-info-profile">
-              <Profile data={data.owner}/>
-            </div>
-            <ListeningOptions options={listeningOptions} />
-            <ListeningComfort comforts={listeningComfortList} />
-            <div className="listening-info-block">
-              <h2 className="medium-headline">Описание автора</h2>
-              <div className="listening-info-block__item">
-                <p className="large-parag">{listeningDesc}</p>
+              <div className="listening-info-profile">
+                <Profile data={data.owner}/>
               </div>
-            </div>
-            <ListeningContacts contacts={listeningContacts} />
-            <div className="listening-info-footer">
-              <div className="listening-info-footer__item">
-                <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+              <ListeningOptions options={listeningOptions} />
+              <ListeningComfort comforts={listeningComfortList} />
+              <div className="listening-info-block">
+                <h2 className="medium-headline">Описание автора</h2>
+                <div className="listening-info-block__item">
+                  <p className="large-parag">{listeningDesc}</p>
+                </div>
               </div>
-              <div className="listening-info-footer__item">
-                <div className="share">
-                  <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
+              <ListeningContacts contacts={listeningContacts} />
+              <div className="listening-info-footer">
+                <div className="listening-info-footer__item">
+                  <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+                </div>
+                <div className="listening-info-footer__item">
+                  <div className="share">
+                    <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      );
-      }else {
-        return <div>Loading...</div>
+        );
+      } else {
+        return (
+          <div>
+            Loading...
+          </div>
+        );
       }
     } else {
       return (
         <Message warning>
-          <Message.Header>Что-то пошло не так, проверьте консоль</Message.Header>
-          <p>Обратится в службу тех поддержки по номеру +899393933445</p>
+          <Message.Header>Ошибка!</Message.Header>
+          <p>Что то пошло не так...</p>
         </Message>
       );
     }
@@ -145,7 +147,6 @@ class Listening extends Component {
 
 Listening.propTypes = {};
 
-
 export default createContainer(({ listeningId }) => {
   const id = listeningId;
   const listening = Listenings.findOne({_id: listeningId});
@@ -153,7 +154,6 @@ export default createContainer(({ listeningId }) => {
   const listeningSubs = Meteor.subscribe('listenings.all');
   const userSubs = Meteor.subscribe('user', ownerId);
   const loading = listeningSubs.ready() && userSubs.ready();
-
   const owner = Meteor.users.find({_id: ownerId}).fetch()[0];
   
 

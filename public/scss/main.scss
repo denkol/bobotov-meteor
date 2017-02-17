@@ -8,6 +8,7 @@
 @import "other/all";
 //Libs
 @import "libs/react-image-gallery/all";
+@import "libs/semantic.min";
 @import "libs/slick/all";
 //Components import
 @import "components/all";
@@ -33,4 +34,13 @@
 }
 .loved {
   fill: $love-color;
+}
+
+.page-appear {
+   opacity: 0.01;
+}
+
+.page-appear.page-appear-active {
+   opacity: 1;
+   transition: opacity 500ms ease-in;
 }

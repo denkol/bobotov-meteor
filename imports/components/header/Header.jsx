@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import FacebookProvider, { Like } from 'react-facebook';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 //Components
 import Profile from '../profile/Profile.jsx';
@@ -23,13 +22,7 @@ class HeaderLayout extends Component {
   }
 
   componentDidMount() {
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8&appId=695731333928670";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+  
   }
   openSubmenu(e) {
     var container = $('.profile-menu')
@@ -51,6 +44,7 @@ class HeaderLayout extends Component {
     FlowRouter.go('/');
   }
   toPanel() {
+    this.setState({subMenuOpen: false});
     FlowRouter.go('/panel');
   }
   toCreate() {
@@ -63,7 +57,7 @@ class HeaderLayout extends Component {
     let user = this.props.user;
     const ModalBasicExample = () => (
       <Modal trigger={<li className="profile-menu__item">Выйти</li>} basic size='small'>
-        <Header content='Выход из аккаунта' />
+        <Header icon='log out' content='Выход из аккаунта' />
         <Modal.Content>
           <p>Вы действительно хотите выйти?</p>
         </Modal.Content>
@@ -93,9 +87,7 @@ class HeaderLayout extends Component {
                 </div>
               </a>
               <div className="header-menu">
-                <div>
-                  <div className="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="recommend" data-size="small" data-show-faces="false" data-share="false"></div>
-                </div>
+                
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}
               </div>
             </div>

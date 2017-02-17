@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Slider from 'react-slick';
 import ImageGallery from 'react-image-gallery';
 
 export default class ListeningPhotos extends Component {

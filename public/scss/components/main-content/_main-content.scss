@@ -5,20 +5,23 @@
   // background-color: white;
   position: relative;
   z-index: 6;
-  transition: transform 0.2s , opacity 0.1s;
-
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease,-webkit-transform .5s ease;
   // transition: transform 0.2s;
   &--slide-to-left {
     // background-color: white;
-    transform: translateX(-300px);
-    opacity: 0.5;
+    
+    -webkit-transform: translate3d(-300px,0,0);
+    transform: translate3d(-300px,0,0);
     // -webkit-animation: slideLeft 200ms linear both;
     // animation: slideLeft 200ms linear both;
   }
   &--slide-to-right {
     // background-color: white;
-    transform: translateX(0);
-    opacity: 1;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
     // -webkit-animation: slideRight 200ms linear both;
     // animation: slideRight 200ms linear both;
   }

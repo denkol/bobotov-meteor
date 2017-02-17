@@ -1,0 +1,95 @@
+$grey-create-photo: gray;
+$radius-create-photo: 5px;
+.create-photo {
+  display: block;
+  position: relative;
+  height: 200px;
+  width: 252px;
+  background-color: transparent;
+  
+}
+
+.create-photo-hide {
+  display: none;
+}
+
+.create-photo-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+}
+
+.create-photo-layer_init {
+  border: 3px dashed $grey-create-photo;
+  border-radius: $radius-create-photo;
+  padding: 36px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  &__icon {
+    margin-bottom: 10px;
+    text-align: center;
+    svg {
+      width: 47px;
+      height: 47px;
+      fill: $grey-create-photo;
+    }
+  }
+  &__text {
+    width: 100%;
+    text-align: center;
+    color: gray;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.create-photo-layer_loader {
+
+}
+
+.create-photo-layer_image {
+  &__item {
+    height: 100%;
+    width: 100%;
+    border-radius: $radius-create-photo;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.create-photo-layer_hover {
+  &__item {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: $radius-create-photo;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .hover-item-text {
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+    &_remove {
+      color: $remove-color;
+    }
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  &:hover {
+    .create-photo-layer_hover__item {
+      display: block;
+    }
+  }
+}

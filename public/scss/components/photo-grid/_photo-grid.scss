@@ -1,13 +1,17 @@
 .photo-grid {
   .listening-preview {
+    transition: transform .2s;
     &:hover {
-    cursor: pointer;
+      cursor: pointer;
       .listening-preview-header {
         display: block;
       }
       .listening-preview-footer {
         display: block;
       }
+    }
+    &:active {
+      transform: scale(0.99);
     }
     .listening-preview-headline__text {
       font-size: 14px;

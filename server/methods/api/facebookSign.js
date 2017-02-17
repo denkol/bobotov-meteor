@@ -1,16 +1,10 @@
 Meteor.methods({
   facebookSign() {
     var facebookUser = Meteor.user().services.facebook;
-    if (Meteor.user().profile.favoritesList) {
-      Meteor.users.update({
-        _id: Meteor.userId()
-      }, {
-        $set: {
-          "profile.userName": facebookUser.name,
-          "profile.userPhoto": "http://graph.facebook.com/" + facebookUser.id + "/picture/?type=large"
-        }
-      });
-      console.log("user signin with facebook")
+    var userName = Meteor.user().profile.userName;
+    var userFavoritesList = Meteor.user().profile.favoritesList;
+    if (userFavoritesList) {
+      console.log(userName + " sign in with Facebook");
     } else {
       var secret = {
         "techInfo": {
@@ -47,9 +41,7 @@ Meteor.methods({
         "historyList": []
       };
 
-      Meteor.users.update({
-        _id: Meteor.userId()
-      }, {
+      Meteor.users.update({ _id: Meteor.userId() }, {
         $set: {
           "profile.userDesc": profileAdd.userDesc,
           "profile.userName": profileAdd.userName,
@@ -60,7 +52,7 @@ Meteor.methods({
           "services.secret": secret
         }
       });
-      console.log("user signup with facebook")
+      console.log(userName + " sign up with Facebook")
     }
   }
 });

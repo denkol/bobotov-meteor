@@ -6,10 +6,10 @@
   height: 197px;
   z-index: 44;
   &:hover {
-      .panel-photo__control {
-        display: block;
-      }
+    .panel-photo__control {
+      display: block;
     }
+  }
   &__item {
     width: 197px;
     height: 197px;
@@ -17,7 +17,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("/img/test.jpg");
     box-shadow: 0 0 8px rgba(0,0,0,0.5);
   }
   &__control {
@@ -33,6 +32,37 @@
     border-radius: 50%;
     background-color: rgba(0,0,0,0.5);
   }
+  &__loader {
+    
+    border-radius: 50%;
+    
+  }
+  &__tip {
+    position: absolute;
+    top: 100%;
+    margin-top: 20px;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    width: 200px;
+    line-height: 20px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 5px 10px 5px;
+      border-color: transparent transparent #eee transparent;
+
+    } 
+  }
 }
 
 .panel-photo-add, .panel-photo-remove {
@@ -42,15 +72,17 @@
   }
 }
 .panel-photo-add {
+  
   font-weight: bold;
   font-size: 18px;
-  margin-bottom: 10px;
+  
   color: white;
 }
 
 .panel-photo-remove {
-
+  display: block;
   font-weight: bold;
   font-size: 18px;
+  margin-top: 10px;
   color: $remove-color;
 }
