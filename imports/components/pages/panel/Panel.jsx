@@ -24,6 +24,10 @@ class Panel extends Component {
   componentDidMount() {
     // this.saveToHistory({id: this.props.listeningId}); //save to history
   }
+  componentWillUnmount() {
+    delete Session.keys['avatar-uploaded']
+    delete Session.keys['avatar-allready']
+  }
   handleSubmit(e, { formData }) {
     e.preventDefault();
     let userName = formData.userName.trim() + "";
@@ -112,6 +116,7 @@ class Panel extends Component {
                       <div className="panel-controls__item">
                         <Button type="submit" primary>Сохранить</Button>
                       </div>
+                      <div className="panel-controls__item">Чтобы применить изменения нажмите эту кнопку</div>
                     </div>
                   </div>
                 </Form>

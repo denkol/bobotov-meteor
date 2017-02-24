@@ -3,6 +3,8 @@ import Header from './header/Header.jsx';
 import Footer from './footer/Footer.jsx';
 import MainMenu from './main-menu/MainMenu.jsx';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 export default class Layout extends Component {
   constructor(props) {
     super(props);
@@ -10,17 +12,19 @@ export default class Layout extends Component {
   }
   render() {
     return (
-      <div id="app">
-        <Header />
-        <div className="interface-width">
-          <div className="main-content">
+      <MuiThemeProvider>
+        <div id="app">
+          <Header />
+          <div className="interface-width">
             <MainMenu />
-            {this.props.content}
+            <div className="main-content">
+              {this.props.content}
+            </div>
+            {this.props.additionalContent}
           </div>
-          {this.props.additionalContent}
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </MuiThemeProvider>
     );
   }
 }

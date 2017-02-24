@@ -46,6 +46,16 @@ publicRoutes.route('/listening/:_id', {
   }
 });
 
+publicRoutes.route('/edit/:_id', {
+  action() {
+    var listeningId = FlowRouter.getParam('_id');
+    mount(Layout, {
+      content: <Create listeningId={listeningId} />,
+      additionalContent: ""
+    });
+  }
+});
+
 publicRoutes.route('/favorites', {
   action() {
     mount(Layout, {

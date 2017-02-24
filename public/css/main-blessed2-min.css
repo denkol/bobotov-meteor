@@ -59,17 +59,15 @@ table {
 html,
 body {
   height: 100%;
-  width: 100%;
-  overflow-x: hidden; }
+  width: 100%; }
 
 body {
   font-size: 14px;
   font-weight: 400;
-  min-width: 320px;
+  min-width: 1024px;
   position: relative;
   font-family: "PT Sans", sans-serif;
   color: #374050;
-  overflow-x: hidden;
   margin: 0; }
 
 ul,
@@ -586,6 +584,11 @@ p.small-parag {
   position: relative;
   white-space: nowrap; }
 
+.image-gallery-image {
+  background-color: #eee;
+  text-align: center;
+  height: 600px; }
+
 .image-gallery-slide {
   background: #FFF;
   left: 0;
@@ -597,7 +600,7 @@ p.small-parag {
   position: relative; }
 
 .image-gallery-slide img {
-  width: 100%; }
+  height: 100%; }
 
 .image-gallery-slide .image-gallery-description {
   background: rgba(0, 0, 0, 0.4);

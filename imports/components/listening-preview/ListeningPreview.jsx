@@ -3,6 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import ListeningPreviewIndex from './index/ListeningPreviewIndex.jsx';
 import ListeningPreviewSimple from './simple/ListeningPreviewSimple.jsx';
+import ListeningPreviewMy from './simple/ListeningPreviewMy.jsx';
 
 export default class ListeningPreview extends Component {
   constructor(props) {
@@ -13,21 +14,16 @@ export default class ListeningPreview extends Component {
     let layout = this.props.layout;
 
     if(layout === "simple") {
-      return <ListeningPreviewSimple data={data} />
+      return <ListeningPreviewSimple data={data} layout={layout}/>
     } else if (layout === "my") {
-      if(Meteor.userId()) {
-        return <ListeningPreviewSimple data={data} />
-      } else {
-        return <ListeningPreviewSimple data={data} />
-      }
+      return <ListeningPreviewMy data={data} layout={layout}/>
     } else if (layout === "index") {
-      return <ListeningPreviewIndex data={data} />
+      return <ListeningPreviewIndex data={data} layout={layout}/>
     } else if (layout === "favorites") {
-      return <ListeningPreviewSimple data={data} />
+      return <ListeningPreviewSimple data={data} layout={layout}/>
     } else if (layout === "history") {
-      return <ListeningPreviewSimple data={data} />
+      return <ListeningPreviewSimple data={data} layout={layout}/>
     }
-
   }
 }
 

@@ -33,9 +33,28 @@
     background-color: rgba(0,0,0,0.5);
   }
   &__loader {
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 197px;
+    padding: 80px 50px;
+    text-align: center;
+    height: 197px;
     border-radius: 50%;
-    
+    background-color: rgba(0,0,0,0.5);
+    .panel-loader-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: bold;
+      color: white;
+      font-size: 14px;
+    }
+    &--hide {
+      display: none;
+    }
   }
   &__tip {
     position: absolute;
@@ -60,7 +79,6 @@
       border-style: solid;
       border-width: 0 5px 10px 5px;
       border-color: transparent transparent #eee transparent;
-
     } 
   }
 }
@@ -72,10 +90,8 @@
   }
 }
 .panel-photo-add {
-  
   font-weight: bold;
   font-size: 18px;
-  
   color: white;
 }
 

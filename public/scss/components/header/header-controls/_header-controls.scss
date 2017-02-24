@@ -4,6 +4,9 @@
   align-items: center;
   height: 100%;
   &__item {
+    .transparent-btn {
+      margin-right: 10px;
+    }
     margin-right: 16px;
     &:last-child {
       margin-right: 0;

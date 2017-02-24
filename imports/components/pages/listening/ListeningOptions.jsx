@@ -19,7 +19,7 @@ export default class ListeningOptions extends Component {
               <div key={"option-" + index} className="listening-info-block__item">
                 <div className="listening-info-param">
                   <span className="listening-info-param__item">{option.optionName}: </span>
-                  <span className="listening-info-param__item">{option.optionValue} кв.м</span>
+                  <span className="listening-info-param__item">{option.optionValue} m²</span>
                 </div>
               </div>
             );

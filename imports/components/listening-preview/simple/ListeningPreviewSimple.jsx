@@ -1,13 +1,46 @@
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Checkbox, Button } from 'semantic-ui-react';
+
+import Snackbar from '../../snackbar/Snackbar.jsx';
 
 export default class ListeningPreviewSimple extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      snackbar : {
+        open: false,
+        message: "",
+      }
+    }
+    this.publishTrigger = this.publishTrigger.bind(this);
     this.toListeningPage = this.toListeningPage.bind(this);
+    this.remove = this.remove.bind(this);
   }
   toListeningPage() {
     FlowRouter.go('/listening/' + this.props.data._id);
+  }
+  edit() {
+    console.log('Edit clicked')
+  }
+  remove() {
+    let id = this.props.data._id;
+    let list = this.props.layout;
+    Meteor.call('removeFromList', id, list, (err, res)=> {
+      if(err) {console.log(err)}
+      if(res) {
+        console.log('listening removed from Favorite');
+      }
+    });
+  }
+  publishTrigger(event, data) {
+    let message = data.checked ? "Объявление включено" : "Объявление выключено"
+    this.setState({
+      snackbar: {
+        open: true,
+        message: message
+      }
+    })
   }
   render() {
     if(this.props.data) {
@@ -23,10 +56,14 @@ export default class ListeningPreviewSimple extends Component {
       let listeningRatio = this.props.data.listeningInfo.ratio;
       let listeningPropertyType = this.props.data.listeningInfo.typeProperty;
       let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
+      let listeningViews = this.props.data.listeningTech.views;
       return (
         <div className="listening-preview-simple">
+          <Snackbar open={this.state.snackbar.open} message={this.state.snackbar.message} />
           <div className="listening-preview-simple__photo-block">
-            <div className="preview-simple-photo" />
+            <a href={listeningLink}>
+              <div className="preview-simple-photo" style={{backgroundImage: "url("+listeningMainPhoto+")"}}/>
+            </a>
           </div>
           <div className="listening-preview-simple__headline-block">
             <div className="preview-simple-headline">
@@ -35,13 +72,8 @@ export default class ListeningPreviewSimple extends Component {
             </div>
           </div>
           <div className="listening-preview-simple__items-block">
-            <div className="preview-simple-items">
-              <div className="preview-simple-items__item">d</div>
-              <div className="preview-simple-items__item">d</div>
-              <div className="preview-simple-items__item">d</div>
-            </div>
-          </div>
-          <div className="listening-preview-simple__price-block">
+          </div> 
+          {/*<div className="listening-preview-simple__price-block">
             <div className="price">
               <div className="price__text">
                 {listeningPrice}
@@ -53,9 +85,9 @@ export default class ListeningPreviewSimple extends Component {
               </div>
               <div className="price__desc">{listeningPaymentPeriod}</div>
             </div>
-          </div>
+          </div>*/}
           <div className="listening-preview-simple__control-block">
-            <div className="remove-icon">
+            <div className="remove-icon" onClick={this.remove}>
               <div className="remove-icon__icon">
                 <svg className="ico-remove" role="img">
                   <use xlinkHref="#ico-remove" />
@@ -66,7 +98,7 @@ export default class ListeningPreviewSimple extends Component {
         </div>
       );
     } else {
-      return (<div>Loading...</div>);
+      return (<div></div>);
     }
   }
 }

@@ -1,6 +1,7 @@
 .photo-grid {
   .listening-preview {
     transition: transform .2s;
+    animation: none;
     &:hover {
       cursor: pointer;
       .listening-preview-header {

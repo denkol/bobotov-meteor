@@ -6,7 +6,19 @@ $radius-create-photo: 5px;
   height: 200px;
   width: 252px;
   background-color: transparent;
-  
+  &_main {
+    .create-photo-layer_init {
+      border: 3px dashed $accent-blue;
+      &__icon {
+        svg {
+          fill: $accent-blue;
+        }
+      }
+      &__text {
+        color: $accent-blue;
+      }
+    }
+  }
 }
 
 .create-photo-hide {

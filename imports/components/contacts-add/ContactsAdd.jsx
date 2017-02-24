@@ -18,7 +18,6 @@ export default class ContactsAdd extends Component {
     this.state = {
       contactsNumber: 1
     }
-    
   }
   
   render() {

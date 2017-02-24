@@ -2,29 +2,19 @@
   box-sizing: border-box;
 }
 
-// ::-webkit-scrollbar {
-//   width: 0px;
-//   /* remove scrollbar space */
-//   background: transparent;
-//   /* optional: just make scrollbar invisible */
-// }
-
 html,
 body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
-  // animation: fadeIn 0.5s ease 0s both;
 }
 
 body {
   font-size: 14px;
   font-weight: 400;
-  min-width: 320px;
+  min-width: 1024px;
   position: relative;
   font-family: $default-font;
   color: $black-text;
-  overflow-x: hidden;
   margin: 0;
 }
 

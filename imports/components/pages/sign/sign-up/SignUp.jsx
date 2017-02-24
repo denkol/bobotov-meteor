@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
-import VkBtn from '../../../btn-vk/VkBtn.jsx';
 
 /* Semantic UI */
 import { Form, Input } from 'semantic-ui-react';
@@ -32,8 +31,7 @@ export default class SignUp extends Component {
       email : email,
       password : password,
       profile : {
-        userName : username,
-        userPhoto: Session.get("uploadedAvatar")
+        userName : username
       }
     };
 
@@ -73,7 +71,6 @@ export default class SignUp extends Component {
               </div>
               <div className="login-item">
                 <FacebookBtn />
-                <VkBtn />
               </div>
               <div className="login-item-separator">
                 <div className="login-item-separator__text">или</div>

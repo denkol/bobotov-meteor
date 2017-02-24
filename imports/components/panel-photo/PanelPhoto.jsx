@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Photos } from '../../api/photos.js';
+import { Dimmer, Loader } from 'semantic-ui-react';
+import Snackbar from '../snackbar/Snackbar.jsx';
 
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 class PanelPhoto extends Component {
   constructor(props) {
     super(props);
@@ -69,6 +70,7 @@ class PanelPhoto extends Component {
        uploadInstance.on('error', function (error, fileObj) {
          console.log('Error during upload: ' + error);
          self.setState({
+            error: error,
             uploading: [],
             progress: 0,
             uploaded: false,
@@ -90,12 +92,13 @@ class PanelPhoto extends Component {
     }
   }
   photoRemove() {
-    let fileId; 
-    if(this.state.file) {
-      fileId = this.state.file._id;
+
+    let fileId = ""; 
+    if(Session.get('avatar-already')) {
+      let photoUrl = Session.get('avatar-already');
+      fileId = photoUrl.slice(photoUrl.lastIndexOf('/') + 1, photoUrl.lastIndexOf('.'));
     } else {
-      fileId = Session.get('avatar-already');
-      console.log(fileId)
+      fileId = this.state.file._id;
     }
 
     Meteor.call('fileRemove', fileId, (err, res) => {
@@ -110,7 +113,8 @@ class PanelPhoto extends Component {
             inProgress: false,
             file: ""
           });
-          Meteor.call('userDeletePhoto');
+          Meteor.call('userDeletePhoto'); //Remove photo from DB
+          delete Session.keys['avatar-already', 'avatar-uploaded']; //Clear Session
         } else {
 
         }
@@ -145,12 +149,11 @@ class PanelPhoto extends Component {
       }
       return (
         <div className="panel-photo">
+          <Snackbar open={this.state.error} text={this.state.error} />
           <div className="panel-photo__item" style={{backgroundImage: "url("+photoUrl+")"}}/>
-          
-          {this.state.inProgress ? <div className="panel-photo__loader">
-            
-              <Loader size='mini'>Загрузка {this.state.progress}%</Loader>
-          </div> : ""}
+          <div className={this.state.inProgress ? "panel-photo__loader" : "panel-photo__loader--hide"}>
+            <div className="panel-loader-text">{this.state.progress}%</div>
+          </div>
 
           <div className="panel-photo__control">
             <label htmlFor={"fileinput-avatar"} className="panel-photo-add">Загрузить</label>
@@ -172,7 +175,7 @@ class PanelPhoto extends Component {
       return (
         <div className="panel-photo">
           <div className="panel-photo__loader">
-            <Dimmer active inverted>
+            <Dimmer active>
               <Loader size='mini'>Loading</Loader>
             </Dimmer>
           </div>

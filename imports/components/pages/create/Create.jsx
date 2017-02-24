@@ -1,35 +1,16 @@
 import React, { Component } from 'react'
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
 
-const genders = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-];
-
-const products = [
-  { key: 'hat', text: 'Hat', value: 'hat' },
-  { key: 'scarf', text: 'Scarf', value: 'scarf' },
-  { key: 'jacket', text: 'Jacket', value: 'jacket' },
-  { key: 't_shirt', text: 'T-Shirt', value: 't_shirt' },
-  { key: 'gloves', text: 'Gloves', value: 'gloves' },
-  { key: 'watch', text: 'Watch', value: 'watch' },
-  { key: 'belt', text: 'Belt', value: 'belt' },
-  { key: 'pants', text: 'Pants', value: 'pants' },
-  { key: 'shoes', text: 'Shoes', value: 'shoes' },
-  { key: 'socks', text: 'Socks', value: 'socks' },
-];
-
 const countries = [ 
-  { key: 'me', value: 'me', flag: 'me', text: 'Черногория' },
-  { key: 'rs', value: 'rs', flag: 'rs', text: 'Сербия' },
-  { key: 'ba', value: 'ba', flag: 'ba', text: 'Босния и Герцеговина' }
+  { key: 'me', value: 'me', flag: 'me', text: 'Черногория' }
 ];
 
 const cities = [
-  { key: 'be', value: 'Becici', text: 'Бечичи' },
+  { key: 'be', value: 'becici', text: 'Бечичи' },
 ];
 
 const typeDeal = [
@@ -92,18 +73,88 @@ export default class Create extends Component {
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
   }
+  componentDidMount() {
+    Session.keys = {} //reset session
+  }
   handleChange(e, { value }) {
     this.setState({ value })
   }
   handleSubmit(e, { formData }) {
     e.preventDefault()
     this.setState({ formData });
-
-    var listeningContacts = [];
-    for(let i = 1; i <= this.state.contactsNumber; i++ ) {
-      
+    
+    function getOtherPhotos() {
+      let listeningPhotos = [];
+      for (let i = 1; i <= 4; i++) {
+        if(Session.get(i + "photo")) {
+          listeningPhotos.push( Session.get(i + "photo") );
+        }
+      }
+      return listeningPhotos;
     }
-    console.log(formData)
+
+    let typeDeal = formData.typeDeal;
+    let typeProperty = formData.typeProperty;
+    let country = formData.country;
+    let city = formData.city;
+    let location = "formData.location";
+    let ratio = formData.ratio;
+    let bedrooms = formData.bedrooms;
+    let bathrooms = formData.bathrooms;
+    let floor = formData.floor;
+    let price = formData.price;
+    let paymentPeriod = formData.paymentPeriod;
+    let comfortList = formData.comfortList;
+    let headline = formData.headline;
+    let desc = formData.description;
+
+    let photos = {
+      main: Session.get('0photo'),
+      other: getOtherPhotos()
+    }
+    let contacts = [
+      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+    ];
+
+    let options = [
+      { optionName: "Страна", optionValue: "Черногория" },
+      { optionName: "Город", optionValue: "Будва" },
+      { optionName: "Площадь", optionValue: "32" },
+      { optionName: "ratio", optionValue: "32" },
+      { optionName: "ratio", optionValue: "32" }
+    ];
+
+    let listeningCandidate = {
+      "listeningInfo": {
+        "typeDeal": typeDeal,
+        "typeProperty": typeProperty,
+        "country": country,
+        "city": city,
+        "location": location,
+        "ratio": ratio,
+        "floor": floor,
+        "bedrooms": bedrooms,
+        "bathrooms": bathrooms,
+        "price": price,
+        "paymentPeriod": paymentPeriod,
+        "comfortList": comfortList,
+        "headline": headline,
+        "desc": desc
+      },
+      "listeningPhotos": photos,
+      "listeningContacts": contacts,
+      "listeningOptions": options
+    }
+    Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
+      if(err) {console.log(err)} 
+      else {
+        FlowRouter.go('/mylistenings');
+        console.log(res)
+      }
+    });
+    console.log(listeningCandidate)
   }
   contactAdd() {
     if(this.state.contactsNumber < 10 ) {
@@ -120,69 +171,63 @@ export default class Create extends Component {
     }
   }
   render() {
-    console.log(this.state);
-    const { formData, value } = this.state
-    return (
-      <div>
-        <div className="headline-icon">
-          <div className="headline-icon__icon">
-            <svg className="ico-create" role="img">
-              <use xlinkHref="#ico-create" />
-            </svg>
-          </div>
-          <div className="headline-icon__text">Новое объявление</div>
-          <Form className={"create-wrapper"} onSubmit={this.handleSubmit}>
-            
-            <div className="create-block">
-              <div className="create-block__item">
-                <div className="create-block-headline">
-                  Шаг 1: Общая информация
-                </div>
-              </div>
-              <div className="create-block__item">
-
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='сountry' fluid selection options={countries} />
-                  </div>
-                  <div className="create-block-row__item"></div>
-                </div>
-
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='сity' search fluid selection options={cities} />
-                  </div>
-                  <div className="create-block-row__item"></div>
-                </div>
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Field>
-                      <label>Местоположение</label>
-                      <Button>Указать на карте</Button>
-                    </Form.Field>
+    const { formData, value } = this.state;
+    const userId = Meteor.userId();
+    let defaultData;
+    if(this.props.defaultData) {
+      defaultData = this.props.defaultData;
+      console.log(defaultData);
+    }
+    if(userId) {
+      return (
+        <div>
+          <div className="headline-icon">
+            <div className="headline-icon__icon">
+              <svg className="ico-create" role="img">
+                <use xlinkHref="#ico-create" />
+              </svg>
+            </div>
+            <div className="headline-icon__text">Новое объявление</div>
+            <Form className={"create-wrapper"} onSubmit={this.handleSubmit}>
+              <div className="create-block">
+                <div className="create-block__item">
+                  <div className="create-block-headline">
+                    Шаг 1: Общая информация
                   </div>
                 </div>
-
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={typeDeal} />
+                <div className="create-block__item">
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={countries} />
+                    </div>
+                    <div className="create-block-row__item"></div>
                   </div>
-                  <div className="create-block-row__item"></div>
-                </div>
-
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={typeProperty} />
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={cities} />
+                    </div>
+                    <div className="create-block-row__item"></div>
                   </div>
-                  <div className="create-block-row__item"></div>
-                </div>
-
-
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Field>
+                        <label>Местоположение</label>
+                        <Button>Указать на карте</Button>
+                      </Form.Field>
+                    </div>
+                  </div>
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={typeDeal} />
+                    </div>
+                    <div className="create-block-row__item"></div>
+                  </div>
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={typeProperty} />
+                    </div>
+                    <div className="create-block-row__item"></div>
+                  </div>
                  <div className="create-block-row">
                   <div className="create-block-row__item">
                     <Form.Field>
@@ -192,94 +237,101 @@ export default class Create extends Component {
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
-
-
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Group widths='equal' style={{marginBottom: 0}}>
-                      <Form.Field>
-                        <label>Цена</label>
-                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid  labelPosition='right' />
-                      </Form.Field>
-                      <Form.Select label='Период оплаты' name='paymentPeriod' options={paymentPeriod} placeholder='Выберите период оплаты' />
-                    </Form.Group>
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Group widths='equal' style={{marginBottom: 0}}>
+                        <Form.Field>
+                          <label>Цена</label>
+                          <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid  labelPosition='right' />
+                        </Form.Field>
+                        <Form.Select label='Период оплаты' name='paymentPeriod' options={paymentPeriod} placeholder='Выберите период оплаты' />
+                      </Form.Group>
+                    </div>
+                    <div className="create-block-row__item"></div>
                   </div>
-                  <div className="create-block-row__item"></div>
-                </div>
 
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Group widths='equal' style={{marginBottom: 0}}>
-                      <Form.Input label="Кол-во спален" placeholder='1' name='bedrooms' type="number" fluid/>
-                      <Form.Input label="Кол-во санузлов" placeholder='2' name='bathrooms' type="number" fluid/>
-                      <Form.Input label="Этаж" placeholder='4' name='floor' type="number" fluid/>
-                    </Form.Group>
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Group widths='equal' style={{marginBottom: 0}}>
+                        <Form.Input label="Кол-во спален" placeholder='1' name='bedrooms' type="number" fluid/>
+                        <Form.Input label="Кол-во санузлов" placeholder='2' name='bathrooms' type="number" fluid/>
+                        <Form.Input label="Этаж" placeholder='4' name='floor' type="number" fluid/>
+                      </Form.Group>
+                    </div>
+                    <div className="create-block-row__item"></div>
                   </div>
-                  <div className="create-block-row__item"></div>
-                </div>
 
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Dropdown label="Удобства" placeholder='Выберите удобства' name='comfortList' multiple fluid selection renderLabel={comfortListLabel} options={comfortList} />
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Dropdown label="Удобства" placeholder='Выберите удобства' name='comfortList' multiple fluid selection renderLabel={comfortListLabel} options={comfortList} />
+                    </div>
                   </div>
-                </div>
 
 
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid/>
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid/>
+                    </div>
+                    <div className="create-block-row__item">
+                    </div>
                   </div>
-                  <div className="create-block-row__item">
-                  </div>
-                </div>
 
-                <div className="create-block-row">
-                  <div className="create-block-row__item">
-                    <Form.TextArea name='description' label='Описание объявления' placeholder='Почему люди должны обратить внимание на ваше объявление?' rows='3' />
+                  <div className="create-block-row">
+                    <div className="create-block-row__item">
+                      <Form.TextArea name='description' label='Описание объявления' placeholder='Почему люди должны обратить внимание на ваше объявление?' rows='3' />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="create-block">
-              <div className="create-block__item">
-                <div className="create-block-headline">
-                  Шаг 2: Фотография
+              <div className="create-block">
+                <div className="create-block__item">
+                  <div className="create-block-headline">
+                    Шаг 2: Фотография
+                  </div>
+                </div>
+                <div className="create-block__item">
+                  <div className="create-block-row">
+                    <CreatePhoto main={true} id="0" photoUrl=""/>
+                  </div>
+                  <div className="create-block-row">
+                    <CreatePhoto id="1" photoUrl=""/>
+                    <CreatePhoto id="2" photoUrl=""/>
+                    <CreatePhoto id="3" photoUrl=""/>
+                    <CreatePhoto id="4" photoUrl=""/>
+                  </div>
                 </div>
               </div>
-              <div className="create-block__item">
-                <div className="create-block-row">
-                  <CreatePhoto id="0" photoUrl=""/>
+              <div className="create-block">
+                <div className="create-block__item">
+                  <div className="create-block-headline">
+                    Шаг 3: Контакты
+                  </div>
                 </div>
-                <div className="create-block-row">
-                  <CreatePhoto id="1" photoUrl=""/>
-                  <CreatePhoto id="2" photoUrl=""/>
-                  <CreatePhoto id="3" photoUrl=""/>
-                  <CreatePhoto id="4" photoUrl=""/>
+                <ContactsAdd 
+                  contacts={[]}
+                  contactsNumber={this.state.contactsNumber}
+                />
+                <Button onClick={this.contactAdd} circular icon='plus' />
+                <Button onClick={this.contactRemove} circular icon='minus' />
+              </div>
+              <div className="create-block-confirm">
+                <div className="create-block-confirm__item">
+                  <Button type="submit" size='big' primary>Готово</Button>
                 </div>
               </div>
-            </div>
-            <div className="create-block">
-              <div className="create-block__item">
-                <div className="create-block-headline">
-                  Шаг 3: Контакты
-                </div>
-              </div>
-              <ContactsAdd 
-                contacts={[]}
-                contactsNumber={this.state.contactsNumber}
-              />
-              <Button onClick={this.contactAdd} circular icon='plus' />
-              <Button onClick={this.contactRemove} circular icon='minus' />
-            </div>
-            <div className="create-block-confirm">
-              <div className="create-block-confirm__item">
-                <Button type="submit" size='big' primary>Готово</Button>
-              </div>
-            </div>
-          </Form>
+            </Form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return(
+        <Message
+          warning
+          header='Войдите или зарегистрируйтесь'
+          content='Добавление объявления доступно только авторизированным пользователям'
+        />
+      );
+    }
   }
 }
 

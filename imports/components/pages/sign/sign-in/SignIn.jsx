@@ -56,7 +56,6 @@ export default class SignIn extends Component {
             </div>
             <div className="login-item">
               <FacebookBtn />
-              <VkBtn />
             </div>
             <div className="login-item-separator">
               <div className="login-item-separator__text">или</div>

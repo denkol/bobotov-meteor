@@ -3,11 +3,11 @@ import Slider from 'react-slick';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../api/listenings.js';
 
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
+import { Dimmer, Loader } from 'semantic-ui-react';
 //Components
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
 
-class BigSlider extends Component {
+export default class BigSlider extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -25,12 +25,33 @@ class BigSlider extends Component {
       arrows: false,
       slidesToScroll: 1
     };
-    let loading = this.props.loading;
+    
     let listenings = this.props.listenings;
-    if(loading) {
+    let bonusesListening = [];
+    if(listenings) {
+      for(let i = 0; i < listenings.length; i++) {
+        let bonus3 = listenings[i].listeningTech.bonuses.bonus3;
+        if(bonus3) {
+          bonusesListening.push(listenings[i]);
+        } 
+      }
+    }
+    
+    
+    if(bonusesListening.length > 0) {
+      console.log(bonusesListening)
       return (
-      <Slider className="slider" ref={c => this.slider = c } {...sliderSettings}>
-        {listenings.map((listening, index) => {
+        <div>
+          <div className="headline-icon headline-icon--hot">
+            <div className="headline-icon__icon">
+              <svg className="ico-hot" role="img">
+                <use xlinkHref="#ico-hot"></use>
+              </svg>
+            </div>
+            <div className="headline-icon__text">Горячие предложения:</div>
+          </div>
+          <Slider className="slider" ref={c => this.slider = c } {...sliderSettings}>
+            {bonusesListening.map((listening, index) => {
             return (
               <div key={"bigSlide-" + index} className="slider__item">
                 <ListeningPreview                   
@@ -38,33 +59,13 @@ class BigSlider extends Component {
                   layout="index" 
                   loading={true}
                 />
-              </div>
-            );    
-          })}
-      </Slider>
-    );
-    } else {
-      return (
-        <div className="slider">
-          <div className="slider__item">
-            <Dimmer active inverted>
-              <Loader size='medium'>Loading</Loader>
-            </Dimmer>
-          </div>
+              </div>);    
+            })}
+          </Slider>
         </div>
       );
+    } else {
+      return (<div></div>);
     }
-    
   }
 }
-
-
-export default createContainer(({ params }) => {
-  const listeningsBigSubscription = Meteor.subscribe('listenings.all');
-  const listenings = Listenings.find({}).fetch(); //RETURN ARRAY
-  const loading = listeningsBigSubscription.ready();
-
-  return {listenings, loading}
-}, BigSlider);
-
-BigSlider.propTypes = {};

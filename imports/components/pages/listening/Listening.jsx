@@ -19,6 +19,7 @@ class Listening extends Component {
     this.state = {}
   }
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
   
@@ -65,7 +66,7 @@ class Listening extends Component {
       const listeningCountry = data.listening.listeningInfo.country;
       const listeningCity = data.listening.listeningInfo.city;
 
-      const listeningComfortList = ['Холодильник', 'Стиральная машина'];
+      const listeningComfortList = data.listening.listeningInfo.comfortList;
       const listeningContacts = [
         { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
         { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
@@ -74,10 +75,9 @@ class Listening extends Component {
       const listeningOptions = [
         { optionName: "Страна", optionValue: "Черногория" },
         { optionName: "Город", optionValue: "Будва" },
-        { optionName: "Площадь", optionValue: "32" },
-        { optionName: "ratio", optionValue: "32" },
-        { optionName: "ratio", optionValue: "32" }
+        { optionName: "Площадь", optionValue: "32" }
       ];
+      console.log()
       if(loading) {
         return (
           <div>
@@ -130,7 +130,50 @@ class Listening extends Component {
       } else {
         return (
           <div>
-            Loading...
+            <ListeningPhotos photos={listeningsPhotos}/>
+            <div className="listening-info">
+              <div className="listening-info-header">
+                <div className="listening-info-header__item">
+                  <h1 className="large-headline">{listeningHeadline}</h1>
+                  <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
+                </div>
+                <div className="listening-info-header__item">
+                  <div className="price">
+                    <div className="price__text">
+                      {listeningPrice}
+                      <div className="currency">
+                        <svg className="ico-euro" role="img">
+                          <use xlinkHref="#ico-euro" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="price__desc">{listeningPeriod}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="listening-info-profile">
+                <Profile data={data.owner}/>
+              </div>
+              <ListeningOptions options={listeningOptions} />
+              <ListeningComfort comforts={listeningComfortList} />
+              <div className="listening-info-block">
+                <h2 className="medium-headline">Описание автора</h2>
+                <div className="listening-info-block__item">
+                  <p className="large-parag">{listeningDesc}</p>
+                </div>
+              </div>
+              <ListeningContacts contacts={listeningContacts} />
+              <div className="listening-info-footer">
+                <div className="listening-info-footer__item">
+                  <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+                </div>
+                <div className="listening-info-footer__item">
+                  <div className="share">
+                    <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         );
       }

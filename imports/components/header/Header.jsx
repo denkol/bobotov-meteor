@@ -79,7 +79,8 @@ class HeaderLayout extends Component {
             <div className="header-content__item">
               <a className="header-logo" href="/">
                 <div className="header-logo__item">
-                  <div className="header-logo-img"><img src="/img/logo100x100.png" alt="logo.png" /></div>
+                  <div className="header-logo-img">
+                    <img src="/img/logo100x100.png" alt="logo.png" /></div>
                 </div>
                 <div className="header-logo__item">
                   <div className="header-logo-name">bobotov</div>
@@ -87,7 +88,8 @@ class HeaderLayout extends Component {
                 </div>
               </a>
               <div className="header-menu">
-                
+                <div className="header-menu__item">
+                </div>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}
               </div>
             </div>
@@ -106,6 +108,9 @@ class HeaderLayout extends Component {
                   </div>
                   :
                   <div className="header-controls__item">
+                    <a href="/signup">
+                      <button className="transparent-btn">Регистрация</button>
+                    </a>
                     <a href="/signin">
                       <button className="simple-btn simple-btn_blue">Войти</button>
                     </a>

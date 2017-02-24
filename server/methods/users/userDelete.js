@@ -3,7 +3,7 @@ Meteor.methods({
     
   },
   userDeletePhoto(){
-    var userId = Meteor.userId();
+    var userId = this.userId;
     if(userId) {
       var userInDb = Meteor.users.find({_id: userId});
       if(userInDb) {

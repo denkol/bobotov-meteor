@@ -40,7 +40,10 @@
   margin: 16px 0;
 
   &__item {
-  
-  
+    display: inline-block;
+    vertical-align: middle;
+    color: gray;
+    font-size: 12px;
+    margin-right: 16px;
   }
 }

@@ -1,0 +1,10 @@
+.separator {
+  display: block;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  &__text {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
+}
