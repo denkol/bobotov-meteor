@@ -12,16 +12,20 @@ Meteor.publish("listenings.public", function() {
   return Listenings.find({"listeningTech.public" : true});
 });
 
+Meteor.publish("listenings.stream", function(limit) {
+  return Listenings.find({"listeningTech.public" : true}, { limit: limit});
+});
+
 Meteor.publish("listenings.my", function() {
   return Listenings.find({"listeningTech.ownerId" : this.userId});
 });
 
 Meteor.publish("user", function (userId) {
-  // Make sure userId is a string.
-  // check(userId, String);
-  // console.log(userId)
-  // Publish a single user - make sure only allowed fields are sent.
-  return Meteor.users.find(userId, { fields: {'profile.userName': 1, 'profile.userDesc': 1, 'profile.userPhoto': 1} });
+  new SimpleSchema({
+    userId: {type: String}
+  }).validate({userId});
+
+  return Meteor.users.find(userId, { fields: {'profile.userName': 1, 'profile.userDesc': 1, 'profile.userPhoto': 1} } );
 })
 
 Meteor.publish('photos.public', function () {

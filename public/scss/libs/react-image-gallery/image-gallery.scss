@@ -1,4 +1,4 @@
-// @import './ionicons';
+@import './ionicons';
 
 $ig-screen-sm-min: 768px !default;
 $ig-screen-xsm-min: 480px !default;
@@ -197,7 +197,11 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
   position: relative;
   white-space: nowrap;
 }
-
+.image-gallery-image {
+  height: 600px;
+  text-align: center;
+  background-color: #eee;
+}
 .image-gallery-slide {
   background: $ig-white;
   left: 0;
@@ -210,7 +214,8 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
   }
 
   img {
-    width: 100%;
+    // width: 100%;
+    height: 100%;
   }
 
   .image-gallery-description {

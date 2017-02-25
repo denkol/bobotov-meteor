@@ -1,7 +1,8 @@
 .listening-preview-header {
-  @extend .clearfix;
+  // @extend .clearfix;
   animation: fadeInDown 0.2s linear 0s both;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 16px;
   position: absolute;
   top: 0;

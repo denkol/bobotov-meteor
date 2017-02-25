@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+
 import { Dimmer, Loader, Message } from 'semantic-ui-react';
 import EmptyBanner from '../../empty-banner/EmptyBanner.jsx';
 
@@ -126,7 +127,6 @@ class My extends Component {
           </div>
         );
       }
-      
     } else {
       return (
         <Dimmer active inverted>
@@ -142,22 +142,8 @@ My.propTypes = {};
 export default createContainer(({ params }) => {
   const subscription = Meteor.subscribe('listenings.my');
   const loading = subscription.ready();
-  // const listeningsList = Meteor.user() ? Meteor.user().profile.listeningsList : [];
-  // const listenings = listeningsSearchByArray(listeningsList);
-
-  const listenings = Listenings.find().fetch();
-  // function listeningsSearchByArray(array) {
-  //   var cache = [];
-  //   if (array) {
-  //     array.map(function(err, key) {
-  //       var listeningObj = Listenings.find({
-  //         _id: array[key]
-  //       }).fetch();
-  //       cache.push(listeningObj[0]); // listeningObj return Object, we need a first element
-  //     });
-  //   }
-  //   return cache;
-  // }
+  const ownerId = Meteor.userId();
+  const listenings = Listenings.find({"listeningTech.ownerId" : ownerId} ).fetch();
 
   return {loading, listenings}
 }, My);

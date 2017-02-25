@@ -33,6 +33,7 @@ export default class ListeningPhotos extends Component {
             onImageLoad={this.handleImageLoad}
             showPlayButton={false} 
             showThumbnails={false}
+            showFullscreenButton={false}
             showIndex={true} />
         </div>
       ); 

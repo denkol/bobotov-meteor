@@ -19,14 +19,18 @@ export default class ContactsAdd extends Component {
       contactsNumber: 1
     }
   }
-  
+  handleChange(e, data) {
+    let name = data.name;
+    let value = data.value;
+    Session.set(name, value)
+  }
   render() {
     var contactsInputs = [];
     const SingleContact = (i) =>(
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
           <Form.Input placeholder='' actionPosition='right' name={'input' + i} fluid required 
-            action={<Dropdown basic floating options={contactsList} name={'dropdown' + i} defaultValue='email' />} />
+            action={<Dropdown basic floating onChange={this.handleChange} options={contactsList} name={'dropdown' + i} defaultValue='email' />} />
         </div>
         <div className="create-block-row__item"></div>
       </div>

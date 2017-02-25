@@ -2,14 +2,15 @@
   width: 100%;
   // height: 200%;
   min-height: 70vh;
-  // padding: 32px 0;
+  padding: 16px 0;
+
   background-color: white;
   position: relative;
   z-index: 6;
-  -webkit-transition: -webkit-transform .5s ease;
-  transition: -webkit-transform .5s ease;
-  transition: transform .5s ease;
-  transition: transform .5s ease,-webkit-transform .5s ease;
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease,-webkit-transform .2s ease;
   // transition: transform 0.2s;
   &--slide-to-left {
     // background-color: white;

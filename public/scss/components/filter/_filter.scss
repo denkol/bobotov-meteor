@@ -34,9 +34,6 @@
   }
   //Modifications
   &_double {
-    .filter-block-item {
-      width: 50%;
-    }
     .filter-block-item__name {
       max-width: 82px;
       overflow: hidden;
@@ -50,7 +47,7 @@
 .filter-block-item {
   // width: 50%;
   width: 100%;
-  margin: 5px 0;
+  margin-bottom: 10px;
   &__name {
     font-size: 12px;
     margin-left: 5px;
@@ -77,9 +74,9 @@
 }
 
 .filter-block-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
   // margin-top: -15px;
 }
 

@@ -83,6 +83,16 @@ export default class Create extends Component {
     e.preventDefault()
     this.setState({ formData });
     
+    function getContacts() {
+      let contacts = [];
+      for(let i = 1; i <= this.state.contactsNumber; i++) {
+        let dropdownDeafultValue = "email";
+        let contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
+        let contactValue = formData["input"+i];
+        contacts.push({contactKey: contactKey, contactValue: contactValue})
+      }
+      return contacts;
+    }
     function getOtherPhotos() {
       let listeningPhotos = [];
       for (let i = 1; i <= 4; i++) {
@@ -112,11 +122,6 @@ export default class Create extends Component {
       main: Session.get('0photo'),
       other: getOtherPhotos()
     }
-    let contacts = [
-      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-      { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-    ];
 
     let options = [
       { optionName: "Страна", optionValue: "Черногория" },
@@ -125,6 +130,8 @@ export default class Create extends Component {
       { optionName: "ratio", optionValue: "32" },
       { optionName: "ratio", optionValue: "32" }
     ];
+
+    let contacts = getContacts();
 
     let listeningCandidate = {
       "listeningInfo": {
@@ -156,14 +163,16 @@ export default class Create extends Component {
     });
     console.log(listeningCandidate)
   }
-  contactAdd() {
+  contactAdd(event) {
+    event.preventDefault();
     if(this.state.contactsNumber < 10 ) {
       this.setState({
         contactsNumber: this.state.contactsNumber + 1
       });
     }
   }
-  contactRemove() {
+  contactRemove(event) {
+    event.preventDefault();
     if(this.state.contactsNumber > 1) {
       this.setState({
         contactsNumber: this.state.contactsNumber - 1

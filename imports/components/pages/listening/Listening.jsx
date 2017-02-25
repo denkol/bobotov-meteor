@@ -67,17 +67,12 @@ class Listening extends Component {
       const listeningCity = data.listening.listeningInfo.city;
 
       const listeningComfortList = data.listening.listeningInfo.comfortList;
-      const listeningContacts = [
-        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-      ];
+      const listeningContacts = data.listening.listeningContacts;
       const listeningOptions = [
         { optionName: "Страна", optionValue: "Черногория" },
         { optionName: "Город", optionValue: "Будва" },
         { optionName: "Площадь", optionValue: "32" }
       ];
-      console.log()
       if(loading) {
         return (
           <div>

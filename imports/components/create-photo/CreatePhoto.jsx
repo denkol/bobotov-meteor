@@ -117,7 +117,7 @@ class CreatePhoto extends Component {
     if(this.props.photoUrl) {
       let photoUrl = this.props.photoUrl;
       fileId = photoUrl.substr(photoUrl.lastIndexOf('/') + 1).slice(0, -4); //get id from url
-      console.log(photoUrl, fileId)
+      // console.log(photoUrl, fileId)
     } else {
       fileId = this.state.file._id;
     }
@@ -142,7 +142,7 @@ class CreatePhoto extends Component {
     });
   }
   render() {
-    console.log(this.state.snackbar)
+    // console.log(this.state.snackbar)
     let loading = this.props.loading;
     if (loading) {
       let imageNumber = this.props.id;

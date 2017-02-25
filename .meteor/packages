@@ -18,3 +18,4 @@ accounts-facebook
 mrt:accounts-vk
 service-configuration
 meteorhacks:inject-initial
+aldeed:simple-schema

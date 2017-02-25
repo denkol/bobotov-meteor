@@ -45,67 +45,39 @@ export default class Filter extends Component {
         <Form size="tiny" onSubmit={this.handleSubmit}>
           <div className="filter">
             <div className="filter-items-wrapper">
-              <div className="filter-block filter-block_double">
+              <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Select label='Город' name='city' options={cityes} placeholder='Search...' search />
+                  <Form.Select fluid label='Город' name='city' options={cityes} placeholder='Search...' search />
                 </div>
               </div>
-              <div className="filter-block filter-block_double">
+              <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Select label='Тип предложения' name='typeDeal' options={cityes} placeholder='Тип предложения' search multiple />
+                  <Form.Select fluid label='Тип предложения' name='typeDeal' options={cityes} placeholder='Тип предложения' />
                 </div>
               </div>
-              <div className="filter-block"><span className="filter-block-name">Тип недвижимости</span>
+              <div className="filter-block">
                 <div className="filter-block-content">
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">Дом</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">Аппартаменты/Квартира</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">Комната</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">Земельный участок</label>
-                  </div>
+                  <Form.Select fluid label='Тип недвижимости' name='typeDeal' options={cityes} placeholder='Тип недвижимости' />
                 </div>
               </div>
-              <div className="filter-block"><span className="filter-block-name">Период оплаты</span>
+              <div className="filter-block">
                 <div className="filter-block-content">
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="pay-period" />
-                    <label className="filter-block-item__name">За сутки</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="pay-period" />
-                    <label className="filter-block-item__name">В месяц</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="pay-period" />
-                    <label className="filter-block-item__name">В год</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="pay-period" />
-                    <label className="filter-block-item__name">За объект</label>
-                  </div>
+                  <Form.Select fluid label='Период оплаты' name='typeDeal' options={cityes} placeholder='Тип недвижимости' />
                 </div>
               </div>
               <div className="filter-block filter-block_double"><span className="filter-block-name">Цена</span>
                 <div className="filter-block-content">
                   <div className="filter-block-item filter-block-item_checkbox">
-                    <label className="filter-block-item__name">От</label>
-                    <input className="filter-block-item__input default-input" type="text" placeholder={0} />
-                    <label className="filter-block-item__currency"><i className="fa fa-eur" aria-hidden="true" /></label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <label className="filter-block-item__name">До</label>
-                    <input className="filter-block-item__input default-input" type="text" placeholder={300} />
-                    <label className="filter-block-item__currency"><i className="fa fa-eur" aria-hidden="true" /></label>
+                    <Form.Group widths='equal' style={{marginBottom: 0}}>
+                      <Form.Field>
+                        <Input label={{ basic: true, content: '€' }} placeholder='От' name='price' type="number" fluid  labelPosition='right' />
+                      </Form.Field>
+                      <Form.Field>
+                        <Input label={{ basic: true, content: '€' }} placeholder='До' name='price' type="number" fluid  labelPosition='right' />
+                      </Form.Field>
+                    </Form.Group>
+                    {/*<label className="filter-block-item__name">От</label>
+                    <input className="filter-block-item__input default-input" type="text" placeholder={0} />*/}
                   </div>
                 </div>
               </div>
@@ -153,28 +125,8 @@ export default class Filter extends Component {
                   </div>
                 </div>
               </div>
-              <div className="filter-block"><span className="filter-block-name">Особенности</span>
-                <div className="filter-block-content">
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="special" />
-                    <label className="filter-block-item__name">Для семьи</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="special" />
-                    <label className="filter-block-item__name">Для работы</label>
-                  </div>
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="radio" name="special" />
-                    <label className="filter-block-item__name">Для отдыха</label>
-                  </div>
-                </div>
-              </div>
               <div className="filter-block filter-block_double"><span className="filter-block-name">Прочее</span>
                 <div className="filter-block-content">
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">Только с фото</label>
-                  </div>
                   <div className="filter-block-item filter-block-item_checkbox">
                     <input className="filter-block-item__checkbox" type="checkbox" />
                     <label className="filter-block-item__name">От агенства</label>
