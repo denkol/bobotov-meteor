@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from './header/Header.jsx';
 import Footer from './footer/Footer.jsx';
 import MainMenu from './main-menu/MainMenu.jsx';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 export default class Layout extends Component {
@@ -12,6 +11,7 @@ export default class Layout extends Component {
   }
   render() {
     return (
+
       <MuiThemeProvider>
         <div id="app">
           <Header />

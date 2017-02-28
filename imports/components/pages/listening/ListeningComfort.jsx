@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { ComfortList } from '../../../data/data.js';
+import { Translate } from '../../../functions/functions.js';
 
 export default class ListeningComfort extends Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
+
   render() {
     let comforts;
     if(this.props.comforts) {
@@ -16,7 +19,7 @@ export default class ListeningComfort extends Component {
         {comforts.map((comfort, index) => {
           return (
             <div key={"comfort-" + index} className="listening-info-block__item">
-              <div className="comfort-label">{comfort}</div>
+              <div className="comfort-label">{Translate(ComfortList, comfort)}</div>
             </div>
           );
         })}

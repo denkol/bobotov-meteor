@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react';
 
 export default class Paginate extends Component {
   constructor(props) {
@@ -9,15 +10,7 @@ export default class Paginate extends Component {
     return (
       <div className="paginate-wrapper">
         <div className="paginate">
-          <div className="paginate__item paginate__item--active">
-            <div className="paginate-text">1</div>
-          </div>
-          <div className="paginate__item">
-            <div className="paginate-text">2</div>
-          </div>
-          <div className="paginate__item">
-            <div className="paginate-text">3</div>
-          </div>
+          <Button primary loading>Показать еще</Button>
         </div>
       </div>
     );

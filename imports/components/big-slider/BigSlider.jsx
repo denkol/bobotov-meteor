@@ -33,13 +33,17 @@ class BigSlider extends Component {
       if(listenings.length) {
         return (
           <div>
-            <div className="headline-icon headline-icon--hot">
-              <div className="headline-icon__icon">
-                <svg className="ico-hot" role="img">
-                  <use xlinkHref="#ico-hot"></use>
-                </svg>
+            <div className="headline">
+              <div className="headline__item">
+                <div className="headline-icon headline-icon--hot">
+                  <div className="headline-icon__icon">
+                    <svg className="ico-hot" role="img">
+                      <use xlinkHref="#ico-hot"></use>
+                    </svg>
+                  </div>
+                  <div className="headline-icon__text">Горячие предложения:</div>
+                </div>
               </div>
-              <div className="headline-icon__text">Горячие предложения:</div>
             </div>
             <Slider className="slider" ref={c => this.slider = c } {...sliderSettings}>
               {listenings.map((listening, index) => {

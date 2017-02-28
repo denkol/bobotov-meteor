@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Checkbox, Button } from 'semantic-ui-react';
+import { Translate } from '../../../functions/functions.js';
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
+import { Checkbox, Button } from 'semantic-ui-react';
 import Snackbar from '../../snackbar/Snackbar.jsx';
 
 export default class ListeningPreviewSimple extends Component {
@@ -49,7 +51,7 @@ export default class ListeningPreviewSimple extends Component {
       let listeningHeadline = this.props.data.listeningInfo.headline;
       let listeningAutorName = this.props.data.listeningTech.ownerName;
       let listeningDate = this.props.data.listeningTech.lastChangeDate + "";
-      let listeningPrice = this.props.data.listeningInfo.price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+      let listeningPrice = this.props.data.listeningInfo.price.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
       let listeningPaymentPeriod = this.props.data.listeningInfo.paymentPeriod;
       let listeningCity = this.props.data.listeningInfo.city;
       let listeningCountry = this.props.data.listeningInfo.country;
@@ -86,6 +88,47 @@ export default class ListeningPreviewSimple extends Component {
               <div className="price__desc">{listeningPaymentPeriod}</div>
             </div>
           </div>*/}
+          {this.props.layout !== "history" ? <div className="listening-preview-simple__control-block">
+            <div className="remove-icon" onClick={this.remove}>
+              <div className="remove-icon__icon">
+                <svg className="ico-remove" role="img">
+                  <use xlinkHref="#ico-remove" />
+                </svg>
+              </div>
+            </div>
+          </div> : null}
+
+        </div>
+      );
+    } else {
+      return ( 
+        <div className="listening-preview-simple" style={{pointerEvents: "none"}}>
+          <div className="listening-preview-simple__photo-block">
+            <a>
+              <div className="preview-simple-photo"/>
+            </a>
+          </div>
+          <div className="listening-preview-simple__headline-block">
+            <div className="preview-simple-headline">
+              <a className="preview-simple-headline__head">Объявление недоступно</a>
+              <div className="preview-simple-headline__desc"></div>
+            </div>
+          </div>
+          <div className="listening-preview-simple__items-block">
+          </div> 
+          {/*<div className="listening-preview-simple__price-block">
+            <div className="price">
+              <div className="price__text">
+                {listeningPrice}
+                <div className="currency">
+                  <svg className="ico-euro" role="img">
+                    <use xlinkHref="#ico-euro" />
+                  </svg>
+                </div>
+              </div>
+              <div className="price__desc">{listeningPaymentPeriod}</div>
+            </div>
+          </div>*/}
           <div className="listening-preview-simple__control-block">
             <div className="remove-icon" onClick={this.remove}>
               <div className="remove-icon__icon">
@@ -95,10 +138,7 @@ export default class ListeningPreviewSimple extends Component {
               </div>
             </div>
           </div>
-        </div>
-      );
-    } else {
-      return (<div></div>);
+        </div>);
     }
   }
 }

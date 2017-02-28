@@ -1,0 +1,8 @@
+.page-appear {
+   opacity: 0.01;
+}
+
+.page-appear.page-appear-active {
+   opacity: 1;
+   transition: opacity 100ms ease-in;
+}

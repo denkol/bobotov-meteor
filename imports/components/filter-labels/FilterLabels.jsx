@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-export default class FilterLabels extends Component {
+export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {}
   }
   render() {
-    return (
+    if(Session.get('filterData')) {
+      return (
        <div className="filter-labels">
         <div className="filter-labels__item">
           <div className="ui labels"><a className="ui label">Будва<i className="icon close" /></a></div>
@@ -27,8 +29,11 @@ export default class FilterLabels extends Component {
         <div className="filter-labels__item">
           <div className="ui labels"><a className="ui label"> <i className="icon close" /></a></div>
         </div>
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return(<div></div>)
+    }
   }
 }
 

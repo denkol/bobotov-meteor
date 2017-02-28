@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Dimmer, Loader, Form, Message, Input, Dropdown, Select, Button } from 'semantic-ui-react';
 import PanelPhoto from '../../panel-photo/PanelPhoto.jsx';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const statuses = [
   { key: 'ag', value: 'agency', text: 'Агенство недвижимости' },

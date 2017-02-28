@@ -7236,6 +7236,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/headlines\/headline-icon\/_headline.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/headlines\/css\/_headline.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/input\/_all.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -8058,6 +8071,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/other\/_animations.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/css\/_animations.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1

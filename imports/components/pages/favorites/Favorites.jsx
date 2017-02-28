@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Dimmer, Loader, Message } from 'semantic-ui-react';
@@ -27,13 +28,17 @@ class Favorites extends Component {
       if(listneings.length > 0) {
         return (
           <div>
-            <div className="headline-icon">
-              <div className="headline-icon__icon">
-                <svg className="ico-love loved" role="img">
-                  <use xlinkHref="#ico-love"></use>
-                </svg>
+            <div className="headline">
+              <div className="headline__item">
+                <div className="headline-icon">
+                  <div className="headline-icon__icon">
+                    <svg className="ico-love loved" role="img">
+                      <use xlinkHref="#ico-love"></use>
+                    </svg>
+                  </div>
+                  <div className="headline-icon__text">Избранные объявления:</div>
               </div>
-              <div className="headline-icon__text">Избранные объявления:</div>
+            </div>
             </div>
               <div className="favoritesList">
                 {listneings.map((listening, index) => {
@@ -87,8 +92,10 @@ export default createContainer(({ params }) => {
       array.map(function(err, key) {
         var listeningObj = Listenings.find({
           _id: array[key]
-        }).fetch();
-        cache.push(listeningObj[0]); // listeningObj return Object, we need a first element
+        }).fetch()[0]; // listeningObj return Object, we need a first element
+        if(listeningObj) {
+          cache.push(listeningObj); 
+        }
       });
     }
     return cache;

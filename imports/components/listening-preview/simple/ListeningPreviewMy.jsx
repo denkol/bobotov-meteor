@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Checkbox, Button, Modal, Icon} from 'semantic-ui-react';
+import { Translate } from '../../../functions/functions.js';
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
 import Snackbar from '../../snackbar/Snackbar.jsx';
 
@@ -98,8 +100,6 @@ export default class ListeningPreviewMy extends Component {
       let listeningEditLink = '/edit/' + this.props.data._id;
       let listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
       let listeningHeadline = this.props.data.listeningInfo.headline;
-      let listeningPrice = this.props.data.listeningInfo.price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-      let listeningPaymentPeriod = this.props.data.listeningInfo.paymentPeriod;
       let listeningCity = this.props.data.listeningInfo.city;
       let listeningCountry = this.props.data.listeningInfo.country;
       let listeningViews = this.props.data.listeningTech.views;
@@ -115,7 +115,7 @@ export default class ListeningPreviewMy extends Component {
           <div className="listening-preview-simple__headline-block">
             <div className="preview-simple-headline">
               <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
-              <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
+              <div className="preview-simple-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
             </div>
           </div>
           <div className="listening-preview-simple__items-block">
@@ -132,7 +132,6 @@ export default class ListeningPreviewMy extends Component {
                   </div>
                 </div>
               </div>
-              
               <div className="preview-simple-items__item">
                 <Checkbox label="Включить" checked={listeningPublic} toggle onChange={this.publishTrigger}/>
               </div>
@@ -184,9 +183,7 @@ export default class ListeningPreviewMy extends Component {
                 </Button>
               </Modal.Actions>
             </Modal>
-            
           </div>
-
         </div>
       );
     } else {

@@ -20,3 +20,4 @@ service-configuration@1.0.11
 meteorhacks:inject-initial
 aldeed:simple-schema
 facebook-config-ui
+ultimatejs:tracker-react

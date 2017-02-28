@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 //Components
 import BigSlider from '../../big-slider/BigSlider.jsx';
 import PhotoGrid from '../../photo-grid/PhotoGrid.jsx';
@@ -19,8 +19,12 @@ export default class Index extends Component {
   render() {
     return (
       <div>
+        <ReactCSSTransitionGroup transitionName = "page"
+           transitionAppear = {true} transitionAppearTimeout = {0}
+           transitionEnter = {false} transitionLeave = {false}>
         <BigSlider/>
         <PhotoGrid/>
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

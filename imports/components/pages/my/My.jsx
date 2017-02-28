@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { Dimmer, Loader, Message } from 'semantic-ui-react';
 import EmptyBanner from '../../empty-banner/EmptyBanner.jsx';
@@ -51,13 +52,20 @@ class My extends Component {
       if(listenings.length){
         return (
         <div>
-          <div className="headline-icon">
-            <div className="headline-icon__icon">
-              <svg className="ico-receipt" role="img">
-                <use xlinkHref="#ico-receipt" />
-              </svg>
+          <ReactCSSTransitionGroup transitionName = "page"
+           transitionAppear = {true} transitionAppearTimeout = {200}
+           transitionEnter = {false} transitionLeave = {false}>
+          <div className="headline">
+            <div className="headline__item">
+              <div className="headline-icon">
+                <div className="headline-icon__icon">
+                  <svg className="ico-receipt" role="img">
+                    <use xlinkHref="#ico-receipt" />
+                  </svg>
+                </div>
+                <div className="headline-icon__text">Ваши объявления:</div>
+              </div>
             </div>
-            <div className="headline-icon__text">Мои объявления:</div>
           </div>
 
           {waitingApprove.length > 0 ?
@@ -108,6 +116,7 @@ class My extends Component {
               // }
             })}
           </div> : ""}
+          </ReactCSSTransitionGroup>
         </div>
       );
       } else {

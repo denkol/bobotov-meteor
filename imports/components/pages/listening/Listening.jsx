@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
+import { Translate } from '../../../functions/functions.js';
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
 //Components
 import Profile from '../../profile/Profile.jsx';
@@ -28,7 +30,7 @@ class Listening extends Component {
     Meteor.call("listeningSaveToHistory", args);
   }
 
-  render() {    
+  render() {
     let loading = this.props.loading;
     let data = {
       loading : this.props.loading,
@@ -47,31 +49,33 @@ class Listening extends Component {
         listeningAutorName = data.owner.profile.username;
         listeningAutorDesc = data.owner.profile.userType;  
       }
-      
-      // for(var value in listeningComfortList) { 
-      //   if (listeningComfortList.hasOwnProperty(value)) {
-      //     comfortItems.push(listeningComfortList[value]); 
-      //   }
-      // }
-      
       const listeningLastChange = data.listening.listeningTech.lastChangeDate + "";
       const listeningDesc = data.listening.listeningInfo.desc;
-      // const listeningComfortList = data.listening.listeningInfo.comfortList;
       const listeningViews = data.listening.listeningTech.views;
       const listeningHeadline = data.listening.listeningInfo.headline;
-      const listeningPrice = data.listening.listeningInfo.price.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+      const listeningPrice = data.listening.listeningInfo.price.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
       const listeningPeriod = data.listening.listeningInfo.paymentPeriod;
       const listeningsPhotos = data.listening.listeningPhotos;
-      
       const listeningCountry = data.listening.listeningInfo.country;
       const listeningCity = data.listening.listeningInfo.city;
-
+      const listeningRatio = data.listening.listeningInfo.ratio;
       const listeningComfortList = data.listening.listeningInfo.comfortList;
-      const listeningContacts = data.listening.listeningContacts;
+      const listeningType = data.listening.listeningInfo.comfortList;
+
+      const listeningContacts = [
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+        { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
+      ];
       const listeningOptions = [
-        { optionName: "Страна", optionValue: "Черногория" },
-        { optionName: "Город", optionValue: "Будва" },
-        { optionName: "Площадь", optionValue: "32" }
+        { optionName: "Страна", optionValue: Translate(Countries, listeningCountry)},
+        { optionName: "Город", optionValue: Translate(Cities, listeningCity)},
+        { optionName: "Тип недвижимости", optionValue: listeningRatio },
+        { optionName: "Тип предлжения", optionValue: listeningRatio },
+        { optionName: "Площадь", optionValue: listeningRatio },
+        { optionName: "Этаж", optionValue: listeningRatio },
+        { optionName: "Спален", optionValue: listeningRatio },
+        { optionName: "Ванных комнат", optionValue: listeningRatio },
       ];
       if(loading) {
         return (
@@ -93,7 +97,7 @@ class Listening extends Component {
                         </svg>
                       </div>
                     </div>
-                    <div className="price__desc">{listeningPeriod}</div>
+                    <div className="price__desc">{Translate(PaymentPeriod, listeningPeriod)}</div>
                   </div>
                 </div>
               </div>

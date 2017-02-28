@@ -423,6 +423,14 @@ p.small-parag {
   font-weight: normal;
   font-size: 12px; }
 
+.page-appear {
+  opacity: 0.01; }
+
+.page-appear.page-appear-active {
+  opacity: 1;
+  -webkit-transition: opacity 100ms ease-in;
+  transition: opacity 100ms ease-in; }
+
 /*!
   Ionicons, v2.0.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -22946,10 +22954,14 @@ html.ios, html.ios body {
   display: block;
   color: black;
   text-decoration: none;
-  margin-right: 32px; }
+  margin-right: 32px;
+  -webkit-transition: opacity .2s;
+  transition: opacity .2s; }
   .header-logo__item {
     display: inline-block;
     vertical-align: middle; }
+  .header-logo:hover {
+    opacity: 0.5; }
 
 .header-logo-img {
   margin-right: 5px;
@@ -23536,27 +23548,39 @@ html.ios, html.ios body {
   font-size: 16px;
   font-weight: bold; }
 
-.headline-icon {
-  padding-bottom: 16px; }
-  .headline-icon__icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
+.headline-icon__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 28px;
+  height: 28px; }
+  .headline-icon__icon svg {
     width: 28px;
     height: 28px; }
-    .headline-icon__icon svg {
-      width: 28px;
-      height: 28px; }
-  .headline-icon__text {
-    display: inline-block;
-    vertical-align: middle;
-    font-weight: bold;
-    font-size: 24px; }
+
+.headline-icon__text {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 24px; }
 
 .headline-icon--hot .headline-icon__icon {
   margin-right: 5px; }
   .headline-icon--hot .headline-icon__icon svg {
     fill: orange; }
+
+.headline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-bottom: 13px; }
 
 .listening-info {
   padding-top: 16px;
@@ -24698,7 +24722,7 @@ html.ios, html.ios body {
   margin: 15px auto 0; }
 
 .paginate-wrapper {
-  padding-top: 100px; }
+  padding-top: 70px; }
 
 .paginate {
   display: -webkit-box;
