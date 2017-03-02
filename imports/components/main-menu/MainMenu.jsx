@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-
 class MainMenu extends Component {
   constructor(props) {
     super(props);

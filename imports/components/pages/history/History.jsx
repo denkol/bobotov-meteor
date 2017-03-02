@@ -22,7 +22,7 @@ class History extends Component {
   }
   render() {
     let loading = this.props.loading;
-    let listneings = this.props.listenings;
+    
     let userId = Meteor.userId();
     if(!userId) {
       return (
@@ -34,6 +34,7 @@ class History extends Component {
       );
     }
     if(loading) {
+      let listneings = Listenings.find({});
       if(listneings.length) {
         return (
           <div>
@@ -50,12 +51,12 @@ class History extends Component {
             </div>
 
               <div className="headline__item">
-                <a href onClick={this.removeHistory}>Очистить историю</a>
+                <a onClick={this.removeHistory}>Очистить историю</a>
               </div>
             </div>
             
               <div className="favoritesList">
-                {listneings.map((listening, index) => {
+                {listneings.reverse().map((listening, index) => {
                   return (
                     <div key={"favoritesListItem" + index} className="favoritesList__item">
                       <ListeningPreview listeningData={listening} layout="history"/>

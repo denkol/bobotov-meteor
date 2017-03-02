@@ -19,12 +19,8 @@ export default class Index extends Component {
   render() {
     return (
       <div>
-        <ReactCSSTransitionGroup transitionName = "page"
-           transitionAppear = {true} transitionAppearTimeout = {0}
-           transitionEnter = {false} transitionLeave = {false}>
         <BigSlider/>
         <PhotoGrid/>
-        </ReactCSSTransitionGroup>
       </div>
     );
   }

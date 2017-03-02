@@ -65,14 +65,18 @@ class BigSlider extends Component {
       }
     } else {
       //loading
-      return (<div>BigSlider Loading</div>);
+      return (
+        <Dimmer inverted active>
+          <Loader indeterminate>Preparing Files</Loader>
+        </Dimmer>
+      );
     }
   }
 }
 
 export default createContainer(({ params }) => {
-  const listeningsSubscription = Meteor.subscribe('listenings.public');
-  const loading = listeningsSubscription.ready();
-  const listenings = Listenings.find({"listeningTech.bonuses.bonus3": true}, { sort: {"listeningTech.createdAt" : 1} }).fetch();
+  // const listeningsSubscription = Meteor.subscribe('listenings.public');
+  const loading = true;
+  const listenings = Listenings.find({"listeningTech.bonuses.bonus3": true}, {sort: {"listeningTech.createdAt" : -1}}).fetch();
   return {loading, listenings}
 }, BigSlider);

@@ -3,12 +3,27 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
 
+import { Translate } from '../../functions/functions.js';
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../data/data.js';
 
-const cityes = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'b', text: 'Будва', value: 'budva' }
-];
+//Some JQuery function
+var FilterPanel = {
+  open: function() {
+    $('.filter-btn').addClass('filter-btn--close');
+    $('.main-content').addClass("main-content--slide-to-left");
+    $('.filter').addClass("filter--show");
+  },
+  close: function() {
+    $('.filter-btn').removeClass('filter-btn--close');
+    $('.main-content').removeClass("main-content--slide-to-left");
+    $('.filter').removeClass("filter--show");
+  },
+  toggle: function() {
+    $('.filter-btn').toggleClass('filter-btn--close');
+    $('.main-content').toggleClass("main-content--slide-to-left");
+    $('.filter').toggleClass("filter--show");
+  }
+}
 
 export default class Filter extends Component {
   constructor(props) {
@@ -39,31 +54,34 @@ export default class Filter extends Component {
 
 
   componentDidMount() {
-    function toggleFilter() {
-      $('.filter-btn').toggleClass('filter-btn--close');
-      $('.main-content').toggleClass("main-content--slide-to-left");
-      $('.filter').toggleClass("filter--show");
-    }
-
     $('.filter-btn').on('click', function() {
-      toggleFilter();
-    });
-
-    $('#apply-filter').on('click', function() {
-      toggleFilter();
+      FilterPanel.toggle();
     });
   }
   handleSubmit(e, {formData}) {
     e.preventDefault();
     this.setState({ formData });
-    let priceFrom = formData.priceFrom ? formData.priceFrom : "0";
-    let priceTo = formData.priceTo ? formData.priceTo : "0";
-    let FilterCandidate = { price: {priceFrom: priceFrom, priceTo: priceTo}};
+    FilterPanel.close();
+
+    let priceFrom = formData.priceFrom ? formData.priceFrom.replace(/\s/g, '') : "0";
+    let priceTo = formData.priceTo ? formData.priceTo.replace(/\s/g, '') : "0";
+    let typeDeal = formData.typeDeal.replace(/\s/g, '');
+    let typeProperty = formData.typeProperty.replace(/\s/g, '');
+    let paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
+    let FilterCandidate = {
+      city: formData.city,
+      price: {
+        from: priceFrom,
+        to: priceTo
+      },
+      typeDeal: typeDeal,
+      typeProperty: typeProperty,
+      paymentPeriod: paymentPeriod
+    };
+    console.log(FilterCandidate)
     Session.set('filterData', FilterCandidate);
   }
   render() {
-    console.log(this.translate(cityes, "budva"));
-
     const { formData, value } = this.state;
     return (
       <div className="filter-wrapper">
@@ -75,27 +93,22 @@ export default class Filter extends Component {
             <div className="filter-items-wrapper">
               <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Input fluid label='Заголовок' name='headline' placeholder='' />
+                  <Form.Select fluid label='Город' name='city' options={Cities} placeholder='Город' />
                 </div>
               </div>
               <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Dropdown fluid label='Город' name='city' options={cityes} placeholder='Search...' />
+                  <Form.Select fluid label='Тип предложения' name='typeDeal' options={TypeDeal} placeholder='Тип предложения' />
                 </div>
               </div>
               <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Select fluid label='Тип предложения' name='typeDeal' options={cityes} placeholder='Тип предложения' />
+                  <Form.Select fluid label='Тип недвижимости' name='typeProperty' options={TypeProperty} placeholder='Тип недвижимости' />
                 </div>
               </div>
               <div className="filter-block">
                 <div className="filter-block-content">
-                  <Form.Select fluid label='Тип недвижимости' name='typeProperty' options={cityes} placeholder='Тип недвижимости' />
-                </div>
-              </div>
-              <div className="filter-block">
-                <div className="filter-block-content">
-                  <Form.Select fluid label='Период оплаты' name='paymentPeriod' options={cityes} placeholder='Тип недвижимости' />
+                  <Form.Select fluid label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Тип недвижимости' />
                 </div>
               </div>
               <div className="filter-block filter-block_double"><span className="filter-block-name">Цена</span>

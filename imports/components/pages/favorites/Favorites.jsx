@@ -41,7 +41,7 @@ class Favorites extends Component {
             </div>
             </div>
               <div className="favoritesList">
-                {listneings.map((listening, index) => {
+                {listneings.reverse().map((listening, index) => {
                   return (
                     <div key={"favoritesListItem" + index} className="favoritesList__item">
                       <ListeningPreview listeningData={listening} layout="favorites"/>

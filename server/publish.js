@@ -12,10 +12,6 @@ Meteor.publish("listenings.public", function() {
   return Listenings.find({"listeningTech.public" : true});
 });
 
-Meteor.publish("listenings.stream", function(limit) {
-  return Listenings.find({"listeningTech.public" : true}, { limit: limit});
-});
-
 Meteor.publish("listenings.my", function() {
   return Listenings.find({"listeningTech.ownerId" : this.userId});
 });

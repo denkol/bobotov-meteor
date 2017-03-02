@@ -26,6 +26,7 @@ export const Countries = [
 
 export const Cities = [
   { key: 'be', value: 'becici', text: 'Бечичи' },
+  { key: 'pg', value: 'podgorica', text: 'Подгорица' }
 ];
 
 export const TypeDeal = [
