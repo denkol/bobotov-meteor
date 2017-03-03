@@ -9,7 +9,7 @@ Meteor.publish("listenings.all", function() {
 });
 
 Meteor.publish("listenings.public", function() {
-  return Listenings.find({"listeningTech.public" : true});
+  return Listenings.find({"listeningTech.public" : true}, {sort: {"listeningTech.createdAt" : -1}});
 });
 
 Meteor.publish("listenings.my", function() {

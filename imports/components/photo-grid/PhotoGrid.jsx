@@ -7,7 +7,7 @@ import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
 // import Paginate from '../paginate/Paginate.jsx';
 import FilterLabels from '../filter-labels/FilterLabels.jsx';
 
-import { Button, Dimmer, Loader } from 'semantic-ui-react';
+import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 
 class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
@@ -26,7 +26,7 @@ class PhotoGrid extends TrackerReact(Component) {
     let loading = this.props.loading;
     let limit = this.state.limit;
     if(loading) {
-      let listenings = Listenings.find({"listeningTech.public" : true}, {sort: {"listeningTech.createdAt" : -1}, limit: limit}).fetch();
+      let listenings = Listenings.find({"listeningTech.public" : true}).fetch();
 
       if(Session.get('filterData')) {
         let filterData = Session.get('filterData');
@@ -35,8 +35,9 @@ class PhotoGrid extends TrackerReact(Component) {
           "listeningInfo.typeDeal" : filterData.typeDeal.replace(/\s/g, ''),
           "listeningInfo.typeProperty" : filterData.typeProperty.replace(/\s/g, ''),
           "listeningInfo.paymentPeriod" : filterData.paymentPeriod.replace(/\s/g, '')
-        }, {sort: {"listeningTech.createdAt" : -1}}).fetch();
+        }).fetch();
       }
+
       if(listenings.length) {
         return (
           <div>
@@ -63,7 +64,13 @@ class PhotoGrid extends TrackerReact(Component) {
           </div>
         );
       } else {
-        return(<div>PhotoGrid is empty</div>);
+        return(
+          <div>
+            <Message
+              header='Объявлений не найдено'
+              content='Попробуйте смягчить критерии поиска'/>
+          </div>
+        );
       }
     } else {
       return(

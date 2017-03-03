@@ -77,6 +77,6 @@ class BigSlider extends Component {
 export default createContainer(({ params }) => {
   const listeningsSubscription = Meteor.subscribe('listenings.public');
   const loading = true;
-  const listenings = Listenings.find({"listeningTech.bonuses.bonus3": true}, {sort: {"listeningTech.createdAt" : -1}}).fetch();
+  const listenings = Listenings.find({"listeningTech.bonuses.bonus3": true}).fetch();
   return {loading, listenings}
 }, BigSlider);

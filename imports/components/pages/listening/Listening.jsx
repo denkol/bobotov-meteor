@@ -63,12 +63,8 @@ class Listening extends Component {
         const listeningComfortList = data.listening.listeningInfo.comfortList;
         const listeningType = data.listening.listeningInfo.comfortList;
         const listeningPublic = data.listening.listeningTech.public;
-
-        const listeningContacts = [
-          { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-          { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-          { contactKey: "Телефон", contactValue: "+7 (999) 899-898-32"},
-        ];
+        const listeningContacts = data.listening.listeningContacts;
+        
         const listeningOptions = [
           { optionName: "Страна", optionValue: Translate(Countries, listeningCountry)},
           { optionName: "Город", optionValue: Translate(Cities, listeningCity)},

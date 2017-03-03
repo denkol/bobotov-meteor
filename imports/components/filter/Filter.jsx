@@ -78,10 +78,20 @@ export default class Filter extends Component {
       typeProperty: typeProperty,
       paymentPeriod: paymentPeriod
     };
-    console.log(FilterCandidate)
     Session.set('filterData', FilterCandidate);
   }
   render() {
+    let FilterCandidate = {
+      city: "",
+      price: {
+        from: "",
+        to: ""
+      },
+      typeDeal: "",
+      typeProperty: "",
+      paymentPeriod: ""
+    };
+    Session.setDefault('filterData', FilterCandidate);
     const { formData, value } = this.state;
     return (
       <div className="filter-wrapper">
@@ -111,6 +121,14 @@ export default class Filter extends Component {
                   <Form.Select fluid label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Тип недвижимости' />
                 </div>
               </div>
+              <div className="filter-block">
+                <div className="filter-block-content">
+                  <Form.Group widths='equal' style={{marginBottom: 0}}>
+                    <Form.Input label="Кол-во спален" placeholder='1' name='bedrooms' type="number" fluid/>
+                    <Form.Input label="Кол-во санузлов" placeholder='2' name='bathrooms' type="number" fluid/>
+                  </Form.Group>
+                </div>
+              </div>
               <div className="filter-block filter-block_double"><span className="filter-block-name">Цена</span>
                 <div className="filter-block-content">
                   <div className="filter-block-item filter-block-item_checkbox">
@@ -124,14 +142,6 @@ export default class Filter extends Component {
                     </Form.Group>
                     {/*<label className="filter-block-item__name">От</label>
                     <input className="filter-block-item__input default-input" type="text" placeholder={0} />*/}
-                  </div>
-                </div>
-              </div>
-              <div className="filter-block filter-block_double"><span className="filter-block-name">Прочее</span>
-                <div className="filter-block-content">
-                  <div className="filter-block-item filter-block-item_checkbox">
-                    <input className="filter-block-item__checkbox" type="checkbox" />
-                    <label className="filter-block-item__name">От агенства</label>
                   </div>
                 </div>
               </div>

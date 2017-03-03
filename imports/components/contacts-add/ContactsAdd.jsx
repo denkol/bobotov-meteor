@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Input, Dropdown } from 'semantic-ui-react';
-
-const contactsList = [
-  { key: 'fb', value: 'facebook', text: 'Ссылка на Facebook' },
-  { key: 'vk', value: 'vk', text: 'Ссылка на Вконтакте' },
-  { key: 'wb', value: 'website', text: 'Веб-сайт' },
-  { key: 'em', value: 'email', text: 'E-mail' },
-  { key: 'ph', value: 'phone', text: 'Телефон' },
-  { key: 'vi', value: 'viber', text: 'Viber' },
-  { key: 'wa', value: 'whatsapp', text: 'WhatsApp' },
-  { key: 'te', value: 'telegram', text: 'Telegram' },
-];
+import { ContactsList } from '../../data/data.js';
+import { Translate } from '../../functions/functions.js';
 
 export default class ContactsAdd extends Component {
   constructor(props) {
@@ -30,7 +21,7 @@ export default class ContactsAdd extends Component {
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
           <Form.Input placeholder='' actionPosition='right' name={'input' + i} fluid required 
-            action={<Dropdown basic floating onChange={this.handleChange} options={contactsList} name={'dropdown' + i} defaultValue='email' />} />
+            action={<Dropdown basic floating onChange={this.handleChange} options={ContactsList} name={'dropdown' + i} defaultValue='email' />} />
         </div>
         <div className="create-block-row__item"></div>
       </div>

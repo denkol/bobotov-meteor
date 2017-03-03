@@ -52,3 +52,15 @@ export const PaymentPeriod = [
   { key: 'da', value: 'day', text: 'В сутки' },
   { key: 'we', value: 'week', text: 'В неделю' }
 ];
+
+
+export const ContactsList = [
+  { key: 'fb', value: 'facebook', text: 'Facebook' },
+  { key: 'vk', value: 'vk', text: 'Вконтакте' },
+  { key: 'wb', value: 'website', text: 'Веб-сайт' },
+  { key: 'em', value: 'email', text: 'E-mail' },
+  { key: 'ph', value: 'phone', text: 'Телефон' },
+  { key: 'vi', value: 'viber', text: 'Viber' },
+  { key: 'wa', value: 'whatsapp', text: 'WhatsApp' },
+  { key: 'te', value: 'telegram', text: 'Telegram' },
+];
