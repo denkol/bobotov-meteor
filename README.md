@@ -12,15 +12,28 @@ Dillinger uses a number of open source projects to work properly:
 ### Install
 bobotov-meteor requires [Node.js](https://nodejs.org/) v4+ to run.
 
-##### Before run app you need:
 Install Meteor https://www.meteor.com/install
-
 ```sh
 $ curl https://install.meteor.com/ | sh
 ```
 
+Clone project
+```sh
+$ git clone https://github.com/denkol/bobotov-meteor.git
+```
+
+Go to project path
 ```sh
 $ cd bobotov-meteor
+```
+
+Install npm dependencies
+```sh
 $ npm install -d
+```
+
+Run app
+```sh
 $ meteor
 ```
+
