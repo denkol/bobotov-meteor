@@ -2,12 +2,12 @@
 
 Dillinger uses a number of open source projects to work properly:
 
-* [Meteor] - HTML enhanced for web apps!
-* [ReactJS] - awesome web-based text editor
-* [JQuery] - Markdown parser done right. Fast and easy to extend.
-* [SemanticUI] - great UI boilerplate for modern web apps
-* [MatrialUI] - evented I/O for the backend
-* [MongoDB] - fast node.js network app framework [@tjholowaychuk]
+* [Meteor] - Open source platform for web, mobile, and desktop.
+* [ReactJS] - JavaScript Library for building UI
+* [jQuery] - JavaScript Library
+* [SemanticUI] - UI framework (http://react.semantic-ui.com/)
+* [MatrialUI] - UI framework (http://www.material-ui.com/)
+* [MongoDB] - NoSQL database (https://www.mongodb.com/)
 
 ### Install
 bobotov-meteor requires [Node.js](https://nodejs.org/) v4+ to run.
