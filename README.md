@@ -1,6 +1,6 @@
 # bobotov-meteor
 
-Dillinger uses a number of open source projects to work properly:
+In this project i'm use:
 
 * [Meteor] - Open source platform for web, mobile, and desktop.
 * [ReactJS] - JavaScript Library for building UI
@@ -37,3 +37,4 @@ Run app
 $ meteor
 ```
 
+Enjoy!
