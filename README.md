@@ -5,8 +5,8 @@ In this project i'm use:
 * [Meteor] - Open source platform for web, mobile, and desktop.
 * [ReactJS] - JavaScript Library for building UI
 * [jQuery] - JavaScript Library
-* [SemanticUI] - UI framework (http://react.semantic-ui.com/)
-* [MatrialUI] - UI framework (http://www.material-ui.com/)
+* [Semantic-UI] - UI framework (http://react.semantic-ui.com/)
+* [Material-UI] - UI framework (http://www.material-ui.com/)
 * [MongoDB] - NoSQL database (https://www.mongodb.com/)
 
 ### Install
