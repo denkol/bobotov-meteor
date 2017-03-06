@@ -21,6 +21,7 @@
     transition: transform .2s;
     &:hover {
       cursor: pointer;
+      transform: scale(1.1);
       svg {
         fill: $accent-blue;
         cursor: pointer;
@@ -28,7 +29,6 @@
     }
     &:active {
       cursor: pointer;
-      transform: scale(0.9);
     }
     svg {
       fill: gray;

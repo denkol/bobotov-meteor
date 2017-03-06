@@ -43,13 +43,10 @@ Meteor.methods({
         if (err) {
           console.log(err);
         } else {
-          /* Push listening ID to user list */
           userListenings.push(id);
-          /* Update user listenings */
           Meteor.users.update(userId, {
             $set: { "profile.listeningsList": userListenings }
           });
-          console.log('Добавлено новое объявление')
         }
       });
     } else {

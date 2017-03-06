@@ -4,7 +4,6 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 /* Comfort List */
 const comfortListLabel = (label, index, props) => ({
@@ -19,6 +18,9 @@ export default class Create extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
+  }
+  componentWillUnmount() {
+    Session.clear()
   }
   componentDidMount() {
     Session.keys = {} //reset session
@@ -50,6 +52,15 @@ export default class Create extends Component {
       return listeningPhotos;
     }
 
+    function comfortListBuild(comfortList) {
+      var cache = [];
+      for(let i = 0; i < comfortList.length; i++) {
+        
+      }
+    }
+
+    let comfortList = formData.comfortList;
+    
     let typeDeal = formData.typeDeal;
     let typeProperty = formData.typeProperty;
     let country = formData.country;
@@ -61,7 +72,6 @@ export default class Create extends Component {
     let floor = parseInt(formData.floor);
     let price = parseInt(formData.price);
     let paymentPeriod = formData.paymentPeriod;
-    let comfortList = formData.comfortList;
     let headline = formData.headline;
     let desc = formData.description;
 
@@ -278,7 +288,7 @@ export default class Create extends Component {
                 </div>
               </div>
               <ContactsAdd 
-                contacts={[]}
+                defaultContacts={[]}
                 contactsNumber={this.state.contactsNumber}
               />
               <Button onClick={this.contactAdd} circular icon='plus' />

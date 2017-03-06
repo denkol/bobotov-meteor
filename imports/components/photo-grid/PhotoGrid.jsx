@@ -25,16 +25,18 @@ class PhotoGrid extends TrackerReact(Component) {
   render() {
     let loading = this.props.loading;
     let limit = this.state.limit;
+    let listenings = this.props.listenings;
     if(loading) {
-      let listenings = Listenings.find({"listeningTech.public" : true}).fetch();
-
       if(Session.get('filterData')) {
         let filterData = Session.get('filterData');
+        // listenings = Listenings.find({
+        //   "listeningInfo.city" : filterData.city.replace(/\s/g, ''),
+        //   "listeningInfo.typeDeal" : filterData.typeDeal.replace(/\s/g, ''),
+        //   "listeningInfo.typeProperty" : filterData.typeProperty.replace(/\s/g, ''),
+        //   "listeningInfo.paymentPeriod" : filterData.paymentPeriod.replace(/\s/g, '')
+        // }).fetch();
         listenings = Listenings.find({
-          "listeningInfo.city" : filterData.city.replace(/\s/g, ''),
-          "listeningInfo.typeDeal" : filterData.typeDeal.replace(/\s/g, ''),
-          "listeningInfo.typeProperty" : filterData.typeProperty.replace(/\s/g, ''),
-          "listeningInfo.paymentPeriod" : filterData.paymentPeriod.replace(/\s/g, '')
+          "listeningInfo.city" : filterData.city.replace(/\s/g, '')
         }).fetch();
       }
 
@@ -55,12 +57,11 @@ class PhotoGrid extends TrackerReact(Component) {
                 );
               })}
             </div>
-            {limit === listenings.length ? <div className="paginate-wrapper">
+            <div className="paginate-wrapper">
               <div className="paginate">
                 <Button primary onClick={this.loadMore}>Загрузить еще</Button>
               </div>
-            </div> : null}
-
+            </div>
           </div>
         );
       } else {
@@ -89,5 +90,6 @@ PhotoGrid.propTypes = {};
 export default createContainer(({ params }) => {
   const listeningsSubscription = Meteor.subscribe('listenings.public');
   const loading = listeningsSubscription.ready();
-  return {loading}
+  const listenings = Listenings.find({}, {sort:{"listeningTech.createdAt": -1}}).fetch();
+  return {loading, listenings}
 }, PhotoGrid);

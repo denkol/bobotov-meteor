@@ -26,7 +26,9 @@ export const Countries = [
 
 export const Cities = [
   { key: 'be', value: 'becici', text: 'Бечичи' },
-  { key: 'pg', value: 'podgorica', text: 'Подгорица' }
+  { key: 'pg', value: 'podgorica', text: 'Подгорица' },
+  { key: 'ba', value: 'bar', text: 'Бар' },
+  { key: 'bd', value: 'budva', text: 'Будва' },
 ];
 
 export const TypeDeal = [

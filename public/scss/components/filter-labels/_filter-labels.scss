@@ -1,7 +1,9 @@
 .filter-labels {
   padding: 0 5px;
   // margin-top: 16px;
+  margin: 16px 0;
   &__item {
     display: inline-block;
+    margin-right: 8px;
   }
 }

@@ -94,7 +94,6 @@ export default class ListeningPreviewMy extends Component {
     });
   }
   render() {
-    console.log(this.state)
     if(this.props.data) {
       let listeningLink = '/listening/' + this.props.data._id;
       let listeningEditLink = '/edit/' + this.props.data._id;

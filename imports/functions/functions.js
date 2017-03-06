@@ -23,3 +23,4 @@ export function Translate(array, key, lang) {
     return key;
   }
 };
+

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Dimmer, Loader, Message, Button } from 'semantic-ui-react';
@@ -34,7 +33,7 @@ class History extends Component {
       );
     }
     if(loading) {
-      let listneings = Listenings.find({});
+      let listneings = this.props.listenings;
       if(listneings.length) {
         return (
           <div>

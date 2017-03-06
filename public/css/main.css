@@ -23047,14 +23047,14 @@ html.ios, html.ios body {
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s; }
     .main-menu__item:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1); }
       .main-menu__item:hover svg {
         fill: #4A90E2;
         cursor: pointer; }
     .main-menu__item:active {
-      cursor: pointer;
-      -webkit-transform: scale(0.9);
-              transform: scale(0.9); }
+      cursor: pointer; }
     .main-menu__item svg {
       fill: gray;
       width: 25px;
@@ -23467,8 +23467,6 @@ html.ios, html.ios body {
     cursor: pointer; }
 
 .listening-preview-header {
-  -webkit-animation: fadeInDown 0.2s linear 0s both;
-          animation: fadeInDown 0.2s linear 0s both;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23494,8 +23492,6 @@ html.ios, html.ios body {
     float: right; }
 
 .listening-preview-footer {
-  -webkit-animation: fadeInUp 0.2s linear 0s both;
-          animation: fadeInUp 0.2s linear 0s both;
   display: block;
   padding: 16px;
   position: absolute;
@@ -24034,9 +24030,11 @@ html.ios, html.ios body {
       background-image: url("../img/icons/svg/ico-close.svg"); }
 
 .filter-labels {
-  padding: 0 5px; }
+  padding: 0 5px;
+  margin: 16px 0; }
   .filter-labels__item {
-    display: inline-block; }
+    display: inline-block;
+    margin-right: 8px; }
 
 .slider {
   width: 100%;

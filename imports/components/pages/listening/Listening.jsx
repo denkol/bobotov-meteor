@@ -59,24 +59,29 @@ class Listening extends Component {
         const listeningsPhotos = data.listening.listeningPhotos;
         const listeningCountry = data.listening.listeningInfo.country;
         const listeningCity = data.listening.listeningInfo.city;
+        const listeningFloor = data.listening.listeningInfo.floor;
+        const listeningBedrooms = data.listening.listeningInfo.bedrooms;
+        const listeningBathrooms = data.listening.listeningInfo.bathrooms;
         const listeningRatio = data.listening.listeningInfo.ratio;
         const listeningComfortList = data.listening.listeningInfo.comfortList;
         const listeningType = data.listening.listeningInfo.comfortList;
         const listeningPublic = data.listening.listeningTech.public;
         const listeningContacts = data.listening.listeningContacts;
+        const listeningTypeDeal = data.listening.listeningInfo.typeDeal;
+        const listeningTypeProperty = data.listening.listeningInfo.typeProperty;
         
         const listeningOptions = [
           { optionName: "Страна", optionValue: Translate(Countries, listeningCountry)},
           { optionName: "Город", optionValue: Translate(Cities, listeningCity)},
-          { optionName: "Тип недвижимости", optionValue: listeningRatio },
-          { optionName: "Тип предлжения", optionValue: listeningRatio },
+          { optionName: "Тип недвижимости", optionValue: Translate(TypeProperty, listeningTypeProperty)},
+          { optionName: "Тип предложения", optionValue: Translate(TypeDeal, listeningTypeDeal) },
           { optionName: "Площадь", optionValue: listeningRatio },
-          { optionName: "Этаж", optionValue: listeningRatio },
-          { optionName: "Спален", optionValue: listeningRatio },
-          { optionName: "Ванных комнат", optionValue: listeningRatio },
+          { optionName: "Этаж", optionValue: listeningFloor },
+          { optionName: "Спален", optionValue: listeningBedrooms },
+          { optionName: "Ванных комнат", optionValue: listeningBathrooms },
         ];
-      
-        console.log(data.owner)
+
+
         if(listeningPublic == false && data.owner._id !== Meteor.userId()) {
           return (
             <Message warning>

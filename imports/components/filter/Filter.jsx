@@ -91,7 +91,7 @@ export default class Filter extends Component {
       typeProperty: "",
       paymentPeriod: ""
     };
-    Session.setDefault('filterData', FilterCandidate);
+    Session.setDefault('filterData', null);
     const { formData, value } = this.state;
     return (
       <div className="filter-wrapper">

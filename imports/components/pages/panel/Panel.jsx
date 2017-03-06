@@ -22,12 +22,8 @@ class Panel extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    // this.saveToHistory({id: this.props.listeningId}); //save to history
-  }
   componentWillUnmount() {
-    delete Session.keys['avatar-uploaded']
-    delete Session.keys['avatar-allready']
+    Session.clear()
   }
   handleSubmit(e, { formData }) {
     e.preventDefault();
@@ -39,13 +35,9 @@ class Panel extends Component {
       userDesc: userDesc,
       userPhoto: userPhoto,
     }
-    console.log(data)
     if(formData) {
       Meteor.call('userUpdate', data, (err, res) => {
         if(err) {console.log(err)}
-        else {
-          console.log(res)
-        }
       });
     }
   }

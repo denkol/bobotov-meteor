@@ -16,6 +16,7 @@ import History from '../../imports/components/pages/history/History.jsx';
 import My from '../../imports/components/pages/my/My.jsx';
 import Panel from '../../imports/components/pages/panel/Panel.jsx';
 import Create from '../../imports/components/pages/create/Create.jsx'; 
+import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx'; 
 
 //Additional components 
 import Filter from '../../imports/components/filter/Filter.jsx'; 
@@ -50,7 +51,7 @@ publicRoutes.route('/edit/:_id', {
   action() {
     var listeningId = FlowRouter.getParam('_id');
     mount(Layout, {
-      content: <Create listeningId={listeningId} />,
+      content: <CreateEdit listeningId={listeningId} />,
       additionalContent: ""
     });
   }

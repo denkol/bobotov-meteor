@@ -7,7 +7,13 @@ Meteor.methods({
     
     var userId = this.userId;
     var file = Photos.find({_id: id}).fetch()[0];
-    var ownerId = file.userId;
+    if(file) {
+      var ownerId = file.userId;
+    } else {
+      console.log('Файл не найден в БД');
+      return Meteor.error();
+    }
+    
 
     console.log("ID пользователя пытающегося удалить изображение:", userId)
     console.log("ID владельца", ownerId);

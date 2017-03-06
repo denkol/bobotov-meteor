@@ -39,7 +39,6 @@ class CreatePhoto extends Component {
      var file = e.currentTarget.files[0];
 
      if (file) {
-        console.log(file)
        let uploadInstance = Photos.insert({
          file: file,
          meta: {
@@ -62,15 +61,12 @@ class CreatePhoto extends Component {
        });
 
        uploadInstance.on('end', function (error, fileObj) {
-         // console.log('On end File Object: ', fileObj);
        });
 
        uploadInstance.on('uploaded', function (error, fileObj) {
          // console.log('uploaded: ', fileObj);
-
          // Remove the filename from the upload box
          // self.refs['fileinput'].value = '';
-
          // Reset our state for the next file
          self.setState({
             snackbar: {
@@ -101,7 +97,6 @@ class CreatePhoto extends Component {
        });
 
        uploadInstance.on('progress', function (progress, fileObj) {
-         console.log('Upload Percentage: ' + progress);
          // Update our progress bar
          self.setState({
            progress: progress
@@ -114,32 +109,33 @@ class CreatePhoto extends Component {
   }
   photoRemove() {
     let fileId = "";
+    let id = this.props.id;
     if(this.props.photoUrl) {
       let photoUrl = this.props.photoUrl;
       fileId = photoUrl.substr(photoUrl.lastIndexOf('/') + 1).slice(0, -4); //get id from url
-      // console.log(photoUrl, fileId)
     } else {
       fileId = this.state.file._id;
     }
+    delete Session.keys[id + 'photo']
+    this.setState({
+      snackbar: {
+        open: true,
+        message: "Фотография удалена"
+      },
+      uploading: [],
+      progress: 0,
+      uploaded: false,
+      inProgress: false,
+      file: ""
+    });
     Meteor.call('fileRemove', fileId, (err, res) => {
       if(err) {
         console.log(err);
       } else {
-        if(res) {
-          this.setState({
-            snackbar: {
-              open: true,
-              message: "Фотография удалена"
-            },
-            uploading: [],
-            progress: 0,
-            uploaded: false,
-            inProgress: false,
-            file: ""
-          });
-        }
+        
       }
     });
+    
   }
   render() {
     // console.log(this.state.snackbar)
@@ -158,9 +154,9 @@ class CreatePhoto extends Component {
       }
       if(uploadedFileCursor) {
         link = uploadedFileCursor.link(); //The "view/download" link
-        Session.set(this.props.id + "photo", link);
-        if(Session.get(this.props.id + "photo")) {
-          photoUrl = Session.get(this.props.id + "photo");  
+        Session.set(imageNumber + "photo", link);
+        if(Session.get(imageNumber + "photo")) {
+          photoUrl = Session.get(imageNumber + "photo");  
         }
       }
       return (
@@ -171,7 +167,7 @@ class CreatePhoto extends Component {
             message={this.state.snackbar.message} />
 
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
-            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || this.props.photoUrl ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
+            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
               <div className="create-photo-layer_init__icon">
                 <svg role="img" className="ico-add-photo">
                   <use xlinkHref="#ico-add-photo" />
@@ -186,10 +182,10 @@ class CreatePhoto extends Component {
                 <Loader indeterminate>Загрузка файла {this.state.progress}%</Loader>
               </Dimmer>
             </div>
-            <div className={this.props.photoUrl || this.state.uploaded ? "create-photo-layer create-photo-layer_image" : "create-photo-hide"}>
+            <div className={Session.get(imageNumber+"photo") || this.state.uploaded ? "create-photo-layer create-photo-layer_image" : "create-photo-hide"}>
               <div className="create-photo-layer_image__item" style={{backgroundImage: 'url('+photoUrl+')'}}></div>
             </div>
-            <div className={this.props.photoUrl || this.state.uploaded ? "create-photo-layer create-photo-layer_hover" : "create-photo-hide"}>
+            <div className={Session.get(imageNumber+"photo") || this.state.uploaded ? "create-photo-layer create-photo-layer_hover" : "create-photo-hide"}>
               <div className="create-photo-layer_hover__item">
                 <label htmlFor={"image-" + imageNumber} className="hover-item-text">Загрузить другую</label>
                 <div onClick={this.photoRemove} className="hover-item-text hover-item-text_remove">Удалить</div>
