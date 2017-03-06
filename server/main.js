@@ -10,7 +10,7 @@ Meteor.startup(() => {
   ServiceConfiguration.configurations.insert({
     "service" : "facebook",
     "appId" : "695731333928670",
-    "secret" : "a5913050b5af22b7cec4b9d10c8a7b9f"
+    "secret" : ""
   });
   
   Inject.rawHead('loader-style', '<style> .spinner-wrapper {display: flex;position: fixed;top: 0;left: 0;min-width: 100%;min-height: 100%;background-color: white;width: auto;height: auto;display: flex;overflow: hidden;z-index: 200;}.spinner {margin: auto; fill: #4A90E2;animation-name: spinnerrotate;animation-duration: 1s;animation-iteration-count: infinite;animation-timing-function: linear;transform-origin: 50% 50%;}@keyframes spinnerrotate {0%,100% {opacity: 1;}50% {opacity: 0.2;} } .example-appear{opacity:.01}.example-appear.example-appear-active{opacity:1;transition:opacity .2s ease-in} </style> ');
