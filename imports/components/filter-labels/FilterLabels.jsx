@@ -16,7 +16,19 @@ export default class FilterLabels extends TrackerReact(Component) {
        <div className="filter-labels">
          <div className="filter-labels__item">
             <Label as='a'>
-              Label
+              Будва
+              <Icon onClick={this.removeFilterLabel} name='delete' />
+            </Label>
+          </div>
+          <div className="filter-labels__item">
+            <Label as='a'>
+              0 - 200 евро
+              <Icon onClick={this.removeFilterLabel} name='delete' />
+            </Label>
+          </div>
+          <div className="filter-labels__item">
+            <Label as='a'>
+              Аренда краткосрочная
               <Icon onClick={this.removeFilterLabel} name='delete' />
             </Label>
           </div>
