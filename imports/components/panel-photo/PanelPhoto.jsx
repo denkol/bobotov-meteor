@@ -92,7 +92,6 @@ class PanelPhoto extends Component {
     }
   }
   photoRemove() {
-
     let fileId = ""; 
     if(Session.get('avatar-already')) {
       let photoUrl = Session.get('avatar-already');
@@ -100,24 +99,18 @@ class PanelPhoto extends Component {
     } else {
       fileId = this.state.file._id;
     }
-
     Meteor.call('fileRemove', fileId, (err, res) => {
+      Meteor.call('userDeletePhoto');
+      delete Session.keys['avatar-already', 'avatar-uploaded']; //Clear Session
+      this.setState({
+        uploading: [],
+        progress: 0,
+        uploaded: false,
+        inProgress: false,
+        file: ""
+      });
       if(err) {
         console.log(err);
-      } else {
-        if(res) {
-          this.setState({
-            uploading: [],
-            progress: 0,
-            uploaded: false,
-            inProgress: false,
-            file: ""
-          });
-          Meteor.call('userDeletePhoto'); //Remove photo from DB
-          delete Session.keys['avatar-already', 'avatar-uploaded']; //Clear Session
-        } else {
-
-        }
       }
     });
   }
@@ -186,12 +179,12 @@ class PanelPhoto extends Component {
 }
 export default createContainer( ({ params }) => {
   const handle = Meteor.subscribe('photos.public');
-  const docs = Photos.find().fetch();
+  const docs = Photos.find({}).fetch();
   const loading = handle.ready();
 
   //Clear all db
-  return {
-    loading,docs
+  return { 
+    loading, docs
   };
 }, PanelPhoto);
 

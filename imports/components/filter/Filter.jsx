@@ -32,27 +32,6 @@ export default class Filter extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  translate(array, key) {
-    if(array && key) {
-      var returnText = "";
-      for(var i = 0; i < array.length; i++) {
-        var arrayValue = array[i].value;
-        var arrayText = array[i].text;
-        if(key === arrayValue) {
-          returnText = arrayText;
-        }
-      }
-      if(returnText) {
-        return returnText;
-      } else {
-        return key;
-      }
-    } else {
-      return false;
-    }
-  }
-
-
   componentDidMount() {
     $('.filter-btn').on('click', function() {
       FilterPanel.toggle();
@@ -68,30 +47,27 @@ export default class Filter extends Component {
     let typeDeal = formData.typeDeal.replace(/\s/g, '');
     let typeProperty = formData.typeProperty.replace(/\s/g, '');
     let paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
-    let FilterCandidate = {
-      city: formData.city,
-      price: {
-        from: priceFrom,
-        to: priceTo
-      },
-      typeDeal: typeDeal,
-      typeProperty: typeProperty,
-      paymentPeriod: paymentPeriod
-    };
+    
+    let FilterCandidate = [
+      { city: formData.city },
+      { price: { from: priceFrom, to: priceTo } },
+      { typeDeal: typeDeal },
+      { typeProperty: typeProperty },
+      { paymentPeriod: paymentPeriod }
+    ];
+
     Session.set('filterData', FilterCandidate);
   }
   render() {
-    let FilterCandidate = {
-      city: "",
-      price: {
-        from: "",
-        to: ""
-      },
-      typeDeal: "",
-      typeProperty: "",
-      paymentPeriod: ""
-    };
-    Session.setDefault('filterData', null);
+    let FilterCandidate = [ 
+      { city: null },
+      { price: {from: null, to: null } },
+      { typeDeal: null },
+      { typeProperty: null },
+      { paymentPeriod: null }
+    ];
+    Session.setDefault('filterData', FilterCandidate);
+    
     const { formData, value } = this.state;
     return (
       <div className="filter-wrapper">

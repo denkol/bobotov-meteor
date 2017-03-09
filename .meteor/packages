@@ -21,3 +21,4 @@ meteorhacks:inject-initial
 aldeed:simple-schema
 facebook-config-ui
 ultimatejs:tracker-react
+npm-bcrypt@0.8.7

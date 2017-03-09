@@ -24,9 +24,10 @@ class PhotoGrid extends TrackerReact(Component) {
   }
   render() {
     let loading = this.props.loading;
-    let limit = this.state.limit;
     let listenings = this.props.listenings;
     if(loading) {
+
+      /*
       if(Session.get('filterData')) {
         let filterData = Session.get('filterData');
         // listenings = Listenings.find({
@@ -35,10 +36,8 @@ class PhotoGrid extends TrackerReact(Component) {
         //   "listeningInfo.typeProperty" : filterData.typeProperty.replace(/\s/g, ''),
         //   "listeningInfo.paymentPeriod" : filterData.paymentPeriod.replace(/\s/g, '')
         // }).fetch();
-        listenings = Listenings.find({
-          "listeningInfo.city" : filterData.city.replace(/\s/g, '')
-        }).fetch();
-      }
+        listenings = Listenings.find({}).fetch();
+      }*/
 
       if(listenings.length) {
         return (

@@ -54,7 +54,6 @@ class CreateEdit extends Component {
       }
       return contacts;
     }
-    
 
     let typeDeal = formData.typeDeal;
     let typeProperty = formData.typeProperty;
@@ -178,6 +177,7 @@ class CreateEdit extends Component {
         comfortList: listening.listeningInfo.comfortList,
         contacts: listening.listeningContacts
       }
+      console.log(defaultValue)
       if(userId) {
         return (
           <div>
@@ -341,7 +341,7 @@ export default createContainer(({ listeningId }) => {
   const id = listeningId;
   const listeningSubs = Meteor.subscribe('listenings.all');
   const loading = listeningSubs.ready();
-  const listening = Listenings.findOne({_id: listeningId});
+  const listening = Listenings.findOne({_id: id});
   const listeningContacts = listening ? listening.listeningContacts : [];
   return { loading, listening, listeningContacts };
 }, CreateEdit);

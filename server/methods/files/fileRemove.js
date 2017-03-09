@@ -3,8 +3,7 @@ import { Photos } from '../../../imports/api/photos.js';
 Meteor.methods({
   fileRemove(id) {
     console.log("ID изображения:", id);
-    
-    
+
     var userId = this.userId;
     var file = Photos.find({_id: id}).fetch()[0];
     if(file) {
