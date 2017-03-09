@@ -23467,6 +23467,8 @@ html.ios, html.ios body {
     cursor: pointer; }
 
 .listening-preview-header {
+  -webkit-animation: fadeInDown 0.2s linear 0s both;
+          animation: fadeInDown 0.2s linear 0s both;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23492,6 +23494,8 @@ html.ios, html.ios body {
     float: right; }
 
 .listening-preview-footer {
+  -webkit-animation: fadeInUp 0.2s linear 0s both;
+          animation: fadeInUp 0.2s linear 0s both;
   display: block;
   padding: 16px;
   position: absolute;
