@@ -66,9 +66,23 @@ class BigSlider extends Component {
     } else {
       //loading
       return (
-        <Dimmer inverted active>
-          <Loader indeterminate>Preparing Files</Loader>
-        </Dimmer>
+        <div>
+          <div className="headline">
+            <div className="headline__item">
+              <div className="headline-icon headline-icon--hot">
+                <div className="headline-icon__icon">
+                  <svg className="ico-hot" role="img">
+                    <use xlinkHref="#ico-hot"></use>
+                  </svg>
+                </div>
+                <div className="headline-icon__text">Горячие предложения:</div>
+              </div>
+            </div>
+          </div>
+          <Slider className="slider" ref={c => this.slider = c } {...sliderSettings}>
+            
+          </Slider>
+        </div>
       );
     }
   }
