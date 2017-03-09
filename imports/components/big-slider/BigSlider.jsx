@@ -79,9 +79,6 @@ class BigSlider extends Component {
               </div>
             </div>
           </div>
-          <Slider className="slider" ref={c => this.slider = c } {...sliderSettings}>
-            
-          </Slider>
         </div>
       );
     }
