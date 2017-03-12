@@ -1,0 +1,40 @@
+@media print { 
+  .profile-img {
+    display: none;
+  }
+  .image-gallery-image {
+    text-align: left;
+  }
+  .image-gallery-index {
+    display: none;
+  }
+  .listening-info-footer {
+    display: none;
+  }
+  .footer {
+    display: none;
+  }
+  .comfort-label {
+    padding: 0;
+    padding-right: 16px;
+  }
+  .header-controls {
+    display: none;
+  }
+  .listening-photo-wrapper {
+    display: none;
+  }
+  .price__text {
+    font-weight: bold;
+  }
+  .main-menu-wrapper {
+    display: none;
+  }
+  .interface-width {
+    width: 100%;
+    height: auto;
+  }
+  .currency-as-font {
+    display: block;
+  }
+}

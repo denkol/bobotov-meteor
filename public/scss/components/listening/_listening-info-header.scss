@@ -1,5 +1,6 @@
 .listening-info-header {
-  @extend .clearfix;
+  display: flex;
+  justify-content: space-between;
   &__item {
     .large-headline {
       margin-bottom: 5px;
@@ -8,13 +9,6 @@
     }
     .medium-parag {
       margin-bottom: 5px;
-    }
-    display: block;
-    &:first-child {
-      float: left;
-    }
-    &:last-child {
-      float: right;
     }
   }
 }

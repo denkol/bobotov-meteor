@@ -4,7 +4,6 @@
 @import "mixins";
 @import "base";
 @import "keyframes";
-//Other
 @import "other/all";
 //Libs
 @import "libs/react-image-gallery/all";
@@ -12,6 +11,9 @@
 @import "libs/slick/all";
 //Components import
 @import "components/all";
+//Print styles
+@import "other/print";
+
 
 .interface-width {
   margin: 0 auto;

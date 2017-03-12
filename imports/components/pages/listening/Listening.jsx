@@ -115,6 +115,7 @@ class Listening extends Component {
                         <svg className="ico-euro" role="img">
                           <use xlinkHref="#ico-euro" />
                         </svg>
+                        <span className="currency-as-font">€</span>
                       </div>
                     </div>
                     <div className="price__desc">{Translate(PaymentPeriod, listeningPeriod)}</div>
@@ -140,7 +141,7 @@ class Listening extends Component {
                 <div className="listening-info-footer__item">
                   <div className="share">
                     <div className="share__item share__item_text">Поделиться:</div>
-                    <a className="share__item share__item_fb" href="#" />
+                    <a className="share__item share__item_fb" href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer" target="_blank" />
                     <a className="share__item share__item_vk" href={
                       "http://vk.com/share.php?url="+window.location.href +
                       "&image="+listeningsPhotos.main +
@@ -152,7 +153,8 @@ class Listening extends Component {
                       "?text="+listeningHeadline+ 
                       "&hashtags=montenegro,bobotov" +
                       "&url=" + window.location.href } target="_blank" />
-                    <a className="share__item share__item_gplus" href="#" />
+                    <a className="share__item share__item_gplus" href={"https://plus.google.com/share?url="+window.location.href} 
+                      onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" target="_blank" />
                   </div>
                 </div>
               </div>
@@ -171,7 +173,7 @@ class Listening extends Component {
       return (
         <div>
           <Dimmer inverted active>
-            <Loader indeterminate>Preparing Files</Loader>
+            <Loader indeterminate>Загрузка объявления...</Loader>
           </Dimmer>
          </div>
       );
