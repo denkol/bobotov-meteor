@@ -208,9 +208,45 @@ a {
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1); } }
 
-.pulse {
-  -webkit-animation: pulse 1s infinite ease;
-          animation: pulse 1s infinite ease; }
+@keyframes jellyIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes jellyIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes jellyOut {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+@keyframes jellyOut {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0); } }
+
+.jellyIn {
+  -webkit-animation: jellyIn 500ms ease both;
+  animation: jellyIn 500ms ease both; }
+
+.jellyOut {
+  -webkit-animation: jellyOut 200ms ease both;
+  animation: jellyOut 200ms ease both; }
 
 .clearfix:after, .listening-info-footer:after {
   content: "";
@@ -452,7 +488,9 @@ p.small-parag {
     width: 100%;
     height: auto; }
   .currency-as-font {
-    display: block; } }
+    display: block; }
+  .listening-info {
+    padding-top: 0; } }
 
 /*!
   Ionicons, v2.0.0
@@ -647,7 +685,7 @@ p.small-parag {
 .image-gallery-image {
   height: 600px;
   text-align: center;
-  background-color: black; }
+  background-color: #eee; }
 
 .image-gallery-slide {
   background: #fff;
@@ -23663,7 +23701,6 @@ html.ios, html.ios body {
     display: none; }
 
 .listening-photo-wrapper {
-  margin-top: 26px;
   height: 600px; }
   .listening-photo-wrapper .image-gallery-slides {
     height: 600px; }
@@ -24652,7 +24689,8 @@ html.ios, html.ios body {
   vertical-align: middle; }
   .balance-text__text {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: middle;
+    margin-right: 5px; }
   .balance-text__sum {
     font-weight: bold;
     display: inline-block;
@@ -24846,7 +24884,9 @@ html.ios, html.ios body {
     width: 100%;
     height: auto; }
   .currency-as-font {
-    display: block; } }
+    display: block; }
+  .listening-info {
+    padding-top: 0; } }
 
 .interface-width {
   margin: 0 auto;

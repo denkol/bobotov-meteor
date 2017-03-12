@@ -1,0 +1,48 @@
+<svg class="bl" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+   
+    <linearGradient id="auroraGrad" x1="184" y1="300" x2="616" y2="300" gradientUnits="userSpaceOnUse">
+      <stop class="auroraStops" offset="0" stop-color="#6bf9da"/>
+      <stop class="auroraStops" offset="0.5" stop-color="#216efc"/>
+      <stop class="auroraStops" offset="1" stop-color="#b254ee"/>
+    </linearGradient>
+    <linearGradient id="outlineGrad" x1="401.5" y1="78" x2="401.5" y2="522" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f2f2f2"/>
+      <stop offset="1" stop-color="#e3e3e3"/>
+    </linearGradient>
+    <clipPath id="mountainMask">
+      <circle class="mountainMask" cx="400" cy="300" r="214" fill="none"/>
+    </clipPath>
+    <linearGradient id="mountain1Grad" x1="109.55" y1="356.77" x2="533.94" y2="356.77" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3f3f3"/>
+      <stop offset="1" stop-color="#fcfcfc"/>
+    </linearGradient>
+    <linearGradient id="mountain2Grad" x1="287.46" y1="427.5" x2="676.6" y2="427.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.49" stop-color="#efefef"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <title>Bobotov Loader</title>
+      <g class="mountainGroup">
+      <circle class="outlineBg" cx="401.5" cy="300" r="214" fill="url(#outlineGrad)" stroke-miterlimit="10" stroke-width="16" stroke="none" opacity="0.5"/>
+
+      <circle class="aurora" cx="400" cy="300" r="214" fill="url(#auroraGrad)"/>
+
+        <g clip-path="url(#mountainMask)">
+         
+         <g class="mountains">
+            <polygon points="330.95 202.27 573.58 621.12 86.77 621.12 330.95 202.27" fill="url(#mountain1Grad)"/>
+            <polygon points="481.6 273.5 726.79 660.77 237.5 660.77 481.6 273.5" fill="url(#mountain2Grad)"/>
+          </g>      
+<g class="mountains" transform="translate(380 0)">
+            <polygon points="330.95 202.27 573.58 621.12 86.77 621.12 330.95 202.27" fill="url(#mountain1Grad)"/>
+            <polygon points="481.6 273.5 726.79 660.77 237.5 660.77 481.6 273.5" fill="url(#mountain2Grad)"/>
+
+          </g>  
+       </g>
+   
+      
+
+      <circle class="outline" cx="401.5" cy="300" r="214" fill="none" stroke-miterlimit="10" stroke-width="16" stroke="url(#outlineGrad)"/></g>
+</svg>

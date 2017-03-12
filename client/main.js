@@ -1,6 +1,7 @@
 Meteor.startup(function() {
-  var spinnerWrapper = $('.loader-wrapper');
-  var spinner = $('#preloader');
+  var spinnerWrapper = $('#spinnerWrapper');
+  var spinner = $('#spinner');
+  // spinner.removeClass('jellyIn');
   spinnerWrapper.remove();
   spinner.remove();
 });

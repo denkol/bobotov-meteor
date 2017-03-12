@@ -102,7 +102,7 @@ class Panel extends Component {
                         <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} required />
                       </div>
                       <div className="panel-inputs__item">
-                        <Form.Select label='Ваш статус' name='userDesc' options={statuses} defaultValue={userDesc} required placeholder='Выберите статус' />
+                        <Form.Select label='Ваш статус' name='userDesc' options={statuses} defaultValue={userDesc} required placeholder='Выберите ваш статус' />
                       </div>
                     </div>
                     <div className="panel-controls">

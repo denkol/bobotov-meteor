@@ -168,9 +168,7 @@ class PanelPhoto extends Component {
       return (
         <div className="panel-photo">
           <div className="panel-photo__loader">
-            <Dimmer active>
-              <Loader size='mini'>Loading</Loader>
-            </Dimmer>
+            <Loader size='mini'>Loading</Loader>
           </div>
         </div>
       );

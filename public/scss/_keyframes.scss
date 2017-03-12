@@ -106,10 +106,46 @@
   }
 }
 
-.pulse {
-  animation: pulse 1s infinite ease ;
+
+@keyframes jellyIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
-.pulse {
-
+@-webkit-keyframes jellyIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
+
+
+@keyframes jellyOut { 
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+
+
+
+
+
+.jellyIn {
+  -webkit-animation: jellyIn 500ms ease both;
+  animation: jellyIn 500ms ease both;
+}
+
+.jellyOut {
+  -webkit-animation: jellyOut 200ms ease both;
+  animation: jellyOut 200ms ease both;
+}
+
