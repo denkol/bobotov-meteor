@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
-
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Dimmer, Loader, Message, Button } from 'semantic-ui-react';
+
 class History extends Component {
   constructor(props) {
     super(props);
@@ -78,7 +78,7 @@ class History extends Component {
             </div>
             <Message
               header='История ваших просмортров пуста'
-              content='Тут появится объявления которые вы посмотрели'/>
+              content='Объявления которые вы посмотрели'/>
         </div>);
       }
     } else {

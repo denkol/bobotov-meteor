@@ -28,7 +28,7 @@ export default class ContactsAdd extends Component {
       </div>
     );
     
-    for(let i = 0; i <= this.props.contactsNumber; i++) {
+    for(let i = 1; i <= this.props.contactsNumber; i++) {
       if(defaultContacts[i]) {
         Session.set('dropdown' + i, defaultContacts[i].contactKey);
         contactsInputs.push(SingleContact(i, defaultContacts[i]));

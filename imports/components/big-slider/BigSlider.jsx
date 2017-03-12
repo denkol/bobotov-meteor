@@ -25,10 +25,8 @@ class BigSlider extends Component {
       arrows: false,
       slidesToScroll: 1
     };
-    
     let listenings = this.props.listenings;
     let loading = this.props.loading;
-    
     if(loading) {
       if(listenings.length) {
         return (
@@ -49,12 +47,12 @@ class BigSlider extends Component {
               {listenings.map((listening, index) => {
               return (
                 <div key={"bigSlide-" + index} className="slider__item">
-                  <ListeningPreview                   
+                  <ListeningPreview
                     listeningData={listening} 
                     layout="index" 
                     loading={true}
                   />
-                </div>);    
+                </div>);
               })}
             </Slider>
           </div>

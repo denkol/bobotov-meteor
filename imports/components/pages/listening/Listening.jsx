@@ -11,6 +11,7 @@ import ListeningOptions from './ListeningOptions.jsx';
 import ListeningComfort from './ListeningComfort.jsx';
 import ListeningContacts from './ListeningContacts.jsx';
 
+
 /* Semantic UI */
 import { Message, Dimmer, Loader } from 'semantic-ui-react';
 
@@ -22,6 +23,7 @@ class Listening extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.saveToHistory({id: this.props.listeningId}); //save to history
+    insertToHead();
   }
   
   /* Save to history */
@@ -199,3 +201,11 @@ Listening.propTypes = {
   owner : React.PropTypes.object,
   isFavorite : React.PropTypes.bool
 };
+
+
+
+
+function insertToHead() {
+  var head = document.getElementsByTagName('head');
+  head.innerHTML = "<meta>dsadas</meta>"
+}

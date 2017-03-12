@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Dimmer, Loader, Message } from 'semantic-ui-react';

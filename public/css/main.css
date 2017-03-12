@@ -22999,7 +22999,7 @@ html.ios, html.ios body {
 .footer {
   width: 100%;
   text-align: center;
-  padding: 100px 0; }
+  padding: 70px 0; }
 
 .footer-copyright {
   font-size: 12px;
@@ -24035,7 +24035,7 @@ html.ios, html.ios body {
 
 .filter-labels {
   padding: 0 5px;
-  margin: 16px 0; }
+  margin-bottom: 8px; }
   .filter-labels__item {
     display: inline-block;
     margin-right: 8px; }
@@ -24531,7 +24531,7 @@ html.ios, html.ios body {
     background-color: #eee;
     border-radius: 5px;
     width: 200px;
-    line-height: 20px; }
+    line-height: 18px; }
     .panel-photo__tip:after {
       content: "";
       position: absolute;
