@@ -432,8 +432,6 @@ p.small-parag {
   transition: opacity 100ms ease-in; }
 
 @media print {
-  .profile-img {
-    display: none; }
   .image-gallery-image {
     text-align: left; }
   .image-gallery-index {
@@ -442,9 +440,6 @@ p.small-parag {
     display: none; }
   .footer {
     display: none; }
-  .comfort-label {
-    padding: 0;
-    padding-right: 16px; }
   .header-controls {
     display: none; }
   .listening-photo-wrapper {
@@ -23720,6 +23715,18 @@ html.ios, html.ios body {
   .listening-info-footer__item:last-child {
     float: right; }
 
+.listening-info-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .listening-info-actions__item {
+    margin-right: 16px; }
+    .listening-info-actions__item:last-child {
+      margin-right: none; }
+
 .price {
   padding: 10px;
   border-radius: 3px;
@@ -23748,12 +23755,11 @@ html.ios, html.ios body {
   display: none; }
 
 .favorite-btn:hover {
-  cursor: pointer; }
-  .favorite-btn:hover .favorite-btn__icon svg {
-    fill: #D00273; }
+  cursor: pointer;
+  opacity: 0.8; }
 
-.favorite-btn:active .favorite-btn__icon svg {
-  fill: #D00273; }
+.favorite-btn:active {
+  opacity: 0.5; }
 
 .favorite-btn__icon {
   display: inline-block;
@@ -23935,6 +23941,34 @@ html.ios, html.ios body {
   100% {
     -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+
+.print-btn:hover {
+  cursor: pointer;
+  opacity: 0.8; }
+
+.print-btn:active {
+  opacity: 0.5; }
+
+.print-btn__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 7px; }
+  .print-btn__icon svg {
+    fill: gray;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    height: 25px;
+    width: 25px; }
+  .print-btn__icon--active svg {
+    fill: #D00273;
+    -webkit-animation: favorite 2000ms linear both;
+    animation: favorite 2000ms linear both; }
+
+.print-btn__text {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: middle; }
 
 .share__item {
   display: inline-block;
@@ -24792,8 +24826,6 @@ html.ios, html.ios body {
   margin: auto; }
 
 @media print {
-  .profile-img {
-    display: none; }
   .image-gallery-image {
     text-align: left; }
   .image-gallery-index {
@@ -24802,9 +24834,6 @@ html.ios, html.ios body {
     display: none; }
   .footer {
     display: none; }
-  .comfort-label {
-    padding: 0;
-    padding-right: 16px; }
   .header-controls {
     display: none; }
   .listening-photo-wrapper {

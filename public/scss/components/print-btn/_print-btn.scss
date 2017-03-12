@@ -1,0 +1,34 @@
+.print-btn {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.5;
+  }
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 7px;
+    svg {
+      fill: gray;
+      transition: 0.2s;
+      height: 25px;
+      width: 25px; 
+    }
+    &--active {
+      svg {
+        fill: $love-color;
+        -webkit-animation: favorite 2000ms linear both;
+        animation: favorite 2000ms linear both;
+      }
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+}

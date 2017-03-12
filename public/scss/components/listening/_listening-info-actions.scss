@@ -1,0 +1,10 @@
+.listening-info-actions {
+  display: flex;
+  align-items: center;
+  &__item {
+    margin-right: 16px;
+    &:last-child {
+      margin-right: none;
+    }
+  }
+}
