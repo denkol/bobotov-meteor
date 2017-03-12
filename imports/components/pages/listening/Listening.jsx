@@ -141,12 +141,17 @@ class Listening extends Component {
                   <div className="share">
                     <div className="share__item share__item_text">Поделиться:</div>
                     <a className="share__item share__item_fb" href="#" />
-                    <a className="share__item share__item_vk" href="#" />
+                    <a className="share__item share__item_vk" href={
+                      "http://vk.com/share.php?url="+window.location.href +
+                      "&image="+listeningsPhotos.main +
+                      "&title="+listeningHeadline +
+                      "&description=" +listeningDesc} 
+                    target="_blank" />
                     <a className="share__item share__item_twitter" href={
                       "https://twitter.com/intent/tweet" + 
                       "?text="+listeningHeadline+ 
                       "&hashtags=montenegro,bobotov" +
-                      "&url=" + window.location.href } />
+                      "&url=" + window.location.href } target="_blank" />
                     <a className="share__item share__item_gplus" href="#" />
                   </div>
                 </div>
