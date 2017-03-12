@@ -1,4 +1,0 @@
-Meteor.methods({
-  vkSign(data) {
-  }
-});

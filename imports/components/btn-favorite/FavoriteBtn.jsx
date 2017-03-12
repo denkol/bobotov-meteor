@@ -31,7 +31,7 @@ export default class FavoriteBtn extends Component {
             <use xlinkHref="#ico-love" />
           </svg>
         </div>
-        <div className="favorite-btn__text">{this.state.isFavorite ? "В избранном" : "Добавить в избранное"}</div>
+        <div className="favorite-btn__text">{this.state.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}</div>
       </div>
     );
   }

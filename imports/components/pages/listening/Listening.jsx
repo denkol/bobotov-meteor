@@ -6,6 +6,7 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 //Components
 import Profile from '../../profile/Profile.jsx';
 import FavoriteBtn from '../../btn-favorite/FavoriteBtn.jsx';
+import PrintBtn from '../../btn-print/PrintBtn.jsx';
 import ListeningPhotos from './ListeningPhotos.jsx';
 import ListeningOptions from './ListeningOptions.jsx';
 import ListeningComfort from './ListeningComfort.jsx';
@@ -23,7 +24,6 @@ class Listening extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     this.saveToHistory({id: this.props.listeningId}); //save to history
-    insertToHead();
   }
   
   /* Save to history */
@@ -135,24 +135,36 @@ class Listening extends Component {
               <ListeningContacts contacts={listeningContacts} />
               <div className="listening-info-footer">
                 <div className="listening-info-footer__item">
-                  <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+                  <div className="listening-info-actions">
+                    <div className="listening-info-actions__item">
+                      <FavoriteBtn listeningId={this.props.listeningId} isFavorite={this.props.isFavorite}/>
+                    </div>
+                    <div className="listening-info-actions__item">
+                      <PrintBtn />
+                    </div>
+                  </div>
                 </div>
                 <div className="listening-info-footer__item">
                   <div className="share">
                     <div className="share__item share__item_text">Поделиться:</div>
-                    <a className="share__item share__item_fb" href="#" />
+                    <a className="share__item share__item_fb" href={
+                      "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer"
+                    } target="_blank" />
                     <a className="share__item share__item_vk" href={
                       "http://vk.com/share.php?url="+window.location.href +
                       "&image="+listeningsPhotos.main +
                       "&title="+listeningHeadline +
-                      "&description=" +listeningDesc} 
-                    target="_blank" />
+                      "&description=" + listeningDesc
+                    } target="_blank" />
                     <a className="share__item share__item_twitter" href={
                       "https://twitter.com/intent/tweet" + 
                       "?text="+listeningHeadline+ 
                       "&hashtags=montenegro,bobotov" +
-                      "&url=" + window.location.href } target="_blank" />
-                    <a className="share__item share__item_gplus" href="#" />
+                      "&url=" + window.location.href
+                    } target="_blank" />
+                    {/* <a className="share__item share__item_gplus" href={
+                      "https://plus.google.com/share?url="+window.location.href
+                    } target="_blank" />  */}
                   </div>
                 </div>
               </div>
@@ -163,7 +175,7 @@ class Listening extends Component {
         return (
           <Message warning>
             <Message.Header>Ошибка!</Message.Header>
-            <p>Что то пошло не так...</p>
+            <p>Что-то пошло не так...</p>
           </Message>
         );
       }
@@ -171,7 +183,7 @@ class Listening extends Component {
       return (
         <div>
           <Dimmer inverted active>
-            <Loader indeterminate>Preparing Files</Loader>
+            <Loader indeterminate>Загрузка...</Loader>
           </Dimmer>
          </div>
       );
@@ -214,11 +226,3 @@ Listening.propTypes = {
   owner : React.PropTypes.object,
   isFavorite : React.PropTypes.bool
 };
-
-
-
-
-function insertToHead() {
-  var head = document.getElementsByTagName('head');
-  head.innerHTML = "<meta>dsadas</meta>"
-}

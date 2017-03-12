@@ -212,7 +212,7 @@ a {
   -webkit-animation: pulse 1s infinite ease;
           animation: pulse 1s infinite ease; }
 
-.clearfix:after, .listening-info-header:after, .listening-info-footer:after {
+.clearfix:after, .listening-info-footer:after {
   content: "";
   display: block;
   height: 0;
@@ -431,6 +431,29 @@ p.small-parag {
   -webkit-transition: opacity 100ms ease-in;
   transition: opacity 100ms ease-in; }
 
+@media print {
+  .image-gallery-image {
+    text-align: left; }
+  .image-gallery-index {
+    display: none; }
+  .listening-info-footer {
+    display: none; }
+  .footer {
+    display: none; }
+  .header-controls {
+    display: none; }
+  .listening-photo-wrapper {
+    display: none; }
+  .price__text {
+    font-weight: bold; }
+  .main-menu-wrapper {
+    display: none; }
+  .interface-width {
+    width: 100%;
+    height: auto; }
+  .currency-as-font {
+    display: block; } }
+
 /*!
   Ionicons, v2.0.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -624,7 +647,7 @@ p.small-parag {
 .image-gallery-image {
   height: 600px;
   text-align: center;
-  background-color: #eee; }
+  background-color: black; }
 
 .image-gallery-slide {
   background: #fff;
@@ -22904,7 +22927,6 @@ html.ios, html.ios body {
   margin-top: 15px;
   height: 50px;
   display: block;
-  top: 0;
   width: 100%; }
 
 .header-content {
@@ -23586,18 +23608,19 @@ html.ios, html.ios body {
   padding-top: 16px;
   width: 100%; }
 
-.listening-info-header__item {
-  display: block; }
+.listening-info-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
   .listening-info-header__item .large-headline {
     margin-bottom: 5px;
     max-width: 800px;
     line-height: 42px; }
   .listening-info-header__item .medium-parag {
     margin-bottom: 5px; }
-  .listening-info-header__item:first-child {
-    float: left; }
-  .listening-info-header__item:last-child {
-    float: right; }
 
 .listening-info-profile {
   margin: 20px 0; }
@@ -23692,6 +23715,18 @@ html.ios, html.ios body {
   .listening-info-footer__item:last-child {
     float: right; }
 
+.listening-info-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .listening-info-actions__item {
+    margin-right: 16px; }
+    .listening-info-actions__item:last-child {
+      margin-right: none; }
+
 .price {
   padding: 10px;
   border-radius: 3px;
@@ -23716,13 +23751,15 @@ html.ios, html.ios body {
     height: 15px;
     width: 15px; }
 
-.favorite-btn:hover {
-  cursor: pointer; }
-  .favorite-btn:hover .favorite-btn__icon svg {
-    fill: #D00273; }
+.currency-as-font {
+  display: none; }
 
-.favorite-btn:active .favorite-btn__icon svg {
-  fill: #D00273; }
+.favorite-btn:hover {
+  cursor: pointer;
+  opacity: 0.8; }
+
+.favorite-btn:active {
+  opacity: 0.5; }
 
 .favorite-btn__icon {
   display: inline-block;
@@ -23904,6 +23941,34 @@ html.ios, html.ios body {
   100% {
     -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } }
+
+.print-btn:hover {
+  cursor: pointer;
+  opacity: 0.8; }
+
+.print-btn:active {
+  opacity: 0.5; }
+
+.print-btn__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 7px; }
+  .print-btn__icon svg {
+    fill: gray;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    height: 25px;
+    width: 25px; }
+  .print-btn__icon--active svg {
+    fill: #D00273;
+    -webkit-animation: favorite 2000ms linear both;
+    animation: favorite 2000ms linear both; }
+
+.print-btn__text {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  vertical-align: middle; }
 
 .share__item {
   display: inline-block;
@@ -24759,6 +24824,29 @@ html.ios, html.ios body {
   font-size: 14px;
   font-weight: bold;
   margin: auto; }
+
+@media print {
+  .image-gallery-image {
+    text-align: left; }
+  .image-gallery-index {
+    display: none; }
+  .listening-info-footer {
+    display: none; }
+  .footer {
+    display: none; }
+  .header-controls {
+    display: none; }
+  .listening-photo-wrapper {
+    display: none; }
+  .price__text {
+    font-weight: bold; }
+  .main-menu-wrapper {
+    display: none; }
+  .interface-width {
+    width: 100%;
+    height: auto; }
+  .currency-as-font {
+    display: block; } }
 
 .interface-width {
   margin: 0 auto;

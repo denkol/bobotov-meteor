@@ -1,18 +1,10 @@
 .favorite-btn {
   &:hover {
     cursor: pointer;
-    .favorite-btn__icon {
-      svg {
-        fill: $love-color;
-      }
-    }
+    opacity: 0.8;
   }
   &:active {
-    .favorite-btn__icon {
-      svg {
-        fill: $love-color;
-      }
-    }
+    opacity: 0.5;
   }
   &__icon {
     display: inline-block;

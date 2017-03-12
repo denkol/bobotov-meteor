@@ -7,7 +7,7 @@
 		"uuidString": "FD32C55D-5EF0-4661-94F7-CA6A521C4223"
 		}
 	],
-"creatorBuild": "25568",
+"creatorBuild": "25704",
 "files": {
 	"\/css\/fonts.css": {
 		"aP": 1,
@@ -112,10 +112,12 @@
 	"\/fonts\/semantic-assets\/images\/flags.png": {
 		"ft": 32768,
 		"iS": 28123,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/fonts\/semantic-assets\/images\/flags.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/bg.jpg": {
 		"ft": 16384,
@@ -123,143 +125,178 @@
 		"oA": 0,
 		"oAP": "\/img\/bg.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-144x144.png": {
 		"ft": 32768,
 		"iS": 13503,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-144x144.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-192x192.png": {
 		"ft": 32768,
 		"iS": 17206,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-192x192.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-36x36.png": {
 		"ft": 32768,
 		"iS": 2520,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-36x36.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-48x48.png": {
 		"ft": 32768,
 		"iS": 3379,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-48x48.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-72x72.png": {
 		"ft": 32768,
 		"iS": 5316,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-72x72.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/android-icon-96x96.png": {
 		"ft": 32768,
 		"iS": 7957,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/android-icon-96x96.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-114x114.png": {
 		"ft": 32768,
 		"iS": 9628,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-114x114.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-120x120.png": {
 		"ft": 32768,
 		"iS": 10153,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-120x120.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-144x144.png": {
 		"ft": 32768,
 		"iS": 13503,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-144x144.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-152x152.png": {
 		"ft": 32768,
 		"iS": 13661,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-152x152.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-180x180.png": {
 		"ft": 32768,
 		"iS": 18121,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-180x180.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-57x57.png": {
 		"ft": 32768,
 		"iS": 4077,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-57x57.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-60x60.png": {
 		"ft": 32768,
 		"iS": 4316,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-60x60.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-72x72.png": {
 		"ft": 32768,
 		"iS": 5316,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-72x72.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-76x76.png": {
 		"ft": 32768,
 		"iS": 5644,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-76x76.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon-precomposed.png": {
 		"ft": 32768,
 		"iS": 17780,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon-precomposed.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/apple-icon.png": {
 		"ft": 32768,
 		"iS": 17780,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/apple-icon.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/browserconfig.xml": {
 		"ft": 8192,
@@ -270,26 +307,32 @@
 	"\/img\/favicon\/favicon-16x16.png": {
 		"ft": 32768,
 		"iS": 1623,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/favicon-16x16.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/favicon-32x32.png": {
 		"ft": 32768,
 		"iS": 2329,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/favicon-32x32.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/favicon-96x96.png": {
 		"ft": 32768,
 		"iS": 7957,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/favicon-96x96.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/favicon.ico": {
 		"ft": 8192,
@@ -308,42 +351,52 @@
 	"\/img\/favicon\/ms-icon-144x144.png": {
 		"ft": 32768,
 		"iS": 13503,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/ms-icon-144x144.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/ms-icon-150x150.png": {
 		"ft": 32768,
 		"iS": 13941,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/ms-icon-150x150.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/ms-icon-310x310.png": {
 		"ft": 32768,
 		"iS": 39536,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/ms-icon-310x310.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/favicon\/ms-icon-70x70.png": {
 		"ft": 32768,
 		"iS": 5133,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/favicon\/ms-icon-70x70.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/fb-icon-light.png": {
 		"ft": 32768,
 		"iS": 13283,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/fb-icon-light.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/icons\/svg-symbols-min.css": {
 		"aP": 1,
@@ -728,26 +781,32 @@
 	"\/img\/logo.png": {
 		"ft": 32768,
 		"iS": 55102,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/logo.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/logo100x100.png": {
 		"ft": 32768,
 		"iS": 23937,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/logo100x100.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/profile-header.png": {
 		"ft": 32768,
 		"iS": 9475,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/profile-header.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/profile.jpeg": {
 		"ft": 16384,
@@ -755,15 +814,18 @@
 		"oA": 0,
 		"oAP": "\/img\/profile.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/Screen Shot 2016-11-05 at 1.58.18 PM.png": {
 		"ft": 32768,
 		"iS": 390818,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/Screen Shot 2016-11-05 at 1.58.18 PM.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/social.webp": {
 		"ft": 8192,
@@ -817,7 +879,8 @@
 		"oA": 0,
 		"oAP": "\/img\/test-vertical.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/test.jpg": {
 		"ft": 16384,
@@ -825,7 +888,8 @@
 		"oA": 0,
 		"oAP": "\/img\/test.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/test2.jpg": {
 		"ft": 16384,
@@ -833,7 +897,8 @@
 		"oA": 0,
 		"oAP": "\/img\/test2.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/test3.jpg": {
 		"ft": 16384,
@@ -841,7 +906,8 @@
 		"oA": 0,
 		"oAP": "\/img\/test3.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/unknown.jpg": {
 		"ft": 16384,
@@ -849,23 +915,28 @@
 		"oA": 0,
 		"oAP": "\/img\/unknown.jpg",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/unknown.png": {
 		"ft": 32768,
 		"iS": 2650,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/unknown.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/img\/vk-icon-light.png": {
 		"ft": 32768,
 		"iS": 0,
+		"l": 1,
 		"oA": 0,
 		"oAP": "\/img\/vk-icon-light.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 0,
+		"q": 100
 		},
 	"\/scss\/.sass-cache\/3636e5ef55f0f6f7bec0ec3fcad0428374781963\/_all.scssc": {
 		"ft": 8192,
@@ -2059,6 +2130,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/listening\/_listening-info-actions.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_listening-info-actions.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/listening\/_listening-info-block.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -2406,6 +2490,32 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/components\/css\/_price.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/print-btn\/_all.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/print-btn\/_print-btn.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_print-btn.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -2777,6 +2887,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/css\/_icons.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/other\/_print.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/css\/_print.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -3475,6 +3598,10 @@
 			"active": 1,
 			"optionString": ""
 			},
+		"no-compare-neg-zero": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-cond-assign": {
 			"active": 1,
 			"optionString": "'except-parens'"
@@ -3954,6 +4081,10 @@
 		"no-with": {
 			"active": 0,
 			"optionString": ""
+			},
+		"nonblock-statement-body-position": {
+			"active": 0,
+			"optionString": "'beside'"
 			},
 		"object-curly-newline": {
 			"active": 0,
@@ -4554,7 +4685,8 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"quality": 100
 		},
 	"languageDefaultsJS": {
 		"autoOutputAction": 0,
@@ -4647,7 +4779,9 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"enableLossy": 1,
+		"quality": 100
 		},
 	"languageDefaultsPUG": {
 		"autoOutputAction": 0,
