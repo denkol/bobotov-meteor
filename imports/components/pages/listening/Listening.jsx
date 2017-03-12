@@ -139,7 +139,15 @@ class Listening extends Component {
                 </div>
                 <div className="listening-info-footer__item">
                   <div className="share">
-                    <div className="share__item share__item_text">Поделиться:</div><a className="share__item share__item_fb" href="#" /><a className="share__item share__item_vk" href="#" /><a className="share__item share__item_twitter" href="#" /><a className="share__item share__item_gplus" href="#" />
+                    <div className="share__item share__item_text">Поделиться:</div>
+                    <a className="share__item share__item_fb" href="#" />
+                    <a className="share__item share__item_vk" href="#" />
+                    <a className="share__item share__item_twitter" href={
+                      "https://twitter.com/intent/tweet" + 
+                      "?text="+listeningHeadline+ 
+                      "&hashtags=montenegro,bobotov" +
+                      "&url=" + window.location.href } />
+                    <a className="share__item share__item_gplus" href="#" />
                   </div>
                 </div>
               </div>

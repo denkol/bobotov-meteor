@@ -50,7 +50,7 @@ class History extends Component {
             </div>
 
               <div className="headline__item">
-                <a onClick={this.removeHistory}>Очистить историю</a>
+                <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
               </div>
             </div>
             

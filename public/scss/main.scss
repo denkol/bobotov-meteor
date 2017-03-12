@@ -26,7 +26,15 @@
     margin: auto;
   }
 }
-
+.history-clear-btn {
+  text-decoration: underline;
+  font-weight: bold;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+}
 
 .disabled {
   opacity: 0.2;

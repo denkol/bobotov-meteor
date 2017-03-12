@@ -24773,6 +24773,14 @@ html.ios, html.ios body {
   .center-wrapper .center {
     margin: auto; }
 
+.history-clear-btn {
+  text-decoration: underline;
+  font-weight: bold; }
+  .history-clear-btn:hover {
+    text-decoration: underline;
+    opacity: 0.5;
+    cursor: pointer; }
+
 .disabled {
   opacity: 0.2;
   pointer-events: none; }
