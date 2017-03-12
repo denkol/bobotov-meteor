@@ -1,6 +1,6 @@
 export function Translate(array, key, lang) {
   /*
-    It takes two parameters @array and @key
+    It takes three parameters @array and @key
     @array - an array of objects
     @key - string
     @lang - string
