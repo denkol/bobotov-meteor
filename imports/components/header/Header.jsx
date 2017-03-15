@@ -17,13 +17,8 @@ class HeaderLayout extends Component {
     this.openSubmenu = this.openSubmenu.bind(this);
     this.logout = this.logout.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.toCreate = this.toCreate.bind(this);
-    this.toPanel = this.toPanel.bind(this);
   }
-
-  componentDidMount() {
   
-  }
   openSubmenu(e) {
     var container = $('.profile-menu')
     if (!container.is(e.target) // if the target of the click isn't the container...
@@ -36,24 +31,26 @@ class HeaderLayout extends Component {
     this.setState({
       subMenuOpen: !this.state.subMenuOpen
     });
-    
+
   }
+
   logout() {
     this.setState({subMenuOpen: false});
     Meteor.logout();
     FlowRouter.go('/');
   }
-  toPanel() {
+
+  handleGo(path, e) {
+    e.preventDefault();
     this.setState({subMenuOpen: false});
-    FlowRouter.go('/panel');
+    FlowRouter.go(path);
   }
-  toCreate() {
-    FlowRouter.go('/create');
-  }
+
   closeModal() {
     this.setState({subMenuOpen: false, exitModalOpen: false});
   }
-  render() {  
+
+  render() {
     let user = this.props.user;
     const ModalBasicExample = () => (
       <Modal trigger={<li className="profile-menu__item">Выйти</li>} basic size='small'>
@@ -96,12 +93,13 @@ class HeaderLayout extends Component {
             <div className="header-content__item">
               <div className="header-controls">
                 {user
-                  ? 
+                  ?
                   <div className="header-controls__item">
                     <Profile onClick={this.openSubmenu} data={user}/>
                     <div className={this.state.subMenuOpen ? "profile-menu-content profile-menu-content--expanded" : "profile-menu-content"}>
                       <ul className="profile-menu">
-                        <li onClick={this.toPanel} className="profile-menu__item">Панель управления</li>
+                        <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">Редактировать</li>
+                        <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">Мои Объявления</li>
                         <ModalBasicExample />
                       </ul>
                     </div>
@@ -117,7 +115,7 @@ class HeaderLayout extends Component {
                   </div>
                 }
                 <div className="header-controls__item">
-                  <button onClick={this.toCreate} className="simple-btn simple-btn_add">Добавить объявление</button>
+                  <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">Добавить объявление</button>
                 </div>
               </div>
             </div>
@@ -138,5 +136,3 @@ export default createContainer(({ params }) => {
 
 
 HeaderLayout.propTypes = {};
-
-
