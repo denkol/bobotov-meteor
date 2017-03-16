@@ -20,6 +20,9 @@
   width: 1024px;
   height: 100%;
   position: relative;
+  @include mq('tablet-wide', max) {
+    width: 100%;
+  } 
 }
 
 .center-wrapper {

@@ -208,6 +208,14 @@ a {
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1); } }
 
+@-webkit-keyframes jellyIn {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
 @keyframes jellyIn {
   from {
     -webkit-transform: scale(0);
@@ -216,7 +224,7 @@ a {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
-@-webkit-keyframes jellyIn {
+@-webkit- keyframes jellyIn {
   from {
     -webkit-transform: scale(0);
             transform: scale(0); }
@@ -23516,6 +23524,8 @@ html.ios, html.ios body {
   overflow: hidden; }
   .listening-preview:hover {
     cursor: pointer; }
+  .listening-preview--bonus1 {
+    border: 5px solid orange; }
 
 .listening-preview-more {
   font-size: 18px;
@@ -24544,6 +24554,7 @@ html.ios, html.ios body {
 
 .panel-body-menu__item {
   display: inline-block;
+  text-decoration: none;
   margin-right: 16px;
   font-weight: bold;
   font-size: 18px;
@@ -24893,6 +24904,9 @@ html.ios, html.ios body {
   width: 1024px;
   height: 100%;
   position: relative; }
+  @media only screen and (max-width: 1023px) {
+    .interface-width {
+      width: 100%; } }
 
 .center-wrapper {
   display: -webkit-box;

@@ -8,12 +8,12 @@
   overflow: hidden;
   &:hover {
     cursor: pointer;
-    // .listening-preview-header {
-    //   display: block;
-    // }
-    // .listening-preview-footer {
-    //   display: block;
-    // }
+  }
+  &--bonus1 {
+    border: 5px solid orange;
+  }
+  &--bonus2 {
+    //animation
   }
 }
 

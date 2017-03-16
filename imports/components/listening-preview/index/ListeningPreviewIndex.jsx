@@ -11,25 +11,6 @@ export default class ListeningPreviewIndex extends Component {
   toListeningPage() {
     FlowRouter.go('/listening/' + this.props.data._id);
   }
-  translate(array, key) {
-    if(array && key) {
-      var returnText = "";
-      for(var i = 0; i < array.length; i++) {
-        var arrayValue = array[i].value;
-        var arrayText = array[i].text;
-        if(key === arrayValue) {
-          returnText = arrayText;
-        }
-      }
-      if(returnText) {
-        return returnText;
-      } else {
-        return key;
-      }
-    } else {
-      return false;
-    }
-  }
   render() {
     if(this.props.data) {
       let listeningLink = '/listening/' + this.props.data._id;
@@ -44,6 +25,18 @@ export default class ListeningPreviewIndex extends Component {
       let listeningRatio = this.props.data.listeningInfo.ratio;
       let listeningPropertyType = this.props.data.listeningInfo.typeProperty;
       let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
+      let listeningBonuses = this.props.data.listeningTech.bonuses;
+      
+      function defineBonusClass() {
+        /* Какой бонус есть у объявления? */
+        if(listeningBonuses.bonus1) {
+          return "listening-preview--bonus1";
+        }
+        if(listeningBonuses.bonus2) {
+          return "listening-preview--bonus2";
+        }
+        return "";
+      }
       return(
         <div onClick={this.toListeningPage} className="listening-preview" style={{backgroundImage: 'url('+listeningMainPhoto+')'}}>
           <div className="listening-preview-header">
