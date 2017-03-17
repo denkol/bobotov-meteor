@@ -88,7 +88,6 @@ class Panel extends Component {
               <div className="panel-body-content">
                 <div className="panel-body-menu">
                   <a href="/panel" className="panel-body-menu__item panel-body-menu__item--active" title="Общая информация">Общая информация</a>
-                  <a href="/mylistenings" className="panel-body-menu__item" title="Мои объявления">Мои объявления</a>
                   {/*<div className="panel-body-menu__item">История платежей</div>*/}
                 </div>
                 <Form onSubmit={this.handleSubmit}>

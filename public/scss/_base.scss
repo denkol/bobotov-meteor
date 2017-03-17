@@ -3,10 +3,7 @@
 }
 
 html,
-body {
-  height: 100%;
-  width: 100%;
-}
+body {}
 
 body {
   font-size: 14px;
@@ -16,6 +13,9 @@ body {
   font-family: $default-font;
   color: $black-text;
   margin: 0;
+  @include mq('tablet-wide', max) {
+    min-width: 100%;
+  }
 }
 
 ul,

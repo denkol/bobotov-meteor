@@ -5,13 +5,15 @@
   left: 50%;
   margin-top: -50px;
   margin-left: 0;
+  @include mq('tablet-wide', max) {
+    display: none;
+  }
 }
 .main-menu {
   position: relative;
   top: 93px;
   left: -557px;
   width: 25px;
-  
   &__item {
     display: block;
     position: relative;

@@ -1,14 +1,13 @@
 .filter-wrapper {
   position: absolute;
   display: block;
-  // opacity: 0;
   top: 60px;
   right: 0;
   width: 300px;
-  // @include mq('desktop-ultra-wide', min) {
-  //   right: -300px;
-  // }
   z-index: 5;
+  @include mq('tablet-wide', max) {
+    display: none;
+  }
 }
 
 .filter {

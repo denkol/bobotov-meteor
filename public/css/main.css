@@ -56,11 +56,6 @@ table {
 * {
   box-sizing: border-box; }
 
-html,
-body {
-  height: 100%;
-  width: 100%; }
-
 body {
   font-size: 14px;
   font-weight: 400;
@@ -69,6 +64,9 @@ body {
   font-family: "PT Sans", sans-serif;
   color: #374050;
   margin: 0; }
+  @media only screen and (max-width: 1199px) {
+    body {
+      min-width: 100%; } }
 
 ul,
 li {
@@ -22974,6 +22972,9 @@ html.ios, html.ios body {
   height: 50px;
   display: block;
   width: 100%; }
+  @media only screen and (max-width: 1199px) {
+    .layout-header {
+      padding: 0 16px; } }
 
 .header-content {
   height: 100%;
@@ -23098,6 +23099,9 @@ html.ios, html.ios body {
   left: 50%;
   margin-top: -50px;
   margin-left: 0; }
+  @media only screen and (max-width: 1199px) {
+    .main-menu-wrapper {
+      display: none; } }
 
 .main-menu {
   position: relative;
@@ -23153,6 +23157,9 @@ html.ios, html.ios body {
   .main-content--slide-to-right {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
+  @media only screen and (max-width: 1199px) {
+    .main-content {
+      padding: 16px 10px; } }
 
 @-webkit-keyframes slideLeft {
   0% {
@@ -23174,7 +23181,6 @@ html.ios, html.ios body {
     transform: translateX(-300px);
     opacity: 0.5; } }
 
-/* Generated with Bounce.js. Edit at https://goo.gl/bxhZ9i */
 @-webkit-keyframes slideRight {
   0% {
     -webkit-transform: translateX(-300px);
@@ -23494,25 +23500,15 @@ html.ios, html.ios body {
     box-sizing: border-box;
     background-size: cover;
     background-position: center; }
-  .photo-grid__item_big {
-    -ms-flex-preferred-size: calc((100% - 0.1px) / 4 * 4 - 5px) !important;
-        flex-basis: calc((100% - 0.1px) / 4 * 4 - 5px) !important;
-    max-width: calc((100% - 0.1px) / 4 * 4 - 5px) !important;
-    height: 400px;
-    background-size: cover;
-    background-position: center; }
-  .photo-grid__item_med {
-    -ms-flex: 1 1 100%;
-    -webkit-box-flex: 1;
-            flex: 1;
-    -ms-flex-preferred-size: calc((100% - 0.1px - (5px * 2)) / 2);
-        flex-basis: calc((100% - 0.1px - (5px * 2)) / 2);
-    max-width: calc((100% - 0.1px - (5px * 2)) / 2);
-    margin-bottom: 5px;
-    margin-right: 5px;
-    box-sizing: border-box;
-    background-size: cover;
-    background-position: center; }
+    @media only screen and (max-width: 1199px) {
+      .photo-grid__item {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+        height: 350px; } }
+  @media only screen and (max-width: 1199px) {
+    .photo-grid {
+      display: block; } }
 
 .listening-preview {
   background-size: cover;
@@ -23605,6 +23601,9 @@ html.ios, html.ios body {
           align-items: center; }
   .listening-preview-params__item {
     margin-right: 32px; }
+  @media only screen and (max-width: 1199px) {
+    .listening-preview-params {
+      display: none; } }
 
 .params-icon, .params-text {
   color: white; }
@@ -23667,8 +23666,20 @@ html.ios, html.ios body {
     margin-bottom: 5px;
     max-width: 800px;
     line-height: 42px; }
+    @media only screen and (max-width: 559px) {
+      .listening-info-header__item .large-headline {
+        font-size: 20px;
+        line-height: 20px; } }
   .listening-info-header__item .medium-parag {
+    font-size: 12px;
     margin-bottom: 5px; }
+  .listening-info-header__item_headline {
+    max-width: 80%; }
+  @media only screen and (max-width: 1199px) {
+    .listening-info-header__item_price {
+      -webkit-box-flex: 0;
+          -ms-flex: none;
+              flex: none; } }
 
 .listening-info-profile {
   margin: 20px 0; }
@@ -23730,6 +23741,9 @@ html.ios, html.ios body {
   .listening-info-block--inline .listening-info-block__item {
     display: inline-block;
     margin-right: 5px; }
+  @media only screen and (max-width: 559px) {
+    .listening-info-block h2.medium-headline {
+      margin-bottom: 12px; } }
 
 .listening-info-param {
   padding-right: 16px;
@@ -23783,11 +23797,17 @@ html.ios, html.ios body {
     font-weight: bold;
     font-size: 24px;
     text-align: right; }
+    @media only screen and (max-width: 559px) {
+      .price__text {
+        font-size: 18px; } }
   .price__desc {
     font-size: 14px;
     color: white;
     font-weight: normal;
     text-align: right; }
+    @media only screen and (max-width: 559px) {
+      .price__desc {
+        font-size: 13px; } }
 
 .currency {
   display: inline-block;
@@ -23797,6 +23817,10 @@ html.ios, html.ios body {
     fill: white;
     height: 15px;
     width: 15px; }
+    @media only screen and (max-width: 559px) {
+      .currency svg {
+        height: 10px;
+        width: 10px; } }
 
 .currency-as-font {
   display: none; }
@@ -23818,6 +23842,10 @@ html.ios, html.ios body {
     transition: 0.2s;
     height: 25px;
     width: 25px; }
+    @media only screen and (max-width: 1199px) {
+      .favorite-btn__icon svg {
+        height: 32px;
+        width: 32px; } }
   .favorite-btn__icon--active svg {
     fill: #D00273;
     -webkit-animation: favorite 2000ms linear both;
@@ -23828,6 +23856,9 @@ html.ios, html.ios body {
   font-size: 18px;
   font-weight: bold;
   vertical-align: middle; }
+  @media only screen and (max-width: 1199px) {
+    .favorite-btn__text {
+      display: none; } }
 
 @-webkit-keyframes favorite {
   0% {
@@ -24006,6 +24037,10 @@ html.ios, html.ios body {
     transition: 0.2s;
     height: 25px;
     width: 25px; }
+    @media only screen and (max-width: 1199px) {
+      .print-btn__icon svg {
+        height: 32px;
+        width: 32px; } }
   .print-btn__icon--active svg {
     fill: #D00273;
     -webkit-animation: favorite 2000ms linear both;
@@ -24016,6 +24051,9 @@ html.ios, html.ios body {
   font-size: 18px;
   font-weight: bold;
   vertical-align: middle; }
+  @media only screen and (max-width: 1199px) {
+    .print-btn__text {
+      display: none; } }
 
 .share__item {
   display: inline-block;
@@ -24064,6 +24102,9 @@ html.ios, html.ios body {
   right: 0;
   width: 300px;
   z-index: 5; }
+  @media only screen and (max-width: 1199px) {
+    .filter-wrapper {
+      display: none; } }
 
 .filter {
   width: 100%;
@@ -24383,12 +24424,18 @@ html.ios, html.ios body {
           align-items: center;
   margin-bottom: 16px;
   width: 100%; }
+  @media only screen and (max-width: 1199px) {
+    .create-block-row {
+      display: block; } }
   .create-block-row__item {
     display: block;
     padding: 0;
     margin: 0;
     width: 100%;
     margin-right: 16px; }
+    @media only screen and (max-width: 1199px) {
+      .create-block-row__item {
+        width: 100%; } }
     .create-block-row__item:last-child {
       margin-right: 0; }
 
@@ -24729,6 +24776,10 @@ html.ios, html.ios body {
   height: 200px;
   width: 252px;
   background-color: transparent; }
+  @media only screen and (max-width: 1199px) {
+    .create-photo {
+      width: 100%;
+      height: 250px; } }
   .create-photo_main .create-photo-layer_init {
     border: 3px dashed #4A90E2; }
     .create-photo_main .create-photo-layer_init__icon svg {
@@ -24904,7 +24955,7 @@ html.ios, html.ios body {
   width: 1024px;
   height: 100%;
   position: relative; }
-  @media only screen and (max-width: 1023px) {
+  @media only screen and (max-width: 1199px) {
     .interface-width {
       width: 100%; } }
 
@@ -24916,12 +24967,7 @@ html.ios, html.ios body {
     margin: auto; }
 
 .history-clear-btn {
-  text-decoration: underline;
-  font-weight: bold; }
-  .history-clear-btn:hover {
-    text-decoration: underline;
-    opacity: 0.5;
-    cursor: pointer; }
+  margin-right: 0; }
 
 .disabled {
   opacity: 0.2;

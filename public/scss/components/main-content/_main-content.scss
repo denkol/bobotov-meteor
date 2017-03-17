@@ -1,9 +1,7 @@
 .main-content {
   width: 100%;
-  // height: 200%;
   min-height: 70vh;
   padding: 16px 0;
-
   background-color: white;
   position: relative;
   z-index: 6;
@@ -11,25 +9,18 @@
   transition: -webkit-transform .2s ease;
   transition: transform .2s ease;
   transition: transform .2s ease,-webkit-transform .2s ease;
-  // transition: transform 0.2s;
   &--slide-to-left {
-    // background-color: white;
-    
     -webkit-transform: translate3d(-300px,0,0);
     transform: translate3d(-300px,0,0);
-    // -webkit-animation: slideLeft 200ms linear both;
-    // animation: slideLeft 200ms linear both;
   }
   &--slide-to-right {
-    // background-color: white;
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
-    // -webkit-animation: slideRight 200ms linear both;
-    // animation: slideRight 200ms linear both;
+  }
+  @include mq('tablet-wide', max) {
+    padding: 16px 10px;
   }
 }
-
-
 
 @-webkit-keyframes slideLeft { 
   0% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1}
@@ -41,8 +32,6 @@
   100% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5} 
 }
 
-/* Generated with Bounce.js. Edit at https://goo.gl/bxhZ9i */
-
 @-webkit-keyframes slideRight { 
   0% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5}
   100% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1} 
@@ -52,4 +41,3 @@
   0% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5}
   100% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1} 
 }
-

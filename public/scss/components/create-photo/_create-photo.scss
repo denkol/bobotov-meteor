@@ -6,6 +6,10 @@ $radius-create-photo: 5px;
   height: 200px;
   width: 252px;
   background-color: transparent;
+  @include mq('tablet-wide', max) {
+    width: 100%;
+    height: 250px;
+  }
   &_main {
     .create-photo-layer_init {
       border: 3px dashed $accent-blue;

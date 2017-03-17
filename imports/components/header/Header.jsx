@@ -3,7 +3,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 //Components
 import Profile from '../profile/Profile.jsx';
-
 /* Semantic UI */
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 
@@ -52,7 +51,7 @@ class HeaderLayout extends Component {
 
   render() {
     let user = this.props.user;
-    const ModalBasicExample = () => (
+    const ExitModal = () => (
       <Modal trigger={<li className="profile-menu__item">Выйти</li>} basic size='small'>
         <Header icon='log out' content='Выход из аккаунта' />
         <Modal.Content>
@@ -99,8 +98,8 @@ class HeaderLayout extends Component {
                     <div className={this.state.subMenuOpen ? "profile-menu-content profile-menu-content--expanded" : "profile-menu-content"}>
                       <ul className="profile-menu">
                         <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">Редактировать</li>
-                        <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">Мои Объявления</li>
-                        <ModalBasicExample />
+                        <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">Мои объявления</li>
+                        <ExitModal />
                       </ul>
                     </div>
                   </div>
@@ -121,8 +120,6 @@ class HeaderLayout extends Component {
             </div>
           </div>
         </div>
-
-
       </header>
     );
   }
@@ -130,9 +127,7 @@ class HeaderLayout extends Component {
 
 export default createContainer(({ params }) => {
   const user = Meteor.user();
-
   return {user}
 }, HeaderLayout);
-
 
 HeaderLayout.propTypes = {};

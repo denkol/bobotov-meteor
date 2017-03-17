@@ -2,11 +2,10 @@
   display: flex;
   align-items: center;
   &__item {
-    // height: 50px;
-    // width: 100px;
     margin-right: 32px;
-
-    // background-color: white;
+  }
+  @include mq('tablet-wide', max) {
+    display: none;
   }
 }
 .params-icon, .params-text {

@@ -11,9 +11,13 @@
   &--inline {
     // @extend .clearfix;
      .listening-info-block__item {
-        
         display: inline-block;
         margin-right: 5px;
      }
+  }
+  @include mq('tablet-small', max) {
+    h2.medium-headline {
+      margin-bottom: 12px;
+    }
   }
 }

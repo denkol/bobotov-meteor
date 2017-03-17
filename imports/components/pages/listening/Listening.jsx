@@ -103,11 +103,11 @@ class Listening extends Component {
             <ListeningPhotos photos={listeningsPhotos}/>
             <div className="listening-info">
               <div className="listening-info-header">
-                <div className="listening-info-header__item">
+                <div className="listening-info-header__item listening-info-header__item_headline">
                   <h1 className="large-headline">{listeningHeadline}</h1>
                   <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
                 </div>
-                <div className="listening-info-header__item">
+                <div className="listening-info-header__item listening-info-header__item_price">
                   <div className="price">
                     <div className="price__text">
                       {listeningPrice}
@@ -145,7 +145,7 @@ class Listening extends Component {
                   </div>
                 </div>
                 <div className="listening-info-footer__item">
-                  <div className="share">
+                  {/*<div className="share">
                     <div className="share__item share__item_text">Поделиться:</div>
                     <a className="share__item share__item_fb" href={
                       "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer"
@@ -162,10 +162,10 @@ class Listening extends Component {
                       "&hashtags=montenegro,bobotov" +
                       "&url=" + window.location.href
                     } target="_blank" />
-                    {/* <a className="share__item share__item_gplus" href={
+                    <a className="share__item share__item_gplus" href={
                       "https://plus.google.com/share?url="+window.location.href
-                    } target="_blank" />  */}
-                  </div>
+                    } target="_blank" /> 
+                  </div>*/}
                 </div>
               </div>
             </div>

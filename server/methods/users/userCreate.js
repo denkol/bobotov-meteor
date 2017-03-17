@@ -29,7 +29,7 @@ Meteor.methods({
         }
       };
       var profileAdd = {
-        "userDesc": "Пользователь",
+        "userDesc": "user",
         "userPhoto": userInfo.profile.userPhoto,
         "favoritesList": [],
         "listeningsList": [],
