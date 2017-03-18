@@ -201,6 +201,9 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
   height: 600px;
   text-align: center;
   background-color: #eee;
+  @include mq('phone', max) {
+    height: 250px;
+  }
 }
 .image-gallery-slide {
   background: $ig-white;
@@ -233,7 +236,7 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
       font-size: .8em;
       padding: 8px 15px;
     }
-
+    
   }
 }
 

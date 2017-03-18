@@ -5,6 +5,7 @@ $filter-btn_icon-url--close: url("../img/icons/svg/ico-close.svg");
 .filter-btn-mobile {
   display: none;
   z-index: 99;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.2);
   @include mq('tablet-wide', max) {
     display: block;
   }

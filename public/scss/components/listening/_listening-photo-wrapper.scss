@@ -2,6 +2,9 @@
   height: 600px;
   .image-gallery-slides {
     height: 600px;
+    @include mq('phone', max) {
+      height: 250px;
+    }
   }
   &__item {
     height: 600px;
@@ -9,5 +12,11 @@
       height: 100%;
       width: 100%;
     }
+    @include mq('phone', max) {
+      height: 250px;
+    }
+  }
+  @include mq('phone', max) {
+    height: 250px;
   }
 }

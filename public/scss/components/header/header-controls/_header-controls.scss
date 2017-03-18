@@ -24,7 +24,11 @@
     .profile {
       margin: 0;
     }
-    
+    .profile-name, .profile-desc { //hide username and userdesc
+      @include mq('phone', max) {
+        display: none;
+      }
+    }
   }
   &__item_add {
     margin-left: 10px;
