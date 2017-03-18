@@ -59,14 +59,14 @@ table {
 body {
   font-size: 14px;
   font-weight: 400;
-  min-width: 1024px;
+  min-width: 320px;
   position: relative;
   font-family: "PT Sans", sans-serif;
   color: #374050;
   margin: 0; }
   @media only screen and (max-width: 1199px) {
     body {
-      min-width: 100%; } }
+      width: 100%; } }
 
 ul,
 li {
@@ -22855,6 +22855,9 @@ html.ios, html.ios body {
   -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent; }
+  @media only screen and (max-width: 399px) {
+    .slick-slider {
+      height: 290px !important; } }
 
 .slick-list {
   position: relative;
@@ -22907,6 +22910,9 @@ html.ios, html.ios body {
     display: block;
     height: auto;
     border: 1px solid transparent; }
+  @media only screen and (max-width: 399px) {
+    .slick-slide {
+      height: 290px !important; } }
 
 .slick-arrow.slick-hidden {
   display: none; }
@@ -23003,7 +23009,6 @@ html.ios, html.ios body {
       height: 100%; }
 
 .header-controls {
-  float: right;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23011,12 +23016,26 @@ html.ios, html.ios body {
       -ms-flex-align: center;
           align-items: center;
   height: 100%; }
-  .header-controls__item {
-    margin-right: 16px; }
-    .header-controls__item .transparent-btn {
-      margin-right: 10px; }
-    .header-controls__item:last-child {
-      margin-right: 0; }
+  .header-controls__item .transparent-btn {
+    margin-right: 10px; }
+    @media only screen and (max-width: 399px) {
+      .header-controls__item .transparent-btn {
+        margin-right: 7px;
+        padding: 6px;
+        font-size: 11px; } }
+  @media only screen and (max-width: 399px) {
+    .header-controls__item .simple-btn_blue {
+      padding: 8px;
+      font-size: 11px; } }
+  .header-controls__item:last-child {
+    margin-right: 0; }
+  .header-controls__item .profile {
+    margin: 0; }
+  .header-controls__item_add {
+    margin-left: 16px; }
+    @media only screen and (max-width: 559px) {
+      .header-controls__item_add {
+        display: none; } }
 
 .header-logo {
   width: 125px;
@@ -23031,6 +23050,9 @@ html.ios, html.ios body {
     vertical-align: middle; }
   .header-logo:hover {
     opacity: 0.5; }
+  @media only screen and (max-width: 1199px) {
+    .header-logo {
+      margin-right: 10px; } }
 
 .header-logo-img {
   margin-right: 5px;
@@ -23047,23 +23069,25 @@ html.ios, html.ios body {
   font-size: 14px;
   font-weight: 200; }
 
-.header-menu__item {
-  position: relative;
-  display: inline-block;
-  margin-right: 16px;
-  font-size: 14px;
-  font-weight: bold;
-  height: 42px;
-  padding: 12px 0; }
-  .header-menu__item--active {
-    color: #4A90E2; }
-    .header-menu__item--active:after {
-      content: "";
-      height: 2px;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0; }
+.header-menu {
+  display: none; }
+  .header-menu__item {
+    position: relative;
+    display: inline-block;
+    margin-right: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 42px;
+    padding: 12px 0; }
+    .header-menu__item--active {
+      color: #4A90E2; }
+      .header-menu__item--active:after {
+        content: "";
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0; }
 
 .footer {
   width: 100%;
@@ -23202,7 +23226,6 @@ html.ios, html.ios body {
     opacity: 1; } }
 
 .profile {
-  margin-right: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23239,11 +23262,17 @@ html.ios, html.ios body {
   color: #adacac;
   font-size: 12px;
   font-weight: bold; }
+  @media only screen and (max-width: 559px) {
+    .profile-name {
+      display: none; } }
 
 .profile-desc {
   color: #c6c6c6;
   font-size: 10px;
   font-weight: 200; }
+  @media only screen and (max-width: 559px) {
+    .profile-desc {
+      display: none; } }
 
 .profile-icon {
   -webkit-transition: -webkit-transform 0.2s;
@@ -23256,6 +23285,9 @@ html.ios, html.ios body {
   border-style: solid;
   border-width: 4px 3px 0 3px;
   border-color: #adacac transparent transparent transparent; }
+  @media only screen and (max-width: 559px) {
+    .profile-icon {
+      margin-left: 2px; } }
 
 .profile-actions {
   display: -webkit-box;
@@ -23288,6 +23320,9 @@ html.ios, html.ios body {
   z-index: 7; }
   .profile-menu-content--expanded {
     display: block; }
+  @media only screen and (max-width: 559px) {
+    .profile-menu-content {
+      right: 1px; } }
 
 .profile-menu__item {
   border-bottom: 1px solid #e8e7e7;
@@ -23323,6 +23358,13 @@ html.ios, html.ios body {
       font-weight: normal;
       display: block;
       font-size: 11px; }
+    .simple-btn_add--mobile {
+      display: none;
+      width: 100%;
+      margin-bottom: 16px; }
+      @media only screen and (max-width: 559px) {
+        .simple-btn_add--mobile {
+          display: block; } }
   .simple-btn_blue {
     padding: 10px;
     font-size: 13px;
@@ -23506,6 +23548,9 @@ html.ios, html.ios body {
         width: 100%;
         display: block;
         height: 350px; } }
+    @media only screen and (max-width: 399px) {
+      .photo-grid__item {
+        height: 290px; } }
   @media only screen and (max-width: 1199px) {
     .photo-grid {
       display: block; } }
@@ -23554,10 +23599,10 @@ html.ios, html.ios body {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
   /* IE6-9 */ }
-  .listening-preview-header__item:first-child {
-    float: left; }
   .listening-preview-header__item:last-child {
-    float: right; }
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none; }
 
 .listening-preview-footer {
   -webkit-animation: fadeInUp 0.2s linear 0s both;
@@ -23582,15 +23627,22 @@ html.ios, html.ios body {
     float: right; }
 
 .listening-preview-headline__text {
+  word-break: break-word;
   font-weight: bold;
   font-size: 22px;
   color: white;
   margin-bottom: 5px; }
+  @media only screen and (max-width: 399px) {
+    .listening-preview-headline__text {
+      font-size: 14px; } }
 
 .listening-preview-headline__desc {
   font-weight: normal;
   font-size: 14px;
   color: white; }
+  @media only screen and (max-width: 399px) {
+    .listening-preview-headline__desc {
+      font-size: 12px; } }
 
 .listening-preview-params {
   display: -webkit-box;
@@ -23808,6 +23860,9 @@ html.ios, html.ios body {
     @media only screen and (max-width: 559px) {
       .price__desc {
         font-size: 13px; } }
+  @media only screen and (max-width: 399px) {
+    .price {
+      padding: 8px; } }
 
 .currency {
   display: inline-block;
@@ -24187,11 +24242,11 @@ html.ios, html.ios body {
       background-image: url("../img/icons/svg/ico-close.svg"); }
 
 .filter-labels {
-  padding: 0 5px;
-  margin-bottom: 8px; }
+  padding: 0 5px; }
   .filter-labels__item {
     display: inline-block;
-    margin-right: 8px; }
+    margin-right: 8px;
+    margin-bottom: 5px; }
 
 .slider {
   width: 100%;
@@ -24204,6 +24259,9 @@ html.ios, html.ios body {
     padding-right: 30px; }
   .slider .listening-preview .listening-preview-header {
     padding-right: 30px; }
+    @media only screen and (max-width: 399px) {
+      .slider .listening-preview .listening-preview-header {
+        padding-right: 16px; } }
   .slider__item {
     height: 400px; }
 
@@ -24231,7 +24289,6 @@ html.ios, html.ios body {
   color: #b5b4b4; }
 
 .login-logo {
-  margin-bottom: 20px;
   text-align: center; }
   .login-logo .logo-img img {
     margin: 0 auto;
@@ -24248,6 +24305,9 @@ html.ios, html.ios body {
     font-weight: bold; }
   .login-item .simple-btn_fb {
     margin-bottom: 5px; }
+  @media only screen and (max-width: 559px) {
+    .login-item {
+      padding: 0; } }
 
 .login-item-forgot {
   font-weight: bold;
@@ -24293,8 +24353,6 @@ html.ios, html.ios body {
   border-radius: 3px;
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5; }
-  .card:first-child {
-    margin: 0 0 12px 0; }
 
 .card-content {
   padding: 15px; }
@@ -24307,7 +24365,14 @@ html.ios, html.ios body {
 .card_login {
   width: 450px;
   padding: 30px 20px;
-  margin-bottom: 15px; }
+  margin: 12px 0;
+  background-color: transparent; }
+  @media only screen and (max-width: 559px) {
+    .card_login {
+      margin: 16px 0;
+      padding: 0 20px;
+      border: none;
+      width: 100%; } }
 
 .input-wrapper {
   width: 100%; }
@@ -24965,6 +25030,9 @@ html.ios, html.ios body {
   display: flex; }
   .center-wrapper .center {
     margin: auto; }
+    @media only screen and (max-width: 559px) {
+      .center-wrapper .center {
+        width: 100%; } }
 
 .history-clear-btn {
   margin-right: 0; }

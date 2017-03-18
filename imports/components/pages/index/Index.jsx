@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 //Components
 import BigSlider from '../../big-slider/BigSlider.jsx';
 import PhotoGrid from '../../photo-grid/PhotoGrid.jsx';
@@ -16,9 +15,16 @@ export default class Index extends Component {
     $('.main-content').removeClass("main-content--slide-to-left");
     $('.filter').removeClass("filter--show");
   }
+
+  handleGo(path, e) {
+    e.preventDefault();
+    FlowRouter.go(path);
+  }
+  
   render() {
     return (
       <div>
+        <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add simple-btn_add--mobile">Добавить объявление</button>
         <BigSlider/>
         <PhotoGrid/>
       </div>

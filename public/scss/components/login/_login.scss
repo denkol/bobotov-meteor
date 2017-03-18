@@ -16,7 +16,6 @@
 }
 
 .login-logo {
-  margin-bottom: 20px;
   text-align: center;
   .logo-img img {
     margin: 0 auto;
@@ -36,6 +35,9 @@
   }
   .simple-btn_fb {
     margin-bottom: 5px;
+  }
+  @include mq('tablet-small', max) {
+    padding: 0;
   }
 }
 

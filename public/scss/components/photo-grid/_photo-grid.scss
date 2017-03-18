@@ -91,6 +91,9 @@
       display: block;
       height: 350px;
     }
+    @include mq('phone', max) {
+      height: 290px;
+    }
   }
   @include mq('tablet-wide', max) {
     display: block;

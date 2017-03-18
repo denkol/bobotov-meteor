@@ -12,6 +12,9 @@
   &:hover {
     opacity: 0.5;
   }
+  @include mq('tablet-wide', max) {
+    margin-right: 10px;
+  }
 }
 
 .header-logo-img {

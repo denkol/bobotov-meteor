@@ -29,6 +29,14 @@
       display: block;
       font-size: 11px;
     }
+    &--mobile {
+      display: none;
+      width: 100%;
+      margin-bottom: 16px;
+      @include mq('tablet-small', max) {
+        display: block;
+      }
+    }
   }
   &_blue {
     padding: 10px;

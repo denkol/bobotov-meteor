@@ -8,13 +8,13 @@ body {}
 body {
   font-size: 14px;
   font-weight: 400;
-  min-width: 1024px;
+  min-width: 320px;
   position: relative;
   font-family: $default-font;
   color: $black-text;
   margin: 0;
   @include mq('tablet-wide', max) {
-    min-width: 100%;
+    width: 100%;
   }
 }
 

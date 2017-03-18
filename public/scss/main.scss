@@ -29,6 +29,9 @@
   display: flex;
   .center {
     margin: auto;
+    @include mq('tablet-small', max) {
+      width: 100%;
+    }
   }
 }
 .history-clear-btn {

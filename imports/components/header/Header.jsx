@@ -113,7 +113,7 @@ class HeaderLayout extends Component {
                     </a>
                   </div>
                 }
-                <div className="header-controls__item">
+                <div className="header-controls__item header-controls__item_add">
                   <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">Добавить объявление</button>
                 </div>
               </div>
