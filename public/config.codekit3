@@ -668,6 +668,16 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"\/img\/icons\/svg\/ico-menu.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/img\/icons\/svg\/ico-menu.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
+		},
 	"\/img\/icons\/svg\/ico-messanges.svg": {
 		"ft": 2097152,
 		"miP": 0,
@@ -1954,6 +1964,32 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/components\/header\/css\/_header-menu.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/header\/header-toggle\/_all.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/header\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/header\/header-toggle\/_header-toggle.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/header\/css\/_header-toggle.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1

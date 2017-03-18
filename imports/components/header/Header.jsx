@@ -18,6 +18,10 @@ class HeaderLayout extends Component {
     this.closeModal = this.closeModal.bind(this);
   }
   
+  openMobileMenu() {
+    $('#mobile-menu').addClass('main-menu-wrapper--open');
+  }
+
   openSubmenu(e) {
     var container = $('.profile-menu')
     if (!container.is(e.target) // if the target of the click isn't the container...
@@ -73,6 +77,10 @@ class HeaderLayout extends Component {
         <div className="interface-width">
           <div className="header-content">
             <div className="header-content__item">
+              <button onClick={this.openMobileMenu} className="header-toggle">
+                <div className="header-toggle__icon">
+                </div>
+              </button>
               <a className="header-logo" href="/">
                 <div className="header-logo__item">
                   <div className="header-logo-img">

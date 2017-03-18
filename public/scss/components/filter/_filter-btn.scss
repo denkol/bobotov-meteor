@@ -1,5 +1,16 @@
 $filter-btn_icon-url: url("../img/icons/svg/ico-search.svg");
 $filter-btn_icon-url--close: url("../img/icons/svg/ico-close.svg");
+
+/* button on mobile  */
+.filter-btn-mobile {
+  display: none;
+  z-index: 99;
+  @include mq('tablet-wide', max) {
+    display: block;
+  }
+}
+
+/* button on desktop */
 .filter-btn {
   &:hover {
     cursor: pointer;
@@ -35,7 +46,10 @@ $filter-btn_icon-url--close: url("../img/icons/svg/ico-close.svg");
       background-image: $filter-btn_icon-url--close;
     }
   }
-  // @include mq('desktop-ultra-wide', min) {
-  //   display: none;
-  // }
+  @include mq('tablet-wide', max) {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+  }
 }

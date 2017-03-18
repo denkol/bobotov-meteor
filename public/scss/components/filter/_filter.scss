@@ -1,3 +1,22 @@
+/* Filter on mobile */
+.filter-wrapper-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgba(255,255,255,0.95);
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: 201;
+  &--open {
+    display: block;
+  }
+}
+
+/* Filter on desktop */
 .filter-wrapper {
   position: absolute;
   display: block;
@@ -16,11 +35,13 @@
   padding-bottom: 32px;
   display: none;
   z-index: 0;
+  @include mq('tablet-wide', max) {
+    display: block;
+    
+  }
   &--show {
     display: block;
-    // visibility: visible;
     transition: opacity 0.5s;
-    // display: block;
     z-index: 0;
   }
 }
@@ -38,13 +59,10 @@
       overflow: hidden;
     }
   }
-  &:hover {
-    // border: 1px solid $accent-color;
-  }
+  &:hover {}
 }
 
 .filter-block-item {
-  // width: 50%;
   width: 100%;
   margin-bottom: 10px;
   &__name {
@@ -52,40 +70,28 @@
     margin-left: 5px;
   }
   &__input {
-    // margin: 0 3px;
     width: 60%;
   }
 }
 
-.filter-items-wrapper {
-  // margin: 30px 0;
-}
+.filter-items-wrapper {}
 
 .filter-block-name {
   z-index: 0;
   display: inline-block;
   height: 20px;
   font-weight: bold;
-  // background-color: white;
-  // padding: 2px 5px;
-  // position: relative;
-  // top: -20px;
 }
 
-.filter-block-content {
-  // display: flex;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
-  // margin-top: -15px;
-}
+.filter-block-content {}
 
 .filter-actions {
   text-align: center;
   &__item {
-    button {width: 100%;}
+    button {
+      width: 100%;
+    }
     display: inline-block;
-    // width: 49.8%;
-
     width: 49%;
     padding-right: 10px;
     &:last-child {

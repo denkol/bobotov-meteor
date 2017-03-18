@@ -13,7 +13,12 @@
     opacity: 0.5;
   }
   @include mq('tablet-wide', max) {
-    margin-right: 10px;
+    margin-right: 5px;
+  }
+  @include mq('tablet-small', max) {
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

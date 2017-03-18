@@ -1,0 +1,30 @@
+$header-toggle__icon-url:  url("/img/icons/svg/ico-menu.svg");
+
+.header-toggle {
+  position: relative;
+  display: none;
+  width: 36px;
+  height: 36px;
+  background-color: #eee;
+  // background-color: transparent;
+  border-radius: 50%;
+  margin-right: 13px;
+  &__item {
+
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    background-image: $header-toggle__icon-url;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  @include mq('tablet-wide', max) {
+    display: block;
+  }
+}

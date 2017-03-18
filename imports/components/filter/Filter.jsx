@@ -9,17 +9,17 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 //Some JQuery function
 var FilterPanel = {
   open: function() {
-    $('.filter-btn').addClass('filter-btn--close');
+    $('#filter-btn').addClass('filter-btn--close');
     $('.main-content').addClass("main-content--slide-to-left");
     $('.filter').addClass("filter--show");
   },
   close: function() {
-    $('.filter-btn').removeClass('filter-btn--close');
+    $('#filter-btn').removeClass('filter-btn--close');
     $('.main-content').removeClass("main-content--slide-to-left");
     $('.filter').removeClass("filter--show");
   },
   toggle: function() {
-    $('.filter-btn').toggleClass('filter-btn--close');
+    $('#filter-btn').toggleClass('filter-btn--close');
     $('.main-content').toggleClass("main-content--slide-to-left");
     $('.filter').toggleClass("filter--show");
   }
@@ -32,10 +32,12 @@ export default class Filter extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  componentDidMount() {
-    $('.filter-btn').on('click', function() {
-      FilterPanel.toggle();
-    });
+  closeMobileFilter() {
+    $('#filterMobile').removeClass('filter-wrapper-mobile--open');
+  }
+
+  handleDesktopSearchBtn() {
+    FilterPanel.toggle();
   }
   handleSubmit(e, {formData}) {
     e.preventDefault();
@@ -69,12 +71,8 @@ export default class Filter extends Component {
     Session.setDefault('filterData', FilterCandidate);
     
     const { formData, value } = this.state;
-    return (
-      <div className="filter-wrapper">
-        <button className="filter-btn">
-          <div className="filter-btn__icon" />
-        </button>
-        <Form size="tiny" onSubmit={this.handleSubmit}>
+    const FilterForm = () => (
+      <Form size="tiny" onSubmit={this.handleSubmit}>
           <div className="filter">
             <div className="filter-items-wrapper">
               <div className="filter-block">
@@ -131,7 +129,19 @@ export default class Filter extends Component {
               </div>
             </div>
           </div>
-        </Form>
+        </Form>);
+    return (
+      <div>
+        <div id="filter" className="filter-wrapper">
+          <button id="filter-btn" onClick={this.handleDesktopSearchBtn} className="filter-btn">
+            <div className="filter-btn__icon" />
+          </button>
+          <FilterForm />
+        </div>
+        <div id="filterMobile" className="filter-wrapper-mobile">
+          <FilterForm />
+          <button onClick={this.closeMobileFilter}> Закрыть фильтр </button>
+        </div>
       </div>
     );
   }

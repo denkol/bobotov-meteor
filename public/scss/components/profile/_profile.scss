@@ -95,6 +95,7 @@
 .profile-menu-content {
   position: absolute;
   top: 95%;
+  left: auto;
   background-color: white;
   width: 150px;
   display: none;
@@ -103,6 +104,9 @@
   z-index: 7;
   &--expanded {
     display: block;
+  }
+  @include mq('tablet-wide', max) {
+    top: 43px;
   }
   @include mq('tablet-small', max) {
     right: 1px;

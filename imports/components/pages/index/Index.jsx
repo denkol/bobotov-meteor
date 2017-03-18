@@ -20,10 +20,15 @@ export default class Index extends Component {
     e.preventDefault();
     FlowRouter.go(path);
   }
-  
+  openFilter() {
+    $('#filterMobile').addClass('filter-wrapper-mobile--open');
+  }
   render() {
     return (
       <div>
+        <button onClick={this.openFilter} className="filter-btn filter-btn-mobile">
+          <div className="filter-btn__icon" />
+        </button>
         <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add simple-btn_add--mobile">Добавить объявление</button>
         <BigSlider/>
         <PhotoGrid/>

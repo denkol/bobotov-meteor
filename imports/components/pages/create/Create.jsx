@@ -258,7 +258,7 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.TextArea name='description' label='Описание объявления' placeholder='Почему люди должны обратить внимание на ваше объявление?' rows='3' required/>
+                    <Form.TextArea name='description' label='Описание объявления' rows='3' required/>
                   </div>
                 </div>
               </div>

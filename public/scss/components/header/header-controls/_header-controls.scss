@@ -9,6 +9,7 @@
         margin-right: 7px;
         padding: 6px;
         font-size: 11px;
+        display: none;
       }
     }
     .simple-btn_blue {
@@ -26,8 +27,12 @@
     
   }
   &__item_add {
-    margin-left: 16px;
+    margin-left: 10px;
+    @include mq('tablet-wide', max) {
+      margin-left: 16px;
+    }
     @include mq('tablet-small', max) {
+
       display: none;
     }
   }
