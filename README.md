@@ -29,7 +29,7 @@ cd bobotov-meteor
 
 Install npm dependencies
 ```sh
-npm install -d
+npm install
 ```
 
 Run app
