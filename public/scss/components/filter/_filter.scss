@@ -6,13 +6,15 @@
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgba(255,255,255,0.95);
+  background-color: #ffffff;
   width: auto;
-  height: auto;
-  overflow: hidden;
+  height: 100%;
+  overflow: auto;
   z-index: 201;
-  &--open {
-    display: block;
+  @include mq('tablet-wide', max) {
+    &--open {
+      display: block;
+    }
   }
 }
 
@@ -37,7 +39,9 @@
   z-index: 0;
   @include mq('tablet-wide', max) {
     display: block;
-    
+    height: 100%;
+    padding: 16px;
+    padding-bottom: 64px; //for buttons
   }
   &--show {
     display: block;
@@ -87,9 +91,13 @@
 
 .filter-actions {
   text-align: center;
+
   &__item {
     button {
       width: 100%;
+      @include mq('tablet-wide', max) {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important; //sorry 
+      }
     }
     display: inline-block;
     width: 49%;
@@ -97,5 +105,13 @@
     &:last-child {
       padding-right: 0;
     }
+  }
+
+  @include mq('tablet-wide', max) {
+    position: fixed;
+    bottom: 22px;
+    left: 42%;
+    transform: translateX(-50%);
+    width: 80%;
   }
 }

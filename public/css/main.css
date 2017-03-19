@@ -24292,13 +24292,14 @@ html.ios, html.ios body {
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #ffffff;
   width: auto;
-  height: auto;
-  overflow: hidden;
+  height: 100%;
+  overflow: auto;
   z-index: 201; }
-  .filter-wrapper-mobile--open {
-    display: block; }
+  @media only screen and (max-width: 1199px) {
+    .filter-wrapper-mobile--open {
+      display: block; } }
 
 /* Filter on desktop */
 .filter-wrapper {
@@ -24320,7 +24321,10 @@ html.ios, html.ios body {
   z-index: 0; }
   @media only screen and (max-width: 1199px) {
     .filter {
-      display: block; } }
+      display: block;
+      height: 100%;
+      padding: 16px;
+      padding-bottom: 64px; } }
   .filter--show {
     display: block;
     -webkit-transition: opacity 0.5s;
@@ -24359,8 +24363,19 @@ html.ios, html.ios body {
     padding-right: 10px; }
     .filter-actions__item button {
       width: 100%; }
+      @media only screen and (max-width: 1199px) {
+        .filter-actions__item button {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; } }
     .filter-actions__item:last-child {
       padding-right: 0; }
+  @media only screen and (max-width: 1199px) {
+    .filter-actions {
+      position: fixed;
+      bottom: 22px;
+      left: 42%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      width: 80%; } }
 
 /* button on mobile  */
 .filter-btn-mobile {

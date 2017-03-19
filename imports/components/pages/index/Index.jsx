@@ -21,6 +21,8 @@ export default class Index extends Component {
     FlowRouter.go(path);
   }
   openFilter() {
+    $('body').css('overflow', 'hidden'); //lock scroll when filter open
+    $('.filter-btn').addClass('filter-btn--close'); //switch buttons to red color
     $('#filterMobile').addClass('filter-wrapper-mobile--open');
   }
   render() {

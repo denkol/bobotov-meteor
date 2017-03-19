@@ -19,7 +19,7 @@ var FilterPanel = {
     $('.filter').removeClass("filter--show");
   },
   toggle: function() {
-    $('#filter-btn').toggleClass('filter-btn--close');
+    $('.filter-btn').toggleClass('filter-btn--close'); //switch to red color
     $('.main-content').toggleClass("main-content--slide-to-left");
     $('.filter').toggleClass("filter--show");
   }
@@ -33,6 +33,8 @@ export default class Filter extends Component {
   }
   
   closeMobileFilter() {
+    $('body').css('overflow', 'initial'); //unlock scroll when filter open
+    $('.filter-btn').removeClass('filter-btn--close'); //switch button to blue color 
     $('#filterMobile').removeClass('filter-wrapper-mobile--open');
   }
 
@@ -139,8 +141,12 @@ export default class Filter extends Component {
           <FilterForm />
         </div>
         <div id="filterMobile" className="filter-wrapper-mobile">
-          <FilterForm />
-          <button onClick={this.closeMobileFilter}> Закрыть фильтр </button>
+          <div className="filter-content">
+            <FilterForm />
+            <button className="filter-btn filter-btn-mobile" onClick={this.closeMobileFilter}>
+              <div className="filter-btn__icon" />
+            </button>
+          </div>
         </div>
       </div>
     );
