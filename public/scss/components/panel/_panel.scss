@@ -45,5 +45,15 @@
     color: gray;
     font-size: 12px;
     margin-right: 16px;
+    @include mq('tablet-wide', max) {
+      display: block;
+      margin-right: 0;
+      margin-bottom: 16px;
+
+    }
+  }
+  @include mq('tablet-wide', max) {
+    text-align: center;
+    margin: 32px 0;
   }
 }

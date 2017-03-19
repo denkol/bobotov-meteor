@@ -31,12 +31,11 @@
     }
   }
   &__item_add {
-    margin-left: 10px;
+    margin-left: 16px;
     @include mq('tablet-wide', max) {
       margin-left: 16px;
     }
     @include mq('tablet-small', max) {
-
       display: none;
     }
   }

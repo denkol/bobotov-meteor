@@ -81,6 +81,12 @@
       border-color: transparent transparent #eee transparent;
     } 
   }
+  @include mq('tablet-wide', max) {
+    position: relative;
+    top: -180px;
+    left: auto;
+    margin: 0 auto;
+  }
 }
 
 .panel-photo-add, .panel-photo-remove {

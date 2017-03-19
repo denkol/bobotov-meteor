@@ -3,14 +3,33 @@
   width: 500px;
   left: 270px;
   top: -34px;
+  @include mq('tablet-wide', max) {
+    margin-top: 32px;
+    position: relative;
+    width: 100%;
+    top: -87px;
+    left: auto;
+  }
 }
 
 .panel-body-content {
-
+  @include mq('tablet-wide', max) {
+    padding: 0 20%;
+  }
+  @include mq('tablet-small', max) {
+    padding: 0 20px;
+  }
+  @include mq('phone', max) {
+    padding: 0;
+  }
 }
 
 .panel-body-menucontent {
   margin-top: 32px;
+  margin-top: 46px; //while without menu
+  @include mq('tablet-wide', max) {
+    margin-top: 0;
+  }
 }
 
 .panel-body-menu {

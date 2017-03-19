@@ -6,6 +6,7 @@
   background-color: darken($bg-grey, 5%);
   font-size: 11px;
   font-weight: normal;
+  color: black;
   &:hover {
     background-color: darken(darken($bg-grey, 5%), 5%);
   }

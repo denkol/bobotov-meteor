@@ -23045,7 +23045,7 @@ html.ios, html.ios body {
     .header-controls__item .profile-name, .header-controls__item .profile-desc {
       display: none; } }
   .header-controls__item_add {
-    margin-left: 10px; }
+    margin-left: 16px; }
     @media only screen and (max-width: 1199px) {
       .header-controls__item_add {
         margin-left: 16px; } }
@@ -23424,7 +23424,7 @@ html.ios, html.ios body {
 
 .profile-menu-content {
   position: absolute;
-  top: 95%;
+  top: 110%;
   left: auto;
   background-color: white;
   width: 150px;
@@ -23445,6 +23445,8 @@ html.ios, html.ios body {
   border-bottom: 1px solid #e8e7e7;
   font-size: 12px;
   padding: 10px; }
+  .profile-menu__item:last-child {
+    border-bottom: none; }
   .profile-menu__item:hover {
     cursor: pointer;
     background-color: #f4f4f4; }
@@ -23456,7 +23458,8 @@ html.ios, html.ios body {
   outline: none;
   background-color: #ececec;
   font-size: 11px;
-  font-weight: normal; }
+  font-weight: normal;
+  color: black; }
   .simple-btn:hover {
     background-color: #e0dfdf; }
   .simple-btn:active {
@@ -24942,15 +24945,47 @@ html.ios, html.ios body {
     color: gray;
     font-size: 12px;
     margin-right: 16px; }
+    @media only screen and (max-width: 1199px) {
+      .panel-controls__item {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 16px; } }
+  @media only screen and (max-width: 1199px) {
+    .panel-controls {
+      text-align: center;
+      margin: 32px 0; } }
 
 .panel-body {
   position: relative;
   width: 500px;
   left: 270px;
   top: -34px; }
+  @media only screen and (max-width: 1199px) {
+    .panel-body {
+      margin-top: 32px;
+      position: relative;
+      width: 100%;
+      top: -87px;
+      left: auto; } }
+
+@media only screen and (max-width: 1199px) {
+  .panel-body-content {
+    padding: 0 20%; } }
+
+@media only screen and (max-width: 559px) {
+  .panel-body-content {
+    padding: 0 20px; } }
+
+@media only screen and (max-width: 399px) {
+  .panel-body-content {
+    padding: 0; } }
 
 .panel-body-menucontent {
-  margin-top: 32px; }
+  margin-top: 32px;
+  margin-top: 46px; }
+  @media only screen and (max-width: 1199px) {
+    .panel-body-menucontent {
+      margin-top: 0; } }
 
 .panel-body-menu__item {
   display: inline-block;
@@ -25057,6 +25092,12 @@ html.ios, html.ios body {
       border-style: solid;
       border-width: 0 5px 10px 5px;
       border-color: transparent transparent #eee transparent; }
+  @media only screen and (max-width: 1199px) {
+    .panel-photo {
+      position: relative;
+      top: -180px;
+      left: auto;
+      margin: 0 auto; } }
 
 .panel-photo-add:hover, .panel-photo-remove:hover {
   cursor: pointer;

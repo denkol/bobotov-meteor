@@ -86,10 +86,10 @@ class Panel extends Component {
             <PanelPhoto photoUrl={userPhoto} />
             <div className="panel-body">
               <div className="panel-body-content">
-                <div className="panel-body-menu">
+                {/*<div className="panel-body-menu">
                   <a href="/panel" className="panel-body-menu__item panel-body-menu__item--active" title="Общая информация">Общая информация</a>
-                  {/*<div className="panel-body-menu__item">История платежей</div>*/}
-                </div>
+                  <div className="panel-body-menu__item">История платежей</div>
+                </div>*/}
                 <Form onSubmit={this.handleSubmit}>
                   <div className="panel-body-menucontent">
                     <div className="panel-headline">
