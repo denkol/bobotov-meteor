@@ -23621,8 +23621,8 @@ html.ios, html.ios body {
               transform: scale(0.99); }
     .photo-grid .listening-preview .listening-preview-headline__text {
       font-size: 14px;
-      width: 200px;
-      max-height: 28px;
+      line-height: 19px;
+      max-height: 19px;
       overflow: hidden; }
     .photo-grid .listening-preview .listening-preview-footer {
       display: none; }
@@ -23632,10 +23632,7 @@ html.ios, html.ios body {
       content: none; }
     .photo-grid .listening-preview .listening-preview-header__item {
       display: block;
-      margin-bottom: 10px;
-      -webkit-box-flex: 0;
-          -ms-flex: none;
-              flex: none; }
+      margin-bottom: 10px; }
       .photo-grid .listening-preview .listening-preview-header__item .price {
         -webkit-box-flex: 0;
             -ms-flex: none;
@@ -23719,7 +23716,7 @@ html.ios, html.ios body {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
   /* IE6-9 */ }
-  .listening-preview-header__item:last-child {
+  .listening-preview-header__item_price {
     -webkit-box-flex: 0;
         -ms-flex: none;
             flex: none; }
@@ -23746,23 +23743,24 @@ html.ios, html.ios body {
   .listening-preview-footer__item:last-child {
     float: right; }
 
-.listening-preview-headline__text {
-  word-break: break-word;
-  font-weight: bold;
-  font-size: 22px;
-  color: white;
-  margin-bottom: 5px; }
-  @media only screen and (max-width: 399px) {
-    .listening-preview-headline__text {
-      font-size: 14px; } }
-
-.listening-preview-headline__desc {
-  font-weight: normal;
-  font-size: 14px;
-  color: white; }
-  @media only screen and (max-width: 399px) {
-    .listening-preview-headline__desc {
-      font-size: 12px; } }
+.listening-preview-headline {
+  margin-right: 16px; }
+  .listening-preview-headline__text {
+    word-break: break-word;
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 5px; }
+    @media only screen and (max-width: 399px) {
+      .listening-preview-headline__text {
+        font-size: 14px; } }
+  .listening-preview-headline__desc {
+    font-weight: normal;
+    font-size: 14px;
+    color: white; }
+    @media only screen and (max-width: 399px) {
+      .listening-preview-headline__desc {
+        font-size: 12px; } }
 
 .listening-preview-params {
   display: -webkit-box;

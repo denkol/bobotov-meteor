@@ -40,13 +40,13 @@ export default class ListeningPreviewIndex extends Component {
       return(
         <div onClick={this.toListeningPage} className="listening-preview" style={{backgroundImage: 'url('+listeningMainPhoto+')'}}>
           <div className="listening-preview-header">
-            <div className="listening-preview-header__item">
+            <div className="listening-preview-header__item listening-preview-header__item_headline">
               <div className="listening-preview-headline">
                 <div className="listening-preview-headline__text">{listeningHeadline}</div>
                 <div className="listening-preview-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
               </div>
             </div>
-            <div className="listening-preview-header__item">
+            <div className="listening-preview-header__item listening-preview-header__item_price">
               <div className="price">
                 <div className="price__text">
                   {listeningPrice}

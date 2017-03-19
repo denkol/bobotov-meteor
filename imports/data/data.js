@@ -40,10 +40,12 @@ export const TypeDeal = [
 export const TypeProperty = [
   { key: 'ap', value: 'appart', text: 'Квартира / Аппартамент' },
   { key: 'rm', value: 'room', text: 'Комната' },
+  { key: 'st', value: 'studio', text: 'Студия' },
   { key: 'ht', value: 'hotel', text: 'Отель / Мотель / Гостиница' },
   { key: 'ms', value: 'mansion', text: 'Вилла / Особняк' },
   { key: 'hm', value: 'home', text: 'Дом / Коттедж' },
   { key: 'of', value: 'office', text: 'Офис' },
+  { key: 'ln', value: 'land', text: 'Земельный участок' },
   { key: 'co', value: 'commercial', text: 'Коммерческое помещение' },
   { key: 'ot', value: 'other', text: 'Другое' }
 ];

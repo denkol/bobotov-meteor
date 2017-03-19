@@ -17,8 +17,11 @@
     // &:first-child {
     //   float: left;
     // }
-    &:last-child {
+    &_headline {
+
+    }
+    &_price {
       flex: none;
-    } 
+    }
   }
 }
