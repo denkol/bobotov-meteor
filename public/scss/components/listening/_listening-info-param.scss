@@ -3,12 +3,32 @@
   padding-bottom: 10px;
   &__item {
     font-size: 18px;
-
     &:first-child {
       font-weight: normal;
     }
     &:last-child {
       font-weight: bold;
     }
+    @include mq('phone', max) {
+      font-size: 14px;
+    }
   }
+
+
+  &_general {
+    @include mq('tablet-small', max) {
+      padding-right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      border-bottom: 1px dotted #eee;
+      .listening-info-param__item {
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
 }

@@ -11,24 +11,14 @@ export default class ListeningOptions extends Component {
       options = this.props.options;
     }
     return (
-      <div className="listening-info-block listening-info-block--inline">
+      <div className="listening-info-block listening-info-block_general">
         <h2 className="medium-headline">Общая информация</h2>
         {options.map((option, index) => {
-          if(option.optionName === "Площадь") {
-            return (
-              <div key={"option-" + index} className="listening-info-block__item">
-                <div className="listening-info-param">
-                  <span className="listening-info-param__item">{option.optionName}: </span>
-                  <span className="listening-info-param__item">{option.optionValue} m²</span>
-                </div>
-              </div>
-            );
-          }
           return (
             <div key={"option-" + index} className="listening-info-block__item">
-              <div className="listening-info-param">
+              <div className="listening-info-param listening-info-param_general">
                 <span className="listening-info-param__item">{option.optionName}: </span>
-                <span className="listening-info-param__item">{option.optionValue}</span>
+                <span className="listening-info-param__item">{option.optionValue} {option.optionName === "Площадь" ? "m²" : ""} </span>
               </div>
             </div>
           );

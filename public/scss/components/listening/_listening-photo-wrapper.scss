@@ -1,7 +1,25 @@
 .listening-photo-wrapper {
   height: 600px;
+  .image-gallery-image {
+    
+    @include mq('tablet-wide', max) {
+      height: 500;
+    }
+    @include mq('tablet-small', max) {
+      height: 350px;
+    }
+    @include mq('phone', max) {
+      height: 250px;
+    }
+  }
   .image-gallery-slides {
     height: 600px;
+    @include mq('tablet-wide', max) {
+      height: 500;
+    }
+    @include mq('tablet-small', max) {
+      height: 350px;
+    }
     @include mq('phone', max) {
       height: 250px;
     }
@@ -12,9 +30,21 @@
       height: 100%;
       width: 100%;
     }
+    @include mq('tablet-wide', max) {
+      height: 500;
+    }
+    @include mq('tablet-small', max) {
+      height: 350px;
+    }
     @include mq('phone', max) {
       height: 250px;
     }
+  }
+  @include mq('tablet-wide', max) {
+    height: 500;
+  }
+  @include mq('tablet-small', max) {
+    height: 350px;
   }
   @include mq('phone', max) {
     height: 250px;

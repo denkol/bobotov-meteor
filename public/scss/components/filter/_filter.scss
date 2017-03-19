@@ -9,7 +9,7 @@
   background-color: #ffffff;
   width: auto;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   z-index: 201;
   @include mq('tablet-wide', max) {
     &--open {
@@ -17,7 +17,10 @@
     }
   }
 }
-
+.filter-content {
+  height: 100%;
+  overflow: auto;
+}
 /* Filter on desktop */
 .filter-wrapper {
   position: absolute;
@@ -108,10 +111,12 @@
   }
 
   @include mq('tablet-wide', max) {
+    padding-right: 63px;
+    padding-left: 7px;
     position: fixed;
-    bottom: 22px;
-    left: 42%;
+    bottom: 20px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 80%;
+    width: 100%;
   }
 }

@@ -1,5 +1,6 @@
 .listening-preview-simple-wrapper {
 }
+
 .listening-preview-simple {
   display: flex;
   align-items: center;
@@ -19,6 +20,10 @@
     width: 50%;
     margin-right: 16px;
     margin-left: 16px;
+    @include mq('phone', max) {
+      margin-right: 8px;
+      margin-left: 8px;
+    }
   }
   &__items-block {
     width: 100%;
@@ -40,6 +45,16 @@
       cursor: pointer;
       opacity: 0.8;
     }
+    @include mq('tablet-wide', max) {
+      position: static;
+      right: auto;
+      top: auto;
+      transform: none;
+    }
+  }
+  @include mq('phone', max) {
+    padding-bottom: 8px;
+    padding-top: 8px;
   }
 }
 .preview-simple-photo {
@@ -51,6 +66,9 @@
   width: 100px;
   &:hover {
     cursor: pointer;
+  }
+  @include mq('phone', max) {
+    width: 70px;
   }
 }
 .preview-simple-headline {
@@ -67,10 +85,17 @@
       cursor: pointer;
       text-decoration: underline;
     }
+    @include mq('phone', max) {
+      font-size: 18px;
+      max-height: 36px;
+    }
   }
   &__desc {
     font-size: 14px;
     font-weight: normal;
+    @include mq('phone', max) {
+      font-size: 12px;
+    }
   }
 }
 
@@ -97,6 +122,9 @@
         cursor: pointer;
         opacity: 0.8;
       }
+    }
+    @include mq('phone', max) {
+      margin-right: 8px;
     }
   }
 }

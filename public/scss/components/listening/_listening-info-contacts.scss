@@ -12,5 +12,9 @@
     &:last-child {
       font-weight: bold;
     }
+
+    @include mq('phone', max) {
+      font-size: 14px;
+    }
   }
 }

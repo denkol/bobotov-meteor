@@ -198,12 +198,9 @@ $ig-transparent: rgba(0, 0, 0, 0) !default;
   white-space: nowrap;
 }
 .image-gallery-image {
-  height: 600px;
+  // height: 600px;
   text-align: center;
   background-color: #eee;
-  @include mq('phone', max) {
-    height: 250px;
-  }
 }
 .image-gallery-slide {
   background: $ig-white;

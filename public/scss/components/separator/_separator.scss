@@ -6,5 +6,9 @@
     font-weight: bold;
     font-size: 18px;
     color: black;
+    @include mq('phone', max) {
+      font-size: 14px;
+    }
   }
+  @include mq('phone', max) {}
 }

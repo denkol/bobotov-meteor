@@ -1,23 +1,41 @@
 .listening-info-block {
   display: block;
   margin: 16px 0;
-  h2.medium-headline {
-    margin-bottom: 16px;
-  }
   &__item {
-
     margin-bottom: 2px;
   }
   &--inline {
-    // @extend .clearfix;
-     .listening-info-block__item {
-        display: inline-block;
-        margin-right: 5px;
-     }
+   .listening-info-block__item {
+      display: inline-block;
+      margin-right: 5px;
+   }
+  }
+  &_general {
+    .listening-info-block__item {
+      display: inline-block;
+      margin-right: 5px;
+      @include mq('tablet-small', max) {
+        display: block;
+        margin-right: 0;
+      }
+    }
+  }
+  h2.medium-headline {
+    margin-bottom: 16px;
   }
   @include mq('tablet-small', max) {
     h2.medium-headline {
       margin-bottom: 12px;
+    }
+    p.large-parag {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  @include mq('phone', max) {
+    h2.medium-headline {
+      margin-bottom: 12px;
+      font-size: 18px;
     }
     p.large-parag {
       font-size: 14px;
