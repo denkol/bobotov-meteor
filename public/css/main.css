@@ -23128,6 +23128,8 @@ html.ios, html.ios body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; }
+  .header-toggle:hover {
+    background-color: #d5d4d4; }
   @media only screen and (max-width: 1199px) {
     .header-toggle {
       display: block; } }
@@ -23180,6 +23182,8 @@ html.ios, html.ios body {
       display: none;
       overflow: hidden;
       z-index: 201;
+      -webkit-animation: fadeIn 0.2s ease 0s both;
+              animation: fadeIn 0.2s ease 0s both;
       /* Clear */
       margin-top: 0; } }
   .main-menu-wrapper--open {
@@ -23272,6 +23276,8 @@ html.ios, html.ios body {
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     fill: black; }
+  .mobile-menu-close-btn:hover {
+    background-color: #d5d4d4; }
   @media only screen and (max-width: 1199px) {
     .mobile-menu-close-btn {
       display: block; } }

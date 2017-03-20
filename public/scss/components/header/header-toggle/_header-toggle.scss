@@ -24,6 +24,9 @@ $header-toggle__icon-url:  url("/img/icons/svg/ico-menu.svg");
     background-position: center;
     background-size: cover;
   }
+  &:hover {
+    background-color: darken(#eee, 10%);
+  }
   @include mq('tablet-wide', max) {
     display: block;
   }

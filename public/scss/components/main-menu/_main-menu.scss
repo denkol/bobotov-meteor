@@ -18,10 +18,9 @@
     display: none;
     overflow: hidden;
     z-index: 201;
-
+    animation: fadeIn 0.2s ease 0s both;
     /* Clear */
     margin-top: 0;
-
   }
   &--open {
     display: block;
@@ -116,6 +115,9 @@
     width: 14px;
     transform: translate(-50%, -50%);
     fill: black;
+  }
+  &:hover {
+    background-color: darken(#eee, 10%);
   }
   @include mq('tablet-wide', max) {
     display: block;

@@ -23,7 +23,7 @@ export default class Index extends Component {
   openFilter() {
     $('body').css('overflow', 'hidden'); //lock scroll when filter open
     $('.filter-btn').addClass('filter-btn--close'); //switch buttons to red color
-    $('#filterMobile').addClass('filter-wrapper-mobile--open');
+    $('#filterMobile').addClass('filter-mobile--open');
   }
   render() {
     return (
