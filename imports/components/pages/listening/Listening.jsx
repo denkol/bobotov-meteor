@@ -14,7 +14,7 @@ import ListeningContacts from './ListeningContacts.jsx';
 
 
 /* Semantic UI */
-import { Message, Dimmer, Loader } from 'semantic-ui-react';
+import { Message, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
 
 class Listening extends Component {
   constructor(props) {
@@ -22,13 +22,19 @@ class Listening extends Component {
     this.state = {}
   }
   componentDidMount() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); //scroll to top
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
   
   /* Save to history */
   saveToHistory(args) {
     Meteor.call("listeningSaveToHistory", args);
+  }
+  
+  handleGo(path, e) {
+    e.preventDefault();
+    this.setState({subMenuOpen: false});
+    FlowRouter.go(path);
   }
 
   render() {
@@ -168,6 +174,7 @@ class Listening extends Component {
                   </div>*/}
                 </div>
               </div>
+              <Button primary onClick={this.handleGo.bind(this, '/')}>Вернуться назад</Button>
             </div>
           </div>
         );

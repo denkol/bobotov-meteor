@@ -1,5 +1,18 @@
+/* Filter achor fixed */
+.filter-wrapper {
+  //Only on desktop
+  @include mq('tablet-wide', min) {
+    position: fixed;
+    width: 0;
+    top: 100px;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: 0;
+    z-index: 33;
+  }
+}
 /* Filter on mobile */
-.filter-wrapper-mobile {
+.filter-mobile {
   display: none;
   position: fixed;
   top: 0;
@@ -22,33 +35,51 @@
   overflow: auto;
 }
 /* Filter on desktop */
-.filter-wrapper {
+.filter-desktop {
   position: absolute;
   display: block;
-  top: 60px;
-  right: 0;
+  top: 80px;
+  right: -515px;
   width: 300px;
-  z-index: 5;
+  z-index: 33;
   @include mq('tablet-wide', max) {
     display: none;
   }
 }
 
 .filter {
-  width: 100%;
-  padding: 0 16px;
-  padding-bottom: 32px;
   display: none;
   z-index: 0;
+  box-shadow: 0px 0px 13px rgba(0,0,0,0.1);
+  padding: 15px;
+  border-radius: 14px 0 14px 14px;
+  background-color: #eee;
+  width: 300px;
+  animation: fadeIn 0.2s ease 0s both;
+  &:after {
+    content: "";
+    position: absolute;
+    background-color: #eee;
+    height: 66px;
+    width: 59px;
+    border-radius: 0 14px 14px 0;
+    top: 0;
+    z-index: 0;
+    right: -59px;
+  }
   @include mq('tablet-wide', max) {
     display: block;
     height: 100%;
     padding: 16px;
     padding-bottom: 64px; //for buttons
+    top: auto;
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
   }
   &--show {
     display: block;
-    transition: opacity 0.5s;
     z-index: 0;
   }
 }
@@ -73,8 +104,12 @@
   width: 100%;
   margin-bottom: 10px;
   &__name {
-    font-size: 12px;
-    margin-left: 5px;
+    display: block;
+    margin: 0 0 .28571429rem 0;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: .92857143em;
+    font-weight: 700;
+    text-transform: none;
   }
   &__input {
     width: 60%;
@@ -84,10 +119,12 @@
 .filter-items-wrapper {}
 
 .filter-block-name {
-  z-index: 0;
-  display: inline-block;
-  height: 20px;
-  font-weight: bold;
+  display: block;
+  margin: 0 0 .28571429rem 0;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: .92857143em;
+  font-weight: 700;
+  text-transform: none;
 }
 
 .filter-block-content {}

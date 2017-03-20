@@ -1,7 +1,7 @@
 .listening-photo-wrapper {
   height: 600px;
   .image-gallery-image {
-    
+    height: 600px;
     @include mq('tablet-wide', max) {
       height: 500;
     }

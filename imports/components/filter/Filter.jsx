@@ -10,17 +10,14 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 var FilterPanel = {
   open: function() {
     $('#filter-btn').addClass('filter-btn--close');
-    $('.main-content').addClass("main-content--slide-to-left");
     $('.filter').addClass("filter--show");
   },
   close: function() {
     $('#filter-btn').removeClass('filter-btn--close');
-    $('.main-content').removeClass("main-content--slide-to-left");
     $('.filter').removeClass("filter--show");
   },
   toggle: function() {
     $('.filter-btn').toggleClass('filter-btn--close'); //switch to red color
-    $('.main-content').toggleClass("main-content--slide-to-left");
     $('.filter').toggleClass("filter--show");
   }
 }
@@ -133,14 +130,14 @@ export default class Filter extends Component {
           </div>
         </Form>);
     return (
-      <div>
-        <div id="filter" className="filter-wrapper">
+      <div className="filter-wrapper">
+        <div id="filter" className="filter-desktop">
           <button id="filter-btn" onClick={this.handleDesktopSearchBtn} className="filter-btn">
             <div className="filter-btn__icon" />
           </button>
           <FilterForm />
         </div>
-        <div id="filterMobile" className="filter-wrapper-mobile">
+        <div id="filterMobile" className="filter-mobile">
           <div className="filter-content">
             <FilterForm />
             <button className="filter-btn filter-btn-mobile" onClick={this.closeMobileFilter}>

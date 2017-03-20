@@ -10,6 +10,9 @@ class History extends Component {
     this.state = {}
     this.removeHistory = this.removeHistory.bind(this);
   }
+  componentDidMount() {
+    window.scrollTo(0, 0); //scroll to top
+  }
   removeHistory(event) {
     event.preventDefault();
     Meteor.call('removeAllHistory', (err, res) => {

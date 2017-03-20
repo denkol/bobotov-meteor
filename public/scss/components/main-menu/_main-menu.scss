@@ -5,7 +5,7 @@
   left: 50%;
   margin-top: -50px;
   margin-left: 0;
-  
+  z-index: 33;
   @include mq('tablet-wide', max) {
     position: fixed;
     top: 0;
@@ -41,25 +41,19 @@
     width: 25px;
     height: 25px;
     transition: transform .2s;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
-      svg {
-        fill: $accent-blue;
-        cursor: pointer;
-      }
+    &:hover > .main-menu-text {
+      display: block;
     }
-    &:active {
+    &:hover {
       cursor: pointer;
     }
     svg {
+      z-index: 444;
+      position: relative;
       fill: gray;
       width: 25px;
       height: 25px;
       transition: 0.2s;
-    }
-    .main-menu-text {
-      display: none;
     }
     &--active {
       svg {
@@ -104,10 +98,10 @@
 }
 
 .mobile-menu-close-btn {
+  display: none;
   position: absolute;
   left: 50%;
   bottom: 24px;
-  display: block;
   height: 48px;
   width: 48px;
   background-color: #eee;
@@ -122,15 +116,34 @@
     width: 14px;
     transform: translate(-50%, -50%);
     fill: black;
-    // background-image: url("/img/icons/svg/ico-close.svg");
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // background-size: cover;
+  }
+  @include mq('tablet-wide', max) {
+    display: block;
   }
 }
 
 .main-menu-text {
+  //For mobile 
   font-weight: bold;
   font-size: 24px;
   text-decoration: none;
+
+  //For desktop (MIN)
+  @include mq('tablet-wide', min) {
+    display: none;
+    border-radius: 22px;
+    box-shadow: 1px 1px 9px rgba(0,0,0,0.1);
+    left: -9px;
+    padding: 9px;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    padding-left: 41px;
+    top: -7px;
+    position: absolute;
+    z-index: 223;
+    background-color: #eee;
+    width: 200px;
+    font-size: 16px;
+    animation: fadeIn 0.2s ease 0s both;
+  }
 }

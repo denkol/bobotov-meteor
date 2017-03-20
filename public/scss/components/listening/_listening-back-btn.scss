@@ -1,0 +1,32 @@
+.listening-back-wrapper {
+  position: fixed;
+  width: 0;
+  top: 100px;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: 0;
+  z-index: 33;
+  @include mq('tablet-wide', max) {
+    display: none;
+  }
+}
+
+.listening-back-btn {
+  display: block;
+  position: fixed;
+  height: 100px;
+  width: 50px;
+  border-radius: 0 50px 50px 0;
+  opacity: 0.1;
+  background-color: black;
+  top: 50%;
+  margin-top: -50px;
+  left: 0;
+  &__icon {
+
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}

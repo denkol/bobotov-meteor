@@ -11,6 +11,9 @@ class My extends Component {
     super(props);
     this.state = {}
   }
+  componentDidMount() {
+    window.scrollTo(0, 0); //scroll to top
+  }
   render() {
     let loading = this.props.loading;
     let listenings = this.props.listenings; 
