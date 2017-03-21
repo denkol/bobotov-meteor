@@ -60,85 +60,51 @@ export default class ListeningPreviewSimple extends Component {
       let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
       let listeningViews = this.props.data.listeningTech.views;
       return (
-        <div className="listening-preview-simple">
+        <div>
           <Snackbar open={this.state.snackbar.open} message={this.state.snackbar.message} />
-          <div className="listening-preview-simple__photo-block">
-            <a href={listeningLink}>
-              <div className="preview-simple-photo" style={{backgroundImage: "url("+listeningMainPhoto+")"}}/>
-            </a>
-          </div>
-          <div className="listening-preview-simple__headline-block">
-            <div className="preview-simple-headline">
-              <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
-              <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
-            </div>
-          </div>
-          <div className="listening-preview-simple__items-block">
-          </div> 
-          {/*<div className="listening-preview-simple__price-block">
-            <div className="price">
-              <div className="price__text">
-                {listeningPrice}
-                <div className="currency">
-                  <svg className="ico-euro" role="img">
-                    <use xlinkHref="#ico-euro" />
-                  </svg>
+          <div className="listening-preview-simple ">
+            <div className="listening-preview-simple__item">
+              <div className="listening-preview-simple__photo-block">
+                <a href={listeningLink}>
+                  <div className="preview-simple-photo" style={{backgroundImage: "url("+listeningMainPhoto+")"}}/>
+                </a>
+              </div>
+              <div className="listening-preview-simple__headline-block">
+                <div className="preview-simple-headline">
+                  <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
+                  <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
                 </div>
               </div>
-              <div className="price__desc">{listeningPaymentPeriod}</div>
+              <div className="listening-preview-simple__items-block">
+              </div> 
+              {/*<div className="listening-preview-simple__price-block">
+                <div className="price">
+                  <div className="price__text">
+                    {listeningPrice}
+                    <div className="currency">
+                      <svg className="ico-euro" role="img">
+                        <use xlinkHref="#ico-euro" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="price__desc">{listeningPaymentPeriod}</div>
+                </div>
+              </div>*/}
+              {this.props.layout !== "history" ? <div className="listening-preview-simple__control-block">
+                <div className="remove-icon" onClick={this.remove}>
+                  <div className="remove-icon__icon">
+                    <svg className="ico-remove" role="img">
+                      <use xlinkHref="#ico-remove" />
+                    </svg>
+                  </div>
+                </div>
+              </div> : null}
             </div>
-          </div>*/}
-          {this.props.layout !== "history" ? <div className="listening-preview-simple__control-block">
-            <div className="remove-icon" onClick={this.remove}>
-              <div className="remove-icon__icon">
-                <svg className="ico-remove" role="img">
-                  <use xlinkHref="#ico-remove" />
-                </svg>
-              </div>
-            </div>
-          </div> : null}
-
+          </div>
         </div>
       );
     } else {
-      return ( 
-        <div className="listening-preview-simple" style={{pointerEvents: "none"}}>
-          <div className="listening-preview-simple__photo-block">
-            <a>
-              <div className="preview-simple-photo"/>
-            </a>
-          </div>
-          <div className="listening-preview-simple__headline-block">
-            <div className="preview-simple-headline">
-              <a className="preview-simple-headline__head">Объявление недоступно</a>
-              <div className="preview-simple-headline__desc"></div>
-            </div>
-          </div>
-          <div className="listening-preview-simple__items-block">
-          </div> 
-          {/*<div className="listening-preview-simple__price-block">
-            <div className="price">
-              <div className="price__text">
-                {listeningPrice}
-                <div className="currency">
-                  <svg className="ico-euro" role="img">
-                    <use xlinkHref="#ico-euro" />
-                  </svg>
-                </div>
-              </div>
-              <div className="price__desc">{listeningPaymentPeriod}</div>
-            </div>
-          </div>*/}
-          <div className="listening-preview-simple__control-block">
-            <div className="remove-icon" onClick={this.remove}>
-              <div className="remove-icon__icon">
-                <svg className="ico-remove" role="img">
-                  <use xlinkHref="#ico-remove" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>);
+      return (<div></div>);
     }
   }
 }

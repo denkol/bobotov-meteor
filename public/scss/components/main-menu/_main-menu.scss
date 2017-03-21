@@ -43,6 +43,9 @@
     &:hover > .main-menu-text {
       display: block;
     }
+    &:focus {
+      outline: none;
+    }
     &:hover {
       cursor: pointer;
     }

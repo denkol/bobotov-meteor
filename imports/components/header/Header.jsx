@@ -93,6 +93,10 @@ class HeaderLayout extends Component {
               </a>
               <div className="header-menu">
                 <div className="header-menu__item">
+                  Всего объявлений: 1200
+                </div>
+                <div className="header-menu__item">
+                  Всего пользователей: 2
                 </div>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}
               </div>

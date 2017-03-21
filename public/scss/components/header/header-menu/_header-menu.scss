@@ -1,11 +1,11 @@
 .header-menu {
-    display: none;
+    // display: none;
   &__item {
     position: relative;
     display: inline-block;
     margin-right: 16px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: normal;
     height: 42px;
     padding: 12px 0;
     &--active {
@@ -20,5 +20,8 @@
         // background-color: $accent-blue;
       }
     }
+  }
+  @include mq('tablet-wide', max) {
+    display: none;
   }
 }
