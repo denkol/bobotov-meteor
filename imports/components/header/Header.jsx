@@ -106,10 +106,10 @@ class HeaderLayout extends Component {
                     <a href="#">У моря</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">Для отдыха</a>
+                    <a href="#">На долгий срок</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">На долгий срок</a>
+                    <a href="#">Для отдыха</a>
                   </li>
                 </ul>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}

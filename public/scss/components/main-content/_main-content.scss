@@ -1,7 +1,8 @@
 .main-content {
   width: 100%;
   min-height: 70vh;
-  padding: 16px 0;
+  // padding-top: 76px; //header height
+  padding-bottom: 16px;
   background-color: white;
   position: relative;
   z-index: 6;

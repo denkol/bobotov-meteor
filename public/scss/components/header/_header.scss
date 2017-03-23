@@ -1,14 +1,26 @@
+$header-height: 76px;
+
 .layout-header {
-  padding-top: 15px;
-  height: 53px;
+  // position: fixed;
+  padding: 15px 0;
+  height: $header-height;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
+  // transition: top 0.2s ease-in-out;
+  background-color: white;
+  z-index: 333;
   @include mq('tablet-wide', max) {
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 14px;
   }
 }
+
+// .nav-up {
+//   top: -$header-height;
+// }
 
 .header-content {
   height: 100%;
