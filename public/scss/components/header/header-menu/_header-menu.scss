@@ -4,20 +4,18 @@
     position: relative;
     display: inline-block;
     margin-right: 16px;
-    font-size: 14px;
-    font-weight: normal;
     height: 42px;
     padding: 12px 0;
+    a {
+      text-decoration: none;
+      color: black;
+      &:hover {
+        border-bottom: 1px solid black;
+      }
+    }
     &--active {
-        color: $accent-blue;
-      &:after {
-        content: "";
-        height: 2px;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        // background-color: $accent-blue;
+      a {
+        border-bottom: 1px solid black;
       }
     }
   }

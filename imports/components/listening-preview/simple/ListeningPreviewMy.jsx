@@ -179,7 +179,7 @@ export default class ListeningPreviewMy extends Component {
                 </Modal.Content>
                 <Modal.Actions>
                   <Button color='red' onClick={this.modalClose} inverted>
-                    <Icon name='checkmark' /> Нет, оставить
+                    <Icon name='close' /> Нет, оставить
                   </Button>
                   <Button color='green' onClick={this.remove} inverted>
                     <Icon name='checkmark' /> Да, удалить

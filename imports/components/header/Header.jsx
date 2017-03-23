@@ -91,15 +91,29 @@ class HeaderLayout extends Component {
                   <div className="header-logo-desc">Montenegro</div>
                 </div>
               </a>
-              <div className="header-menu">
-                <div className="header-menu__item">
-                  Всего объявлений: 1200
-                </div>
-                <div className="header-menu__item">
-                  Всего пользователей: 2
-                </div>
+              <nav className="header-menu">
+                <ul>
+                  <li className="header-menu__item">
+                    <a href="#">Все</a>
+                  </li>
+                  <li className="header-menu__item">
+                    <a href="#">Аренда</a>
+                  </li>
+                  <li className="header-menu__item">
+                    <a href="#">Продажа</a>
+                  </li>
+                  <li className="header-menu__item">
+                    <a href="#">У моря</a>
+                  </li>
+                  <li className="header-menu__item">
+                    <a href="#">Для отдыха</a>
+                  </li>
+                  <li className="header-menu__item">
+                    <a href="#">На долгий срок</a>
+                  </li>
+                </ul>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}
-              </div>
+              </nav>
             </div>
             <div className="header-content__item">
               <div className="header-controls">
