@@ -10,6 +10,7 @@ export default class Index extends Component {
     super(props);
     this.state = {}
   }
+
   componentWillUnmount() {
     $('.filter-btn').removeClass('filter-btn--close');
     $('.main-content').removeClass("main-content--slide-to-left");

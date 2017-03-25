@@ -24,7 +24,7 @@ class History extends Component {
   }
   render() {
     let loading = this.props.loading;
-    
+
     let userId = Meteor.userId();
     if(!userId) {
       return (
@@ -56,7 +56,7 @@ class History extends Component {
                 <Button className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</Button>
               </div>
             </div>
-            
+
               <div className="favoritesList">
                 {listneings.reverse().map((listening, index) => {
                   return (
@@ -97,11 +97,11 @@ class History extends Component {
 History.propTypes = {};
 
 export default createContainer(({ params }) => {
-  const subscription = Meteor.subscribe('listenings.public');
+  const subscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
   const loading = subscription.ready();
   const historyList = Meteor.user() ? Meteor.user().profile.historyList : [];
   const listenings = listeningsSearchByArray(historyList);
-  
+
   function listeningsSearchByArray(array) {
     var cache = [];
     if (array) {
@@ -110,7 +110,7 @@ export default createContainer(({ params }) => {
           _id: array[key]
         }).fetch()[0];
         if(listeningObj) {
-          cache.push(listeningObj); 
+          cache.push(listeningObj);
         }
       });
     }

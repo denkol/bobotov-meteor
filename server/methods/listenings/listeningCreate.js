@@ -15,7 +15,7 @@ Meteor.methods({
     var ownerListeningList = user.profile.listeningsList;
 
     /* reset listeningTech */
-    if (data.listeningTech) { 
+    if (data.listeningTech) {
       data.listeningTech = "";
     }
 

@@ -12,10 +12,15 @@ class Favorites extends Component {
   }
   componentDidMount() {
     window.scrollTo(0, 0); //scroll to top
+    Session.set('pageLimit', 9);
   }
+  componentWillUnmount() {
+    Session.set('pageLimit', 9);
+  }
+
   render() {
     let loading = this.props.loading;
-    let listneings = this.props.listenings; 
+    let listneings = this.props.listenings;
     let userId = Meteor.userId();
     if(!userId) {
       return (
@@ -83,11 +88,11 @@ class Favorites extends Component {
 Favorites.propTypes = {};
 
 export default createContainer(({ params }) => {
-  const subscription = Meteor.subscribe('listenings.public');
+  const subscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
   const loading = subscription.ready();
   const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
   const listenings = listeningsSearchByArray(favoritesList);
-  
+
   function listeningsSearchByArray(array) {
     var cache = [];
     if (array) {
@@ -96,7 +101,7 @@ export default createContainer(({ params }) => {
           _id: array[key]
         }).fetch()[0]; // listeningObj return Object, we need a first element
         if(listeningObj) {
-          cache.push(listeningObj); 
+          cache.push(listeningObj);
         }
       });
     }

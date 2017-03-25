@@ -1,8 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { AccountsCommon } from 'meteor/accounts-base';
 import { ServiceConfiguration } from 'meteor/service-configuration';
+import Fixtures from './fixtures';
+
 
 Meteor.startup(() => {
+  (new Fixtures()).populateCollections();
   /* Facebook */
   ServiceConfiguration.configurations.remove({
     service: "facebook"
