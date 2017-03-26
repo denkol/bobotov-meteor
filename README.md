@@ -10,7 +10,7 @@ In this project i'm use:
 * [MongoDB] - NoSQL database (https://www.mongodb.com/)
 
 ### Install
-bobotov-meteor requires [Node.js](https://nodejs.org/) v4+ to run.
+bobotov-meteor requires [Node.js](https://nodejs.org/) v4+ and Python 2.7 to run.
 
 Install Meteor https://www.meteor.com/install
 ```sh

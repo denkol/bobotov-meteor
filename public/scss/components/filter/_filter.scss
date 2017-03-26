@@ -22,7 +22,7 @@
   background-color: #ffffff;
   width: auto;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   z-index: 201;
   @include mq('tablet-wide', max) {
     &--open {
@@ -67,6 +67,10 @@
     right: -59px;
   }
   @include mq('tablet-wide', max) {
+    &:after {
+      content: "";
+      display: none;
+    }
     display: block;
     height: 100%;
     padding: 16px;
@@ -154,5 +158,6 @@
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
+    z-index: 33;
   }
 }
