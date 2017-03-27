@@ -28,10 +28,10 @@ export default class Filter extends Component {
     this.state = {formData: {}}
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   closeMobileFilter() {
     $('body').css('overflow', 'initial'); //unlock scroll when filter open
-    $('.filter-btn').removeClass('filter-btn--close'); //switch button to blue color 
+    $('.filter-btn').removeClass('filter-btn--close'); //switch button to blue color
     $('#filterMobile').removeClass('filter-mobile--open');
   }
 
@@ -48,7 +48,7 @@ export default class Filter extends Component {
     let typeDeal = formData.typeDeal.replace(/\s/g, '');
     let typeProperty = formData.typeProperty.replace(/\s/g, '');
     let paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
-    
+
     let FilterCandidate = [
       { city: formData.city },
       { price: { from: priceFrom, to: priceTo } },
@@ -60,7 +60,7 @@ export default class Filter extends Component {
     Session.set('filterData', FilterCandidate);
   }
   render() {
-    let FilterCandidate = [ 
+    let FilterCandidate = [
       { city: null },
       { price: {from: null, to: null } },
       { typeDeal: null },
@@ -68,10 +68,10 @@ export default class Filter extends Component {
       { paymentPeriod: null }
     ];
     Session.setDefault('filterData', FilterCandidate);
-    
+
     const { formData, value } = this.state;
     const FilterForm = () => (
-      <Form size="tiny" onSubmit={this.handleSubmit}>
+      <Form size="large" onSubmit={this.handleSubmit}>
           <div className="filter">
             <div className="filter-items-wrapper">
               <div className="filter-block">

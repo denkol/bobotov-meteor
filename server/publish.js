@@ -4,12 +4,24 @@ import { Listenings } from '../imports/api/listenings.js';
 import { Photos } from '../imports/api/photos.js';
 import { Avatars } from '../imports/api/avatars.js';
 
+import { check } from 'meteor/check';
+
+const LISTENINGS_LIMIT_DEFAULT = 9;
+
 Meteor.publish("listenings.all", function() {
   return Listenings.find({});
 });
 
-Meteor.publish("listenings.public", function() {
-  return Listenings.find({"listeningTech.public" : true});
+Meteor.publish("listenings.public", function(query = {}, params = {}) {
+    check(query, Object);
+    check(params, Object);
+    query = _.extend({
+        "listeningTech.public" : true
+    }, query);
+    params = _.extend({
+      limit: LISTENINGS_LIMIT_DEFAULT
+    }, params);
+    return Listenings.find(query, params);
 });
 
 Meteor.publish("listenings.my", function() {

@@ -17,15 +17,26 @@ class PhotoGrid extends TrackerReact(Component) {
     }
     this.loadMore = this.loadMore.bind(this);
   }
-  loadMore() {
-    this.setState({
-      limit: this.state.limit + 9
-    });
+
+  componentWillMount() {
+    Session.set('pageLimit', 9);
   }
+
+  componentWillUnmount() {
+    Session.set('pageLimit', 9);
+  }
+
+
+  loadMore() {
+    let limit = this.state.limit + 9;
+    this.setState({ limit: limit });
+    Session.set('pageLimit', limit);
+  }
+
   render() {
     let loading = this.props.loading;
     let listenings = this.props.listenings;
-    if(loading) {
+    if (loading) {
 
       /*
       if(Session.get('filterData')) {
@@ -46,10 +57,10 @@ class PhotoGrid extends TrackerReact(Component) {
             <div className="photo-grid">
               {listenings.map((listening, index) => {
                 return (
-                  <div key={"photo-grid-" + index} className="photo-grid__item"> 
-                    <ListeningPreview 
-                      key={index}  
-                      listeningData={listening} 
+                  <div key={"photo-grid-" + index} className="photo-grid__item">
+                    <ListeningPreview
+                      key={index}
+                      listeningData={listening}
                       layout="index"
                     />
                   </div>
@@ -81,13 +92,13 @@ class PhotoGrid extends TrackerReact(Component) {
         </div>
       );
     }
-  } 
+  }
 }
 
 PhotoGrid.propTypes = {};
 
 export default createContainer(({ params }) => {
-  const listeningsSubscription = Meteor.subscribe('listenings.public');
+  const listeningsSubscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
   const loading = listeningsSubscription.ready();
   const listenings = Listenings.find({}, {sort:{"listeningTech.createdAt": -1}}).fetch();
   return {loading, listenings}
