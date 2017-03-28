@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
@@ -9,35 +10,40 @@ import FilterLabels from '../filter-labels/FilterLabels.jsx';
 
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 
-class PhotoGrid extends TrackerReact(Component) {
+export default class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
+
     this.state = {
-      limit: 9
+      limit: 9,
+      subscription: {
+          listenings: Meteor.subscribe('listenings.public', {})
+      }
     }
+
     this.loadMore = this.loadMore.bind(this);
   }
 
-  componentWillMount() {
-    Session.set('pageLimit', 9);
+  listenings() {
+    return Listenings
+      .find({}, {limit: this.state.limit})
+      .fetch();
   }
 
   componentWillUnmount() {
-    Session.set('pageLimit', 9);
+    this.setState({limit: 9});
+		this.state.subscription.listenings.stop();
   }
 
-
   loadMore() {
-    let limit = this.state.limit + 9;
-    this.setState({ limit: limit });
-    Session.set('pageLimit', limit);
+    this.setState({limit: this.state.limit + 9});
   }
 
   render() {
-    let loading = this.props.loading;
-    let listenings = this.props.listenings;
-    if (loading) {
+    let listenings = this.listenings();
+    if (this.state.subscription.listenings.ready()) {
 
+      let listeningsTotal = Counts.get('listenings-public-count') || 0;
       /*
       if(Session.get('filterData')) {
         let filterData = Session.get('filterData');
@@ -49,7 +55,6 @@ class PhotoGrid extends TrackerReact(Component) {
         // }).fetch();
         listenings = Listenings.find({}).fetch();
       }*/
-
       if(listenings.length) {
         return (
           <div>
@@ -67,11 +72,12 @@ class PhotoGrid extends TrackerReact(Component) {
                 );
               })}
             </div>
-            <div className="paginate-wrapper">
-              <div className="paginate">
-                <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+            { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
+                <div className="paginate">
+                  <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                </div>
               </div>
-            </div>
+            }
           </div>
         );
       } else {
@@ -97,9 +103,9 @@ class PhotoGrid extends TrackerReact(Component) {
 
 PhotoGrid.propTypes = {};
 
-export default createContainer(({ params }) => {
-  const listeningsSubscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
-  const loading = listeningsSubscription.ready();
-  const listenings = Listenings.find({}, {sort:{"listeningTech.createdAt": -1}}).fetch();
-  return {loading, listenings}
-}, PhotoGrid);
+// export default createContainer(({ params }) => {
+//   const listeningsSubscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
+//   const loading = listeningsSubscription.ready();
+//   const listenings = Listenings.find({}, {sort:{"listeningTech.createdAt": -1}}).fetch();
+//   return {loading, listenings}
+// }, PhotoGrid);

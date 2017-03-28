@@ -47,13 +47,11 @@ class Fixtures {
                     },
                     listeningTech: {
                         "statusCode": 2,
-                        "public": true,
+                        "public": !!(Math.random() < 0.5),
                         "bonuses": {
                             "bonus1": false,
                             "bonus2": false,
-                            "bonus3": Math.random() < 0.5
-                                ? true
-                                : false
+                            "bonus3": !!(Math.random() < 0.5)
                         },
                         "createdAt": new Date(),
                         "lastChangeDate": moment()

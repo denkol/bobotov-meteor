@@ -23,3 +23,5 @@ facebook-config-ui
 ultimatejs:tracker-react
 npm-bcrypt@0.8.7
 anti:fake
+tmeasday:publish-counts
+reactive-dict

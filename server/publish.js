@@ -3,13 +3,27 @@ import { Listenings } from '../imports/api/listenings.js';
 //Images collections
 import { Photos } from '../imports/api/photos.js';
 import { Avatars } from '../imports/api/avatars.js';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { check } from 'meteor/check';
 
 const LISTENINGS_LIMIT_DEFAULT = 9;
 
 Meteor.publish("listenings.all", function() {
-  return Listenings.find({});
+    Counts.publish(this, 'listenings-all-count', Listenings.find({}), { noReady: true });
+    return Listenings.find({});
+});
+
+Meteor.publish("listenings.bigslider", function() {
+  return Listenings.find(
+      {
+        "listeningTech": {
+          "public" : true,
+          "bonuses.bonus3": true
+        }
+      },
+      {sort: {"listeningTech.createdAt": -1}}
+    );
 });
 
 Meteor.publish("listenings.public", function(query = {}, params = {}) {
@@ -19,8 +33,9 @@ Meteor.publish("listenings.public", function(query = {}, params = {}) {
         "listeningTech.public" : true
     }, query);
     params = _.extend({
-      limit: LISTENINGS_LIMIT_DEFAULT
+      // limit: LISTENINGS_LIMIT_DEFAULT
     }, params);
+    Counts.publish(this, 'listenings-public-count', Listenings.find(query));
     return Listenings.find(query, params);
 });
 
