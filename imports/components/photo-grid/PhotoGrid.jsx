@@ -26,7 +26,8 @@ export default class PhotoGrid extends TrackerReact(Component) {
 
   listenings() {
     return Listenings
-      .find({}, {limit: this.state.limit})
+      //.find({}, {limit: this.state.limit})
+      .find(Session.get('filterQuery'), {limit: this.state.limit})
       .fetch();
   }
 

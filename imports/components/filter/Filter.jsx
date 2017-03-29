@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-
-import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
-
-import { Translate } from '../../functions/functions.js';
+import { Button, Form, Input, Select } from 'semantic-ui-react';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../data/data.js';
 
 //Some JQuery function
-var FilterPanel = {
+const FilterPanel = {
   open: function() {
     $('#filter-btn').addClass('filter-btn--close');
     $('.filter').addClass("filter--show");
@@ -25,8 +22,8 @@ var FilterPanel = {
 export default class Filter extends Component {
   constructor(props) {
     super(props);
-    this.state = {formData: {}}
     this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleDesktopSearchBtn = this.handleDesktopSearchBtn.bind(this);
   }
 
   closeMobileFilter() {
@@ -35,19 +32,35 @@ export default class Filter extends Component {
     $('#filterMobile').removeClass('filter-mobile--open');
   }
 
-  handleDesktopSearchBtn() {
+  handleDesktopSearchBtn(e) {
     FilterPanel.toggle();
   }
-  handleSubmit(e, {formData}) {
+  handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
-    this.setState({ formData });
-    FilterPanel.close();
+    //FilterPanel.close();
+    
 
-    let priceFrom = formData.priceFrom ? formData.priceFrom.replace(/\s/g, '') : "0";
-    let priceTo = formData.priceTo ? formData.priceTo.replace(/\s/g, '') : "0";
-    let typeDeal = formData.typeDeal.replace(/\s/g, '');
-    let typeProperty = formData.typeProperty.replace(/\s/g, '');
-    let paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
+    //let priceFrom = formData.priceFrom ? formData.priceFrom.replace(/\s/g, '') : "0";
+    const priceFrom = formData.priceFrom.replace(/\s/g, '');
+    //let priceTo = formData.priceTo ? formData.priceTo.replace(/\s/g, '') : "0";
+    const priceTo = formData.priceTo.replace(/\s/g, '');
+    const typeDeal = formData.typeDeal.replace(/\s/g, '');
+    const typeProperty = formData.typeProperty.replace(/\s/g, '');
+    const paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
+    
+    let FilterQuery = {};
+    let PriceRange = {};
+    if(formData.bathrooms) FilterQuery["listeningInfo.bathrooms"] = Number(formData.bathrooms);
+    if(formData.bedrooms) FilterQuery["listeningInfo.bedrooms"] = Number(formData.bedrooms);
+    if(formData.city) FilterQuery["listeningInfo.city"] = formData.city;
+    if(formData.paymentPeriod) FilterQuery["listeningInfo.paymentPeriod"] = formData.paymentPeriod;
+    if(priceFrom) PriceRange['$gte'] = Number(priceFrom);
+    if(priceTo) PriceRange['$lte'] = Number(priceTo);
+    if(priceFrom || priceTo) FilterQuery["listeningInfo.price"] = PriceRange;
+    if(typeDeal) FilterQuery["listeningInfo.typeDeal"] = typeDeal;
+    if(typeProperty) FilterQuery["listeningInfo.typeProperty"] = typeProperty;
+
+    Session.set('filterQuery', FilterQuery);
 
     let FilterCandidate = [
       { city: formData.city },
@@ -60,6 +73,9 @@ export default class Filter extends Component {
     Session.set('filterData', FilterCandidate);
   }
   render() {
+  	 const FilterQuery = {};
+    Session.setDefault('filterQuery', FilterQuery);
+  	
     let FilterCandidate = [
       { city: null },
       { price: {from: null, to: null } },
@@ -69,7 +85,6 @@ export default class Filter extends Component {
     ];
     Session.setDefault('filterData', FilterCandidate);
 
-    const { formData, value } = this.state;
     const FilterForm = () => (
       <Form size="large" onSubmit={this.handleSubmit}>
           <div className="filter">
