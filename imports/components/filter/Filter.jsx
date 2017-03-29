@@ -76,14 +76,14 @@ export default class Filter extends Component {
   	 const FilterQuery = {};
     Session.setDefault('filterQuery', FilterQuery);
   	
-    let FilterCandidate = [
+    /*let FilterCandidate = [
       { city: null },
       { price: {from: null, to: null } },
       { typeDeal: null },
       { typeProperty: null },
       { paymentPeriod: null }
     ];
-    Session.setDefault('filterData', FilterCandidate);
+    Session.setDefault('filterData', FilterCandidate);*/
 
     const FilterForm = () => (
       <Form size="large" onSubmit={this.handleSubmit}>

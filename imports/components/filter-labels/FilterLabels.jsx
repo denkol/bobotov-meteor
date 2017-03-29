@@ -8,31 +8,61 @@ export default class FilterLabels extends TrackerReact(Component) {
     super(props);
     this.state = {}
   }
+  componentWillUnmount() {
+    Session.set('filterData', null);
+  }
   removeFilterLabel(e) {
   }
-  render() {
-    if(Session.get('filterData')) {
+  render() { 
+    const filterData = Session.get('filterData'); console.log(filterData);
+    if(filterData) {
       return (
+        <div>
+       {filterData.map((n, i) => 
        <div className="filter-labels">
-         <div className="filter-labels__item">
+         {n.city ? 
+         <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              Будва
+              {n.city}
               <Icon onClick={this.removeFilterLabel} name='delete' />
             </Label>
           </div>
-          <div className="filter-labels__item">
+          : null}
+          {n.price && (n.price.to || n.price.from) ? 
+         <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              0 - 200 евро
+              {n.price.from + " - " + n.price.to}
               <Icon onClick={this.removeFilterLabel} name='delete' />
             </Label>
           </div>
-          <div className="filter-labels__item">
+          : null}
+          {n.typeDeal ? 
+          <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              Аренда краткосрочная
+              {n.typeDeal}
               <Icon onClick={this.removeFilterLabel} name='delete' />
             </Label>
           </div>
+          : null}
+          {n.typeProperty ? 
+          <div key={"label-" + i} className="filter-labels__item">
+            <Label as='a'>
+              {n.typeProperty}
+              <Icon onClick={this.removeFilterLabel} name='delete' />
+            </Label>
+          </div>
+          : null}
+          {n.paymentPeriod ? 
+          <div key={"label-" + i} className="filter-labels__item">
+            <Label as='a'>
+              {n.paymentPeriod}
+              <Icon onClick={this.removeFilterLabel} name='delete' />
+            </Label>
+          </div>
+          : null}
         </div>
+          )}
+          </div>
       );
     } else {
       return(<div></div>)
