@@ -40,7 +40,7 @@ export default class FilterLabels extends TrackerReact(Component) {
           {n.price && (n.price.to || n.price.from) ? 
          <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              {n.price.from + " - " + n.price.to}
+              {n.price.from || 0 + " - " + n.price.to}
               <Icon onClick={this.removeFilterLabel(n)} name='delete' />
             </Label>
           </div>

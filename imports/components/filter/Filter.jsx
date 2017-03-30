@@ -23,7 +23,6 @@ export default class Filter extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    //this.handleDesktopSearchBtn = this.handleDesktopSearchBtn.bind(this);
   }
 
   closeMobileFilter() {
@@ -32,9 +31,14 @@ export default class Filter extends Component {
     $('#filterMobile').removeClass('filter-mobile--open');
   }
 
-  handleDesktopSearchBtn(e) {
+  handleDesktopSearchBtn() {
     FilterPanel.toggle();
   }
+  
+  resetForm() {
+    $(".text").text("");
+  }
+  
   handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
     //FilterPanel.close();
@@ -135,7 +139,7 @@ export default class Filter extends Component {
               </div>
               <div className="filter-actions">
                 <div className="filter-actions__item">
-                  <Button type="reset">Очистить</Button>
+                  <Button type="reset" onClick={this.resetForm}>Очистить</Button>
                 </div>
                 <div className="filter-actions__item">
                   <Button primary type="submit"> Применить </Button>
