@@ -86,7 +86,7 @@ export default class Filter extends Component {
     Session.setDefault('filterData', FilterCandidate);*/
 
     const FilterForm = () => (
-      <Form size="large" onSubmit={this.handleSubmit}>
+      <Form size="small" onSubmit={this.handleSubmit}>
           <div className="filter">
             <div className="filter-items-wrapper">
               <div className="filter-block">
