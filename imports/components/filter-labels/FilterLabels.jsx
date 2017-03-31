@@ -8,20 +8,18 @@ export default class FilterLabels extends TrackerReact(Component) {
     super(props);
     this.removeFilterLabel = this.removeFilterLabel.bind(this);
   }
-  componentWillUnmount() {
-    Session.set('filterData', null);
-  }
+
   removeFilterLabel(label) {
-  	  return e => {
-    	 	if(e) {
-    	 	  const key = _.keys(label)[0];
-           //console.log(label, key);
-           Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
-           Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
-    	 	}
-       };
-  	  
+    return e => {
+      if(e) {
+    	  const key = _.keys(label)[0];
+        //console.log(label, key);
+        Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
+        Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
+      }
+    };  	  
   }
+  
   render() {
     const filterData = this.props.filterData;
     if(filterData) {
