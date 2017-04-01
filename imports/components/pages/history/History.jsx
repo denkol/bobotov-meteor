@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Listenings } from '../../../api/listenings.js';
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Dimmer, Loader, Message, Button } from 'semantic-ui-react';
 
-class History extends Component {
+export default class History extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = { 
+      limit: 2,
+      subscription: {
+         listenings: Meteor.subscribe('listenings.public', {})
+      } 
+    };
+    this.loadMore = this.loadMore.bind(this);
     this.removeHistory = this.removeHistory.bind(this);
   }
   componentDidMount() {
@@ -22,11 +28,16 @@ class History extends Component {
       }
     })
   }
+  componentWillUnmount() {
+    this.setState({limit: 2});
+    this.state.subscription.listenings.stop();
+  }
+  loadMore() {
+    this.setState({limit: this.state.limit + 2});
+  }
   render() {
-    let loading = this.props.loading;
-
-    let userId = Meteor.userId();
-    if(!userId) {
+    const user = Meteor.user();
+    if(!user) {
       return (
         <Message
           warning
@@ -35,9 +46,13 @@ class History extends Component {
         />
       );
     }
-    if(loading) {
-      let listneings = this.props.listenings;
-      if(listneings.length) {
+    const historyList = user.profile.historyList;
+    const query = { _id: { $in: historyList } };
+    const listenings = Listenings.find(query, {limit: this.state.limit} ).fetch();
+    if(this.state.subscription.listenings.ready()) {
+      console.log(listenings.length, historyList);
+      if(listenings.length) {
+        const listeningsTotal = Listenings.find(query).count() || 0;
         return (
           <div>
             <div className="headline">
@@ -58,7 +73,7 @@ class History extends Component {
             </div>
 
               <div className="favoritesList">
-                {listneings.reverse().map((listening, index) => {
+                {listenings.reverse().map((listening, index) => {
                   return (
                     <div key={"favoritesListItem" + index} className="favoritesList__item">
                       <ListeningPreview listeningData={listening} layout="history"/>
@@ -66,6 +81,12 @@ class History extends Component {
                   );
                 })}
               </div>
+              { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
+                <div className="paginate">
+                  <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                </div>
+              </div>
+            }
           </div>
         );
       } else {
@@ -96,7 +117,7 @@ class History extends Component {
 
 History.propTypes = {};
 
-export default createContainer(({ params }) => {
+/*export default createContainer(({ params }) => {
   const subscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
   const loading = subscription.ready();
   const historyList = Meteor.user() ? Meteor.user().profile.historyList : [];
@@ -118,4 +139,4 @@ export default createContainer(({ params }) => {
   }
 
   return {loading, listenings}
-}, History);
+}, History);*/
