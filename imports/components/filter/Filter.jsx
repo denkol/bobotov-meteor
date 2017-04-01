@@ -71,7 +71,7 @@ export default class Filter extends Component {
 
     const { formData, value } = this.state;
     const FilterForm = () => (
-      <Form size="large" onSubmit={this.handleSubmit}>
+      <Form size="small" onSubmit={this.handleSubmit}>
           <div className="filter">
             <div className="filter-items-wrapper">
               <div className="filter-block">
