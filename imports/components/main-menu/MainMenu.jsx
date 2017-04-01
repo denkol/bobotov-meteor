@@ -9,21 +9,22 @@ class MainMenu extends Component {
   closeMobileMenu() {
     $('#mobile-menu').removeClass('main-menu-wrapper--open');
   }
-  render() {
-    let user = this.props.user;
-    let disabled = user ? "" : "disabled";
-    let url = window.location.pathname;
+  render() { 
+    //let user = this.props.user;
+    const { user } = this.props;
+    const disabled = user ? "" : "disabled";
+    const url = window.location.pathname;
     /* Home Active Class */
-    let activeHome = url === "/" ? "main-menu__item--active" : "";
+    const activeHome = url === "/" ? "main-menu__item--active" : "";
 
     /* My Active Class */
-    let activeMy = url === "/mylistenings" ? "main-menu__item--active" : "";
+    const activeMy = url === "/mylistenings" ? "main-menu__item--active" : "";
 
     /* Favorites Active Class */
-    let activeFav = url === "/favorites" ? "main-menu__item--active" : "";
+    const activeFav = url === "/favorites" ? "main-menu__item--active" : "";
 
     /* History Active Class */
-    let activeHis = url === "/history" ? "main-menu__item--active" : "";
+    const activeHis = url === "/history" ? "main-menu__item--active" : "";
 
     return (
       <div id="mobile-menu" className="main-menu-wrapper">
@@ -34,19 +35,19 @@ class MainMenu extends Component {
             </svg>
             <span className="main-menu-text">На главную</span>
           </a>
-          <a href="/mylistenings" onClick={this.closeMobileMenu} className={"main-menu__item" + " " + disabled + " " + activeMy}>
+          <a href="/mylistenings" onClick={this.closeMobileMenu} className={"main-menu__item " + disabled + " " + activeMy}>
             <svg className="ico-receipt" role="img">
               <use xlinkHref="#ico-receipt" />
             </svg>
             <span className="main-menu-text">Мои объявления</span>
           </a>
-          <a href="/favorites" onClick={this.closeMobileMenu} className={"main-menu__item" + " " + disabled + " " + activeFav}>
+          <a href="/favorites" onClick={this.closeMobileMenu} className={"main-menu__item " + disabled + " " + activeFav}>
             <svg className="ico-love" role="img">
               <use xlinkHref="#ico-love" />
             </svg>
             <span className="main-menu-text">Избранное</span>
           </a>
-          <a href="/history" onClick={this.closeMobileMenu} className={"main-menu__item" + " " + disabled + " " + activeHis}>
+          <a href="/history" onClick={this.closeMobileMenu} className={"main-menu__item " + disabled + " " + activeHis}>
             <svg className="ico-history" role="img">
               <use xlinkHref="#ico-history" />
             </svg>
