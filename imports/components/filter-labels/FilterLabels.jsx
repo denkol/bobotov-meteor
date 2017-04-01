@@ -6,33 +6,70 @@ import { Icon, Label } from 'semantic-ui-react';
 export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.removeFilterLabel = this.removeFilterLabel.bind(this);
   }
-  removeFilterLabel(e) {
+
+  removeFilterLabel(label) {
+    return e => {
+      if(e) {
+    	  const key = _.keys(label)[0];
+        //console.log(label, key);
+        Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
+        Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
+      }
+    };  	  
   }
+  
   render() {
-    if(Session.get('filterData')) {
+    const filterData = this.props.filterData;
+    if(filterData) {
       return (
+        <div>
+       {filterData.map((n, i) => 
        <div className="filter-labels">
-         <div className="filter-labels__item">
+         {n.city ? 
+         <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              Будва
-              <Icon onClick={this.removeFilterLabel} name='delete' />
+              {n.city}
+              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
             </Label>
           </div>
-          <div className="filter-labels__item">
+          : null}
+          {n.price && (n.price.to || n.price.from) ? 
+         <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              0 - 200 евро
-              <Icon onClick={this.removeFilterLabel} name='delete' />
+              {n.price.from || 0 + " - " + n.price.to}
+              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
             </Label>
           </div>
-          <div className="filter-labels__item">
+          : null}
+          {n.typeDeal ? 
+          <div key={"label-" + i} className="filter-labels__item">
             <Label as='a'>
-              Аренда краткосрочная
-              <Icon onClick={this.removeFilterLabel} name='delete' />
+              {n.typeDeal}
+              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
             </Label>
           </div>
+          : null}
+          {n.typeProperty ? 
+          <div key={"label-" + i} className="filter-labels__item">
+            <Label as='a'>
+              {n.typeProperty}
+              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+            </Label>
+          </div>
+          : null}
+          {n.paymentPeriod ? 
+          <div key={"label-" + i} className="filter-labels__item">
+            <Label as='a'>
+              {n.paymentPeriod}
+              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+            </Label>
+          </div>
+          : null}
         </div>
+          )}
+          </div>
       );
     } else {
       return(<div></div>)
