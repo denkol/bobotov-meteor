@@ -24602,9 +24602,14 @@ html.ios, html.ios body {
       right: 10px; } }
 
 .filter-labels {
-  padding: 0 5px; }
+  padding: 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .filter-labels__item {
-    display: inline-block;
     margin-right: 8px;
     margin-bottom: 5px; }
 

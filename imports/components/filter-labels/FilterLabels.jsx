@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Icon, Label } from 'semantic-ui-react';
+import { Translate } from '../../functions/functions.js';
 
 export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
@@ -24,52 +25,52 @@ export default class FilterLabels extends TrackerReact(Component) {
     const filterData = this.props.filterData;
     if(filterData) {
       return (
-        <div>
-       {filterData.map((n, i) => 
-       <div className="filter-labels">
-         {n.city ? 
-         <div key={"label-" + i} className="filter-labels__item">
-            <Label as='a'>
-              {n.city}
-              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-            </Label>
-          </div>
-          : null}
-          {n.price && (n.price.to || n.price.from) ? 
-         <div key={"label-" + i} className="filter-labels__item">
-            <Label as='a'>
-              {n.price.from || 0 + " - " + n.price.to}
-              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-            </Label>
-          </div>
-          : null}
-          {n.typeDeal ? 
-          <div key={"label-" + i} className="filter-labels__item">
-            <Label as='a'>
-              {n.typeDeal}
-              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-            </Label>
-          </div>
-          : null}
-          {n.typeProperty ? 
-          <div key={"label-" + i} className="filter-labels__item">
-            <Label as='a'>
-              {n.typeProperty}
-              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-            </Label>
-          </div>
-          : null}
-          {n.paymentPeriod ? 
-          <div key={"label-" + i} className="filter-labels__item">
-            <Label as='a'>
-              {n.paymentPeriod}
-              <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-            </Label>
-          </div>
-          : null}
+        <div className="filter-labels">
+          {filterData.map((n, i) => 
+          <div>
+           {n.city ? 
+           <div key={"label-" + i} className="filter-labels__item">
+              <Label as='a'>
+                {Translate(n.city)}
+                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+              </Label>
+            </div>
+            : null}
+            {n.price && (n.price.to || n.price.from) ? 
+            <div key={"label-" + i} className="filter-labels__item">
+              <Label as='a'>
+                {n.price.from || 0 + " - " + n.price.to}
+                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+              </Label>
+            </div>
+            : null}
+            {n.typeDeal ? 
+            <div key={"label-" + i} className="filter-labels__item">
+              <Label as='a'>
+                {Translate(n.typeDeal)}
+                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+              </Label>
+            </div>
+            : null}
+            {n.typeProperty ? 
+            <div key={"label-" + i} className="filter-labels__item">
+              <Label as='a'>
+                {Translate(n.typeProperty)}
+                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+              </Label>
+            </div>
+            : null}
+            {n.paymentPeriod ? 
+            <div key={"label-" + i} className="filter-labels__item">
+              <Label as='a'>
+                {Translate(n.paymentPeriod)}
+                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+              </Label>
+            </div>
+            : null}
+            </div>
+            )}
         </div>
-          )}
-          </div>
       );
     } else {
       return(<div></div>)
