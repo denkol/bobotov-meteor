@@ -43,54 +43,40 @@ export default class PhotoGrid extends TrackerReact(Component) {
   render() {
     const listenings = this.listenings();
     if (this.state.subscription.listenings.ready()) {
-
       let listeningsTotal = Counts.get('listenings-public-count') || 0;
-      /*
-      if(Session.get('filterData')) {
-        let filterData = Session.get('filterData');
-        // listenings = Listenings.find({
-        //   "listeningInfo.city" : filterData.city.replace(/\s/g, ''),
-        //   "listeningInfo.typeDeal" : filterData.typeDeal.replace(/\s/g, ''),
-        //   "listeningInfo.typeProperty" : filterData.typeProperty.replace(/\s/g, ''),
-        //   "listeningInfo.paymentPeriod" : filterData.paymentPeriod.replace(/\s/g, '')
-        // }).fetch();
-        listenings = Listenings.find({}).fetch();
-      }*/
-      if(listenings.length) {
-        const filterData = Session.get('filterData');
-        return (
-          <div>
-            <FilterLabels filterData={filterData}/>
-            <div className="photo-grid">
-              {listenings.map((listening, index) => {
-                return (
-                  <div key={"photo-grid-" + index} className="photo-grid__item">
-                    <ListeningPreview
-                      key={index}
-                      listeningData={listening}
-                      layout="index"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-            { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
-                <div className="paginate">
-                  <Button primary onClick={this.loadMore}>Загрузить еще</Button>
-                </div>
+      const filterData = Session.get('filterData');
+      return (
+        <div>
+          <FilterLabels filterData={filterData}/>
+          {listenings.length ? 
+            <div>
+              <div className="photo-grid">
+                {listenings.map((listening, index) => {
+                  return (
+                    <div key={"photo-grid-" + index} className="photo-grid__item">
+                      <ListeningPreview
+                        key={index}
+                        listeningData={listening}
+                        layout="index"
+                      />
+                    </div>
+                  );
+                })}
               </div>
-            }
-          </div>
-        );
-      } else {
-        return(
-          <div>
-            <Message
-              header='Объявлений не найдено'
-              content='Попробуйте смягчить критерии поиска'/>
-          </div>
-        );
-      }
+              { 
+                (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
+                  <div className="paginate">
+                    <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                  </div>
+                </div>
+              }
+            </div> : 
+            <div className="main-listening-stream">
+              <Message
+                header='Объявлений не найдено'
+                content='Попробуйте смягчить критерии поиска'/>
+            </div>}
+          </div>);
     } else {
       return(
         <div>

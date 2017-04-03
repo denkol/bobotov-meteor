@@ -5,6 +5,7 @@ export function Translate(array, key, lang) {
     @key - string
     @lang - string
   */
+  console.log(array, key)
   if(array && key) {
     var returnText = "";
     for(var i = 0; i < array.length; i++) {

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
 import { Icon, Label } from 'semantic-ui-react';
 import { Translate } from '../../functions/functions.js';
+
+import { Cities, TypeDeal, TypeProperty } from '../../data/data.js';
 
 export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
@@ -10,15 +13,16 @@ export default class FilterLabels extends TrackerReact(Component) {
     this.removeFilterLabel = this.removeFilterLabel.bind(this);
   }
 
-  removeFilterLabel(label) {
+  removeFilterLabel(label, e) {
+    // console.log(e.target)
     return e => {
       if(e) {
-    	  const key = _.keys(label)[0];
-        //console.log(label, key);
+        const key = _.keys(label)[0];
+        console.log(label, key);
         Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
         Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
       }
-    };  	  
+    };
   }
   
   render() {
@@ -27,11 +31,11 @@ export default class FilterLabels extends TrackerReact(Component) {
       return (
         <div className="filter-labels">
           {filterData.map((n, i) => 
-          <div>
+          <Label.Group color='blue'>
            {n.city ? 
            <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(n.city)}
+                {Translate(Cities, n.city)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -47,7 +51,7 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.typeDeal ? 
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(n.typeDeal)}
+                {Translate(TypeDeal, n.typeDeal)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -55,7 +59,7 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.typeProperty ? 
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(n.typeProperty)}
+                {Translate(TypeProperty, n.typeProperty)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -63,12 +67,12 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.paymentPeriod ? 
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(n.paymentPeriod)}
+                {Translate(PaymentPeriod, n.paymentPeriod)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
             : null}
-            </div>
+            </Label.Group>
             )}
         </div>
       );

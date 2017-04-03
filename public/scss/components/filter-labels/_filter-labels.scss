@@ -5,5 +5,11 @@
   &__item {
     margin-right: 8px;
     margin-bottom: 5px;
+    -webkit-animation: bounceIn 1000ms linear both;
+    animation: bounceIn 1000ms linear both;
+    &--hide {
+      -webkit-animation: fadeOutDown 1000ms linear both;
+      animation: fadeOutDown 1000ms linear both;
+    }
   }
 }
