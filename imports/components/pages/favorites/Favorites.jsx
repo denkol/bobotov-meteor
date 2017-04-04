@@ -45,7 +45,7 @@ export default class Favorites extends TrackerReact(Component) {
     const query = { _id: { $in: favouritesList } };
     const listenings = Listenings.find(query, {limit: this.state.limit} ).fetch();
     if(this.state.subscription.listenings.ready()) {
-      console.log(listenings.length, favouritesList);
+      //console.log(listenings.length, favouritesList);
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (

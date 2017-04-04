@@ -11,14 +11,15 @@ export default class ContactsAdd extends Component {
     }
   }
   handleChange(e, data) {
-    let name = data.name;
-    let value = data.value;
+    const name = data.name;
+    const value = data.value;
     Session.set(name, value)
   }
   render() {
-    var defaultContacts = this.props.defaultContacts; //default data
-    var contactsInputs = [];
-    const SingleContact = (i, defaultData) => (
+    const defaultContacts = this.props.defaultContacts; //default data
+    const contactsInputs = [];
+    const SingleContact = (i, defaultData) => {
+    	return (
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
           <Form.Input defaultValue={defaultData ? defaultData.contactValue : ""} placeholder='' actionPosition='right' name={'input' + i} fluid required 
@@ -26,15 +27,13 @@ export default class ContactsAdd extends Component {
         </div>
         <div className="create-block-row__item"></div>
       </div>
-    );
-    
-    for(let i = 1; i <= this.props.contactsNumber; i++) {
-      if(defaultContacts[i]) {
-        Session.set('dropdown' + i, defaultContacts[i].contactKey);
-        contactsInputs.push(SingleContact(i, defaultContacts[i]));
-      } else {
-        contactsInputs.push(SingleContact(i));
-      }
+      );
+    }
+
+    for(let i = 0; i < this.props.contactsNumber; i++) {
+    	const contact = defaultContacts[i] || null;
+      Session.set('dropdown' + i, contact ? contact.contactKey : contact);
+      contactsInputs.push(SingleContact(i, contact));
     }
 
     return (

@@ -26,7 +26,7 @@ export default class FilterLabels extends TrackerReact(Component) {
   }
   
   render() {
-    const filterData = this.props.filterData;
+    const filterData = this.props.filterData; console.log(filterData);
     if(filterData) {
       return (
         <div className="filter-labels">
@@ -43,7 +43,7 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.price && (n.price.to || n.price.from) ? 
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {n.price.from || 0 + " - " + n.price.to}
+                {(n.price.from || 0) + " - " + n.price.to}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>

@@ -9,14 +9,17 @@ export default class ListeningContacts extends Component {
   }
   render() {
     if(this.props.contacts) {
-      let contacts = this.props.contacts;
+      const { contacts } = this.props;
       return (
         <div className="listening-info-block">
           <h2 className="medium-headline">Контакты</h2>
           {contacts.map((contact, index) => {
-            let contactValue;
+            let contactValue = '';
+            if(contact.contactValue) {
             if(contact.contactValue.match( /(http:|https:)/ )) {
               contactValue = (<a href={contact.contactValue} target="_blank" className="listening-info-contacts__item">{contact.contactValue}</a>);
+            } else if(contact.contactValue.match(/@/)) {
+              contactValue = (<a href={'mailto:' + contact.contactValue} className="listening-info-contacts__item">{contact.contactValue}</a>);
             } else {
               contactValue = (<div className="listening-info-contacts__item">{contact.contactValue}</div>);
             }
@@ -28,6 +31,7 @@ export default class ListeningContacts extends Component {
                 </div>
               </div>
             );
+            }
           })}
         </div>
       );

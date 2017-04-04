@@ -43,11 +43,7 @@ export default class Filter extends Component {
   handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
     FilterPanel.close();
-    
-
-    //let priceFrom = formData.priceFrom ? formData.priceFrom.replace(/\s/g, '') : "0";
     const priceFrom = formData.priceFrom.replace(/\s/g, '');
-    //let priceTo = formData.priceTo ? formData.priceTo.replace(/\s/g, '') : "0";
     const priceTo = formData.priceTo.replace(/\s/g, '');
     const typeDeal = formData.typeDeal.replace(/\s/g, '');
     const typeProperty = formData.typeProperty.replace(/\s/g, '');
@@ -67,7 +63,7 @@ export default class Filter extends Component {
 
     Session.set('filterQuery', FilterQuery);
 
-    let FilterCandidate = [
+    const FilterCandidate = [
       { city: formData.city },
       { price: { from: priceFrom, to: priceTo } },
       { typeDeal: typeDeal },
@@ -80,15 +76,6 @@ export default class Filter extends Component {
   render() {
   	 const FilterQuery = {};
     Session.setDefault('filterQuery', FilterQuery);
-  	
-    /*let FilterCandidate = [
-      { city: null },
-      { price: {from: null, to: null } },
-      { typeDeal: null },
-      { typeProperty: null },
-      { paymentPeriod: null }
-    ];
-    Session.setDefault('filterData', FilterCandidate);*/
 
     const FilterForm = () => (
       <Form size="small" onSubmit={this.handleSubmit}>

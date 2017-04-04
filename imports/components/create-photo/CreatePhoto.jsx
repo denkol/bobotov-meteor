@@ -32,14 +32,14 @@ class CreatePhoto extends Component {
   uploadIt(e){
     "use strict";
     e.preventDefault();
-    let self = this;
+    const self = this;
     if (e.currentTarget.files && e.currentTarget.files[0]) {
      // We upload only one file, in case
      // there was multiple files selected
-     var file = e.currentTarget.files[0];
-
+     const file = e.currentTarget.files[0];
+      
      if (file) {
-       let uploadInstance = Photos.insert({
+       const uploadInstance = Photos.insert({
          file: file,
          meta: {
            locator: self.props.fileLocator,
@@ -109,9 +109,9 @@ class CreatePhoto extends Component {
   }
   photoRemove() {
     let fileId = "";
-    let id = this.props.id;
+    const id = this.props.id;
     if(this.props.photoUrl) {
-      let photoUrl = this.props.photoUrl;
+      const photoUrl = this.props.photoUrl;
       fileId = photoUrl.substr(photoUrl.lastIndexOf('/') + 1).slice(0, -4); //get id from url
     } else {
       fileId = this.state.file._id;
@@ -139,11 +139,11 @@ class CreatePhoto extends Component {
   }
   render() {
     // console.log(this.state.snackbar)
-    let loading = this.props.loading;
+    const loading = this.props.loading;
     if (loading) {
-      let imageNumber = this.props.id;
-      let main = this.props.main ? "photo-add-block photo-add-block_main" : "photo-add-block";
-      let photoUrl = this.props.photoUrl ? this.props.photoUrl : {};
+      const imageNumber = this.props.id;
+      const main = this.props.main ? "photo-add-block photo-add-block_main" : "photo-add-block";
+      let photoUrl = this.props.photoUrl;
       let currentFileId;
       let uploadedFileCursor;
       let link;
@@ -155,9 +155,7 @@ class CreatePhoto extends Component {
       if(uploadedFileCursor) {
         link = uploadedFileCursor.link(); //The "view/download" link
         Session.set(imageNumber + "photo", link);
-        if(Session.get(imageNumber + "photo")) {
-          photoUrl = Session.get(imageNumber + "photo");  
-        }
+        photoUrl = link;
       }
       return (
         <div className="create-block-row__item">
@@ -167,7 +165,7 @@ class CreatePhoto extends Component {
             message={this.state.snackbar.message} />
 
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
-            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
+            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || photoUrl ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
               <div className="create-photo-layer_init__icon">
                 <svg role="img" className="ico-add-photo">
                   <use xlinkHref="#ico-add-photo" />
