@@ -191,6 +191,7 @@ class CreatePhoto extends Component {
             </div>
             <input 
               onChange={this.uploadIt.bind(this)}
+              onClick={(e)=> { e.target.value = null }}
               name={"fileinput-" + imageNumber}
               ref={"fileinput-" + imageNumber} 
               type="file" id={"image-" + imageNumber} 
