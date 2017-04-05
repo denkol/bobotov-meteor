@@ -32,7 +32,7 @@ export default class ListeningPhotos extends Component {
             slideInterval={2000}
             onImageLoad={this.handleImageLoad}
             showPlayButton={false} 
-            showThumbnails={false}
+            showThumbnails={true}
             showFullscreenButton={false}
             showIndex={true} />
         </div>

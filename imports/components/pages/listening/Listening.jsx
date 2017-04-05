@@ -174,7 +174,6 @@ class Listening extends Component {
                   </div>*/}
                 </div>
               </div>
-              <Button primary onClick={this.handleGo.bind(this, '/')}>Вернуться назад</Button>
             </div>
           </div>
         );

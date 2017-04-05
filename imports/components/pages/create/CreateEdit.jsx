@@ -340,7 +340,7 @@ class CreateEdit extends Component {
         );
       }
     } else {
-      return (<div>loading</div>);
+      return (<div>Загрузка...</div>);
     }
   }
 }

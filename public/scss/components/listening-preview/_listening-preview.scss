@@ -6,6 +6,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  animation: fadeInDown 0.2s linear 0s both;
   &:hover {
     cursor: pointer;
   }

@@ -13,12 +13,11 @@ export default class FilterLabels extends TrackerReact(Component) {
     this.removeFilterLabel = this.removeFilterLabel.bind(this);
   }
 
-  removeFilterLabel(label, e) {
-    // console.log(e.target)
+  removeFilterLabel(label) {
     return e => {
       if(e) {
         const key = _.keys(label)[0];
-        console.log(label, key);
+        // console.log(label, key);
         Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
         Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
       }
