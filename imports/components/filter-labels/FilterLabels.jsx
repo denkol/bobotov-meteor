@@ -25,7 +25,7 @@ export default class FilterLabels extends TrackerReact(Component) {
   }
   
   render() {
-    const filterData = this.props.filterData;
+    const filterData = this.props.filterData; console.log(filterData);
     if(filterData) {
       return (
         <div className="filter-labels">

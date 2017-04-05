@@ -26,12 +26,15 @@ class CreateEdit extends Component {
   constructor(props) {
     
     super(props);
-    this.state = { formData: {}, contactsNumber: 0 }
+    this.state = { formData: {} }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
   }
   componentWillUnmount() {
+    Session.clear()
+  }
+  componentWillMount() {
     Session.clear()
   }
   handleChange(e, { value }) {
@@ -40,42 +43,43 @@ class CreateEdit extends Component {
   handleSubmit(e, { formData }) {
     e.preventDefault()
     this.setState({ formData });
-    let self = this;
+    const self = this;
     
-    let listeningId = this.props.listeningId;
+    const listeningId = this.props.listeningId;
 
     function getContacts() {
-      let contacts = [];
-      for(let i = 0; i <= self.state.contactsNumber; i++) {
-        let dropdownDeafultValue = "email";
-        let contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
-        let contactValue = formData["input"+i];
-        contacts.push({contactKey: contactKey, contactValue: contactValue})
+      const contactsNumber = self.state.contactsNumber || _.size(self.props.listeningContacts);
+      const contacts = [];
+      for(let i = 0; i < contactsNumber; i++) {
+        const dropdownDeafultValue = "email";
+        const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
+        const contactValue = formData["input"+i];
+        contacts.push({contactKey, contactValue});
       }
       return contacts;
     }
 
-    let typeDeal = formData.typeDeal;
-    let typeProperty = formData.typeProperty;
-    let country = formData.country;
-    let city = formData.city;
-    let location = "formData.location";
-    let ratio = parseInt(formData.ratio);
-    let bedrooms = parseInt(formData.bedrooms);
-    let bathrooms = parseInt(formData.bathrooms);
-    let floor = parseInt(formData.floor);
-    let price = parseInt(formData.price);
-    let paymentPeriod = formData.paymentPeriod;
-    let comfortList = formData.comfortList;
-    let headline = formData.headline;
-    let desc = formData.description;
+    const typeDeal = formData.typeDeal;
+    const typeProperty = formData.typeProperty;
+    const country = formData.country;
+    const city = formData.city;
+    const location = "formData.location";
+    const ratio = parseInt(formData.ratio);
+    const bedrooms = parseInt(formData.bedrooms);
+    const bathrooms = parseInt(formData.bathrooms);
+    const floor = parseInt(formData.floor);
+    const price = parseInt(formData.price);
+    const paymentPeriod = formData.paymentPeriod;
+    const comfortList = formData.comfortList;
+    const headline = formData.headline;
+    const desc = formData.description;
 
-    let photos = {
+    const photos = {
       main: Session.get('0photo'),
       other: getOtherPhotos()
     }
 
-    let options = [
+    const options = [
       { optionName: "Страна", optionValue: "Черногория" },
       { optionName: "Город", optionValue: "Будва" },
       { optionName: "Площадь", optionValue: "32" },
@@ -83,9 +87,9 @@ class CreateEdit extends Component {
       { optionName: "ratio", optionValue: "32" }
     ];
 
-    let contacts = getContacts();
+    const contacts = getContacts();
 
-    let listeningCandidate = {
+    const listeningCandidate = {
       "listeningInfo": {
         "typeDeal": typeDeal,
         "typeProperty": typeProperty,
@@ -106,6 +110,7 @@ class CreateEdit extends Component {
       "listeningContacts": contacts,
       "listeningOptions": options
     }
+    //console.log(listeningCandidate);
     if(!Session.get('0photo')) {
       alert('Загрузите главное фото')
     } else if(!formData.city) {
@@ -125,28 +130,33 @@ class CreateEdit extends Component {
       });
     }
   }
-  contactAdd(event) {
-    event.preventDefault();
-    if(this.state.contactsNumber < 10 ) {
-      this.setState({
-        contactsNumber: this.state.contactsNumber + 1
-      });
-    }
+  contactAdd(contactsNumber) {    
+    return e => {
+    	 e.preventDefault();
+       if(contactsNumber < 10 ) {
+      	this.setState({
+        	  contactsNumber: contactsNumber + 1
+      	});
+    	 }
+    };        
   }
-  contactRemove(event) {
-    event.preventDefault();
-    if(this.state.contactsNumber > 0) {
-      this.setState({
-        contactsNumber: this.state.contactsNumber - 1
-      });
-    }
+  contactRemove(contactsNumber) {
+    return e => {
+    	 e.preventDefault();
+       if(contactsNumber > 1 ) {
+      	this.setState({
+        	  contactsNumber: contactsNumber - 1
+      	});
+    	 }
+    };        
   }
   render() {
     const { formData, value } = this.state;
+    const { listening } = this.props;
     const userId = Meteor.userId();
-    let loading = this.props.loading;
-    let listening = this.props.listening;
+    const loading = this.props.loading;
     if(loading) {
+      const contactsNumber = this.state.contactsNumber || _.size(listening.listeningContacts);
       /* Get other photos */
       function setOtherPhotos(photos) {
         var temp = [];
@@ -158,10 +168,12 @@ class CreateEdit extends Component {
         return temp;
       }
       
-      Session.set("0photo", listening.listeningPhotos.main)
-      setOtherPhotos(listening.listeningPhotos.other)
+      const listeningPhotos = listening.listeningPhotos;
+      //console.log(listeningPhotos);
+      Session.set("0photo", listeningPhotos.main);
+      setOtherPhotos(listeningPhotos.other);
       
-      let defaultValue = {
+      const defaultValue = {
         country: listening.listeningInfo.country,
         city: listening.listeningInfo.city,
         typeDeal: listening.listeningInfo.typeDeal,
@@ -177,7 +189,7 @@ class CreateEdit extends Component {
         comfortList: listening.listeningInfo.comfortList,
         contacts: listening.listeningContacts
       }
-      console.log(defaultValue)
+
       if(userId) {
         return (
           <div>
@@ -268,7 +280,6 @@ class CreateEdit extends Component {
                     </div>
                   </div>
 
-
                   <div className="create-block-row">
                     <div className="create-block-row__item">
                       <Form.Input defaultValue={defaultValue.headline} label="Заголовок объявления" placeholder='' name='headline' type="text" fluid/>
@@ -290,13 +301,13 @@ class CreateEdit extends Component {
                 </div>
                 <div className="create-block__item">
                   <div className="create-block-row">
-                    <CreatePhoto main={true} id="0" photoUrl={Session.get('0photo') ? Session.get('0photo') : ""}/>
+                    <CreatePhoto main={true} id="0" photoUrl={listeningPhotos.main || ""}/>
                   </div>
                   <div className="create-block-row">
-                    <CreatePhoto id="1" photoUrl={Session.get('1photo') ? Session.get('1photo') : ""}/>
-                    <CreatePhoto id="2" photoUrl={Session.get('2photo') ? Session.get('2photo') : ""}/>
-                    <CreatePhoto id="3" photoUrl={Session.get('3photo') ? Session.get('3photo') : ""}/>
-                    <CreatePhoto id="4" photoUrl={Session.get('4photo') ? Session.get('4photo') : ""}/>
+                    <CreatePhoto id="1" photoUrl={Session.get('1photo') || ""}/>
+                    <CreatePhoto id="2" photoUrl={Session.get('2photo') || ""}/>
+                    <CreatePhoto id="3" photoUrl={Session.get('3photo') || ""}/>
+                    <CreatePhoto id="4" photoUrl={Session.get('4photo') || ""}/>
                   </div>
                 </div>
               </div>
@@ -306,10 +317,10 @@ class CreateEdit extends Component {
                 </div>
                 <ContactsAdd 
                   defaultContacts={defaultValue.contacts}
-                  contactsNumber={this.state.contactsNumber}
+                  contactsNumber={contactsNumber}
                 />
-                <Button onClick={this.contactAdd} circular icon='plus' />
-                <Button onClick={this.contactRemove} circular icon='minus' />
+                <Button onClick={this.contactAdd(contactsNumber)} circular icon='plus' />
+                <Button onClick={this.contactRemove(contactsNumber)} circular icon='minus' />
               </div>
               <div className="create-block-confirm">
                 <div className="create-block-confirm__item">

@@ -38,8 +38,8 @@ class Listening extends Component {
   }
 
   render() {
-    let loading = this.props.loading;
-    let data = {
+    const loading = this.props.loading;
+    const data = {
       loading : this.props.loading,
       listening : this.props.listening,
       owner : this.props.owner,

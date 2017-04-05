@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Counts } from 'meteor/tmeasday:publish-counts';
-//import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-//Components
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
-// import Paginate from '../paginate/Paginate.jsx';
 import FilterLabels from '../filter-labels/FilterLabels.jsx';
-
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 
 export default class PhotoGrid extends TrackerReact(Component) {
@@ -24,13 +19,6 @@ export default class PhotoGrid extends TrackerReact(Component) {
     this.loadMore = this.loadMore.bind(this);
   }
 
-  listenings() {
-    return Listenings
-      //.find({}, {limit: this.state.limit})
-      .find(Session.get('filterQuery'), {limit: this.state.limit})
-      .fetch();
-  }
-
   componentWillUnmount() {
     this.setState({limit: 9});
 		this.state.subscription.listenings.stop();
@@ -41,9 +29,10 @@ export default class PhotoGrid extends TrackerReact(Component) {
   }
 
   render() {
-    const listenings = this.listenings();
+    const query = Session.get('filterQuery');
+    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
     if (this.state.subscription.listenings.ready()) {
-      let listeningsTotal = Counts.get('listenings-public-count') || 0;
+      const listeningsTotal = Listenings.find(query).count();
       const filterData = Session.get('filterData');
       return (
         <div>

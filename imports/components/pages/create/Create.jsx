@@ -28,22 +28,22 @@ export default class Create extends Component {
   handleChange(e, { value }) {
     this.setState({ value })
   }
-  handleSubmit(e, { formData }) {
+  handleSubmit(e, { formData }) { //console.log(formData);
     e.preventDefault()
     this.setState({ formData });
-    let self = this;
+    const self = this;
     function getContacts() {
-      let contacts = [];
-      for(let i = 1; i <= self.state.contactsNumber; i++) {
-        let dropdownDeafultValue = "email";
-        let contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
-        let contactValue = formData["input"+i];
-        contacts.push({contactKey: contactKey, contactValue: contactValue})
+      const contacts = [];
+      for(let i = 0; i < self.state.contactsNumber; i++) {
+        const dropdownDeafultValue = "email";
+        const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
+        const contactValue = formData["input"+i];
+        contacts.push({contactKey, contactValue})
       }
       return contacts;
     }
     function getOtherPhotos() {
-      let listeningPhotos = [];
+      const listeningPhotos = [];
       for (let i = 1; i <= 4; i++) {
         if(Session.get(i + "photo")) {
           listeningPhotos.push( Session.get(i + "photo") );
@@ -52,35 +52,27 @@ export default class Create extends Component {
       return listeningPhotos;
     }
 
-    function comfortListBuild(comfortList) {
-      var cache = [];
-      for(let i = 0; i < comfortList.length; i++) {
-        
-      }
-    }
+    const comfortList = formData.comfortList;    
+    const typeDeal = formData.typeDeal;
+    const typeProperty = formData.typeProperty;
+    const country = formData.country;
+    const city = formData.city;
+    const location = "formData.location";
+    const ratio = parseInt(formData.ratio);
+    const bedrooms = parseInt(formData.bedrooms);
+    const bathrooms = parseInt(formData.bathrooms);
+    const floor = parseInt(formData.floor);
+    const price = parseInt(formData.price);
+    const paymentPeriod = formData.paymentPeriod;
+    const headline = formData.headline;
+    const desc = formData.description;
 
-    let comfortList = formData.comfortList;
-    
-    let typeDeal = formData.typeDeal;
-    let typeProperty = formData.typeProperty;
-    let country = formData.country;
-    let city = formData.city;
-    let location = "formData.location";
-    let ratio = parseInt(formData.ratio);
-    let bedrooms = parseInt(formData.bedrooms);
-    let bathrooms = parseInt(formData.bathrooms);
-    let floor = parseInt(formData.floor);
-    let price = parseInt(formData.price);
-    let paymentPeriod = formData.paymentPeriod;
-    let headline = formData.headline;
-    let desc = formData.description;
-
-    let photos = {
+    const photos = {
       main: Session.get('0photo'),
       other: getOtherPhotos()
     }
 
-    let options = [
+    const options = [
       { optionName: "Страна", optionValue: "Черногория" },
       { optionName: "Город", optionValue: "Будва" },
       { optionName: "Площадь", optionValue: "32" },
@@ -88,9 +80,9 @@ export default class Create extends Component {
       { optionName: "ratio", optionValue: "32" }
     ];
 
-    let contacts = getContacts();
+    const contacts = getContacts();
 
-    let listeningCandidate = {
+    const listeningCandidate = {
       "listeningInfo": {
         "typeDeal": typeDeal,
         "typeProperty": typeProperty,
@@ -246,7 +238,6 @@ export default class Create extends Component {
                     <Form.Dropdown label="Удобства" placeholder='Выберите удобства' name='comfortList' multiple fluid selection renderLabel={comfortListLabel} options={ComfortList} />
                   </div>
                 </div>
-
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
