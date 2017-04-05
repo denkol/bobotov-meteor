@@ -99,7 +99,7 @@ export default class Favorites extends TrackerReact(Component) {
     } else {
       return (
         <Dimmer active inverted>
-          <Loader size='medium'>Loading</Loader>
+          <Loader size='medium'>Загрузка...</Loader>
         </Dimmer>
       );
     }

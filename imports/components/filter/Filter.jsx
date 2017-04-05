@@ -19,6 +19,12 @@ const FilterPanel = {
   }
 }
 
+const Window = {
+  scrollToTop: function() {
+    window.scrollTo(0, 0);
+  }
+}
+
 export default class Filter extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +49,7 @@ export default class Filter extends Component {
   handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
     FilterPanel.close();
-    
+    Window.scrollToTop();
 
     //let priceFrom = formData.priceFrom ? formData.priceFrom.replace(/\s/g, '') : "0";
     const priceFrom = formData.priceFrom.replace(/\s/g, '');
