@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
-import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
+
+/* Semantic UI */
+import { Loader, Dimmer, Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
+
 /* Comfort List */
 const comfortListLabel = (label, index, props) => ({
   color: 'blue',
@@ -24,7 +27,6 @@ function getOtherPhotos() {
 
 class CreateEdit extends Component {
   constructor(props) {
-    
     super(props);
     this.state = { formData: {} }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,6 +37,7 @@ class CreateEdit extends Component {
     Session.clear()
   }
   componentWillMount() {
+    window.scrollTo(0, 0); //scroll to top
     Session.clear()
   }
   handleChange(e, { value }) {
@@ -340,7 +343,13 @@ class CreateEdit extends Component {
         );
       }
     } else {
-      return (<div>Загрузка...</div>);
+      return (
+        <div>
+          <Dimmer inverted active>
+            <Loader indeterminate>Загрузка...</Loader>
+          </Dimmer>
+         </div>
+      );
     }
   }
 }
