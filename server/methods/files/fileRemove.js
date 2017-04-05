@@ -10,7 +10,7 @@ Meteor.methods({
       var ownerId = file.userId;
     } else {
       console.log('Файл не найден в БД');
-      return Meteor.error();
+      throw new Meteor.Error("Файл не найден в БД");
     }
     
 
