@@ -165,7 +165,7 @@ class CreatePhoto extends Component {
             message={this.state.snackbar.message} />
 
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
-            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || photoUrl ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
+            <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
               <div className="create-photo-layer_init__icon">
                 <svg role="img" className="ico-add-photo">
                   <use xlinkHref="#ico-add-photo" />
