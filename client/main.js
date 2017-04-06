@@ -12,8 +12,8 @@ function spinnerHide() {
 }
 
 function logoLoading() {
-  $('#glide-shadow').addClass('glide__shadow--loading');
+  $('#glide').addClass('glide--loading');
   setTimeout(function() {
-    $('#glide-shadow').removeClass('glide__shadow--loading');
+    $('#glide').removeClass('glide--loading');
   }, 1500);
 }

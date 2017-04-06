@@ -22,7 +22,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
 
   componentWillUnmount() {
     this.setState({limit: 9});
-		this.state.subscription.listenings.stop();
+    this.state.subscription.listenings.stop();
   }
 
   loadMore() {
