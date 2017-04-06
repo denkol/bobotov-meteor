@@ -43,6 +43,8 @@ $radius-create-photo: 5px;
   border: 3px dashed $grey-create-photo;
   border-radius: $radius-create-photo;
   padding: 36px;
+  position: relative;
+  z-index: 2;
   &:hover {
     cursor: pointer;
     opacity: 0.5;
@@ -69,10 +71,13 @@ $radius-create-photo: 5px;
 }
 
 .create-photo-layer_loader {
-
+  position: relative;
+  z-index: 5;
 }
 
 .create-photo-layer_image {
+  position: relative;
+  z-index: 3;
   &__item {
     height: 100%;
     width: 100%;
@@ -84,6 +89,8 @@ $radius-create-photo: 5px;
 }
 
 .create-photo-layer_hover {
+  position: relative;
+  z-index: 4;
   &__item {
     display: none;
     height: 100%;

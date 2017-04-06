@@ -52,6 +52,11 @@
     &:hover > .main-menu-text {
       display: block;
     }
+    &:active {
+      svg {
+        fill: darken(gray, 10%);
+      }
+    }
     &:focus {
       outline: none;
     }
@@ -160,19 +165,19 @@
 
   //For desktop (MIN)
   @include mq('tablet-wide', min) {
+    white-space: nowrap;
     display: none;
     border-radius: 22px;
     box-shadow: 1px 1px 9px rgba(0,0,0,0.1);
     left: -9px;
-    padding: 9px;
     padding-top: 13px;
-    padding-bottom: 12px;
+    padding-bottom: 13px;
     padding-left: 41px;
+    padding-right: 13px;
     top: -7px;
     position: absolute;
     z-index: 223;
     background-color: #eee;
-    width: 200px;
     font-size: 16px;
     animation: fadeIn 0.2s ease 0s both;
   }

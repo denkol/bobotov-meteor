@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 
 /* Semantic UI */
-import { Form, Input, Message } from 'semantic-ui-react';
+import { Form, Input, Message, Icon } from 'semantic-ui-react';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -83,7 +83,7 @@ export default class SignUp extends Component {
                   </Message>
                 </div>
                 <div className="login-item">
-                  <Form.Input warning label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error required/>
+                  <Form.Input warning icon='checkmark' label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error required/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error required/>

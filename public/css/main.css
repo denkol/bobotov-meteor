@@ -23403,6 +23403,8 @@ html.ios, html.ios body {
     transition: transform .2s, -webkit-transform .2s; }
     .main-menu__item:hover > .main-menu-text {
       display: block; }
+    .main-menu__item:active svg {
+      fill: #676666; }
     .main-menu__item:focus {
       outline: none; }
     .main-menu__item:hover {
@@ -23490,19 +23492,19 @@ html.ios, html.ios body {
   text-decoration: none; }
   @media only screen and (min-width: 1200px) {
     .main-menu-text {
+      white-space: nowrap;
       display: none;
       border-radius: 22px;
       box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.1);
       left: -9px;
-      padding: 9px;
       padding-top: 13px;
-      padding-bottom: 12px;
+      padding-bottom: 13px;
       padding-left: 41px;
+      padding-right: 13px;
       top: -7px;
       position: absolute;
       z-index: 223;
       background-color: #eee;
-      width: 200px;
       font-size: 16px;
       -webkit-animation: fadeIn 0.2s ease 0s both;
               animation: fadeIn 0.2s ease 0s both; } }
@@ -23605,12 +23607,11 @@ html.ios, html.ios body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  color: #adacac;
   font-size: 12px;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 2px; }
 
 .profile-desc {
-  color: #c6c6c6;
   font-size: 10px;
   font-weight: 200; }
 
@@ -24083,9 +24084,8 @@ html.ios, html.ios body {
         font-size: 20px;
         line-height: 20px; } }
   .listening-info-header__item .medium-parag {
-    font-size: 12px;
-    margin-bottom: 5px;
-    line-height: 16px; }
+    font-size: 14px;
+    margin-bottom: 5px; }
   .listening-info-header__item_headline {
     max-width: 80%;
     margin-right: 10px; }
@@ -25029,7 +25029,7 @@ html.ios, html.ios body {
 
 .create-block {
   padding: 0;
-  margin-bottom: 16px; }
+  margin-bottom: 32px; }
   .create-block__item {
     margin-bottom: 16px; }
 
@@ -25511,7 +25511,9 @@ html.ios, html.ios body {
 .create-photo-layer_init {
   border: 3px dashed gray;
   border-radius: 5px;
-  padding: 36px; }
+  padding: 36px;
+  position: relative;
+  z-index: 2; }
   .create-photo-layer_init:hover {
     cursor: pointer;
     opacity: 0.5; }
@@ -25532,37 +25534,45 @@ html.ios, html.ios body {
     .create-photo-layer_init {
       padding: 66px; } }
 
-.create-photo-layer_image__item {
-  height: 100%;
-  width: 100%;
-  border-radius: 5px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center; }
+.create-photo-layer_loader {
+  position: relative;
+  z-index: 5; }
 
-.create-photo-layer_hover__item {
-  display: none;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
-  padding: 80px 0;
-  text-align: center; }
+.create-photo-layer_image {
+  position: relative;
+  z-index: 3; }
+  .create-photo-layer_image__item {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; }
 
-.create-photo-layer_hover .hover-item-text {
-  font-weight: bold;
-  color: white;
-  font-size: 18px;
-  margin-bottom: 10px;
-  display: block; }
-  .create-photo-layer_hover .hover-item-text_remove {
-    color: #C1000B; }
-  .create-photo-layer_hover .hover-item-text:hover {
-    cursor: pointer;
-    text-decoration: underline; }
-
-.create-photo-layer_hover:hover .create-photo-layer_hover__item {
-  display: block; }
+.create-photo-layer_hover {
+  position: relative;
+  z-index: 4; }
+  .create-photo-layer_hover__item {
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding: 80px 0;
+    text-align: center; }
+  .create-photo-layer_hover .hover-item-text {
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block; }
+    .create-photo-layer_hover .hover-item-text_remove {
+      color: #C1000B; }
+    .create-photo-layer_hover .hover-item-text:hover {
+      cursor: pointer;
+      text-decoration: underline; }
+  .create-photo-layer_hover:hover .create-photo-layer_hover__item {
+    display: block; }
 
 .separator {
   display: block;
