@@ -14,10 +14,9 @@ class Panel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formData: {
-      },
-      usernameInput: {
-        editing: false
+      validation: {
+        username: '',
+        message: ''
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,25 +27,50 @@ class Panel extends Component {
   componentWillUnmount() {
     Session.clear()
   }
+  
+  Check(validation) {
+    this.setState({validation: Object.assign(this.state.validation, validation)});
+  } 
+  
+  validationError() {
+    const { username, message } = this.state.validation;
+    if (username) {
+      return username;
+    } else if (message) {
+      return message;
+    };
+  } 
+    
   handleSubmit(e, { formData }) {
     e.preventDefault();
-    let userName = formData.userName.trim() + "";
-    let userDesc = formData.userDesc.trim() + "";
-    let userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
-    let data = {
-      userName: userName,
-      userDesc: userDesc,
-      userPhoto: userPhoto,
+    const validation = {
+      username: '',
+      message: ''
+    };
+    this.setState({ validation });
+    const userName = formData.userName.trim();
+    const userDesc = formData.userDesc;
+    const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
+    
+    if (userName.length < 3) {
+      validation.username = "Имя пользователя слишком короткое!";
+      return this.Check(validation);
     }
-    if(formData) {
-      Meteor.call('userUpdate', data, (err, res) => {
-        if(err) {console.log(err)}
-      });
-    }
+    
+    const data = { userName, userDesc, userPhoto };
+
+    Meteor.call('userUpdate', data, (err, res) => {
+      const { validation } = this.state;
+      if(err) {
+        validation.message = err.message;
+        return this.Check(validation);
+      }
+    });
   }
+  
   render() {
-    const { formData, value } = this.state;
-    let currentUser = this.props.currentUser;
+    const { username, message } = this.state.validation;
+    const currentUser = this.props.currentUser;
     
     if(!Meteor.userId()) {
       return (
@@ -95,6 +119,13 @@ class Panel extends Component {
                 </div>*/}
                 <Form onSubmit={this.handleSubmit}>
                   <div className="panel-body-menucontent">
+                    <div className="login-item">
+                		{this.validationError() ? 
+                  	  <Message size='tiny' negative>
+                     	 <Message.Header>{this.validationError()}</Message.Header>
+                  	  </Message>
+    				 		 : null}
+                	  </div>
                     <div className="panel-headline">
                       <div className="panel-headline__headline">
                       </div>
@@ -102,7 +133,7 @@ class Panel extends Component {
                     </div>
                     <div className="panel-inputs">
                       <div className="panel-inputs__item">
-                        <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} required />
+                        <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} error={username} required />
                       </div>
                       <div className="panel-inputs__item">
                         <Form.Select label='Ваш статус' name='userDesc' options={statuses} defaultValue={userDesc} required placeholder='Выберите ваш статус' />
@@ -139,5 +170,5 @@ Panel.propTypes = {};
 
 export default createContainer(({ params }) => {
   const currentUser = Meteor.user();
-  return {currentUser}
+  return {currentUser};
 }, Panel);
