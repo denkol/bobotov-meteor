@@ -84,7 +84,11 @@ class HeaderLayout extends Component {
               <a className="header-logo" href="/">
                 <div className="header-logo__item">
                   <div className="header-logo-img">
-                    <img src="/img/logo100x100.png" alt="logo.png" /></div>
+                    <img src="/img/logo100x100.png" alt="logo.png" />
+                    <div className="glide">
+                      <div id="glide-shadow" className="glide__shadow"></div>
+                    </div>
+                  </div>
                 </div>
                 <div className="header-logo__item">
                   <div className="header-logo-name">bobotov</div>

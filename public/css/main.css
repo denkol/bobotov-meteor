@@ -23246,6 +23246,8 @@ html.ios, html.ios body {
   left: 0;
   display: block;
   width: 100%;
+  -webkit-animation: fadeInDown 0.2s ease 0.2s both;
+          animation: fadeInDown 0.2s ease 0.2s both;
   background-color: white;
   z-index: 333; }
   @media only screen and (max-width: 1199px) {
@@ -23337,11 +23339,17 @@ html.ios, html.ios body {
       opacity: 1; } }
 
 .header-logo-img {
+  position: relative;
   margin-right: 5px;
   width: auto;
-  height: 36px; }
+  height: 36px;
+  width: 36px;
+  overflow: hidden; }
   .header-logo-img img {
-    height: 100%; }
+    position: relative;
+    z-index: 2;
+    height: 36px;
+    width: 36px; }
 
 .header-logo-name {
   font-size: 18px;
@@ -23350,6 +23358,43 @@ html.ios, html.ios body {
 .header-logo-desc {
   font-size: 14px;
   font-weight: 200; }
+
+.glide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 5;
+  height: 36px;
+  width: 36px; }
+  .glide__shadow {
+    -webkit-animation: animationGlide 1500ms ease 0s infinite;
+            animation: animationGlide 1500ms ease 0s infinite;
+    width: 36px;
+    height: 36px;
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.01) 99%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.01) 99%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 );
+    display: none; }
+    .glide__shadow--loading {
+      display: block; }
+
+@-webkit-keyframes animationGlide {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); } }
+
+@keyframes animationGlide {
+  0% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%); } }
 
 .header-menu__item {
   position: relative;
@@ -23456,7 +23501,20 @@ html.ios, html.ios body {
     -webkit-transition: -webkit-transform .2s;
     transition: -webkit-transform .2s;
     transition: transform .2s;
-    transition: transform .2s, -webkit-transform .2s; }
+    transition: transform .2s, -webkit-transform .2s;
+    /* Animation rock */ }
+    .main-menu__item:nth-child(1) {
+      -webkit-animation: fadeIn 500ms ease 0.1s both;
+              animation: fadeIn 500ms ease 0.1s both; }
+    .main-menu__item:nth-child(2) {
+      -webkit-animation: fadeIn 500ms ease 0.2s both;
+              animation: fadeIn 500ms ease 0.2s both; }
+    .main-menu__item:nth-child(3) {
+      -webkit-animation: fadeIn 500ms ease 0.3s both;
+              animation: fadeIn 500ms ease 0.3s both; }
+    .main-menu__item:nth-child(4) {
+      -webkit-animation: fadeIn 500ms ease 0.4s both;
+              animation: fadeIn 500ms ease 0.4s both; }
     .main-menu__item:hover > .main-menu-text {
       display: block; }
     .main-menu__item:active svg {
@@ -23972,8 +24030,8 @@ html.ios, html.ios body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  -webkit-animation: fadeInDown 0.2s linear 0s both;
-          animation: fadeInDown 0.2s linear 0s both; }
+  -webkit-animation: fadeInDown 100ms linear 0s both;
+          animation: fadeInDown 100ms linear 0s both; }
   .listening-preview:hover {
     cursor: pointer; }
   .listening-preview--bonus1 {
@@ -24814,6 +24872,8 @@ html.ios, html.ios body {
 
 /* button on desktop */
 .filter-btn {
+  -webkit-animation: scale 500ms ease 0.5s both;
+          animation: scale 500ms ease 0.5s both;
   position: absolute;
   right: -50px;
   top: 11px;
