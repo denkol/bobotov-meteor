@@ -23659,7 +23659,9 @@ html.ios, html.ios body {
   display: none;
   border-radius: 3px;
   border: 1px solid #e8e7e7;
-  z-index: 7; }
+  z-index: 7;
+  -webkit-animation: fadeInDown 0.2s ease 0s both;
+          animation: fadeInDown 0.2s ease 0s both; }
   .profile-menu-content--expanded {
     display: block; }
   @media only screen and (max-width: 1199px) {
@@ -24655,8 +24657,8 @@ html.ios, html.ios body {
   border-radius: 14px 0 14px 14px;
   background-color: #eee;
   width: 300px;
-  -webkit-animation: fadeIn 0.2s ease 0s both;
-          animation: fadeIn 0.2s ease 0s both; }
+  -webkit-animation: fadeInDown 0.2s ease 0s both;
+          animation: fadeInDown 0.2s ease 0s both; }
   .filter:after {
     content: "";
     position: absolute;

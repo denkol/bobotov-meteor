@@ -68,7 +68,7 @@ export default class History extends TrackerReact(Component) {
             </div>
 
               <div className="headline__item">
-                <Button className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</Button>
+                <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
               </div>
             </div>
 

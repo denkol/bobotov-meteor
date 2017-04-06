@@ -99,6 +99,7 @@
   border-radius: 3px;
   border: 1px solid lighten($text-color, 50%);
   z-index: 7;
+  animation: fadeInDown 0.2s ease 0s both;
   &--expanded {
     display: block;
   }

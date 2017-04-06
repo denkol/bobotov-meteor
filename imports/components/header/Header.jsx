@@ -130,7 +130,7 @@ class HeaderLayout extends Component {
                     </div>
                   </div>
                   :
-                  <div className="header-controls__item">
+                  <div className="header-controls__item header-controls__item_sign-buttons">
                     <a href="/signup">
                       <button className="transparent-btn">Регистрация</button>
                     </a>
