@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-class MainMenu extends Component {
+export default class MainMenu extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {}
   }
   clickOnMenuItem(e) {
-    var currentItem = $(e.target);
-    var allItems = $('.main-menu__item');
+    // var currentItem = $(e.target);
+    // var allItems = $('.main-menu__item');
 
-    if(!currentItem.hasClass('main-menu__item')) {
-      currentItem = currentItem.parents('.main-menu__item');
-    }
+    // if(!currentItem.hasClass('main-menu__item')) {
+    //   currentItem = currentItem.parents('.main-menu__item');
+    // }
 
-    allItems.removeClass('main-menu__item--active');
-    currentItem.addClass('main-menu__item--active');
+    // allItems.removeClass('main-menu__item--active');
+    // currentItem.addClass('main-menu__item--active');
   }
   render() { 
-    //let user = this.props.user;
-    const { user } = this.props;
-    const disabled = user ? "" : "disabled";
+    let user = Meteor.user();
+    let disabled;
+    let favoritesLength;
+    if(user) {
+      disabled = user ? "" : "disabled";
+      favoritesLength = user.profile.favoritesList.length;
+    }
+    
     const url = window.location.pathname;
+
     /* Home Active Class */
     const activeHome = url === "/" ? "main-menu__item--active" : "";
 
@@ -50,7 +57,7 @@ class MainMenu extends Component {
             <span className="main-menu-text">Мои объявления</span>
           </a>
           <a href="/favorites" onClick={this.clickOnMenuItem} className={"main-menu__item " + disabled + " " + activeFav}>
-            <svg className="ico-love" role="img">
+            <svg className="ico-love" id="love-menu-item" role="img">
               <use xlinkHref="#ico-love" />
             </svg>
             <span className="main-menu-text">Избранное</span>
@@ -68,8 +75,3 @@ class MainMenu extends Component {
 }
 
 MainMenu.propTypes = {};
-
-export default createContainer(({ params }) => {
-  const user = Meteor.user();
-  return {user}
-}, MainMenu);

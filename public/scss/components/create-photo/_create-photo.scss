@@ -8,8 +8,11 @@ $radius-create-photo: 5px;
   background-color: transparent;
   @include mq('tablet-wide', max) {
     width: 100%;
-    height: 250px;
+    height: 350px;
     margin-bottom: 16px;
+  }
+  @include mq('phablet', max) {
+    
   }
   &_main {
     .create-photo-layer_init {
@@ -43,8 +46,6 @@ $radius-create-photo: 5px;
   border: 3px dashed $grey-create-photo;
   border-radius: $radius-create-photo;
   padding: 36px;
-  position: relative;
-  z-index: 2;
   &:hover {
     cursor: pointer;
     opacity: 0.5;
@@ -67,6 +68,19 @@ $radius-create-photo: 5px;
   }
   @include mq('tablet-wide', max) {
     padding: 66px;
+    &__icon {
+      margin-bottom: 16px;
+      svg {
+        width: 57px;
+        height: 57px;
+      }
+    }
+    &__text {
+      font-size: 18px;
+    }
+  }
+  @include mq('phablet', max) {
+    
   }
 }
 

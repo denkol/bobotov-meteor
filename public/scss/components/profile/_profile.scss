@@ -104,7 +104,7 @@
     display: block;
   }
   @include mq('tablet-wide', max) {
-    top: 43px;
+    // top: 43px;
   }
   @include mq('tablet-small', max) {
     right: 1px;

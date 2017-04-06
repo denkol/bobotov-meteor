@@ -1,5 +1,4 @@
 .header-menu {
-    // display: none;
   &__item {
     position: relative;
     display: inline-block;
@@ -8,14 +7,11 @@
     padding: 12px 0;
     a {
       text-decoration: none;
-      color: black;
+      color: $black-text;
+      transition: .2s;
       &:hover {
-        border-bottom: 1px solid black;
-      }
-    }
-    &--active {
-      a {
-        border-bottom: 1px solid black;
+        cursor: pointer;
+        border-bottom: 1px solid $black-text;
       }
     }
   }
