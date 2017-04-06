@@ -67,7 +67,7 @@ body {
   @media only screen and (max-width: 1199px) {
     body {
       width: 100%;
-      background-color: #f7f7f7; } }
+      background-color: #fff; } }
 
 ul,
 li {
@@ -23246,8 +23246,6 @@ html.ios, html.ios body {
   left: 0;
   display: block;
   width: 100%;
-  -webkit-animation: fadeInDown 0.2s ease 0.2s both;
-          animation: fadeInDown 0.2s ease 0.2s both;
   background-color: white;
   z-index: 333; }
   @media only screen and (max-width: 1199px) {
@@ -23778,7 +23776,7 @@ html.ios, html.ios body {
   display: none;
   border-radius: 3px;
   border: 1px solid #e8e7e7;
-  z-index: 7;
+  z-index: 99;
   -webkit-animation: fadeInDown 0.2s ease 0s both;
           animation: fadeInDown 0.2s ease 0s both; }
   .profile-menu-content--expanded {
@@ -25016,7 +25014,7 @@ html.ios, html.ios body {
     text-align: center; }
     @media only screen and (max-width: 1199px) {
       .login-item-separator__text {
-        background-color: #f7f7f7; } }
+        background-color: #fff; } }
 
 .login-link {
   font-weight: bold;

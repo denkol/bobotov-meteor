@@ -9,7 +9,7 @@ $header-height: 76px;
   display: block;
   width: 100%;
   // transition: top 0.2s ease-in-out;
-  animation: fadeInDown 0.2s ease 0.2s both;
+  // animation: fadeInDown 0.2s ease 0.2s both;
   background-color: white;
   z-index: 333;
   @include mq('tablet-wide', max) {

@@ -5,11 +5,9 @@ Meteor.startup(function() {
 
 function spinnerHide() {
   var spinnerWrapper = $('#spinnerWrapper');
-  var spinner = $('#spinner');
-  setTimeout(function() {
-    spinnerWrapper.remove();
-    spinner.remove();
-  }, 200);
+  var spinner = $('#spinner');  
+  spinnerWrapper.remove();
+  spinner.remove();
   
 }
 
