@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-
+import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 
 /* Semantic UI */
 import { Form, Input, Message } from 'semantic-ui-react';
-import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -26,15 +25,15 @@ export default class SignUp extends Component {
   } 
   
   validationError() {
-    const { validation } = this.state;
-    if (validation.username) {
-      return validation.username;
-    } else if (validation.email) {
-      return validation.email;
-    } else if (validation.password) {
-      return validation.password;
-    } else if (validation.message) {
-      return validation.message;
+    const { username, email, password, message } = this.state.validation;
+    if (username) {
+      return username;
+    } else if (email) {
+      return email;
+    } else if (password) {
+      return password;
+    } else if (message) {
+      return message;
     };
   } 
   
@@ -82,14 +81,15 @@ export default class SignUp extends Component {
     };
 
     Accounts.createUser(userInfo, (err) => {
+    	const { validation } = this.state;
       if (err) {
-        const { validation } = this.state;
         validation.message = err.message;
         return this.Check(validation);
       } else {
         Meteor.call("userCreate", userInfo, (err, res) => {
           if(err) {
-            console.log(err)
+            validation.message = err.message;
+            return this.Check(validation);
           } else {
             FlowRouter.go('Home');  
           };
@@ -100,7 +100,7 @@ export default class SignUp extends Component {
   }
 
   render() {
-    const { validation } = this.state;
+    const { username, email, password, message } = this.state.validation;
     return (
       <div className="signup">
         <div className="card card_login">
@@ -116,20 +116,20 @@ export default class SignUp extends Component {
               </div>
               <Form size={'tiny'} onSubmit={this.handleSubmit}>
                 <div className="login-item">
-                {this.validationError() ? 
-                  <Message size='tiny' negative>
-                    <Message.Header>{this.validationError()}</Message.Header>
-                  </Message>
-    				 : null}
+                	{this.validationError() ? 
+                  	<Message size='tiny' negative>
+                     	<Message.Header>{this.validationError()}</Message.Header>
+                  	</Message>
+    				 	: null}
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={validation.username} required/>
+                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={validation.email} required/>
+                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={validation.password} required/>
+                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password} required/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' required/>
