@@ -5,6 +5,7 @@ import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
+import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
 
 /* Semantic UI */
 import { Loader, Dimmer, Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
@@ -28,7 +29,14 @@ function getOtherPhotos() {
 class CreateEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = { formData: {} }
+    this.state = {
+      validation: {
+        message: '',
+        phone: '',
+        email: ''
+      },
+      contacts: null
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
@@ -40,14 +48,17 @@ class CreateEdit extends Component {
     window.scrollTo(0, 0); //scroll to top
     Session.clear()
   }
-  handleChange(e, { value }) {
-    this.setState({ value })
-  }
+
   handleSubmit(e, { formData }) {
     e.preventDefault()
-    this.setState({ formData });
-    const self = this;
+    const validation = {
+      message: '',
+      phone: '',
+      email: ''
+    };
+    this.setState({ validation });
     
+    const self = this;    
     const listeningId = this.props.listeningId;
 
     function getContacts() {
@@ -57,7 +68,24 @@ class CreateEdit extends Component {
         const dropdownDeafultValue = "email";
         const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
         const contactValue = formData["input"+i];
-        contacts.push({contactKey, contactValue});
+        let message; 
+        
+        //console.log(contactKey, contactValue);
+        if(contactKey === "phone" && !isValidPhone(contactValue)) {
+          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+          validation.message = message;
+          validation.phone = "Введите корректный телефонный номер!";
+          self.setState({ validation });
+        }
+        
+        if(contactKey === "email" && !isValidEmail(contactValue)) {
+          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+          validation.message = message;
+          validation.email = "Введите корректный почтовый адрес!";
+          self.setState({ validation });
+        }
+        
+        contacts.push({contactKey, contactValue, message});
       }
       return contacts;
     }
@@ -91,6 +119,10 @@ class CreateEdit extends Component {
     ];
 
     const contacts = getContacts();
+    self.setState({ contacts });
+
+    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
+    if(hasError) return;
 
     const listeningCandidate = {
       "listeningInfo": {
@@ -154,12 +186,14 @@ class CreateEdit extends Component {
     };        
   }
   render() {
-    const { formData, value } = this.state;
-    const { listening } = this.props;
+    const { message, phone, email } = this.state.validation; 
+    const { contacts } = this.state; 
+    let { contactsNumber } = this.state; 
+    const { loading, listening } = this.props;
     const userId = Meteor.userId();
-    const loading = this.props.loading;
+
     if(loading) {
-      const contactsNumber = this.state.contactsNumber || _.size(listening.listeningContacts);
+      contactsNumber = contactsNumber || _.size(listening.listeningContacts);
       /* Get other photos */
       function setOtherPhotos(photos) {
         var temp = [];
@@ -316,11 +350,21 @@ class CreateEdit extends Component {
               </div>
               <div className="create-block">
                 <div className="create-block__item">
+                	{message ? 
+                  	<Message compact negative>
+                     	<Message.Header>{message}</Message.Header>
+                     	{phone ? <p>{phone}</p> : null}
+                     	{email ? <p>{email}</p> : null}
+                  	</Message>
+    				 	: null}
+                </div>
+                <div className="create-block__item">
                   <div className="create-block-headline">Шаг 3: Контакты</div>
                 </div>
                 <ContactsAdd 
-                  defaultContacts={defaultValue.contacts}
+                  defaultContacts={contacts || defaultValue.contacts}
                   contactsNumber={contactsNumber}
+                  message={message} 
                 />
                 <Button onClick={this.contactAdd(contactsNumber)} circular icon='plus' />
                 <Button onClick={this.contactRemove(contactsNumber)} circular icon='minus' />
