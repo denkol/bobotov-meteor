@@ -11,39 +11,22 @@ export default class SignUp extends Component {
     super(props);
     this.state = {
       validation: {
-        email: '',
-        password: '',
-        username: '',
-        message: ''
+        email: false,
+        password: false,
+        username: false,
+        message: false
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
-  Check(validation) {
-    this.setState({validation: Object.assign(this.state.validation, validation)});
-  } 
-  
-  validationError() {
-    const { username, email, password, message } = this.state.validation;
-    if (username) {
-      return username;
-    } else if (email) {
-      return email;
-    } else if (password) {
-      return password;
-    } else if (message) {
-      return message;
-    };
-  } 
-  
+
   handleSubmit(e, {formData}) {
     e.preventDefault();
     const validation = {
-      email: '',
-      password: '',
-      username: '',
-      message: ''
+      email: false,
+      password: false,
+      username: false,
+      message: false
     };
     this.setState({ validation });
 
@@ -55,22 +38,28 @@ export default class SignUp extends Component {
     const password = formData.password.trim();
     const passwordR = formData.passwordR.trim();
     
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
     if (username.length < 3) {
+      validation.message = message;
       validation.username = "Имя пользователя слишком короткое!";
-      return this.Check(validation);
+      this.setState({ validation });
     }
     if (!isValidEmail(email)) {
+    	validation.message = message;
       validation.email = "Введите корректный адрес!";
-      return this.Check(validation);
+      this.setState({ validation });
     }
     if (!isValidPassword(password, 6)) {
+    	validation.message = message;
       validation.password = "Введите более надёжный пароль!";
-      return this.Check(validation);
+      this.setState({ validation });
     }
     if (password !== passwordR) {
+    	validation.message = message;
       validation.password = "Пароли не совпадают!";
-      return this.Check(validation);
+      this.setState({ validation });
     } 
+    if (validation.message) return;
 
     const userInfo = { 
       email : email,
@@ -84,12 +73,12 @@ export default class SignUp extends Component {
     	const { validation } = this.state;
       if (err) {
         validation.message = err.message;
-        return this.Check(validation);
+        return this.setState({ validation });
       } else {
         Meteor.call("userCreate", userInfo, (err, res) => {
           if(err) {
             validation.message = err.message;
-            return this.Check(validation);
+            return this.setState({ validation });
           } else {
             FlowRouter.go('Home');  
           };
@@ -116,20 +105,23 @@ export default class SignUp extends Component {
               </div>
               <Form size={'tiny'} onSubmit={this.handleSubmit}>
                 <div className="login-item">
-                	{this.validationError() ? 
+                	{message ? 
                   	<Message size='tiny' negative>
-                     	<Message.Header>{this.validationError()}</Message.Header>
+                     	<Message.Header>{message}</Message.Header>
+                     	{username ? <p>{username}</p> : null}
+                     	{email ? <p>{email}</p> : null}
+                     	{password ? <p>{password}</p> : null}
                   	</Message>
     				 	: null}
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username} required/>
+                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email} required/>
+                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password} required/>
+                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} required/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' required/>

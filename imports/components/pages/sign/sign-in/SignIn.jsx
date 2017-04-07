@@ -12,61 +12,50 @@ export default class SignIn extends Component {
     super(props);
     this.state = {
       validation: {
-        email: '',
-        password: '',
-        message: ''
+        email: false,
+        password: false,
+        message: false
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
-  Check(validation) {
-    this.setState({validation: Object.assign(this.state.validation, validation)});
-  }
-    
-  validationError() {
-    const { email, password, message } = this.state.validation;
-    if (email) {
-      return email;
-    } else if (password) {
-      return password;
-    } else if (message) {
-      return message;
-    };
-  }
-  
+
   handleSubmit(e, { formData }) {
     e.preventDefault();
     const validation = {
-      email: '',
-      password: '',
-      message: ''
+      email: false,
+      password: false,
+      message: false
     };
     this.setState({ validation });
     const email = formData.email;
     const password = formData.password;
     
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
     if (!isValidEmail(email)) {
+    	validation.message = message;
       validation.email = "Введите корректный адрес!";
-      return this.Check(validation);
+      this.setState({ validation });
     }
     if (!isValidPassword(password, 6)) {
+    	validation.message = message;
       validation.password = "Введите более надёжный пароль!";
-      return this.Check(validation);
+      this.setState({ validation });
     }
+    if (validation.message) return;
 
     Meteor.loginWithPassword(email, password, (err) => {
     	const { validation } = this.state;
       if(err) {
         validation.message = err.message;
-        return this.Check(validation);
+        return this.setState({ validation });
       }
       var isVerificated = Meteor.user().emails[0].verified;
       if (!isVerificated) {
         FlowRouter.go('Home');
       } else {
         validation.message = "Аккаунт не верифицирован, на почту которую вы указывали при регистрици отправлено письмо";
-        return this.Check(validation);
+        return this.setState({ validation });
       }
     });
   }
@@ -88,17 +77,19 @@ export default class SignIn extends Component {
             </div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
-                	{this.validationError() ? 
+                	{message ? 
                   	<Message size='tiny' negative>
-                     	<Message.Header>{this.validationError()}</Message.Header>
+                     	<Message.Header>{message}</Message.Header>
+                     	{email ? <p>{email}</p> : null}
+                     	{password ? <p>{password}</p> : null}
                   	</Message>
     				 	: null}
               </div>
               <div className="login-item">
-                <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email} />
+                <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} />
               </div>
               <div className="login-item">
-                <Form.Input label='Пароль:' name='password' type="password" placeholder='Ваш пароль' error={password} />
+                <Form.Input label='Пароль:' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} />
               </div>
               <div className="login-item">
                 <button type='submit' className="simple-btn simple-btn_blue">Войти</button>

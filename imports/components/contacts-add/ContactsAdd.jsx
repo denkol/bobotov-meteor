@@ -16,7 +16,6 @@ export default class ContactsAdd extends Component {
     const name = data.name;
     const value = data.value;
     Session.set(name, value)
-    console.log(Session.get(name));
   }
   changeInput(contactValue) {
     return e => {
