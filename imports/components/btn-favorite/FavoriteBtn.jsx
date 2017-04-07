@@ -22,7 +22,11 @@ export default class FavoriteBtn extends Component {
       isFavorite : !this.state.isFavorite
     });
     var that = this;
-    var sendData = {listeningId : this.props.listeningId, state : this.state.isFavorite};
+    var sendData = {
+      listeningId : this.props.listeningId, 
+      state : this.state.isFavorite
+    };
+
     Meteor.call('listeningAddToFavorite', sendData, (err, res) => {
       if(err) {
         console.log(err);
@@ -49,6 +53,4 @@ export default class FavoriteBtn extends Component {
   }
 }
 
-FavoriteBtn.propTypes = {
-
-};
+FavoriteBtn.propTypes = {};

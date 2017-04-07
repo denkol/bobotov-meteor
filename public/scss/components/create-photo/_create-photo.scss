@@ -85,12 +85,10 @@ $radius-create-photo: 5px;
 }
 
 .create-photo-layer_loader {
-  position: relative;
   z-index: 5;
 }
 
 .create-photo-layer_image {
-  position: relative;
   z-index: 3;
   &__item {
     height: 100%;
@@ -103,7 +101,6 @@ $radius-create-photo: 5px;
 }
 
 .create-photo-layer_hover {
-  position: relative;
   z-index: 4;
   &__item {
     display: none;
