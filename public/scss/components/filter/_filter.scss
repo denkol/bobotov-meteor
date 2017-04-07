@@ -1,3 +1,7 @@
+$filter-animation: fadeInLeft 0.2s ease 0s both;
+$filter-width-desktop: 300px;
+$filter-bg-desktop: #eee;
+
 /* Filter achor fixed */
 .filter-wrapper {
   //Only on desktop
@@ -52,13 +56,13 @@
   z-index: 0;
   padding: 15px;
   border-radius: 14px 0 14px 14px;
-  background-color: #eee;
-  width: 300px;
-  animation: fadeIn 0.2s ease 0s both;
+  background-color: $filter-bg-desktop;
+  width: $filter-width-desktop;
+  animation: $filter-animation;
   &:after {
     content: "";
     position: absolute;
-    background-color: #eee;
+    background-color: $filter-bg-desktop;
     height: 66px;
     width: 59px;
     border-radius: 0 14px 14px 0;

@@ -4,6 +4,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
 import FilterLabels from '../filter-labels/FilterLabels.jsx';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import CircularProgress from 'material-ui/CircularProgress';
 
 export default class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
 
   componentWillUnmount() {
     this.setState({limit: 9});
-		this.state.subscription.listenings.stop();
+    this.state.subscription.listenings.stop();
   }
 
   loadMore() {

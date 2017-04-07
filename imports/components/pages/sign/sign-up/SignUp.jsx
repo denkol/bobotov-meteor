@@ -4,7 +4,7 @@ import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 
 /* Semantic UI */
-import { Form, Input, Message } from 'semantic-ui-react';
+import { Form, Input, Message, Icon } from 'semantic-ui-react';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -115,7 +115,7 @@ export default class SignUp extends Component {
     				 	: null}
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false} required/>
+                  <Form.Input icon='checkmark' label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false} required/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} required/>

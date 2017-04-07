@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Photos } from '../../api/photos.js';
-import Snackbar from '../snackbar/Snackbar.jsx';
-
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+
 class CreatePhoto extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      snackbar: {
-        open: false,
-        message: ""
-      },
       uploading: [],
       progress: 0,
       uploaded: false,
@@ -19,15 +14,6 @@ class CreatePhoto extends Component {
       file: "",
     }
     this.photoRemove = this.photoRemove.bind(this);
-    this.snackbarClose = this.snackbarClose.bind(this);
-  }
-  snackbarClose() {
-    this.state({
-      snackbar: {
-        open: false,
-        message: ""
-      }
-    });
   }
   uploadIt(e){
     "use strict";
@@ -37,7 +23,7 @@ class CreatePhoto extends Component {
      // We upload only one file, in case
      // there was multiple files selected
      const file = e.currentTarget.files[0];
-      
+    Photos.storagePath('listenings');
      if (file) {
        const uploadInstance = Photos.insert({
          file: file,
@@ -159,11 +145,6 @@ class CreatePhoto extends Component {
       }
       return (
         <div className="create-block-row__item">
-          <Snackbar 
-            onRequiestClose={this.snackbarClose} 
-            open={this.state.snackbar.open} 
-            message={this.state.snackbar.message} />
-
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
             <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
               <div className="create-photo-layer_init__icon">
@@ -171,9 +152,7 @@ class CreatePhoto extends Component {
                   <use xlinkHref="#ico-add-photo" />
                 </svg>
               </div>
-              <div className="create-photo-layer_init__text">
-               Нажмите чтобы загрузить (макс. размер 2мб, jpg, jpeg, png)
-              </div>
+              <div className="create-photo-layer_init__text">Нажмите чтобы загрузить (макс. размер 2мб, jpg, jpeg, png)</div>
             </label>
             <div className={this.state.inProgress ? "create-photo-layer create-photo-layer_loader" : "create-photo-hide"}>
               <Dimmer active>
@@ -201,7 +180,7 @@ class CreatePhoto extends Component {
         </div>
       );
     } else {
-      return (<div> Loading </div>);
+      return (<div>Loading</div>);
     }
   }
 }

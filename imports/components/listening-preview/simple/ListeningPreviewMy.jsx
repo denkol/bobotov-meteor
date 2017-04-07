@@ -102,6 +102,7 @@ export default class ListeningPreviewMy extends Component {
       let listeningCity = this.props.data.listeningInfo.city;
       let listeningCountry = this.props.data.listeningInfo.country;
       let listeningViews = this.props.data.listeningTech.views;
+      let listeningFavoritesCount = this.props.data.listeningTech.favoritesCount;
       let listeningPublic = this.props.data.listeningTech.public;
       return (
       <div>
@@ -123,6 +124,18 @@ export default class ListeningPreviewMy extends Component {
           <div className="listening-preview-simple__item listening-preview-simple__item_controls">
             <div className="listening-preview-simple__items-block">
               <div className="preview-simple-items">
+                <div className="preview-simple-items__item">
+                  <div className="views">
+                    <div className="views__item">
+                      <svg className="ico-love" role="img">
+                        <use xlinkHref="#ico-love" />
+                      </svg>
+                    </div>
+                    <div className="views__item">
+                      <span>{listeningFavoritesCount}</span>
+                    </div>
+                  </div>
+                </div>
                 <div className="preview-simple-items__item">
                   <div className="views">
                     <div className="views__item">

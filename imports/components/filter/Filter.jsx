@@ -54,14 +54,14 @@ export default class Filter extends Component {
     const priceTo = formData.priceTo.replace(/\s/g, '');
     const typeDeal = formData.typeDeal.replace(/\s/g, '');
     const typeProperty = formData.typeProperty.replace(/\s/g, '');
-    const paymentPeriod = formData.paymentPeriod.replace(/\s/g, '');
     
     let FilterQuery = {};
     let PriceRange = {};
     if(formData.bathrooms) FilterQuery["listeningInfo.bathrooms"] = Number(formData.bathrooms);
     if(formData.bedrooms) FilterQuery["listeningInfo.bedrooms"] = Number(formData.bedrooms);
     if(formData.city) FilterQuery["listeningInfo.city"] = formData.city;
-    if(formData.paymentPeriod) FilterQuery["listeningInfo.paymentPeriod"] = formData.paymentPeriod;
+    // if(formData.paymentPeriod) FilterQuery["listeningInfo.paymentPeriod"] = formData.paymentPeriod;
+    
     if(priceFrom) PriceRange['$gte'] = Number(priceFrom);
     if(priceTo) PriceRange['$lte'] = Number(priceTo);
     if(priceFrom || priceTo) FilterQuery["listeningInfo.price"] = PriceRange;
@@ -74,8 +74,7 @@ export default class Filter extends Component {
       { city: formData.city },
       { price: { from: priceFrom, to: priceTo } },
       { typeDeal: typeDeal },
-      { typeProperty: typeProperty },
-      { paymentPeriod: paymentPeriod }
+      { typeProperty: typeProperty }
     ];
 
     Session.set('filterData', FilterCandidate);
@@ -101,11 +100,6 @@ export default class Filter extends Component {
             <div className="filter-block">
               <div className="filter-block-content">
                 <Form.Select fluid label='Тип недвижимости' name='typeProperty' options={TypeProperty} placeholder='Тип недвижимости' />
-              </div>
-            </div>
-            <div className="filter-block">
-              <div className="filter-block-content">
-                <Form.Select fluid label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Тип недвижимости' />
               </div>
             </div>
             <div className="filter-block">

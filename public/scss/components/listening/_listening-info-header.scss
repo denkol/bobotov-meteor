@@ -12,9 +12,11 @@
       }
     }
     .medium-parag {
-      font-size: 12px;
+      font-size: 18px;
       margin-bottom: 5px;
-      line-height: 16px;
+      @include mq('tablet-small', max) {
+        font-size: 14px;
+      }
     }
   }
   &__item_headline {

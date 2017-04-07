@@ -8,8 +8,11 @@ $radius-create-photo: 5px;
   background-color: transparent;
   @include mq('tablet-wide', max) {
     width: 100%;
-    height: 250px;
+    height: 350px;
     margin-bottom: 16px;
+  }
+  @include mq('phablet', max) {
+    
   }
   &_main {
     .create-photo-layer_init {
@@ -65,14 +68,28 @@ $radius-create-photo: 5px;
   }
   @include mq('tablet-wide', max) {
     padding: 66px;
+    &__icon {
+      margin-bottom: 16px;
+      svg {
+        width: 57px;
+        height: 57px;
+      }
+    }
+    &__text {
+      font-size: 18px;
+    }
+  }
+  @include mq('phablet', max) {
+    
   }
 }
 
 .create-photo-layer_loader {
-
+  z-index: 5;
 }
 
 .create-photo-layer_image {
+  z-index: 3;
   &__item {
     height: 100%;
     width: 100%;
@@ -84,6 +101,7 @@ $radius-create-photo: 5px;
 }
 
 .create-photo-layer_hover {
+  z-index: 4;
   &__item {
     display: none;
     height: 100%;

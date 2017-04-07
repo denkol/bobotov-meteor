@@ -18,6 +18,17 @@
   }
 }
 
+@keyframes fadeInUpOut {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 10%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -238,4 +249,22 @@
 }
 
 
+@keyframes love {
+  0% {
+    transform: scale(1);
+  }
+  50%, 60% {
+    transform: scale(1.2);
+    fill: $love-color;
+  }
+}
 
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

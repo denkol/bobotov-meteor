@@ -32,7 +32,8 @@ Meteor.methods({
       "lastChangeDate": moment().locale('ru').format('LL'),
       "ownerId": userId,
       "ownerName": ownerName,
-      "views": 0
+      "views": 0,
+      "favoritesCount": 0
     }
 
     if (userId) {

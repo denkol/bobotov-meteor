@@ -63,14 +63,6 @@ export default class FilterLabels extends TrackerReact(Component) {
               </Label>
             </div>
             : null}
-            {n.paymentPeriod ? 
-            <div key={"label-" + i} className="filter-labels__item">
-              <Label as='a'>
-                {Translate(PaymentPeriod, n.paymentPeriod)}
-                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-              </Label>
-            </div>
-            : null}
             </Label.Group>
             )}
         </div>

@@ -74,8 +74,6 @@ export default class ListeningPreviewSimple extends Component {
                   <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
                   <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
                 </div>
-              </div>
-              <div className="listening-preview-simple__items-block">
               </div> 
               {/*<div className="listening-preview-simple__price-block">
                 <div className="price">

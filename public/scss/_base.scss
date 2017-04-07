@@ -1,9 +1,8 @@
+$body-mobile-bg: #fff;
+
 * {
   box-sizing: border-box;
 }
-
-html,
-body {}
 
 body {
   font-size: 14px;
@@ -15,6 +14,7 @@ body {
   margin: 0;
   @include mq('tablet-wide', max) {
     width: 100%;
+    background-color: $body-mobile-bg;
   }
 }
 
