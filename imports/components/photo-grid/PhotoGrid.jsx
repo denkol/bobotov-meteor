@@ -31,7 +31,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
 
   render() {
     const query = Session.get('filterQuery');
-    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    const listenings = Listenings.find(query, {limit: this.state.limit, sort: {"listeningTech.createdAt": -1} }).fetch();
     if (this.state.subscription.listenings.ready()) {
       const listeningsTotal = Listenings.find(query).count();
       const filterData = Session.get('filterData');

@@ -42,20 +42,21 @@
 }
 
 .disabled {
-  opacity: 0.2;
+  opacity: 0.2 !important;
   pointer-events: none;
+  animation: none !important;
 }
 .loved {
   fill: $love-color;
 }
 
 .page-appear {
-   opacity: 0.01;
+  opacity: 0.01;
 }
 
 .page-appear.page-appear-active {
    opacity: 1;
-   transition: opacity 500ms ease-in;
+   transition: opacity 500ms ease;
 }
 
 .favorites-menu-animation {

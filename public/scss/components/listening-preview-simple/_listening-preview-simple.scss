@@ -18,11 +18,13 @@
   &__item {
     display: flex;
     align-items: center;
+    width: 100%;
     &_name {
       
     }
     &_controls {
       flex: none;
+      width: auto;
       @include mq('tablet-wide', max) {
         background-color: #eee;
         padding: 20px 10px;
@@ -54,6 +56,9 @@
     margin-left: 16px;
     .price__text {
       display: flex;
+    }
+    @include mq('tablet-wide', max) {
+      margin-right: 16px;
     }
   }
   &__control-block {
@@ -102,6 +107,7 @@
     max-height: 23px;
     overflow: hidden;
     display: block;
+    word-break: break-word;
     &:hover {
       cursor: pointer;
       text-decoration: underline;

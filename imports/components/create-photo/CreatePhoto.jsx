@@ -117,14 +117,10 @@ class CreatePhoto extends Component {
     Meteor.call('fileRemove', fileId, (err, res) => {
       if(err) {
         console.log(err);
-      } else {
-        
-      }
+      } else {}
     });
-    
   }
   render() {
-    // console.log(this.state.snackbar)
     const loading = this.props.loading;
     if (loading) {
       const imageNumber = this.props.id;
@@ -189,10 +185,7 @@ export default createContainer( ({ params }) => {
   const docs = Photos.find().fetch();
   const loading = handle.ready();
 
-  //Clear all db
-  return {
-    loading,docs
-  };
+  return { loading,docs };
 }, CreatePhoto);
 
 CreatePhoto.propTypes = {};

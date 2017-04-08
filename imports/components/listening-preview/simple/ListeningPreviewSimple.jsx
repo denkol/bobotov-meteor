@@ -46,19 +46,19 @@ export default class ListeningPreviewSimple extends Component {
   }
   render() {
     if(this.props.data) {
-      let listeningLink = '/listening/' + this.props.data._id;
-      let listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
-      let listeningHeadline = this.props.data.listeningInfo.headline;
-      let listeningAutorName = this.props.data.listeningTech.ownerName;
-      let listeningDate = this.props.data.listeningTech.lastChangeDate + "";
-      let listeningPrice = this.props.data.listeningInfo.price.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-      let listeningPaymentPeriod = this.props.data.listeningInfo.paymentPeriod;
-      let listeningCity = this.props.data.listeningInfo.city;
-      let listeningCountry = this.props.data.listeningInfo.country;
-      let listeningRatio = this.props.data.listeningInfo.ratio;
-      let listeningPropertyType = this.props.data.listeningInfo.typeProperty;
-      let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
-      let listeningViews = this.props.data.listeningTech.views;
+      const listeningLink = '/listening/' + this.props.data._id;
+      const listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
+      const listeningHeadline = this.props.data.listeningInfo.headline;
+      const listeningAutorName = this.props.data.listeningTech.ownerName;
+      const listeningDate = this.props.data.listeningTech.lastChangeDate + "";
+      const listeningPrice = this.props.data.listeningInfo.price.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+      const listeningPaymentPeriod = this.props.data.listeningInfo.paymentPeriod;
+      const listeningCity = this.props.data.listeningInfo.city;
+      const listeningCountry = this.props.data.listeningInfo.country;
+      const listeningRatio = this.props.data.listeningInfo.ratio;
+      const listeningPropertyType = this.props.data.listeningInfo.typeProperty;
+      const listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
+      const listeningViews = this.props.data.listeningTech.views;
       return (
         <div>
           <Snackbar open={this.state.snackbar.open} message={this.state.snackbar.message} />
@@ -72,10 +72,10 @@ export default class ListeningPreviewSimple extends Component {
               <div className="listening-preview-simple__headline-block">
                 <div className="preview-simple-headline">
                   <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
-                  <div className="preview-simple-headline__desc">{listeningCity}, {listeningCountry}</div>
+                  <div className="preview-simple-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
                 </div>
               </div> 
-              {/*<div className="listening-preview-simple__price-block">
+              <div className="listening-preview-simple__price-block">
                 <div className="price">
                   <div className="price__text">
                     {listeningPrice}
@@ -85,9 +85,9 @@ export default class ListeningPreviewSimple extends Component {
                       </svg>
                     </div>
                   </div>
-                  <div className="price__desc">{listeningPaymentPeriod}</div>
+                  <div className="price__desc">{Translate(PaymentPeriod, listeningPaymentPeriod)}</div>
                 </div>
-              </div>*/}
+              </div>
               {this.props.layout !== "history" ? <div className="listening-preview-simple__control-block">
                 <div className="remove-icon" onClick={this.remove}>
                   <div className="remove-icon__icon">

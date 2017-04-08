@@ -3,6 +3,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 import React, { Component } from 'react';
 
+//Libs
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 //Layouts
 import App from  '../../imports/components/App.jsx';
 import Layout from  '../../imports/components/Layout.jsx';
@@ -20,6 +23,17 @@ import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx';
 
 //Additional components 
 import Filter from '../../imports/components/filter/Filter.jsx'; 
+
+//Wrapper function
+var AnimationWrapper = (wrappedElement) => {
+  return(
+    <ReactCSSTransitionGroup transitionName = "example"
+      transitionAppear = {true} transitionAppearTimeout = {500}
+      transitionEnter = {false} transitionLeave = {false}>
+      {wrappedElement}
+    </ReactCSSTransitionGroup>
+  );
+}
 
 /* Groups */
 var publicRoutes = FlowRouter.group({
@@ -41,7 +55,7 @@ publicRoutes.route('/listening/:_id', {
   action() {
     var listeningId = FlowRouter.getParam('_id');
     mount(Layout, {
-      content: <Listening listeningId={listeningId} />,
+      content: AnimationWrapper(<Listening listeningId={listeningId} />),
       additionalContent: ""
     });
   }
@@ -51,7 +65,7 @@ publicRoutes.route('/edit/:_id', {
   action() {
     var listeningId = FlowRouter.getParam('_id');
     mount(Layout, {
-      content: <CreateEdit listeningId={listeningId} />,
+      content: AnimationWrapper(<CreateEdit listeningId={listeningId} />),
       additionalContent: ""
     });
   }
@@ -60,7 +74,7 @@ publicRoutes.route('/edit/:_id', {
 publicRoutes.route('/favorites', {
   action() {
     mount(Layout, {
-      content: <Favorites />,
+      content: AnimationWrapper(<Favorites />),
       additionalContent: ""
     });
   }
@@ -69,7 +83,7 @@ publicRoutes.route('/favorites', {
 publicRoutes.route('/history', {
   action() {
     mount(Layout, {
-      content: <History />,
+      content: AnimationWrapper(<History />),
       additionalContent: ""
     });
   }
@@ -78,7 +92,7 @@ publicRoutes.route('/history', {
 publicRoutes.route('/mylistenings', {
   action() {
     mount(Layout, {
-      content: <My />,
+      content: AnimationWrapper(<My />),
       additionalContent: ""
     });
   }
@@ -87,7 +101,7 @@ publicRoutes.route('/mylistenings', {
 publicRoutes.route('/create', {
   action() {
     mount(Layout, {
-      content: <Create />,
+      content: AnimationWrapper(<Create />),
       additionalContent: ""
     });
   }
@@ -96,7 +110,7 @@ publicRoutes.route('/create', {
 publicRoutes.route('/panel', {
   action() {
     mount(Layout, {
-      content: <Panel />,
+      content: AnimationWrapper(<Panel />),
       additionalContent: ""
     });
   }
@@ -106,7 +120,7 @@ publicRoutes.route('/panel', {
 publicRoutes.route('/signin', {
   action() {
     mount(App, {
-      page: <Sign layout="in"/>
+      page: AnimationWrapper(<Sign layout="in"/>)
     });
   }
 });
@@ -114,7 +128,7 @@ publicRoutes.route('/signin', {
 publicRoutes.route('/signup', {
   action() {
     mount(App, {
-      page: <Sign layout="up"/>
+      page: AnimationWrapper(<Sign layout="up"/>)
     });
   }
 });
@@ -122,7 +136,7 @@ publicRoutes.route('/signup', {
 publicRoutes.route('/recovery', {
   action() {
     mount(App, {
-      page: <Sign layout="recovery"/>
+      page: AnimationWrapper(<Sign layout="recovery"/>)
     });
   }
 });

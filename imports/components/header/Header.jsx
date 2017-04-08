@@ -127,7 +127,7 @@ class HeaderLayout extends Component {
                     <Profile onClick={this.openSubmenu} data={user}/>
                     <div className={this.state.subMenuOpen ? "profile-menu-content profile-menu-content--expanded" : "profile-menu-content"}>
                       <ul className="profile-menu">
-                        <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">Редактировать</li>
+                        <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">Мой профиль</li>
                         <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">Мои объявления</li>
                         <ExitModal />
                       </ul>

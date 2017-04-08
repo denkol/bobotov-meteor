@@ -28,7 +28,7 @@ export default class ContactsAdd extends Component {
     	return (
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
-          <Form.Input defaultValue={contactValue} placeholder='' actionPosition='right' name={'input' + i} fluid error={error} required 
+          <Form.Input defaultValue={contactValue} placeholder='' actionPosition='right' name={'input' + i} fluid error={error}  
             action={<Dropdown basic floating onChange={this.handleChange} options={ContactsList} name={'dropdown' + i} defaultValue={Session.get('dropdown' + i) ? Session.get('dropdown' + i) : "email"} />} />
         </div>
         <div className="create-block-row__item"></div>

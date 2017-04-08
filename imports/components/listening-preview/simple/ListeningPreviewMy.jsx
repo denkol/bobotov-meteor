@@ -149,7 +149,7 @@ export default class ListeningPreviewMy extends Component {
                   </div>
                 </div>
                 <div className="preview-simple-items__item">
-                  <Checkbox label="Включить" checked={listeningPublic} toggle onChange={this.publishTrigger}/>
+                  <Checkbox checked={listeningPublic} toggle onChange={this.publishTrigger}/>
                 </div>
                 <div className="preview-simple-items__item preview-simple-items__item_edit-icon" onClick={this.edit} >
                  <svg className="ico-edit" role="img">

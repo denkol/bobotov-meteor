@@ -60,7 +60,6 @@ export default class Filter extends Component {
     if(formData.bathrooms) FilterQuery["listeningInfo.bathrooms"] = Number(formData.bathrooms);
     if(formData.bedrooms) FilterQuery["listeningInfo.bedrooms"] = Number(formData.bedrooms);
     if(formData.city) FilterQuery["listeningInfo.city"] = formData.city;
-    // if(formData.paymentPeriod) FilterQuery["listeningInfo.paymentPeriod"] = formData.paymentPeriod;
     
     if(priceFrom) PriceRange['$gte'] = Number(priceFrom);
     if(priceTo) PriceRange['$lte'] = Number(priceTo);
@@ -80,7 +79,7 @@ export default class Filter extends Component {
     Session.set('filterData', FilterCandidate);
   }
   render() {
-  	 const FilterQuery = {};
+    const FilterQuery = {};
     Session.setDefault('filterQuery', FilterQuery);
 
     const FilterForm = () => (

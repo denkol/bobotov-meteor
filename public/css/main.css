@@ -23570,8 +23570,7 @@ html.ios, html.ios body {
       padding: 0 10px;
       padding-bottom: 15px;
       margin-bottom: 20px;
-      background-color: white;
-      box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1); } }
+      background-color: white; } }
   @media only screen and (max-width: 479px) {
     .main-menu {
       padding: 0; } }
@@ -24098,7 +24097,9 @@ html.ios, html.ios body {
     font-size: 22px;
     color: white;
     margin-bottom: 5px;
-    line-height: 25px; }
+    line-height: 25px;
+    max-height: 100px;
+    overflow: hidden; }
     @media only screen and (max-width: 399px) {
       .listening-preview-headline__text {
         font-size: 14px; } }
@@ -25141,7 +25142,7 @@ html.ios, html.ios body {
 
 .create-wrapper {
   padding: 0;
-  margin: 32px 0;
+  margin: 16px 0;
   display: block; }
 
 .create-block-confirm {
@@ -25212,11 +25213,13 @@ html.ios, html.ios body {
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    width: 100%; }
     .listening-preview-simple__item_controls {
       -webkit-box-flex: 0;
           -ms-flex: none;
-              flex: none; }
+              flex: none;
+      width: auto; }
       @media only screen and (max-width: 1199px) {
         .listening-preview-simple__item_controls {
           background-color: #eee;
@@ -25246,6 +25249,9 @@ html.ios, html.ios body {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex; }
+    @media only screen and (max-width: 1199px) {
+      .listening-preview-simple__price-block {
+        margin-right: 16px; } }
   .listening-preview-simple__control-block {
     position: absolute;
     right: -50px;
@@ -25288,7 +25294,8 @@ html.ios, html.ios body {
   text-decoration: none;
   max-height: 23px;
   overflow: hidden;
-  display: block; }
+  display: block;
+  word-break: break-word; }
   .preview-simple-headline__head:hover {
     cursor: pointer;
     text-decoration: underline; }
@@ -25832,8 +25839,10 @@ html.ios, html.ios body {
   margin-right: 0; }
 
 .disabled {
-  opacity: 0.2;
-  pointer-events: none; }
+  opacity: 0.2 !important;
+  pointer-events: none;
+  -webkit-animation: none !important;
+          animation: none !important; }
 
 .loved {
   fill: #D00273; }
@@ -25843,8 +25852,8 @@ html.ios, html.ios body {
 
 .page-appear.page-appear-active {
   opacity: 1;
-  -webkit-transition: opacity 500ms ease-in;
-  transition: opacity 500ms ease-in; }
+  -webkit-transition: opacity 500ms ease;
+  transition: opacity 500ms ease; }
 
 .favorites-menu-animation {
   -webkit-animation: love 0.5s ease 0s both;

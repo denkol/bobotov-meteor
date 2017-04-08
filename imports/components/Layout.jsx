@@ -11,7 +11,6 @@ export default class Layout extends Component {
   }
   render() {
     return (
-
       <MuiThemeProvider>
         <div id="app">
           <Header />

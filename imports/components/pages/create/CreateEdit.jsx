@@ -258,14 +258,14 @@ class CreateEdit extends Component {
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
-                  <div className="create-block-row">
+                  {/*<div className="create-block-row">
                     <div className="create-block-row__item">
                       <Form.Field>
                         <label>Местоположение</label>
                         <Button>Указать на карте</Button>
                       </Form.Field>
                     </div>
-                  </div>
+                  </div>*/}
                   <div className="create-block-row">
                     <div className="create-block-row__item">
                       <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} defaultValue={defaultValue.typeDeal} />
@@ -351,12 +351,11 @@ class CreateEdit extends Component {
               <div className="create-block">
                 <div className="create-block__item">
                 	{message ? 
-                  	<Message compact negative>
+                    <Message size="tiny" negative>
                      	<Message.Header>{message}</Message.Header>
                      	{phone ? <p>{phone}</p> : null}
                      	{email ? <p>{email}</p> : null}
-                  	</Message>
-    				 	: null}
+                    </Message> : null}
                 </div>
                 <div className="create-block__item">
                   <div className="create-block-headline">Шаг 3: Контакты</div>

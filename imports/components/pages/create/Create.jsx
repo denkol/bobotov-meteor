@@ -206,33 +206,33 @@ export default class Create extends Component {
               <div className="create-block__item">
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection required options={Countries} />
+                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection  options={Countries} />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid required selection options={Cities} />
+                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid  selection options={Cities} />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
-                <div className="create-block-row">
+                {/*<div className="create-block-row">
                   <div className="create-block-row__item">
                     <Form.Field>
                       <label>Местоположение</label>
                       <Button>Указать на карте</Button>
                     </Form.Field>
                   </div>
-                </div>
+                </div>*/}
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid required selection options={TypeDeal} />
+                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid  selection options={TypeDeal} />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid required selection options={TypeProperty} />
+                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid  selection options={TypeProperty} />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
@@ -250,7 +250,7 @@ export default class Create extends Component {
                     <Form.Group widths='equal' style={{marginBottom: 0}}>
                       <Form.Field>
                         <label>Цена</label>
-                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid  required labelPosition='right' />
+                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid   labelPosition='right' />
                       </Form.Field>
                       <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты' />
                     </Form.Group>
@@ -277,7 +277,7 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid required/>
+                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid />
                   </div>
                   <div className="create-block-row__item">
                   </div>
@@ -285,7 +285,7 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.TextArea name='description' label='Описание объявления' rows='3' required/>
+                    <Form.TextArea name='description' label='Описание объявления' rows='3' />
                   </div>
                 </div>
               </div>
