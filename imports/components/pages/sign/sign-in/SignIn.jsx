@@ -31,7 +31,7 @@ export default class SignIn extends Component {
     const email = formData.email;
     const password = formData.password;
     
-    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+    const message = "Возможные ошибки:";
     if (!isValidEmail(email)) {
     	validation.message = message;
       validation.email = "Введите корректный адрес!";
@@ -45,7 +45,7 @@ export default class SignIn extends Component {
     if (validation.message) return;
 
     Meteor.loginWithPassword(email, password, (err) => {
-    	const { validation } = this.state;
+      const { validation } = this.state;
       if(err) {
         validation.message = err.message;
         return this.setState({ validation });
@@ -77,13 +77,15 @@ export default class SignIn extends Component {
             </div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
-                	{message ? 
-                  	<Message size='tiny' negative>
-                     	<Message.Header>{message}</Message.Header>
-                     	{email ? <p>{email}</p> : null}
-                     	{password ? <p>{password}</p> : null}
-                  	</Message>
-    				 	: null}
+                {message ? 
+                  <Message size='tiny'>
+                    <Message.Header>{message}</Message.Header>
+                    <Message.List>
+                    {email ?  <Message.Item>{email}</Message.Item> : null}
+                    {password ? <Message.Item>{password}</Message.Item> : null}
+                    </Message.List>
+                  </Message>
+                : null}
               </div>
               <div className="login-item">
                 <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} />
@@ -95,7 +97,7 @@ export default class SignIn extends Component {
                 <button type='submit' className="simple-btn simple-btn_blue">Войти</button>
               </div>
             </Form>
-            <div className="login-item login-item-forgot"> <a className="link-default" href="#">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>
+            <div className="login-item login-item-forgot"> <a className="link-default" href="/recovery">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>
           </div>
         </div>
         <div className="login-item-forgot login-item-forgot_center"><a className="link-default" href="/signup">Зарегистрируйте</a> новый аккаунт</div>

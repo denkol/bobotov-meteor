@@ -14,7 +14,6 @@
   &__desc {
     font-size: 14px;
     color: white;
-    font-weight: normal;
     text-align: right;
     @include mq('tablet-small', max) {
       font-size: 13px;

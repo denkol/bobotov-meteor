@@ -105,20 +105,22 @@ export default class SignUp extends Component {
               </div>
               <Form size={'tiny'} onSubmit={this.handleSubmit}>
                 <div className="login-item">
-                	{message ? 
-                  	<Message size='tiny' negative>
-                     	<Message.Header>{message}</Message.Header>
-                     	{username ? <p>{username}</p> : null}
-                     	{email ? <p>{email}</p> : null}
-                     	{password ? <p>{password}</p> : null}
-                  	</Message>
-    				 	: null}
+                {message ? 
+                  <Message size='tiny'>
+                    <Message.Header>{message}</Message.Header>
+                    <Message.List>
+                    {username ?  <Message.Item>{username}</Message.Item> : null}
+                    {email ?  <Message.Item>{email}</Message.Item> : null}
+                    {password ? <Message.Item>{password}</Message.Item> : null}
+                    </Message.List>
+                  </Message>
+                : null}
                 </div>
                 <div className="login-item">
-                  <Form.Input icon='checkmark' label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false} required/>
+                  <Form.Input label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false}/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} required/>
+                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false}/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false}/>
@@ -130,7 +132,6 @@ export default class SignUp extends Component {
                   <button type="submit" className="simple-btn simple-btn_blue">Зарегистрироваться</button>
                 </div>
               </Form>
-
               <div className="login-item login-item-forgot"> 
                 <p>Регистрируясь вы принимаете условия</p><a className="link-default" href="#">Пользовательского соглашения</a>
               </div>

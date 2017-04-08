@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import SignIn from './sign-in/SignIn.jsx';
 import SignUp from './sign-up/SignUp.jsx';
+import Recovery from './recovery/Recovery.jsx';
 
 export default class Sign extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ export default class Sign extends Component {
     } else if(layout === "up") {
       return (
         <SignUp />
+      );
+    } else if(layout === "recovery") {
+      return (
+        <Recovery />
       );
     }
   }
