@@ -10,21 +10,14 @@ export default class ContactsAdd extends Component {
     this.state = {
       contactsNumber: 1
     }
-    this.changeInput = this.changeInput.bind(this);
+
   }
   handleChange(e, data) {
     const name = data.name;
     const value = data.value;
     Session.set(name, value)
   }
-  changeInput(contactValue) {
-    return e => {
-      if(e) {
-        console.log(contactValue);
-        console.log(e.currentTarget);
-      }
-    };
-  }
+
   render() {
     const { defaultContacts } = this.props; //default data
     const contactsInputs = [];
