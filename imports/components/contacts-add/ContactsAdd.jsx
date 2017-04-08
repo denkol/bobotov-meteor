@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Input, Dropdown } from 'semantic-ui-react';
 import { ContactsList } from '../../data/data.js';
 import { Translate } from '../../functions/functions.js';
+import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
 
 export default class ContactsAdd extends Component {
   constructor(props) {
@@ -9,20 +10,25 @@ export default class ContactsAdd extends Component {
     this.state = {
       contactsNumber: 1
     }
+
   }
   handleChange(e, data) {
     const name = data.name;
     const value = data.value;
     Session.set(name, value)
   }
+
   render() {
-    const defaultContacts = this.props.defaultContacts; //default data
+    const { defaultContacts } = this.props; //default data
     const contactsInputs = [];
-    const SingleContact = (i, defaultData) => {
+    const SingleContact = ( i, defaultData, error = false ) => {
+    	const { contactKey, contactValue } = defaultData;
+    	if(contactValue && contactKey === "phone" && !isValidPhone(contactValue)) error = true;
+    	if(contactValue && contactKey === "email" && !isValidEmail(contactValue)) error = true;
     	return (
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
-          <Form.Input defaultValue={defaultData ? defaultData.contactValue : ""} placeholder='' actionPosition='right' name={'input' + i} fluid required 
+          <Form.Input defaultValue={contactValue} placeholder='' actionPosition='right' name={'input' + i} fluid error={error} required 
             action={<Dropdown basic floating onChange={this.handleChange} options={ContactsList} name={'dropdown' + i} defaultValue={Session.get('dropdown' + i) ? Session.get('dropdown' + i) : "email"} />} />
         </div>
         <div className="create-block-row__item"></div>
@@ -31,8 +37,8 @@ export default class ContactsAdd extends Component {
     }
 
     for(let i = 0; i < this.props.contactsNumber; i++) {
-    	const contact = defaultContacts[i] || null;
-      Session.set('dropdown' + i, contact ? contact.contactKey : contact);
+    	const contact = defaultContacts[i] || {contactKey: "email", contactValue: ""};
+      Session.set('dropdown' + i, contact ? contact.contactKey : null);
       contactsInputs.push(SingleContact(i, contact));
     }
 

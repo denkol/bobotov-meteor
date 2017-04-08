@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-
+import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 
 /* Semantic UI */
@@ -10,24 +10,58 @@ export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formData: {}
+      validation: {
+        email: false,
+        password: false,
+        username: false,
+        message: false
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validate = this.validate.bind(this);
   }
-  handleSubmit(e, { formData }) {
+
+  handleSubmit(e, {formData}) {
     e.preventDefault();
-    this.setState({ formData });
+    const validation = {
+      email: false,
+      password: false,
+      username: false,
+      message: false
+    };
+    this.setState({ validation });
 
     function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
+      return string.charAt(0).toUpperCase() + string.slice(1).trim();
     }
-    let username = capitalizeFirstLetter(formData.name);
-    let email = formData.email;
-    let password = formData.password;
-    let passwordR = formData.passwordR; 
+    const username = capitalizeFirstLetter(formData.name);
+    const email = formData.email;
+    const password = formData.password.trim();
+    const passwordR = formData.passwordR.trim();
+    
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+    if (username.length < 3) {
+      validation.message = message;
+      validation.username = "Имя пользователя слишком короткое!";
+      this.setState({ validation });
+    }
+    if (!isValidEmail(email)) {
+    	validation.message = message;
+      validation.email = "Введите корректный адрес!";
+      this.setState({ validation });
+    }
+    if (!isValidPassword(password, 6)) {
+    	validation.message = message;
+      validation.password = "Введите более надёжный пароль!";
+      this.setState({ validation });
+    }
+    if (password !== passwordR) {
+    	validation.message = message;
+      validation.password = "Пароли не совпадают!";
+      this.setState({ validation });
+    } 
+    if (validation.message) return;
 
-    let userInfo = { 
+    const userInfo = { 
       email : email,
       password : password,
       profile : {
@@ -35,33 +69,27 @@ export default class SignUp extends Component {
       }
     };
 
-    if(password === passwordR) {
-      Accounts.createUser(userInfo, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          Meteor.call("userCreate", userInfo, (err, res) => {
-            if(err) {
-              console.log(err)
-            } else {
-              FlowRouter.go('Home');  
-            };
-          });
-        };
-      });
-    }
+    Accounts.createUser(userInfo, (err) => {
+    	const { validation } = this.state;
+      if (err) {
+        validation.message = err.message;
+        return this.setState({ validation });
+      } else {
+        Meteor.call("userCreate", userInfo, (err, res) => {
+          if(err) {
+            validation.message = err.message;
+            return this.setState({ validation });
+          } else {
+            FlowRouter.go('Home');  
+          };
+        });
+      };
+    });
+
   }
-  validate(object) {
-    let validCounter = 0;
-    function emailValidate(value) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(re.test(value)) {
-        validCounter++;
-      }
-    }
-  }
+
   render() {
-    const { formData, value } = this.state;
+    const { username, email, password, message } = this.state.validation;
     return (
       <div className="signup">
         <div className="card card_login">
@@ -77,19 +105,23 @@ export default class SignUp extends Component {
               </div>
               <Form size={'tiny'} onSubmit={this.handleSubmit}>
                 <div className="login-item">
-                  <Message size='tiny' negative>
-                    <Message.Header>We're sorry we can't apply that discount</Message.Header>
-                    <p>That offer has expired</p>
-                  </Message>
+                	{message ? 
+                  	<Message size='tiny' negative>
+                     	<Message.Header>{message}</Message.Header>
+                     	{username ? <p>{username}</p> : null}
+                     	{email ? <p>{email}</p> : null}
+                     	{password ? <p>{password}</p> : null}
+                  	</Message>
+    				 	: null}
                 </div>
                 <div className="login-item">
-                  <Form.Input warning icon='checkmark' label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error required/>
+                  <Form.Input icon='checkmark' label='Ваше имя:' name='name' type="text" placeholder='Елена Петровна' error={username ? true : false} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error required/>
+                  <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' required/>
+                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} required/>
                 </div>
                 <div className="login-item">
                   <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' required/>

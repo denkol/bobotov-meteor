@@ -4,6 +4,7 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
+import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
 
 /* Comfort List */
 const comfortListLabel = (label, index, props) => ({
@@ -14,7 +15,15 @@ const comfortListLabel = (label, index, props) => ({
 export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.state = { formData: {}, contactsNumber: 1 }
+    this.state = { 
+      validation: {
+        message: '',
+        phone: '',
+        email: ''
+      },
+      contacts: [],
+      contactsNumber: 1 
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
@@ -25,12 +34,16 @@ export default class Create extends Component {
   componentDidMount() {
     Session.keys = {} //reset session
   }
-  handleChange(e, { value }) {
-    this.setState({ value })
-  }
+
   handleSubmit(e, { formData }) { //console.log(formData);
-    e.preventDefault()
-    this.setState({ formData });
+    e.preventDefault();
+    const validation = {
+      message: '',
+      phone: '',
+      email: ''
+    };
+    this.setState({ validation });
+
     const self = this;
     function getContacts() {
       const contacts = [];
@@ -38,7 +51,24 @@ export default class Create extends Component {
         const dropdownDeafultValue = "email";
         const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
         const contactValue = formData["input"+i];
-        contacts.push({contactKey, contactValue})
+        let message; 
+        
+        //console.log(contactKey, contactValue);
+        if(contactKey === "phone" && !isValidPhone(contactValue)) {
+          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+          validation.message = message;
+          validation.phone = "Введите корректный телефонный номер!";
+          self.setState({ validation });
+        }
+        
+        if(contactKey === "email" && !isValidEmail(contactValue)) {
+          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+          validation.message = message;
+          validation.email = "Введите корректный почтовый адрес!";
+          self.setState({ validation });
+        }
+        
+        contacts.push({contactKey, contactValue, message});
       }
       return contacts;
     }
@@ -81,6 +111,10 @@ export default class Create extends Component {
     ];
 
     const contacts = getContacts();
+    self.setState({ contacts });
+    
+    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
+    if(hasError) return;
 
     const listeningCandidate = {
       "listeningInfo": {
@@ -139,7 +173,9 @@ export default class Create extends Component {
     }
   }
   render() {
-    const { formData, value } = this.state;
+    const { message, phone, email } = this.state.validation; 
+    const { contactsNumber, contacts } = this.state; 
+    //console.log(contactsNumber, contacts);
     const userId = Meteor.userId();
     let defaultData;
     if(this.props.defaultData) {
@@ -279,8 +315,9 @@ export default class Create extends Component {
                 </div>
               </div>
               <ContactsAdd 
-                defaultContacts={[]}
-                contactsNumber={this.state.contactsNumber}
+                defaultContacts={contacts}
+                contactsNumber={contactsNumber}
+                message={message} 
               />
               <Button onClick={this.contactAdd} circular icon='plus' />
               <Button onClick={this.contactRemove} circular icon='minus' />
