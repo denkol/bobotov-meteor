@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
+import {isValidEmail} from "/imports/functions/validation.js";
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 import VkBtn from '../../../btn-vk/VkBtn.jsx';
 
@@ -37,9 +37,9 @@ export default class SignIn extends Component {
       validation.email = "Введите корректный адрес!";
       this.setState({ validation });
     }
-    if (!isValidPassword(password, 6)) {
+    if (!password) {
     	validation.message = message;
-      validation.password = "Введите более надёжный пароль!";
+      validation.password = "Введите пароль!";
       this.setState({ validation });
     }
     if (validation.message) return;

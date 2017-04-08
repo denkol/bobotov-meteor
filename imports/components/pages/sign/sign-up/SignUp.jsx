@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import {isValidEmail, isValidPassword} from "/imports/functions/validation.js";
+import {isValidEmail} from "/imports/functions/validation.js";
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 
 /* Semantic UI */
@@ -49,12 +49,12 @@ export default class SignUp extends Component {
       validation.email = "Введите корректный адрес!";
       this.setState({ validation });
     }
-    if (!isValidPassword(password, 6)) {
+    if (!password || !passwordR) {
     	validation.message = message;
-      validation.password = "Введите более надёжный пароль!";
+      validation.password = "Введите пароль!";
       this.setState({ validation });
     }
-    if (password !== passwordR) {
+    if (!!password && !!passwordR && password !== passwordR) {
     	validation.message = message;
       validation.password = "Пароли не совпадают!";
       this.setState({ validation });
@@ -121,10 +121,10 @@ export default class SignUp extends Component {
                   <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} required/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} required/>
+                  <Form.Input label='Пароль' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false}/>
                 </div>
                 <div className="login-item">
-                  <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' required/>
+                  <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' error={password ? true : false}/>
                 </div>
                 <div className="login-item">
                   <button type="submit" className="simple-btn simple-btn_blue">Зарегистрироваться</button>
