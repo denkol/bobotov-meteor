@@ -102,7 +102,7 @@ publicRoutes.route('/panel', {
   }
 });
 
-/* SignIn & SignUp */
+/* SignIn & SignUp & Recovery */
 publicRoutes.route('/signin', {
   action() {
     mount(App, {
@@ -115,6 +115,14 @@ publicRoutes.route('/signup', {
   action() {
     mount(App, {
       page: <Sign layout="up"/>
+    });
+  }
+});
+
+publicRoutes.route('/recovery', {
+  action() {
+    mount(App, {
+      page: <Sign layout="recovery"/>
     });
   }
 });

@@ -98,7 +98,6 @@ export default class SignUp extends Component {
                   <button type="submit" className="simple-btn simple-btn_blue">Зарегистрироваться</button>
                 </div>
               </Form>
-
               <div className="login-item login-item-forgot"> 
                 <p>Регистрируясь вы принимаете условия</p><a className="link-default" href="#">Пользовательского соглашения</a>
               </div>

@@ -75,7 +75,7 @@ export default class SignIn extends Component {
                 <button type='submit' className="simple-btn simple-btn_blue">Войти</button>
               </div>
             </Form>
-            <div className="login-item login-item-forgot"> <a className="link-default" href="#">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>
+            <div className="login-item login-item-forgot"> <a className="link-default" href="/recovery">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>
           </div>
         </div>
         <div className="login-item-forgot login-item-forgot_center"><a className="link-default" href="/signup">Зарегистрируйте</a> новый аккаунт</div>

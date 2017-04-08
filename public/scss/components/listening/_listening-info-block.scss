@@ -3,6 +3,9 @@
   margin: 16px 0;
   &__item {
     margin-bottom: 2px;
+    .large-parag {
+      white-space: pre-wrap;
+    }
   }
   &--inline {
    .listening-info-block__item {
