@@ -33,7 +33,16 @@ class CreateEdit extends Component {
       validation: {
         message: '',
         phone: '',
-        email: ''
+        email: '',
+        price: false,
+        country: false,
+        headline: false,
+        desc: false,
+        paymentPeriod: false,
+        city: false,
+        typeDeal: false,
+        typeProperty: false,
+        ratio: false
       },
       contacts: null
     }
@@ -54,12 +63,23 @@ class CreateEdit extends Component {
     const validation = {
       message: '',
       phone: '',
-      email: ''
+      email: '',
+      price: false,
+      country: false,
+      headline: false,
+      desc: false,
+      paymentPeriod: false,
+      city: false,
+      typeDeal: false,
+      typeProperty: false,
+      ratio: false
     };
     this.setState({ validation });
     
     const self = this;    
     const listeningId = this.props.listeningId;
+    
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова"; 
 
     function getContacts() {
       const contactsNumber = self.state.contactsNumber || _.size(self.props.listeningContacts);
@@ -68,18 +88,15 @@ class CreateEdit extends Component {
         const dropdownDeafultValue = "email";
         const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
         const contactValue = formData["input"+i];
-        let message; 
         
         //console.log(contactKey, contactValue);
         if(contactKey === "phone" && !isValidPhone(contactValue)) {
-          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
           validation.message = message;
           validation.phone = "Введите корректный телефонный номер!";
           self.setState({ validation });
         }
         
         if(contactKey === "email" && !isValidEmail(contactValue)) {
-          message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
           validation.message = message;
           validation.email = "Введите корректный почтовый адрес!";
           self.setState({ validation });
@@ -121,9 +138,6 @@ class CreateEdit extends Component {
     const contacts = getContacts();
     self.setState({ contacts });
 
-    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
-    if(hasError) return;
-
     const listeningCandidate = {
       "listeningInfo": {
         "typeDeal": typeDeal,
@@ -146,24 +160,57 @@ class CreateEdit extends Component {
       "listeningOptions": options
     }
     //console.log(listeningCandidate);
-    if(!Session.get('0photo')) {
+    
+    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
+    
+    if(!price) {
+      validation.message = message;
+      validation.price = "Введите цену!";
+      self.setState({ validation });
+    } if(!country) {
+      validation.message = message;
+      validation.country = "Укажите страну!";
+      self.setState({ validation });
+    } if(!headline) {
+      validation.message = message;
+      validation.headline = "Введите заголовок!";
+      self.setState({ validation });
+    } if(!desc) {console.log('!desc', !desc);
+    	validation.message = message;
+      validation.desc = "Введите описание!";
+      self.setState({ validation });
+    } if(!paymentPeriod) {
+      validation.message = message;
+      validation.paymentPeriod = "Укажите период оплаты!";
+      self.setState({ validation });
+    } if(!city) {
+      validation.message = message;
+      validation.city = "Укажите населенный пункт!";
+      self.setState({ validation });
+    } if(!typeDeal) {
+      validation.message = message;
+      validation.typeDeal = "Укажите тип предложения!";
+      self.setState({ validation });
+    } if(!typeProperty) {
+      validation.message = message;
+      validation.typeProperty = "Укажите тип недвижимости!";
+      self.setState({ validation });
+    } if(!ratio) {
+      validation.message = message;
+      validation.ratio = "Укажите площадь!";
+      self.setState({ validation });
+    } if(!Session.get('0photo')) {
       alert('Загрузите главное фото')
-    } else if(!formData.city) {
-      alert('Укажите город')
-    } else if(!formData.country) {
-      alert('Укажите страну')
-    } else if(!formData.typeProperty) {
-      alert('Укажите тип недвижимости')
-    } else if(!formData.typeDeal) {
-      alert('Укажите тип сделки')
-    } else {
-      Meteor.call('listeningEdit', listeningId, listeningCandidate, (err, res) => {
-        if(err) {console.log(err)} 
-        else {
-          FlowRouter.go('/mylistenings');
-        }
-      });
     }
+    
+    if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio ) return;
+    Meteor.call('listeningEdit', listeningId, listeningCandidate, (err, res) => {
+      if(err) {console.log(err)} 
+      else {
+        FlowRouter.go('/mylistenings');
+      }
+    });
+
   }
   contactAdd(contactsNumber) {    
     return e => {
@@ -186,7 +233,7 @@ class CreateEdit extends Component {
     };        
   }
   render() {
-    const { message, phone, email } = this.state.validation; 
+    const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation; 
     const { contacts } = this.state; 
     let { contactsNumber } = this.state; 
     const { loading, listening } = this.props;
@@ -248,13 +295,13 @@ class CreateEdit extends Component {
                 <div className="create-block__item">
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={Countries} defaultValue={defaultValue.country} />
+                      <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={Countries} defaultValue={defaultValue.country} error={country ? true : false} />
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={Cities} defaultValue={defaultValue.city} />
+                      <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={Cities} defaultValue={defaultValue.city} error={city ? true : false} />
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
@@ -268,13 +315,13 @@ class CreateEdit extends Component {
                   </div>*/}
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} defaultValue={defaultValue.typeDeal} />
+                      <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} defaultValue={defaultValue.typeDeal} error={typeDeal ? true : false} />
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={TypeProperty} defaultValue={defaultValue.typeProperty}/>
+                      <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={TypeProperty} defaultValue={defaultValue.typeProperty} error={typeProperty ? true : false} />
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
@@ -282,7 +329,7 @@ class CreateEdit extends Component {
                   <div className="create-block-row__item">
                     <Form.Field>
                       <label>Общая площадь</label>
-                      <Input label={{ basic: true, content: 'm²' }} placeholder='Введите площадь...' name='ratio' type="number" fluid  labelPosition='right' defaultValue={defaultValue.ratio}/>
+                      <Input label={{ basic: true, content: 'm²' }} placeholder='Введите площадь...' name='ratio' type="number" fluid  labelPosition='right' defaultValue={defaultValue.ratio} error={ratio ? true : false} />
                     </Form.Field>
                   </div>
                   <div className="create-block-row__item"></div>
@@ -292,9 +339,9 @@ class CreateEdit extends Component {
                       <Form.Group widths='equal' style={{marginBottom: 0}}>
                         <Form.Field>
                           <label>Цена</label>
-                          <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid labelPosition='right' defaultValue={defaultValue.price}/>
+                          <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid labelPosition='right' defaultValue={defaultValue.price} error={price ? true : false}/>
                         </Form.Field>
-                        <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты' defaultValue={defaultValue.paymentPeriod}/>
+                        <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты' defaultValue={defaultValue.paymentPeriod} error={paymentPeriod ? true : false}/>
                       </Form.Group>
                     </div>
                     <div className="create-block-row__item"></div>
@@ -319,7 +366,7 @@ class CreateEdit extends Component {
 
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Input defaultValue={defaultValue.headline} label="Заголовок объявления" placeholder='' name='headline' type="text" fluid/>
+                      <Form.Input defaultValue={defaultValue.headline} label="Заголовок объявления" placeholder='' name='headline' type="text" fluid error={headline ? true : false}/>
                     </div>
                     <div className="create-block-row__item">
                     </div>
@@ -327,7 +374,7 @@ class CreateEdit extends Component {
 
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.TextArea defaultValue={defaultValue.desc} name='description' label='Описание объявления' placeholder='Почему люди должны обратить внимание на ваше объявление?' rows='3'/>
+                      <Form.TextArea defaultValue={defaultValue.desc} name='description' label='Описание объявления' placeholder='Почему люди должны обратить внимание на ваше объявление?' rows='3' error={desc ? true : false}/>
                     </div>
                   </div>
                 </div>
@@ -353,9 +400,13 @@ class CreateEdit extends Component {
                 	{message ? 
                     <Message size="tiny" negative>
                      	<Message.Header>{message}</Message.Header>
-                     	{phone ? <p>{phone}</p> : null}
-                     	{email ? <p>{email}</p> : null}
-                    </Message> : null}
+                     	{price ? <p>{price}</p> : null}
+                     	{country ? <p>{country}</p> : null}
+                     	{headline ? <p>{headline}</p> : null}
+                     	{desc ? <p>{desc}</p> : null}
+                     	{paymentPeriod ? <p>{paymentPeriod}</p> : null}
+                  	</Message>
+    				 	: null}
                 </div>
                 <div className="create-block__item">
                   <div className="create-block-headline">Шаг 3: Контакты</div>
