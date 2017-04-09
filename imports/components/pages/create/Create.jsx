@@ -131,7 +131,7 @@ export default class Create extends Component {
     const contacts = getContacts();
     self.setState({ contacts });
     
-    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
+    const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
 
     const listeningCandidate = {
       "listeningInfo": {
@@ -194,7 +194,7 @@ export default class Create extends Component {
     } if(!Session.get('0photo')) {
       alert('Загрузите главное фото')
     }
-    
+    console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio) return;
     Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
       if(err) {console.log(err)} 
