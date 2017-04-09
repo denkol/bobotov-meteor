@@ -100,7 +100,7 @@ export default class Create extends Component {
       return listeningPhotos;
     }
 
-    const comfortList = formData.comfortList;    
+    const comfortList = formData.comfortList;
     const typeDeal = formData.typeDeal;
     const typeProperty = formData.typeProperty;
     const country = formData.country;
@@ -254,13 +254,13 @@ export default class Create extends Component {
               <div className="create-block__item">
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={Countries} error={country ? true : false} />
+                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={Countries} error={country ? true : false} required/>
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={Cities} error={city ? true : false} />
+                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={Cities} error={city ? true : false} required/>
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
@@ -274,13 +274,13 @@ export default class Create extends Component {
                 </div>*/}
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} error={typeDeal ? true : false} />
+                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} error={typeDeal ? true : false} required/>
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={TypeProperty} error={typeProperty ? true : false} />
+                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={TypeProperty} error={typeProperty ? true : false} required/>
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
@@ -288,7 +288,7 @@ export default class Create extends Component {
                 <div className="create-block-row__item">
                   <Form.Field>
                     <label>Общая площадь</label>
-                    <Input label={{ basic: true, content: 'm²' }} placeholder='Введите площадь...' name='ratio' type="number" fluid  labelPosition='right' error={ratio ? true : false} />
+                    <Input label={{ basic: true, content: 'm²' }} placeholder='Введите площадь...' name='ratio' type="number" fluid  labelPosition='right' error={ratio ? true : false} required/>
                   </Form.Field>
                 </div>
                 <div className="create-block-row__item"></div>
@@ -298,9 +298,9 @@ export default class Create extends Component {
                     <Form.Group widths='equal' style={{marginBottom: 0}}>
                       <Form.Field>
                         <label>Цена</label>
-                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid labelPosition='right' error={price ? true : false} />
+                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid labelPosition='right' error={price ? true : false} required/>
                       </Form.Field>
-                      <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты'  error={paymentPeriod ? true : false}/>
+                      <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты' error={paymentPeriod ? true : false} required/>
                     </Form.Group>
                   </div>
                   <div className="create-block-row__item"></div>
@@ -325,7 +325,7 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid error={headline ? true : false} />
+                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid error={headline ? true : false} required/>
                   </div>
                   <div className="create-block-row__item">
                   </div>
@@ -333,7 +333,7 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.TextArea name='description' label='Описание объявления' rows='3' error={desc ? true : false}/>
+                    <Form.TextArea name='description' label='Описание объявления' rows='3' error={desc ? true : false} required/>
                   </div>
                 </div>
               </div>
@@ -358,22 +358,6 @@ export default class Create extends Component {
             </div>
             <div className="create-block">
               <div className="create-block__item">
-                  {message ? 
-                    <Message compact negative>
-                     	<Message.Header>{message}</Message.Header>
-                     	{phone ? <p>{phone}</p> : null}
-                     	{email ? <p>{email}</p> : null}
-                     	{price ? <p>{price}</p> : null}
-                     	{country ? <p>{country}</p> : null}
-                     	{headline ? <p>{headline}</p> : null}
-                     	{desc ? <p>{desc}</p> : null}
-                     	{paymentPeriod ? <p>{paymentPeriod}</p> : null}
-                     	{city ? <p>{city}</p> : null}
-                     	{typeDeal ? <p>{typeDeal}</p> : null}
-                     	{typeProperty ? <p>{typeProperty}</p> : null}
-                     	{ratio ? <p>{ratio}</p> : null}
-                  	</Message>
-                  : null}
               </div>
               <div className="create-block__item">
                 <div className="create-block-headline">
@@ -388,6 +372,24 @@ export default class Create extends Component {
               <Button onClick={this.contactAdd} circular icon='plus' />
               <Button onClick={this.contactRemove} circular icon='minus' />
             </div>
+            {message ? 
+              <Message size="tiny" negative>
+                <Message.Header>{message}</Message.Header>
+                <Message.List>
+                  {phone ? <Message.Item>{phone}</Message.Item> : null}
+                  {email ? <Message.Item>{email}</Message.Item> : null}
+                  {price ? <Message.Item>{price}</Message.Item> : null}
+                  {country ? <Message.Item>{country}</Message.Item> : null}
+                  {headline ? <Message.Item>{headline}</Message.Item> : null}
+                  {desc ? <Message.Item>{desc}</Message.Item> : null}
+                  {paymentPeriod ? <Message.Item>{paymentPeriod}</Message.Item> : null}
+                  {city ? <Message.Item>{city}</Message.Item> : null}
+                  {typeDeal ? <Message.Item>{typeDeal}</Message.Item> : null}
+                  {typeProperty ? <Message.Item>{typeProperty}</Message.Item> : null}
+                  {ratio ? <Message.Item>{ratio}</Message.Item> : null}
+                </Message.List>
+              </Message>
+            : null}
             <div className="create-block-confirm">
               <div className="create-block-confirm__item">
                 <Button type="submit" size='big' primary>Готово</Button>
