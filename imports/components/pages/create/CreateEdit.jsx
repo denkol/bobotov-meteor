@@ -88,8 +88,7 @@ class CreateEdit extends Component {
         const dropdownDeafultValue = "email";
         const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
         const contactValue = formData["input"+i];
-        
-        //console.log(contactKey, contactValue);
+
         if(contactKey === "phone" && !isValidPhone(contactValue)) {
           validation.message = message;
           validation.phone = "Введите корректный телефонный номер!";
@@ -102,7 +101,7 @@ class CreateEdit extends Component {
           self.setState({ validation });
         }
         
-        contacts.push({contactKey, contactValue, message});
+        contacts.push({contactKey, contactValue, message: validation.message});
       }
       return contacts;
     }
@@ -161,8 +160,8 @@ class CreateEdit extends Component {
     }
     //console.log(listeningCandidate);
     
-    const hasError = _.some(contacts, contact => !_.isUndefined(contact.message));
-    
+    const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
+
     if(!price) {
       validation.message = message;
       validation.price = "Введите цену!";
@@ -175,7 +174,7 @@ class CreateEdit extends Component {
       validation.message = message;
       validation.headline = "Введите заголовок!";
       self.setState({ validation });
-    } if(!desc) {console.log('!desc', !desc);
+    } if(!desc) {
     	validation.message = message;
       validation.desc = "Введите описание!";
       self.setState({ validation });

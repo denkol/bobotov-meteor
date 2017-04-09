@@ -86,7 +86,7 @@ export default class Create extends Component {
           self.setState({ validation });
         }
         
-        contacts.push({contactKey, contactValue, message});
+        contacts.push({contactKey, contactValue, message: validation.message});
       }
       return contacts;
     }
