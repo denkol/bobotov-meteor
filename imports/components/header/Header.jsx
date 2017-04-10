@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 //Components
 import Profile from '../profile/Profile.jsx';
 /* Semantic UI */
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Button, Header, Icon, Modal, Dropdown } from 'semantic-ui-react';
+
+import i18n from '/imports/config/i18n'
+
+console.log(i18n)
+
+const toggleLng = lng => i18n.changeLanguage(lng)
 
 class HeaderLayout extends Component {
   constructor(props) {
@@ -17,7 +24,7 @@ class HeaderLayout extends Component {
     this.logout = this.logout.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-  
+
   openMobileMenu() {
     $('#mobile-menu').addClass('main-menu-wrapper--open');
   }
@@ -54,19 +61,21 @@ class HeaderLayout extends Component {
   }
 
   render() {
-    let user = this.props.user;
+    const { user, t } = this.props;
     const ExitModal = () => (
-      <Modal trigger={<li className="profile-menu__item">Выйти</li>} basic size='small'>
-        <Header icon='log out' content='Выход из аккаунта' />
+      <Modal trigger={<li className="profile-menu__item">{t('header.logout')}</li>} basic size='small'>
+        <Header icon='log out' content={t('modal.title')} />
         <Modal.Content>
-          <p>Вы действительно хотите выйти?</p>
+          <p>{t('modal.content')}</p>
         </Modal.Content>
         <Modal.Actions>
           <Button basic color='red' onClick={this.closeModal} inverted>
-            <Icon name='remove' /> Нет
+            <Icon name='remove' />
+            {t('modal.btnCancel')}
           </Button>
           <Button color='green' onClick={this.logout} inverted>
-            <Icon name='checkmark' /> Да
+            <Icon name='checkmark' />
+            {t('modal.btnOk')}
           </Button>
         </Modal.Actions>
       </Modal>
@@ -98,22 +107,22 @@ class HeaderLayout extends Component {
               <nav className="header-menu">
                 <ul>
                   <li className="header-menu__item">
-                    <a href="#">Все</a>
+                    <a href="#">{t('header.all')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">Аренда</a>
+                    <a href="#">{t('header.rent')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">Продажа</a>
+                    <a href="#">{t('header.sale')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">У моря</a>
+                    <a href="#">{t('header.bythesea')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">На долгий срок</a>
+                    <a href="#">{t('header.foralongtime')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">Для отдыха</a>
+                    <a href="#">{t('header.forrelax')}</a>
                   </li>
                 </ul>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}
@@ -127,24 +136,32 @@ class HeaderLayout extends Component {
                     <Profile onClick={this.openSubmenu} data={user}/>
                     <div className={this.state.subMenuOpen ? "profile-menu-content profile-menu-content--expanded" : "profile-menu-content"}>
                       <ul className="profile-menu">
-                        <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">Мой профиль</li>
-                        <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">Мои объявления</li>
-                        <ExitModal />
+                        <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">{t('header.myprofile')}</li>
+                        <li onClick={this.handleGo.bind(this, '/mylistenings')} className="profile-menu__item">{t('header.myadvs')}</li>
+                        <ExitModal {...this.props} />
                       </ul>
                     </div>
                   </div>
                   :
                   <div className="header-controls__item header-controls__item_sign-buttons">
                     <a href="/signup">
-                      <button className="transparent-btn">Регистрация</button>
+                      <button className="transparent-btn">{t('header.signup')}</button>
                     </a>
                     <a href="/signin">
-                      <button className="simple-btn simple-btn_blue">Войти</button>
+                      <button className="simple-btn simple-btn_blue">{t('header.signin')}</button>
                     </a>
                   </div>
                 }
                 <div className="header-controls__item header-controls__item_add">
-                  <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">Добавить объявление</button>
+                  <Dropdown text={t(`common:toggleLng.${i18n.language}`)}>
+                    <Dropdown.Menu>
+                      <Dropdown.Item text={t('common:toggleLng.ru')} onClick={() => toggleLng('ru')} />
+                      <Dropdown.Item text={t('common:toggleLng.en')} onClick={() => toggleLng('en')} />
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                <div className="header-controls__item header-controls__item_add">
+                  <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">{t('header.addadv')}</button>
                 </div>
               </div>
             </div>
@@ -155,9 +172,14 @@ class HeaderLayout extends Component {
   }
 }
 
+HeaderLayout.propTypes = {
+
+};
+
 export default createContainer(({ params }) => {
   const user = Meteor.user();
-  return {user}
-}, HeaderLayout);
 
-HeaderLayout.propTypes = {};
+  return {
+    user
+  }
+}, translate('nav', { wait: true })(HeaderLayout));

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { ActiveRoute } from 'meteor/zimme:active-route'
 import classNames from 'classnames'
 import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-console.log(classNames)
-
-export default class MainMenu extends TrackerReact(Component) {
+class MainMenu extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {}
@@ -26,6 +25,7 @@ export default class MainMenu extends TrackerReact(Component) {
     let user = Meteor.user();
     let favoritesLength;
     const disabled = user ? "" : "disabled";
+    const { t } = this.props;
 
     // const url = window.location.pathname;
 
@@ -54,7 +54,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-home" role="img">
               <use xlinkHref="#ico-home" />
             </svg>
-            <span className="main-menu-text">На главную</span>
+            <span className="main-menu-text">{t('main.home')}</span>
           </a>
           <a
             href="/mylistenings"
@@ -67,7 +67,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-receipt" role="img">
               <use xlinkHref="#ico-receipt" />
             </svg>
-            <span className="main-menu-text">Мои объявления</span>
+            <span className="main-menu-text">{t('main.advs')}</span>
           </a>
           <a
             href="/favorites"
@@ -80,7 +80,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-love" id="love-menu-item" role="img">
               <use xlinkHref="#ico-love" />
             </svg>
-            <span className="main-menu-text">Избранное</span>
+            <span className="main-menu-text">{t('main.favorite')}</span>
           </a>
           <a
             href="/history"
@@ -93,7 +93,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-history" role="img">
               <use xlinkHref="#ico-history" />
             </svg>
-            <span className="main-menu-text">История</span>
+            <span className="main-menu-text">{t('main.history')}</span>
           </a>
         </div>
       </div>
@@ -102,3 +102,5 @@ export default class MainMenu extends TrackerReact(Component) {
 }
 
 MainMenu.propTypes = {};
+
+export default translate('nav', { wait: true })(MainMenu)
