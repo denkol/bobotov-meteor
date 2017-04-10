@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ActiveRoute } from 'meteor/zimme:active-route'
-import classNames from 'classnames'
+import { ActiveRoute } from 'meteor/zimme:active-route';
+import classNames from 'classnames';
 import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
@@ -10,7 +10,6 @@ export default class MainMenu extends TrackerReact(Component) {
     this.state = {}
   }
   clickOnMenuItem(e) {}
-
   render() {
     let user = Meteor.user();
     let favoritesLength;
@@ -28,7 +27,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-home" role="img">
               <use xlinkHref="#ico-home" />
             </svg>
-            <span className="main-menu-text">На главную</span>
+            <span className="main-menu-text">Home</span>
           </a>
           <a
             href="/mylistenings"
@@ -41,7 +40,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-receipt" role="img">
               <use xlinkHref="#ico-receipt" />
             </svg>
-            <span className="main-menu-text">Мои объявления</span>
+            <span className="main-menu-text">My listenings</span>
           </a>
           <a
             href="/favorites"
@@ -54,7 +53,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-love" id="love-menu-item" role="img">
               <use xlinkHref="#ico-love" />
             </svg>
-            <span className="main-menu-text">Избранное</span>
+            <span className="main-menu-text">Favorites</span>
           </a>
           <a
             href="/history"
@@ -67,7 +66,7 @@ export default class MainMenu extends TrackerReact(Component) {
             <svg className="ico-history" role="img">
               <use xlinkHref="#ico-history" />
             </svg>
-            <span className="main-menu-text">История</span>
+            <span className="main-menu-text">History</span>
           </a>
         </div>
       </div>
