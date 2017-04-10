@@ -30,7 +30,9 @@ export default class PhotoGrid extends TrackerReact(Component) {
   }
 
   render() {
+
     const query = Session.get('filterQuery');
+    // const query = window.location.pathname;
     const listenings = Listenings.find(query, {limit: this.state.limit, sort: {"listeningTech.createdAt": -1} }).fetch();
     if (this.state.subscription.listenings.ready()) {
       const listeningsTotal = Listenings.find(query).count();
@@ -43,13 +45,13 @@ export default class PhotoGrid extends TrackerReact(Component) {
               <div className="photo-grid">
                 {listenings.map((listening, index) => {
                   return (
-                    <div key={"photo-grid-" + index} className="photo-grid__item">
+                    <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
                       <ListeningPreview
                         key={index}
                         listeningData={listening}
                         layout="index"
                       />
-                    </div>
+                    </a>
                   );
                 })}
               </div>

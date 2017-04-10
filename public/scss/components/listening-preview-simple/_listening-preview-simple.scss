@@ -56,6 +56,7 @@
     margin-left: 16px;
     .price__text {
       display: flex;
+      align-items: center;
     }
     @include mq('tablet-wide', max) {
       margin-right: 16px;

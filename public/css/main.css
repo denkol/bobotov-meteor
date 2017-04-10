@@ -24102,7 +24102,8 @@ html.ios, html.ios body {
     overflow: hidden; }
     @media only screen and (max-width: 399px) {
       .listening-preview-headline__text {
-        font-size: 14px; } }
+        font-size: 14px;
+        line-height: 12px; } }
   .listening-preview-headline__desc {
     font-size: 14px;
     color: white; }
@@ -25248,7 +25249,10 @@ html.ios, html.ios body {
     .listening-preview-simple__price-block .price__text {
       display: -webkit-box;
       display: -ms-flexbox;
-      display: flex; }
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
     @media only screen and (max-width: 1199px) {
       .listening-preview-simple__price-block {
         margin-right: 16px; } }
@@ -25361,8 +25365,7 @@ html.ios, html.ios body {
       fill: #C1000B; }
 
 .panel-wrapper {
-  position: relative;
-  margin-top: 26px; }
+  position: relative; }
 
 .panel-headline__desc {
   font-weight: normal;

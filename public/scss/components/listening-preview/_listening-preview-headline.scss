@@ -11,6 +11,7 @@
     overflow: hidden;
     @include mq('phone', max) {
       font-size: 14px;
+      line-height: 12px;
     }
   }
   &__desc {

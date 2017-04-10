@@ -199,7 +199,8 @@ class CreateEdit extends Component {
       validation.ratio = "Укажите площадь!";
       self.setState({ validation });
     } if(!Session.get('0photo')) {
-      alert('Загрузите главное фото')
+      return alert('Загрузите главное фото')
+      // alert('Загрузите главное фото')
     }
     
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio ) return;
