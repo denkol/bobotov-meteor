@@ -12,17 +12,17 @@ import Layout from  '../../imports/components/Layout.jsx';
 
 //Pages
 import Index from '../../imports/components/pages/index/Index.jsx';
-import Listening from '../../imports/components/pages/listening/Listening.jsx'; 
-import Sign from '../../imports/components/pages/sign/Sign.jsx'; 
-import Favorites from '../../imports/components/pages/favorites/Favorites.jsx'; 
-import History from '../../imports/components/pages/history/History.jsx'; 
+import Listening from '../../imports/components/pages/listening/Listening.jsx';
+import Sign from '../../imports/components/pages/sign/Sign.jsx';
+import Favorites from '../../imports/components/pages/favorites/Favorites.jsx';
+import History from '../../imports/components/pages/history/History.jsx';
 import My from '../../imports/components/pages/my/My.jsx';
 import Panel from '../../imports/components/pages/panel/Panel.jsx';
-import Create from '../../imports/components/pages/create/Create.jsx'; 
-import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx'; 
+import Create from '../../imports/components/pages/create/Create.jsx';
+import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx';
 
-//Additional components 
-import Filter from '../../imports/components/filter/Filter.jsx'; 
+//Additional components
+import Filter from '../../imports/components/filter/Filter.jsx';
 
 //Wrapper function
 var AnimationWrapper = (wrappedElement) => {
@@ -72,6 +72,7 @@ publicRoutes.route('/edit/:_id', {
 });
 
 publicRoutes.route('/favorites', {
+  name: 'favorites',
   action() {
     mount(Layout, {
       content: AnimationWrapper(<Favorites />),
@@ -81,6 +82,7 @@ publicRoutes.route('/favorites', {
 });
 
 publicRoutes.route('/history', {
+  name: 'history',
   action() {
     mount(Layout, {
       content: AnimationWrapper(<History />),
@@ -90,6 +92,7 @@ publicRoutes.route('/history', {
 });
 
 publicRoutes.route('/mylistenings', {
+  name: 'mylistenings',
   action() {
     mount(Layout, {
       content: AnimationWrapper(<My />),
