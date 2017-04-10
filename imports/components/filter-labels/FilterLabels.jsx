@@ -17,7 +17,6 @@ export default class FilterLabels extends TrackerReact(Component) {
     return e => {
       if(e) {
         const key = _.keys(label)[0];
-        // console.log(label, key);
         Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
         Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
       }
@@ -25,7 +24,7 @@ export default class FilterLabels extends TrackerReact(Component) {
   }
   
   render() {
-    const filterData = this.props.filterData; console.log(filterData);
+    const filterData = this.props.filterData;
     if(filterData) {
       return (
         <div className="filter-labels">

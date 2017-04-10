@@ -28,11 +28,9 @@ export default class ListeningPreviewSimple extends Component {
   remove() {
     let id = this.props.data._id;
     let list = this.props.layout;
-    Meteor.call('removeFromList', id, list, (err, res)=> {
+    Meteor.call('removeFromList', id, 'favorites', (err, res)=> {
       if(err) {console.log(err)}
-      if(res) {
-        console.log('listening removed from Favorite');
-      }
+      if(res) {}
     });
   }
   publishTrigger(event, data) {

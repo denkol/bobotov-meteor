@@ -6,40 +6,19 @@ import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 class MainMenu extends TrackerReact(Component) {
+
   constructor(props) {
     super(props);
     this.state = {}
   }
-  clickOnMenuItem(e) {
-    // var currentItem = $(e.target);
-    // var allItems = $('.main-menu__item');
 
-    // if(!currentItem.hasClass('main-menu__item')) {
-    //   currentItem = currentItem.parents('.main-menu__item');
-    // }
+  clickOnMenuItem(e) {}
 
-    // allItems.removeClass('main-menu__item--active');
-    // currentItem.addClass('main-menu__item--active');
-  }
   render() {
     let user = Meteor.user();
     let favoritesLength;
     const disabled = user ? "" : "disabled";
     const { t } = this.props;
-
-    // const url = window.location.pathname;
-
-    // /* Home Active Class */
-    // const activeHome = url === "/" ? "main-menu__item--active" : "";
-
-    // /* My Active Class */
-    // const activeMy = url === "/mylistenings" ? "main-menu__item--active" : "";
-
-    // /* Favorites Active Class */
-    // const activeFav = url === "/favorites" ? "main-menu__item--active" : "";
-
-    // /* History Active Class */
-    // const activeHis = url === "/history" ? "main-menu__item--active" : "";
 
     return (
       <div className="main-menu-wrapper">

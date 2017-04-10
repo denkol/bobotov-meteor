@@ -9,8 +9,6 @@ import { Button, Header, Icon, Modal, Dropdown } from 'semantic-ui-react';
 
 import i18n from '/imports/config/i18n'
 
-console.log(i18n)
-
 const toggleLng = lng => i18n.changeLanguage(lng)
 
 class HeaderLayout extends Component {
