@@ -10,8 +10,8 @@ import { check } from 'meteor/check';
 const LISTENINGS_LIMIT_DEFAULT = 9;
 
 Meteor.publish("listenings.all", function() {
-    Counts.publish(this, 'listenings-all-count', Listenings.find({}), { noReady: true });
-    return Listenings.find({});
+  Counts.publish(this, 'listenings-all-count', Listenings.find({}), { noReady: true });
+  return Listenings.find({});
 });
 
 Meteor.publish("listenings.bigslider", function() {

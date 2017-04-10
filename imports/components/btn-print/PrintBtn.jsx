@@ -24,6 +24,4 @@ export default class PrintBtn extends Component {
   }
 }
 
-PrintBtn.propTypes = {
-
-};
+PrintBtn.propTypes = {};

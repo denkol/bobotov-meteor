@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import FooterAbout from './pages/FooterAbout.jsx';
 
+import { Dropdown } from 'semantic-ui-react';
+
 export default class Footer extends Component {
   constructor(props) {
     super(props);

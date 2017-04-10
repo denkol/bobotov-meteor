@@ -7,9 +7,5 @@
     margin-bottom: 5px;
     -webkit-animation: scale 200ms ease both;
     animation: scale 200ms ease both;
-    &--hide {
-      -webkit-animation: fadeOutDown 1000ms linear both;
-      animation: fadeOutDown 1000ms linear both;
-    }
   }
 }

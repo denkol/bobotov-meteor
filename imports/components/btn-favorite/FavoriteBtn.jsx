@@ -16,7 +16,6 @@ export default class FavoriteBtn extends Component {
     this.handleFavoriteBtn = this.handleFavoriteBtn.bind(this);
   }
 
-  
   handleFavoriteBtn() {
     this.setState({ //Toggle state
       isFavorite : !this.state.isFavorite
@@ -30,8 +29,6 @@ export default class FavoriteBtn extends Component {
     Meteor.call('listeningAddToFavorite', sendData, (err, res) => {
       if(err) {
         console.log(err);
-      } else {
-        console.log(res);
       }
     });
     
@@ -53,4 +50,7 @@ export default class FavoriteBtn extends Component {
   }
 }
 
-FavoriteBtn.propTypes = {};
+FavoriteBtn.propTypes = {
+  isFavorite: React.PropTypes.bool,
+  listeningId: React.PropTypes.string
+};

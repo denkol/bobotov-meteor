@@ -23546,8 +23546,10 @@ html.ios, html.ios body {
           height: 28px; }
         .main-menu__item .main-menu-text {
           display: none; }
-        .main-menu__item--active svg {
-          fill: #4A90E2; } }
+        .main-menu__item--active {
+          border-bottom: 3px solid #4A90E2; }
+          .main-menu__item--active svg {
+            fill: #4A90E2; } }
     @media only screen and (max-width: 399px) {
       .main-menu__item svg {
         width: 22px;
@@ -23560,15 +23562,12 @@ html.ios, html.ios body {
       -webkit-transform: none;
               transform: none;
       width: 100%;
-      height: 40px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between;
-      padding: 0 10px;
-      padding-bottom: 15px;
       margin-bottom: 20px;
       background-color: white; } }
   @media only screen and (max-width: 479px) {
@@ -24872,8 +24871,8 @@ html.ios, html.ios body {
 
 /* button on desktop */
 .filter-btn {
-  -webkit-animation: scale 500ms ease 0.5s both;
-          animation: scale 500ms ease 0.5s both;
+  -webkit-animation: scale 500ms ease 0s both;
+          animation: scale 500ms ease 0s both;
   position: absolute;
   right: -50px;
   top: 11px;
@@ -24926,9 +24925,6 @@ html.ios, html.ios body {
     margin-bottom: 5px;
     -webkit-animation: scale 200ms ease both;
     animation: scale 200ms ease both; }
-    .filter-labels__item--hide {
-      -webkit-animation: fadeOutDown 1000ms linear both;
-      animation: fadeOutDown 1000ms linear both; }
 
 .slider {
   width: 100%;
@@ -25668,7 +25664,7 @@ html.ios, html.ios body {
     line-height: 18px; }
   @media only screen and (max-width: 1199px) {
     .create-photo-layer_init {
-      padding: 66px; }
+      padding: 106px; }
       .create-photo-layer_init__icon {
         margin-bottom: 16px; }
         .create-photo-layer_init__icon svg {

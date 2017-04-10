@@ -1,3 +1,9 @@
+/* 
+  
+  Contact Add/Remove component
+
+*/
+
 import React, { Component } from 'react';
 import { Button, Form, Input, Dropdown } from 'semantic-ui-react';
 import { ContactsList } from '../../data/data.js';
@@ -38,7 +44,7 @@ export default class ContactsAdd extends Component {
     }
 
     for(let i = 0; i < this.props.contactsNumber; i++) {
-    	const contact = defaultContacts[i] || {contactKey: "email", contactValue: "", message: ""};
+      const contact = defaultContacts[i] || {contactKey: "email", contactValue: "", message: ""};
       Session.set('dropdown' + i, contact ? contact.contactKey : null);
       contactsInputs.push(SingleContact(i, contact));
     }

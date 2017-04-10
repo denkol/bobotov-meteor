@@ -15,82 +15,69 @@ class CreatePhoto extends Component {
     }
     this.photoRemove = this.photoRemove.bind(this);
   }
-  uploadIt(e){
+  uploadIt(e) {
+    /* Upload file method */
     "use strict";
     e.preventDefault();
     const self = this;
     if (e.currentTarget.files && e.currentTarget.files[0]) {
-     // We upload only one file, in case
-     // there was multiple files selected
-     const file = e.currentTarget.files[0];
+    // We upload only one file, in case
+    // there was multiple files selected
+    const file = e.currentTarget.files[0];
     Photos.storagePath('listenings');
-     if (file) {
-       const uploadInstance = Photos.insert({
-         file: file,
-         meta: {
-           locator: self.props.fileLocator,
-           userId: Meteor.userId() // Optional, used to check on server for file tampering
-         },
-         streams: 'dynamic',
-         chunkSize: 'dynamic',
-         allowWebWorkers: true // If you see issues with uploads, change this to false
-       }, false);
+    if (file) {
+      const uploadInstance = Photos.insert({
+        file: file,
+        meta: {
+          locator: self.props.fileLocator,
+          userId: Meteor.userId() // Optional, used to check on server for file tampering
+        },
+        streams: 'dynamic',
+        chunkSize: 'dynamic',
+        allowWebWorkers: true // If you see issues with uploads, change this to false
+      }, false);
 
-       self.setState({
-         uploading: uploadInstance, // Keep track of this instance to use below
-         inProgress: true // Show the progress bar now
-       });
+      self.setState({
+        uploading: uploadInstance, // Keep track of this instance to use below
+        inProgress: true // Show the progress bar now
+      });
 
-       // These are the event functions, don't need most of them, it shows where we are in the process
-       uploadInstance.on('start', function () {
-         // console.log('Starting');
-       });
+      // These are the event functions, don't need most of them, it shows where we are in the process
+      uploadInstance.on('start', function () {});
+      uploadInstance.on('end', function (error, fileObj) {});
+      uploadInstance.on('uploaded', function (error, fileObj) {
+        self.setState({
+          uploading: [],
+          progress: 0,
+          inProgress: false,
+          uploaded: true,
+          file: fileObj
+        });
+      });
 
-       uploadInstance.on('end', function (error, fileObj) {
-       });
+      uploadInstance.on('error', function (error, fileObj) {
+        console.log('Error during upload: ' + error);
+        self.setState({
+          snackbar: {
+            open: true,
+            message: "Ошибка! (макс. размер 2мб, jpg, jpeg, png)"
+          },
+          uploading: [],
+          progress: 0,
+          uploaded: false,
+          inProgress: false,
+          file: ""
+        });
+      });
 
-       uploadInstance.on('uploaded', function (error, fileObj) {
-         // console.log('uploaded: ', fileObj);
-         // Remove the filename from the upload box
-         // self.refs['fileinput'].value = '';
-         // Reset our state for the next file
-         self.setState({
-            snackbar: {
-              open: true,
-              message: "Фотография загружена!"
-            },
-           uploading: [],
-           progress: 0,
-           inProgress: false,
-           uploaded: true,
-           file: fileObj
-         });
-       });
-
-       uploadInstance.on('error', function (error, fileObj) {
-         console.log('Error during upload: ' + error);
-         self.setState({
-            snackbar: {
-              open: true,
-              message: "Ошибка! (макс. размер 2мб, jpg, jpeg, png)"
-            },
-            uploading: [],
-            progress: 0,
-            uploaded: false,
-            inProgress: false,
-            file: ""
-          });
-       });
-
-       uploadInstance.on('progress', function (progress, fileObj) {
-         // Update our progress bar
-         self.setState({
-           progress: progress
-         })
-       });
+      uploadInstance.on('progress', function (progress, fileObj) {
+        self.setState({
+          progress: progress
+        });
+      });
 
        uploadInstance.start(); // Must manually start the upload
-     }
+      }
     }
   }
   photoRemove() {
@@ -104,10 +91,6 @@ class CreatePhoto extends Component {
     }
     delete Session.keys[id + 'photo']
     this.setState({
-      snackbar: {
-        open: true,
-        message: "Фотография удалена"
-      },
       uploading: [],
       progress: 0,
       uploaded: false,
@@ -117,7 +100,7 @@ class CreatePhoto extends Component {
     Meteor.call('fileRemove', fileId, (err, res) => {
       if(err) {
         console.log(err);
-      } else {}
+      }
     });
   }
   render() {
@@ -151,7 +134,7 @@ class CreatePhoto extends Component {
               <div className="create-photo-layer_init__text">Нажмите чтобы загрузить (макс. размер 2мб, jpg, jpeg, png)</div>
             </label>
             <div className={this.state.inProgress ? "create-photo-layer create-photo-layer_loader" : "create-photo-hide"}>
-              <Dimmer active>
+              <Dimmer active style={{borderRadius: "5px"}}>
                 <Loader indeterminate>Загрузка файла {this.state.progress}%</Loader>
               </Dimmer>
             </div>
@@ -185,7 +168,7 @@ export default createContainer( ({ params }) => {
   const docs = Photos.find().fetch();
   const loading = handle.ready();
 
-  return { loading,docs };
+  return { loading, docs };
 }, CreatePhoto);
 
 CreatePhoto.propTypes = {};

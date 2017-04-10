@@ -31,7 +31,7 @@ export default class Favorites extends TrackerReact(Component) {
   }
 
   render() {
-  	 const user = Meteor.user();
+    const user = Meteor.user();
     if(!user) {
       return (
         <Message
@@ -59,24 +59,23 @@ export default class Favorites extends TrackerReact(Component) {
                     </svg>
                   </div>
                   <div className="headline-icon__text">Избранные объявления:</div>
+                </div>
               </div>
             </div>
+            <div className="favoritesList">
+              {listenings.map((listening, index) => {
+                return (
+                  <div key={"favouritesListItem" + index} className="favoritesList__item">
+                    <ListeningPreview listeningData={listening} layout="favorites"/>
+                  </div>
+                );
+              })}
             </div>
-              <div className="favoritesList">
-                {listenings.map((listening, index) => {
-                  return (
-                    <div key={"favouritesListItem" + index} className="favoritesList__item">
-                      <ListeningPreview listeningData={listening} layout="favorites"/>
-                    </div>
-                  );
-                })}
-              </div>
-              { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
+              {(listeningsTotal > listenings.length) && <div className="paginate-wrapper">
                 <div className="paginate">
                   <Button primary onClick={this.loadMore}>Загрузить еще</Button>
                 </div>
-              </div>
-            }
+              </div>}
           </div>
         );
       } else {
@@ -90,9 +89,7 @@ export default class Favorites extends TrackerReact(Component) {
               </div>
               <div className="headline-icon__text">Избранные объявления:</div>
             </div>
-            <Message
-              header='У вас нет избранных объявлений'
-              content='Добавьте какое-нибудь объявление в избранное'/>
+            <Message header='У вас нет избранных объявлений' content='Добавьте какое-нибудь объявление в избранное'/>
           </div>
         );
       }

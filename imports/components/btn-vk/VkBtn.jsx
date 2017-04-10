@@ -1,3 +1,4 @@
+/* VK sign button */
 import React, { Component } from 'react';
 
 export default class VkBtn extends Component {
@@ -7,13 +8,9 @@ export default class VkBtn extends Component {
     }
     this.signVk = this.signVk.bind(this)
   }
-
   signVk() {
-    Meteor.loginWithVk({
-
-    });
+    Meteor.loginWithVk({});
   }
-
   render() {
     return (
       <div onClick={this.signVk} className="simple-btn_vk">

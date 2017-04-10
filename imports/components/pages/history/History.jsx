@@ -48,9 +48,8 @@ export default class History extends TrackerReact(Component) {
     }
     const historyList = user.profile.historyList;
     const query = { _id: { $in: historyList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit} ).fetch();
+    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
     if(this.state.subscription.listenings.ready()) {
-      console.log(listenings.length, historyList);
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (

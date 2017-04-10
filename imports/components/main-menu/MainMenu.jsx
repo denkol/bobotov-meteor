@@ -22,21 +22,6 @@ export default class MainMenu extends TrackerReact(Component) {
     let user = Meteor.user();
     let favoritesLength;
     const disabled = user ? "" : "disabled";
-    
-    // const url = window.location.pathname;
-
-    // /* Home Active Class */
-    // const activeHome = url === "/" ? "main-menu__item--active" : "";
-
-    // /* My Active Class */
-    // const activeMy = url === "/mylistenings" ? "main-menu__item--active" : "";
-
-    // /* Favorites Active Class */
-    // const activeFav = url === "/favorites" ? "main-menu__item--active" : "";
-
-    // /* History Active Class */
-    // const activeHis = url === "/history" ? "main-menu__item--active" : "";
-
     return (
       <div className="main-menu-wrapper">
         <div className="main-menu">
