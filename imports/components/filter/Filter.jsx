@@ -78,7 +78,18 @@ export default class Filter extends Component {
     ];
 
     Session.set('filterData', FilterCandidate);
+
+    FlowRouter.go('/', {}, {
+      bathrooms: formData.bathrooms,
+      bedrooms: formData.bedrooms,
+      city: formData.city,
+      priceFrom: formData.priceFrom,
+      priceTo: formData.priceTo,
+      typeDeal: formData.typeDeal,
+      typeProperty: formData.typeProperty
+    })
   }
+
   render() {
     const FilterQuery = {};
     Session.setDefault('filterQuery', FilterQuery);
