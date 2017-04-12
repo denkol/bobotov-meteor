@@ -17,14 +17,19 @@ export const listeningsFilter = (filters) => {
         selector['listeningInfo.city'] = value
       }
     } else if (key === 'priceFrom' || key === 'priceTo') {
-      const priceRange = {}
-      if (filters.priceFrom) {
-        priceRange['$gte'] = Number(filters.priceFrom.replace(/\s/g, ''))
+      if (value) {
+        if (!selector['listeningInfo.price']) {
+          selector['listeningInfo.price'] = {}
+        }
+        selector['listeningInfo.price']['$gte'] = Number(filters.priceFrom.replace(/\s/g, ''))
       }
-      if (filters.priceTo) {
-        priceRange['$lte'] = Number(filters.priceTo.replace(/\s/g, ''))
+    } else if (key === 'priceTo') {
+      if (value) {
+        if (!selector['listeningInfo.price']) {
+          selector['listeningInfo.price'] = {}
+        }
+        selector['listeningInfo.price']['$lte'] = Number(filters.priceTo.replace(/\s/g, ''))
       }
-      selector['listeningInfo.price'] = priceRange
     } else if (key === 'typeDeal') {
       if (value) {
         selector['listeningInfo.typeDeal'] = value.replace(/\s/g, '')
