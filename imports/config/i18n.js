@@ -8,7 +8,6 @@ i18n
   // .use(Cache)
   .use(LanguageDetector)
   .init({
-    lng: 'ru',
     fallbackLng: 'ru',
 
     // have a common namespace used around the full app

@@ -1,0 +1,19 @@
+.footer-select-lang {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  &__item {
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+  @include mq('phablet', max) {
+    justify-content: center;
+  }
+}

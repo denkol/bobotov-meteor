@@ -958,6 +958,38 @@
 		"opt": 0,
 		"q": 100
 		},
+	"\/locales\/en\/common.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/common-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/en\/nav.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/nav-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/ru\/common.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/common-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/ru\/nav.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/nav-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/scss\/.sass-cache\/3636e5ef55f0f6f7bec0ec3fcad0428374781963\/_all.scssc": {
 		"ft": 8192,
 		"oA": 1,
@@ -1838,6 +1870,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/scss\/components\/footer\/_footer-content.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_footer-content.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/scss\/components\/footer\/_footer-menu.scss": {
 		"aP": 1,
 		"bl": 0,
@@ -1847,6 +1892,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/components\/css\/_footer-menu.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/footer\/_footer-select-lang.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_footer-select-lang.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1

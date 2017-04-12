@@ -1,0 +1,19 @@
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px 0;
+  @include mq('phablet', max) {
+    flex-direction: column-reverse;
+    &__item {
+      text-align: center;
+      margin-bottom: 32px;
+      &:first-child {
+        margin-bottom: 0; //because we used column-reverse
+      }
+    }
+  }
+  @include mq('tablet-wide', max) {
+    padding: 70px 20px;
+  }
+}

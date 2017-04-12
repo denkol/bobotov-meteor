@@ -48,7 +48,8 @@ export default class Filter extends Component {
 
   handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
-    FilterPanel.close();
+    FilterPanel.close(); //close desktop filter
+    this.closeMobileFilter(); //close mobile filter
     Window.scrollToTop();
     const priceFrom = formData.priceFrom.replace(/\s/g, '');
     const priceTo = formData.priceTo.replace(/\s/g, '');

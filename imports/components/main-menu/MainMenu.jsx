@@ -13,7 +13,6 @@ class MainMenu extends TrackerReact(Component) {
   }
 
   clickOnMenuItem(e) {}
-
   render() {
     let user = Meteor.user();
     let favoritesLength;

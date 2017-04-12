@@ -9,8 +9,6 @@ import { Button, Header, Icon, Modal, Dropdown } from 'semantic-ui-react';
 
 import i18n from '/imports/config/i18n'
 
-const toggleLng = lng => i18n.changeLanguage(lng)
-
 class HeaderLayout extends Component {
   constructor(props) {
     super(props);
@@ -150,14 +148,14 @@ class HeaderLayout extends Component {
                     </a>
                   </div>
                 }
-                <div className="header-controls__item header-controls__item_add">
+                {/*<div className="header-controls__item header-controls__item_add">
                   <Dropdown text={t(`common:toggleLng.${i18n.language}`)}>
                     <Dropdown.Menu>
                       <Dropdown.Item text={t('common:toggleLng.ru')} onClick={() => toggleLng('ru')} />
                       <Dropdown.Item text={t('common:toggleLng.en')} onClick={() => toggleLng('en')} />
                     </Dropdown.Menu>
                   </Dropdown>
-                </div>
+                </div>*/}
                 <div className="header-controls__item header-controls__item_add">
                   <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">{t('header.addadv')}</button>
                 </div>
