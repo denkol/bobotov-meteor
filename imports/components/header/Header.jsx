@@ -103,22 +103,22 @@ class HeaderLayout extends Component {
               <nav className="header-menu">
                 <ul>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.all')}</a>
+                    <a href="/">{t('header.all')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.rent')}</a>
+                    <a href="/?typeDeal=rent_short">{t('header.rent')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.sale')}</a>
+                    <a href="/?typeDeal=sale">{t('header.sale')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.bythesea')}</a>
+                    <a href="/?typeDeal=bythesea">{t('header.bythesea')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.foralongtime')}</a>
+                    <a href="/?typeDeal=rent_long">{t('header.foralongtime')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="#">{t('header.forrelax')}</a>
+                    <a href="?typeDeal=forrelax">{t('header.forrelax')}</a>
                   </li>
                 </ul>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}

@@ -25,12 +25,12 @@ class Listening extends Component {
     window.scrollTo(0, 0); //scroll to top
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
-  
+
   /* Save to history */
   saveToHistory(args) {
     Meteor.call("listeningSaveToHistory", args);
   }
-  
+
   handleGo(path, e) {
     e.preventDefault();
     this.setState({subMenuOpen: false});
@@ -55,7 +55,7 @@ class Listening extends Component {
         if(data.owner) {
           listeningAutorPhoto = data.owner.profile.userPhoto;
           listeningAutorName = data.owner.profile.username;
-          listeningAutorDesc = data.owner.profile.userType;  
+          listeningAutorDesc = data.owner.profile.userType;
         }
 
         const listeningLastChange = data.listening.listeningTech.lastChangeDate + "";
@@ -77,7 +77,7 @@ class Listening extends Component {
         const listeningContacts = data.listening.listeningContacts;
         const listeningTypeDeal = data.listening.listeningInfo.typeDeal;
         const listeningTypeProperty = data.listening.listeningInfo.typeProperty;
-        
+
         const listeningOptions = [
           { optionName: "Страна", optionValue: Translate(Countries, listeningCountry)},
           { optionName: "Город", optionValue: Translate(Cities, listeningCity)},
@@ -163,14 +163,14 @@ class Listening extends Component {
                       "&description=" + listeningDesc
                     } target="_blank" />
                     <a className="share__item share__item_twitter" href={
-                      "https://twitter.com/intent/tweet" + 
-                      "?text="+listeningHeadline+ 
+                      "https://twitter.com/intent/tweet" +
+                      "?text="+listeningHeadline+
                       "&hashtags=montenegro,bobotov" +
                       "&url=" + window.location.href
                     } target="_blank" />
                     <a className="share__item share__item_gplus" href={
                       "https://plus.google.com/share?url="+window.location.href
-                    } target="_blank" /> 
+                    } target="_blank" />
                   </div>*/}
                 </div>
               </div>
@@ -207,7 +207,7 @@ export default createContainer(({ listeningId }) => {
   const userSubs = Meteor.subscribe('user', ownerId);
   const loading = listeningSubs.ready() && userSubs.ready();
   const owner = Meteor.users.find({_id: ownerId}).fetch()[0];
-  
+
 
   const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
   const isFavorite = checkerFavorite(favoritesList, id);
@@ -221,7 +221,7 @@ export default createContainer(({ listeningId }) => {
     }
     return false;
   }
-  
+
   return { listeningId, loading, owner, listening, isFavorite };
 
 }, Listening);

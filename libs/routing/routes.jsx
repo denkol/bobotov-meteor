@@ -24,6 +24,9 @@ import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx';
 //Additional components
 import Filter from '../../imports/components/filter/Filter.jsx';
 
+// Filter actions
+import { listeningsFilter } from '/imports/actions'
+
 //Wrapper function
 var AnimationWrapper = (wrappedElement) => {
   return(
@@ -48,7 +51,20 @@ publicRoutes.route('/', {
       content: <Index />,
       additionalContent: <Filter />
     });
-  }
+  },
+  triggersEnter: [
+    (context) => {
+      const { selector } = listeningsFilter(context.queryParams)
+      const FilterCandidate = [
+        { city: context.queryParams.city },
+        { price: { from: Number(context.queryParams.priceFrom), to: Number(context.queryParams.priceTo) } },
+        { typeDeal: context.queryParams.typeDeal },
+        { typeProperty: context.queryParams.typeProperty }
+      ];
+      Session.set('filterQuery', selector)
+      Session.set('filterData', FilterCandidate)
+    }
+  ]
 });
 
 publicRoutes.route('/listening/:_id', {
