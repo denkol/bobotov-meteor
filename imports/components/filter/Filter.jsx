@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Button, Form, Input, Select } from 'semantic-ui-react';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../data/data.js';
 
+import { filterToQuery } from '/imports/actions'
+
 //Some JQuery function
 const FilterPanel = {
   open: function() {
@@ -79,15 +81,7 @@ export default class Filter extends Component {
 
     Session.set('filterData', FilterCandidate);
 
-    FlowRouter.go('/', {}, {
-      bathrooms: formData.bathrooms,
-      bedrooms: formData.bedrooms,
-      city: formData.city,
-      priceFrom: formData.priceFrom,
-      priceTo: formData.priceTo,
-      typeDeal: formData.typeDeal,
-      typeProperty: formData.typeProperty
-    })
+    FlowRouter.go('/', {}, filterToQuery(FilterCandidate))
   }
 
   render() {

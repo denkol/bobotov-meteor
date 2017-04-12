@@ -47,3 +47,26 @@ export const listeningsFilter = (filters) => {
 
   return { selector, options }
 }
+
+export const filterToQuery = (data = []) => {
+  const queryParams = {}
+
+  data.forEach((value, key) => {
+    if (value.city) {
+      queryParams.city = value.city
+    } else if (value.typeDeal) {
+      queryParams.typeDeal = value.typeDeal
+    } else if (value.typeProperty) {
+      queryParams.typeProperty = value.typeProperty
+    } else if (value.price) {
+      if (value.price.from) {
+        queryParams.priceFrom = value.price.from
+      }
+      if (value.price.to) {
+        queryParams.priceTo = value.price.to
+      }
+    }
+  })
+
+  return queryParams
+}

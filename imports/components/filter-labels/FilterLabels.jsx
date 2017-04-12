@@ -7,6 +7,8 @@ import { Translate } from '../../functions/functions.js';
 
 import { Cities, TypeDeal, TypeProperty } from '../../data/data.js';
 
+import { filterToQuery } from '/imports/actions'
+
 export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
     super(props);
@@ -19,18 +21,22 @@ export default class FilterLabels extends TrackerReact(Component) {
         const key = _.keys(label)[0];
         Session.set('filterData', _.reject(this.props.filterData, function(n){ return _.isEqual(label, n); }));
         Session.set('filterQuery', _.omit(Session.get('filterQuery'), 'listeningInfo.' + key));
+
+        const queryParams = filterToQuery(Session.get('filterData'))
+
+        FlowRouter.go('/', {}, queryParams)
       }
     };
   }
-  
+
   render() {
     const filterData = this.props.filterData;
     if(filterData) {
       return (
         <div className="filter-labels">
-          {filterData.map((n, i) => 
+          {filterData.map((n, i) =>
           <Label.Group color='blue'>
-           {n.city ? 
+           {n.city ?
            <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
                 {Translate(Cities, n.city)}
@@ -38,7 +44,7 @@ export default class FilterLabels extends TrackerReact(Component) {
               </Label>
             </div>
             : null}
-            {n.price && (n.price.to || n.price.from) ? 
+            {n.price && (n.price.to || n.price.from) ?
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
                 {(n.price.from || 0) + " - " + n.price.to}
@@ -46,7 +52,7 @@ export default class FilterLabels extends TrackerReact(Component) {
               </Label>
             </div>
             : null}
-            {n.typeDeal ? 
+            {n.typeDeal ?
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
                 {Translate(TypeDeal, n.typeDeal)}
@@ -54,7 +60,7 @@ export default class FilterLabels extends TrackerReact(Component) {
               </Label>
             </div>
             : null}
-            {n.typeProperty ? 
+            {n.typeProperty ?
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
                 {Translate(TypeProperty, n.typeProperty)}
