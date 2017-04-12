@@ -23436,9 +23436,7 @@ html.ios, html.ios body {
     background-color: #d5d4d4; }
 
 .footer {
-  width: 100%;
-  text-align: center;
-  padding: 70px 0; }
+  width: 100%; }
 
 .footer-copyright {
   font-size: 12px;
@@ -23461,6 +23459,37 @@ html.ios, html.ios body {
     .footer-menu__item:hover {
       cursor: pointer;
       opacity: 0.5; }
+
+.footer-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 70px 0; }
+
+.footer-select-lang {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-bottom: 10px; }
+  .footer-select-lang__item {
+    margin-right: 8px; }
+    .footer-select-lang__item:last-child {
+      margin-right: 0; }
+    .footer-select-lang__item:hover {
+      cursor: pointer;
+      opacity: 0.8; }
 
 .main-menu-wrapper {
   position: fixed;

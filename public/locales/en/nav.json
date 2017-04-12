@@ -1,0 +1,28 @@
+{
+  "header": {
+    "all": "All",
+    "rent": "Rent",
+    "sale": "Sale",
+    "bythesea": "By the Sea",
+    "foralongtime": "Long Time",
+    "forrelax": "For Rest",
+    "myprofile": "My Profile",
+    "myadvs": "My Advs",
+    "signup": "Sign Up",
+    "signin": "Login",
+    "addadv": "Add Ad",
+    "logout": "Logout"
+  },
+  "main": {
+    "home": "Home",
+    "advs": "My Advs",
+    "favorite": "Favorite",
+    "history": "History"
+  },
+  "modal": {
+    "title": "Sign Out Account",
+    "content": "Are you sure sign out?",
+    "btnOk": "Yes",
+    "btnCancel": "No"
+  }
+}

@@ -8,11 +8,11 @@ import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 export default class Favorites extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       limit: 2,
       subscription: {
          listenings: Meteor.subscribe('listenings.public', {})
-      } 
+      }
     };
     this.loadMore = this.loadMore.bind(this);
   }
