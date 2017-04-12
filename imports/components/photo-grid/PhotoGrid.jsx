@@ -40,7 +40,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
       return (
         <div>
           <FilterLabels filterData={filterData}/>
-          {listenings.length ? 
+          {listenings.length ?
             <div>
               <div className="photo-grid">
                 {listenings.map((listening, index) => {
@@ -55,14 +55,14 @@ export default class PhotoGrid extends TrackerReact(Component) {
                   );
                 })}
               </div>
-              { 
+              {
                 (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
                   <div className="paginate">
                     <Button primary onClick={this.loadMore}>Загрузить еще</Button>
                   </div>
                 </div>
               }
-            </div> : 
+            </div> :
             <div className="main-listening-stream">
               <Message
                 header='Объявлений не найдено'

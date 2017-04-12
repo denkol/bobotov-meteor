@@ -20,7 +20,7 @@ export const ComfortList = [
   { key: 'vi', value: 'view', text: 'Панорамный вид' },
 ];
 
-export const Countries = [ 
+export const Countries = [
   { key: 'me', value: 'me', flag: 'me', text: 'Черногория' }
 ];
 
@@ -33,8 +33,10 @@ export const Cities = [
 
 export const TypeDeal = [
   { key: 'rl', value: 'rent_long', text: 'Аренда долгосрочная' },
-  { key: 'rs', value: 'rent_short', text: 'Аренда краткосрочная' },
+  { key: 'rs', value: 'rent_short', text: 'Аренда' },
   { key: 'sl', value: 'sale', text: 'Продажа' },
+  { key: 'bs', value: 'bythesea', text: 'У Моря' },
+  { key: 'ак', value: 'forrelax', text: 'Для отдыха' }
 ];
 
 export const TypeProperty = [

@@ -40,12 +40,12 @@ export default class Filter extends Component {
   handleDesktopSearchBtn() {
     FilterPanel.toggle();
   }
-  
+
   resetForm() {
     Session.set('filterData', null);
     $(".text").text("");
   }
-  
+
   handleSubmit(e, {formData}) { console.log(formData);
     e.preventDefault();
     FilterPanel.close();
@@ -54,13 +54,13 @@ export default class Filter extends Component {
     const priceTo = formData.priceTo.replace(/\s/g, '');
     const typeDeal = formData.typeDeal.replace(/\s/g, '');
     const typeProperty = formData.typeProperty.replace(/\s/g, '');
-    
+
     let FilterQuery = {};
     let PriceRange = {};
     if(formData.bathrooms) FilterQuery["listeningInfo.bathrooms"] = Number(formData.bathrooms);
     if(formData.bedrooms) FilterQuery["listeningInfo.bedrooms"] = Number(formData.bedrooms);
     if(formData.city) FilterQuery["listeningInfo.city"] = formData.city;
-    
+
     if(priceFrom) PriceRange['$gte'] = Number(priceFrom);
     if(priceTo) PriceRange['$lte'] = Number(priceTo);
     if(priceFrom || priceTo) FilterQuery["listeningInfo.price"] = PriceRange;
