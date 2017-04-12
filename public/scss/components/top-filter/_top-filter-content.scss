@@ -1,0 +1,9 @@
+.top-filter-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__item {
+    margin-right: 16px;
+  }
+}

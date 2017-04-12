@@ -25836,6 +25836,25 @@ html.ios, html.ios body {
   font-weight: bold;
   margin: auto; }
 
+.top-filter {
+  display: block;
+  margin-bottom: 32px; }
+
+.top-filter-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .top-filter-content__item {
+    margin-right: 16px; }
+
 @media print {
   .image-gallery-image {
     text-align: left; }
