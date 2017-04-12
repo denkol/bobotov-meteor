@@ -38,6 +38,9 @@ export default class Footer extends Component {
                 <div className="footer-select-lang__item" >
                   <Flag name='gb' onClick={() => toggleLng('en')}/>
                 </div>
+                <div className="footer-select-lang__item" >
+                  <Flag name='de' onClick={() => toggleLng('en')}/>
+                </div>
               </div>
               <div className="footer-copyright">
                 <span>Свяжитесь с нами </span><a href="mailto:hello@bobotov.me">hello@bobotov.me</a>

@@ -23471,6 +23471,20 @@ html.ios, html.ios body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 70px 0; }
+  @media only screen and (max-width: 559px) {
+    .footer-content {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: column-reverse;
+              flex-direction: column-reverse; }
+      .footer-content__item {
+        text-align: center;
+        margin-bottom: 32px; }
+        .footer-content__item:first-child {
+          margin-bottom: 0; } }
+  @media only screen and (max-width: 1199px) {
+    .footer-content {
+      padding: 70px 20px; } }
 
 .footer-select-lang {
   display: -webkit-box;
@@ -23490,6 +23504,11 @@ html.ios, html.ios body {
     .footer-select-lang__item:hover {
       cursor: pointer;
       opacity: 0.8; }
+  @media only screen and (max-width: 559px) {
+    .footer-select-lang {
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; } }
 
 .main-menu-wrapper {
   position: fixed;
@@ -23563,6 +23582,7 @@ html.ios, html.ios body {
       color: #4A90E2; }
     @media only screen and (max-width: 1199px) {
       .main-menu__item {
+        padding: 10px 0;
         width: 100%;
         height: auto;
         margin-bottom: 0;

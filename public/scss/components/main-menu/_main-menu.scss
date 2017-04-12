@@ -11,22 +11,6 @@ $menu-item_animation-duration: 500ms;
   margin-left: 0;
   z-index: 33;
   @include mq('tablet-wide', max) {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // min-width: 100%;
-    // min-height: 100%;
-    // background-color: rgba(255,255,255,0.95);
-    // width: auto;
-    // height: auto;
-    // display: none;
-    // overflow: hidden;
-    // z-index: 201;
-    // animation: fadeIn 0.2s ease 0s both;
-    // /* Clear */
-    // margin-top: 0;
-
-
     margin-top: 0;
     position: static;
     width: 100%;
@@ -98,7 +82,7 @@ $menu-item_animation-duration: 500ms;
       }
     }
     @include mq('tablet-wide', max) {
-
+      padding: 10px 0;
       width: 100%;
       height: auto;
       margin-bottom: 0;
