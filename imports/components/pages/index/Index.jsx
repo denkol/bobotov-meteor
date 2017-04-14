@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 //Components
 import BigSlider from '../../big-slider/BigSlider.jsx';
 import PhotoGrid from '../../photo-grid/PhotoGrid.jsx';
+import TopFilterDemo from '../../TopFilterDemo/TopFilterDemo.jsx';
+
 import { Loader, Dimmer, Message } from 'semantic-ui-react';
 
 export default class Index extends Component {
