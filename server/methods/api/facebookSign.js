@@ -33,7 +33,7 @@ Meteor.methods({
         }
       };
       var profileAdd = {
-        "userDesc": "Пользователь",
+        "userDesc": "user",
         "userName": facebookUser.name,
         "userPhoto": "http://graph.facebook.com/" + facebookUser.id + "/picture/?type=large",
         "favoritesList": [],

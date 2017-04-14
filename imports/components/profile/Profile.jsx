@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { UserStatuses } from '../../data/data.js';
 
 const Profile = props => {
   if(!props.data) {
-    return ( <div> Loading... </div>);
+    return ( <div>Loading...</div>);
   }
-
-  const statuses = [
-    {key: "agency", text: "Агенство недвижимости"},
-    {key: "user", text: "Пользователь"},
-    {key: "realtor", text: "Риэлтор"}
-  ];
 
   let { userPhoto, userName="Unknown", userDesc="user"} = props.data.profile;
   userPhoto = userPhoto ? userPhoto : "/img/unknown.jpg";
-  userDesc = statuses.find(el => el.key == userDesc);
+  userDesc = UserStatuses.find(el => el.key == userDesc);
 
   return (
     <div onClick={props.onClick} className="profile">

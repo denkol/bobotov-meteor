@@ -70,3 +70,10 @@ export const ContactsList = [
   { key: 'wa', value: 'whatsapp', text: 'WhatsApp' },
   { key: 'te', value: 'telegram', text: 'Telegram' },
 ];
+
+/* User statuses */
+export const UserStatuses = [
+  {key: "agency", text: "Агенство недвижимости"},
+  {key: "user", text: "Пользователь"},
+  {key: "realtor", text: "Риэлтор"}
+];
