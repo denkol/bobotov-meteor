@@ -158,8 +158,6 @@ export default class Create extends Component {
       "listeningOptions": options
     }
 
-    console.log(listeningCandidate)
-
     if(!price) {
       validation.message = message;
       validation.price = "Введите цену!";
