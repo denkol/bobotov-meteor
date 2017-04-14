@@ -1,3 +1,4 @@
+import { Random } from 'meteor/random'
 import React, { Component } from 'react'
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
@@ -15,7 +16,7 @@ const comfortListLabel = (label, index, props) => ({
 export default class Create extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       validation: {
         message: '',
         phone: '',
@@ -31,7 +32,8 @@ export default class Create extends Component {
         ratio: false
       },
       contacts: [],
-      contactsNumber: 1 
+      contactsNumber: 1,
+      listeningId: Random.id()
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
@@ -63,29 +65,29 @@ export default class Create extends Component {
     this.setState({ validation });
 
     const self = this;
-    
-    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова"; 
-    
+
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+
     function getContacts() {
       const contacts = [];
       for(let i = 0; i < self.state.contactsNumber; i++) {
         const dropdownDeafultValue = "email";
         const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
         const contactValue = formData["input"+i];
-        
+
         //console.log(contactKey, contactValue);
         if(contactKey === "phone" && !isValidPhone(contactValue)) {
           validation.message = message;
           validation.phone = "Введите корректный телефонный номер!";
           self.setState({ validation });
         }
-        
+
         if(contactKey === "email" && !isValidEmail(contactValue)) {
           validation.message = message;
           validation.email = "Введите корректный почтовый адрес!";
           self.setState({ validation });
         }
-        
+
         contacts.push({contactKey, contactValue, message: validation.message});
       }
       return contacts;
@@ -130,10 +132,11 @@ export default class Create extends Component {
 
     const contacts = getContacts();
     self.setState({ contacts });
-    
+
     const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
 
     const listeningCandidate = {
+      _id: this.state.listeningId,
       "listeningInfo": {
         "typeDeal": typeDeal,
         "typeProperty": typeProperty,
@@ -154,6 +157,8 @@ export default class Create extends Component {
       "listeningContacts": contacts,
       "listeningOptions": options
     }
+
+    console.log(listeningCandidate)
 
     if(!price) {
       validation.message = message;
@@ -197,7 +202,7 @@ export default class Create extends Component {
     console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio) return;
     Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
-      if(err) {console.log(err)} 
+      if(err) {console.log(err)}
       else {
         FlowRouter.go('/mylistenings');
       }
@@ -222,13 +227,14 @@ export default class Create extends Component {
   }
   render() {
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
-    const { contactsNumber, contacts } = this.state; 
+    const { contactsNumber, contacts, listeningId } = this.state;
     //console.log(contactsNumber, contacts);
     const userId = Meteor.userId();
     let defaultData;
     if(this.props.defaultData) {
       defaultData = this.props.defaultData;
     }
+
     if(userId) {
       return (
         <div>
@@ -346,13 +352,13 @@ export default class Create extends Component {
               </div>
               <div className="create-block__item">
                 <div className="create-block-row">
-                  <CreatePhoto main={true} id="0" photoUrl=""/>
+                  <CreatePhoto main={true} id="0" photoUrl="" listeningId={listeningId} />
                 </div>
                 <div className="create-block-row">
-                  <CreatePhoto id="1" photoUrl=""/>
-                  <CreatePhoto id="2" photoUrl=""/>
-                  <CreatePhoto id="3" photoUrl=""/>
-                  <CreatePhoto id="4" photoUrl=""/>
+                  <CreatePhoto id="1" photoUrl="" listeningId={listeningId} />
+                  <CreatePhoto id="2" photoUrl="" listeningId={listeningId} />
+                  <CreatePhoto id="3" photoUrl="" listeningId={listeningId} />
+                  <CreatePhoto id="4" photoUrl="" listeningId={listeningId} />
                 </div>
               </div>
             </div>
@@ -364,15 +370,15 @@ export default class Create extends Component {
                   Шаг 3: Контакты
                 </div>
               </div>
-              <ContactsAdd 
+              <ContactsAdd
                 defaultContacts={contacts}
                 contactsNumber={contactsNumber}
-                message={message} 
+                message={message}
               />
               <Button onClick={this.contactAdd} circular icon='plus' />
               <Button onClick={this.contactRemove} circular icon='minus' />
             </div>
-            {message ? 
+            {message ?
               <Message size="tiny" negative>
                 <Message.Header>{message}</Message.Header>
                 <Message.List>
