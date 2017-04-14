@@ -75,11 +75,11 @@ class CreateEdit extends Component {
       ratio: false
     };
     this.setState({ validation });
-    
-    const self = this;    
+
+    const self = this;
     const listeningId = this.props.listeningId;
-    
-    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова"; 
+
+    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
 
     function getContacts() {
       const contactsNumber = self.state.contactsNumber || _.size(self.props.listeningContacts);
@@ -94,13 +94,13 @@ class CreateEdit extends Component {
           validation.phone = "Введите корректный телефонный номер!";
           self.setState({ validation });
         }
-        
+
         if(contactKey === "email" && !isValidEmail(contactValue)) {
           validation.message = message;
           validation.email = "Введите корректный почтовый адрес!";
           self.setState({ validation });
         }
-        
+
         contacts.push({contactKey, contactValue, message: validation.message});
       }
       return contacts;
@@ -159,7 +159,7 @@ class CreateEdit extends Component {
       "listeningOptions": options
     }
     //console.log(listeningCandidate);
-    
+
     const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
 
     if(!price) {
@@ -202,17 +202,17 @@ class CreateEdit extends Component {
       return alert('Загрузите главное фото')
       // alert('Загрузите главное фото')
     }
-    
+
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio ) return;
     Meteor.call('listeningEdit', listeningId, listeningCandidate, (err, res) => {
-      if(err) {console.log(err)} 
+      if(err) {console.log(err)}
       else {
         FlowRouter.go('/mylistenings');
       }
     });
 
   }
-  contactAdd(contactsNumber) {    
+  contactAdd(contactsNumber) {
     return e => {
     	 e.preventDefault();
        if(contactsNumber < 10 ) {
@@ -220,7 +220,7 @@ class CreateEdit extends Component {
         	  contactsNumber: contactsNumber + 1
       	});
     	 }
-    };        
+    };
   }
   contactRemove(contactsNumber) {
     return e => {
@@ -230,12 +230,12 @@ class CreateEdit extends Component {
         	  contactsNumber: contactsNumber - 1
       	});
     	 }
-    };        
+    };
   }
   render() {
-    const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation; 
-    const { contacts } = this.state; 
-    let { contactsNumber } = this.state; 
+    const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
+    const { contacts } = this.state;
+    let { contactsNumber } = this.state;
     const { loading, listening } = this.props;
     const userId = Meteor.userId();
 
@@ -251,12 +251,13 @@ class CreateEdit extends Component {
         }
         return temp;
       }
-      
+
       const listeningPhotos = listening.listeningPhotos;
+      const listeningId = listening._id;
       //console.log(listeningPhotos);
       Session.set("0photo", listeningPhotos.main);
       setOtherPhotos(listeningPhotos.other);
-      
+
       const defaultValue = {
         country: listening.listeningInfo.country,
         city: listening.listeningInfo.city,
@@ -385,32 +386,32 @@ class CreateEdit extends Component {
                 </div>
                 <div className="create-block__item">
                   <div className="create-block-row">
-                    <CreatePhoto main={true} id="0" photoUrl={listeningPhotos.main || ""}/>
+                    <CreatePhoto main={true} id="0" photoUrl={listeningPhotos.main || ""} listeningId={listeningId} />
                   </div>
                   <div className="create-block-row">
-                    <CreatePhoto id="1" photoUrl={Session.get('1photo') || ""}/>
-                    <CreatePhoto id="2" photoUrl={Session.get('2photo') || ""}/>
-                    <CreatePhoto id="3" photoUrl={Session.get('3photo') || ""}/>
-                    <CreatePhoto id="4" photoUrl={Session.get('4photo') || ""}/>
+                    <CreatePhoto id="1" photoUrl={Session.get('1photo') || ""} listeningId={listeningId} />
+                    <CreatePhoto id="2" photoUrl={Session.get('2photo') || ""} listeningId={listeningId} />
+                    <CreatePhoto id="3" photoUrl={Session.get('3photo') || ""} listeningId={listeningId} />
+                    <CreatePhoto id="4" photoUrl={Session.get('4photo') || ""} listeningId={listeningId} />
                   </div>
                 </div>
               </div>
               <div className="create-block">
                 <div className="create-block__item">
-                  
+
                 </div>
                 <div className="create-block__item">
                   <div className="create-block-headline">Шаг 3: Контакты</div>
                 </div>
-                <ContactsAdd 
+                <ContactsAdd
                   defaultContacts={contacts || defaultValue.contacts}
                   contactsNumber={contactsNumber}
-                  message={message} 
+                  message={message}
                 />
                 <Button onClick={this.contactAdd(contactsNumber)} circular icon='plus' />
                 <Button onClick={this.contactRemove(contactsNumber)} circular icon='minus' />
               </div>
-              {message ? 
+              {message ?
                 <Message size="tiny" negative>
                   <Message.Header>{message}</Message.Header>
                   <Message.List>

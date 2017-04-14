@@ -30,7 +30,8 @@ class CreatePhoto extends Component {
         file: file,
         meta: {
           locator: self.props.fileLocator,
-          userId: Meteor.userId() // Optional, used to check on server for file tampering
+          userId: Meteor.userId(), // Optional, used to check on server for file tampering
+          listeningId: self.props.listeningId
         },
         streams: 'dynamic',
         chunkSize: 'dynamic',
@@ -122,6 +123,7 @@ class CreatePhoto extends Component {
         Session.set(imageNumber + "photo", link);
         photoUrl = link;
       }
+
       return (
         <div className="create-block-row__item">
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
@@ -147,13 +149,13 @@ class CreatePhoto extends Component {
                 <div onClick={this.photoRemove} className="hover-item-text hover-item-text_remove">Удалить</div>
               </div>
             </div>
-            <input 
+            <input
               onChange={this.uploadIt.bind(this)}
               onClick={(e)=> { e.target.value = null }}
               name={"fileinput-" + imageNumber}
-              ref={"fileinput-" + imageNumber} 
-              type="file" id={"image-" + imageNumber} 
-              hidden="true" 
+              ref={"fileinput-" + imageNumber}
+              type="file" id={"image-" + imageNumber}
+              hidden="true"
               disabled={this.state.inProgress} />
           </div>
         </div>
