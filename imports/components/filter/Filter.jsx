@@ -86,25 +86,40 @@ export default class Filter extends Component {
 
   render() {
     const FilterQuery = {};
+    /* default values for field when page loading */
+    let filterDefaultValues = {}; 
+    /* Set default empty search query */
     Session.setDefault('filterQuery', FilterQuery);
 
+    /* Fill default values for filter inputs */
+    if(Session.get('filterQuery')) {
+      /* Save all default values */
+      const deafultQueryFromSession = Session.get('filterQuery');
+      filterDefaultValues = {
+        city: deafultQueryFromSession['listeningInfo.city'],
+        typeDeal: deafultQueryFromSession['listeningInfo.typeDeal'],
+        typeProperty: deafultQueryFromSession['listeningInfo.typeProperty'],
+        priceFrom: deafultQueryFromSession['listeningInfo.priceFrom'],
+        priceTo: deafultQueryFromSession['listeningInfo.priceTo'],
+      }
+    }
     const FilterForm = () => (
       <Form size="small" onSubmit={this.handleSubmit}>
         <div className="filter">
           <div className="filter-items-wrapper">
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Город' name='city' options={Cities} placeholder='Город' />
+                <Form.Select fluid label='Город' name='city' options={Cities} defaultValue={filterDefaultValues.city} placeholder='Город' />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип предложения' name='typeDeal' options={TypeDeal} placeholder='Тип предложения' />
+                <Form.Select fluid label='Тип предложения' name='typeDeal' defaultValue={filterDefaultValues.typeDeal} options={TypeDeal} placeholder='Тип предложения' />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип недвижимости' name='typeProperty' options={TypeProperty} placeholder='Тип недвижимости' />
+                <Form.Select fluid label='Тип недвижимости' name='typeProperty' defaultValue={filterDefaultValues.typeProperty} options={TypeProperty} placeholder='Тип недвижимости' />
               </div>
             </div>
             <div className="filter-block">
@@ -120,10 +135,10 @@ export default class Filter extends Component {
                 <div className="filter-block-item filter-block-item_checkbox">
                   <Form.Group widths='equal' style={{marginBottom: 0}}>
                     <Form.Field>
-                      <Input label={{ basic: true, content: '€' }} placeholder='От' name='priceFrom' type="number" fluid  labelPosition='right' />
+                      <Input defaultValue={filterDefaultValues.priceFrom} label={{ basic: true, content: '€' }} placeholder='От' name='priceFrom' type="number" fluid  labelPosition='right' />
                     </Form.Field>
                     <Form.Field>
-                      <Input label={{ basic: true, content: '€' }} placeholder='До' name='priceTo' type="number" fluid  labelPosition='right' />
+                      <Input defaultValue={filterDefaultValues.priceTo} label={{ basic: true, content: '€' }} placeholder='До' name='priceTo' type="number" fluid  labelPosition='right' />
                     </Form.Field>
                   </Form.Group>
                   {/*<label className="filter-block-item__name">От</label>
