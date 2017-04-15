@@ -5,11 +5,13 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 
+const limit = 9;
+
 export default class Favorites extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {
-      limit: 2,
+      limit: limit,
       subscription: {
          listenings: Meteor.subscribe('listenings.public', {})
       }
@@ -22,12 +24,12 @@ export default class Favorites extends TrackerReact(Component) {
   }
 
   componentWillUnmount() {
-    this.setState({limit: 2});
+    this.setState({limit: limit});
     this.state.subscription.listenings.stop();
   }
 
   loadMore() {
-    this.setState({limit: this.state.limit + 2});
+    this.setState({limit: this.state.limit + limit});
   }
 
   render() {
@@ -43,7 +45,7 @@ export default class Favorites extends TrackerReact(Component) {
     }
     const favouritesList = user.profile.favoritesList;
     const query = { _id: { $in: favouritesList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit} ).fetch();
+    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
     if(this.state.subscription.listenings.ready()) {
       //console.log(listenings.length, favouritesList);
       if(listenings.length) {
@@ -62,12 +64,21 @@ export default class Favorites extends TrackerReact(Component) {
                 </div>
               </div>
             </div>
-            <div className="favoritesList">
+            {/*<div className="favoritesList">
               {listenings.map((listening, index) => {
                 return (
                   <div key={"favouritesListItem" + index} className="favoritesList__item">
                     <ListeningPreview listeningData={listening} layout="favorites"/>
                   </div>
+                );
+              })}
+            </div>*/}
+            <div className="photo-grid">
+              {listenings.map((listening, index) => {
+                return (
+                  <a href={"/listening/" + listening._id} key={"favouritesListItem" + index} className="photo-grid__item">
+                    <ListeningPreview listeningData={listening} layout="index" />
+                  </a>
                 );
               })}
             </div>

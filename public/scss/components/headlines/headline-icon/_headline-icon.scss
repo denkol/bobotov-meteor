@@ -8,6 +8,7 @@
     svg {
       width: 28px;
       height: 28px;
+      fill: gray;
       @include mq('phone', max) {
         width: 20px;
         height: 20px;
