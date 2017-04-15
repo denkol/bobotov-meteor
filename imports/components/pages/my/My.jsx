@@ -62,7 +62,7 @@ class My extends Component {
                     <use xlinkHref="#ico-receipt" />
                   </svg>
                 </div>
-                <div className="headline-icon__text">Ваши объявления:</div>
+                <div className="headline-icon__text">Мои объявления:</div>
               </div>
             </div>
           </div>

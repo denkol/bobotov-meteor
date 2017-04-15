@@ -114,24 +114,24 @@ export default class Filter extends Component {
           <div className="filter-items-wrapper">
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Город' name='city' options={Cities} defaultValue={filterDefaultValues.city} placeholder='Город' />
+                <Form.Select fluid label='Город' name='city' options={Cities} defaultValue={filterDefaultValues.city} placeholder='Не важно' />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип предложения' name='typeDeal' defaultValue={filterDefaultValues.typeDeal} options={TypeDeal} placeholder='Тип предложения' />
+                <Form.Select fluid label='Тип предложения' name='typeDeal' defaultValue={filterDefaultValues.typeDeal} options={TypeDeal} placeholder='Не важно' />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип недвижимости' name='typeProperty' defaultValue={filterDefaultValues.typeProperty} options={TypeProperty} placeholder='Тип недвижимости' />
+                <Form.Select fluid label='Тип недвижимости' name='typeProperty' defaultValue={filterDefaultValues.typeProperty} options={TypeProperty} placeholder='Не важно' />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
                 <Form.Group widths='equal' style={{marginBottom: 0}}>
-                  <Form.Input label="Кол-во спален" placeholder='1' name='bedrooms' type="number" fluid/>
-                  <Form.Input label="Кол-во санузлов" placeholder='2' name='bathrooms' type="number" fluid/>
+                  <Form.Input label="Кол-во спален" placeholder='Не важно' name='bedrooms' type="number" fluid/>
+                  <Form.Input label="Кол-во санузлов" placeholder='Не важно' name='bathrooms' type="number" fluid/>
                 </Form.Group>
               </div>
             </div>

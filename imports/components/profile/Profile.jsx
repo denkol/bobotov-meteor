@@ -4,9 +4,18 @@ import { UserStatuses } from '../../data/data.js';
 
 const Profile = props => {
   if(!props.data) {
-    return ( <div>Loading...</div>);
+    return (
+      <div onClick={props.onClick} className="profile">
+        <div className="profile-img" style={{backgroundImage: 'url("/img/unknown.jpg")'}}></div>
+        <div className="flex-clear">
+          <div className="profile-name">Unknown</div>
+          <div className="profile-desc">Unknown</div>
+        </div>
+        <div className="profile-icon"></div>
+      </div>
+    );
   }
-
+  
   let { userPhoto, userName="Unknown", userDesc="user"} = props.data.profile;
   userPhoto = userPhoto ? userPhoto : "/img/unknown.jpg";
   userDesc = UserStatuses.find(el => el.key == userDesc);

@@ -32,7 +32,7 @@ class Footer extends Component {
             <div className="footer-content__item">
               <div className="footer-select-lang">
                 <div className="footer-select-lang__item">
-                  <Flag name='rs' />
+                  <Flag name='rs'/>
                 </div>
                 <div className="footer-select-lang__item" >
                   <Flag name='ru' onClick={() => toggleLng('ru')} />
@@ -41,7 +41,7 @@ class Footer extends Component {
                   <Flag name='gb' onClick={() => toggleLng('en')}/>
                 </div>
                 <div className="footer-select-lang__item" >
-                  <Flag name='de' onClick={() => toggleLng('en')}/>
+                  <Flag name='de'/>
                 </div>
               </div>
               <div className="footer-copyright">

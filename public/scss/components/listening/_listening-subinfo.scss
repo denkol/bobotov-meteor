@@ -1,0 +1,24 @@
+.listening-subinfo {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  &__item {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.listening-subinfo-icon {
+  margin-right: 6px;
+  svg {
+    fill: gray;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+
+.listening-subinfo-text {
+  font-size: 14px;
+}

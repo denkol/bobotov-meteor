@@ -111,7 +111,24 @@ class Listening extends Component {
               <div className="listening-info-header">
                 <div className="listening-info-header__item listening-info-header__item_headline">
                   <h1 className="large-headline">{listeningHeadline}</h1>
-                  <p className="medium-parag">Последнее изменение: {listeningLastChange}, Просмотров: {listeningViews}</p>
+                  <div className="listening-subinfo">
+                    <div className="listening-subinfo__item">
+                      <div className="listening-subinfo-icon">
+                        <svg className="ico-event" role="img">
+                          <use xlinkHref="#ico-event" />
+                        </svg>
+                      </div>
+                      <div className="listening-subinfo-text">{listeningLastChange}</div>
+                    </div>
+                    <div className="listening-subinfo__item">
+                      <div className="listening-subinfo-icon">
+                        <svg className="ico-eye" role="img">
+                          <use xlinkHref="#ico-eye" />
+                        </svg>
+                      </div>
+                      <div className="listening-subinfo-text">{listeningViews}</div>
+                    </div>
+                  </div>
                 </div>
                 <div className="listening-info-header__item listening-info-header__item_price">
                   <div className="price">
