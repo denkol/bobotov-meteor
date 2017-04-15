@@ -24,5 +24,12 @@
     "content": "Are you sure sign out?",
     "btnOk": "Yes",
     "btnCancel": "No"
+  },
+  "footer" : {
+    "about": "About",
+    "contacts": "Contacts",
+    "support": "Support",
+    "advert": "Advert",
+    "connectWithUs": "Connect with us"
   }
 }

@@ -59,7 +59,9 @@ publicRoutes.route('/', {
         { city: context.queryParams.city },
         { price: { from: Number(context.queryParams.priceFrom), to: Number(context.queryParams.priceTo) } },
         { typeDeal: context.queryParams.typeDeal },
-        { typeProperty: context.queryParams.typeProperty }
+        { typeProperty: context.queryParams.typeProperty },
+        { bedrooms: context.queryParams.bedrooms },
+        { bathrooms: context.queryParams.bathrooms }
       ];
       Session.set('filterQuery', selector)
       Session.set('filterData', FilterCandidate)

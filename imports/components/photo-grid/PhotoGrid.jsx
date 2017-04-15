@@ -6,12 +6,14 @@ import FilterLabels from '../filter-labels/FilterLabels.jsx';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import CircularProgress from 'material-ui/CircularProgress';
 
+const limit = 18;
+
 export default class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
 
     this.state = {
-      limit: 9,
+      limit: limit,
       subscription: {
           listenings: Meteor.subscribe('listenings.public', {})
       }
@@ -21,12 +23,12 @@ export default class PhotoGrid extends TrackerReact(Component) {
   }
 
   componentWillUnmount() {
-    this.setState({limit: 9});
+    this.setState({limit: limit});
     this.state.subscription.listenings.stop();
   }
 
   loadMore() {
-    this.setState({limit: this.state.limit + 9});
+    this.setState({limit: this.state.limit + limit});
   }
 
   render() {

@@ -57,6 +57,9 @@ export default class Filter extends Component {
     const priceTo = formData.priceTo.replace(/\s/g, '');
     const typeDeal = formData.typeDeal.replace(/\s/g, '');
     const typeProperty = formData.typeProperty.replace(/\s/g, '');
+    
+    const bedrooms = formData.bedrooms.replace(/\s/g, '');
+    const bathrooms = formData.bathrooms.replace(/\s/g, '');
 
     let FilterQuery = {};
     let PriceRange = {};
@@ -76,7 +79,9 @@ export default class Filter extends Component {
       { city: formData.city },
       { price: { from: priceFrom, to: priceTo } },
       { typeDeal: typeDeal },
-      { typeProperty: typeProperty }
+      { typeProperty: typeProperty },
+      { bedrooms: bedrooms},
+      { bathrooms: bathrooms}
     ];
 
     Session.set('filterData', FilterCandidate);
@@ -100,7 +105,7 @@ export default class Filter extends Component {
         typeDeal: deafultQueryFromSession['listeningInfo.typeDeal'],
         typeProperty: deafultQueryFromSession['listeningInfo.typeProperty'],
         priceFrom: deafultQueryFromSession['listeningInfo.priceFrom'],
-        priceTo: deafultQueryFromSession['listeningInfo.priceTo'],
+        priceTo: deafultQueryFromSession['listeningInfo.priceTo']
       }
     }
     const FilterForm = () => (
