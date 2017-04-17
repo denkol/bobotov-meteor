@@ -1,9 +1,21 @@
+/* React libs */
 import React, { Component, PropTypes } from 'react';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
 
+/* Components */
 import ListeningPreviewIndex from './index/ListeningPreviewIndex.jsx';
 import ListeningPreviewSimple from './simple/ListeningPreviewSimple.jsx';
 import ListeningPreviewMy from './simple/ListeningPreviewMy.jsx';
+
+/* Some functions */
+
+/* Semantic UI */
+
+/* Material UI */
+
+/* Other */
 
 export default class ListeningPreview extends Component {
   constructor(props) {

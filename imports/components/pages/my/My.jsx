@@ -1,10 +1,19 @@
+/* React libs */
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Listenings } from '../../../api/listenings.js';
-import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 
-import { Dimmer, Loader, Message } from 'semantic-ui-react';
+/* Meteor libs */
+import { createContainer } from 'meteor/react-meteor-data';
+
+/* Components */
+import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import EmptyBanner from '../../empty-banner/EmptyBanner.jsx';
+
+/* Some functions */
+import { Listenings } from '../../../api/listenings.js';
+
+/* Semantic UI */
+import { Dimmer, Loader, Message } from 'semantic-ui-react';
+
 
 class My extends Component {
   constructor(props) {

@@ -1,8 +1,15 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import {isValidEmail} from "/imports/functions/validation.js";
+
+/* Components */
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 import VkBtn from '../../../btn-vk/VkBtn.jsx';
+
+/* Some funtctions */
+import { isValidEmail } from "/imports/functions/validation.js";
 
 /* Semantic UI */
 import { Form, Input, Message } from 'semantic-ui-react';

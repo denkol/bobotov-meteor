@@ -1,10 +1,17 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
-//Components
+
+/* Components */
 import BigSlider from '../../big-slider/BigSlider.jsx';
 import PhotoGrid from '../../photo-grid/PhotoGrid.jsx';
 import TopFilterDemo from '../../TopFilterDemo/TopFilterDemo.jsx';
 
+/* Tranlate & Data */
+
+/* Semantic UI */
 import { Loader, Dimmer, Message } from 'semantic-ui-react';
 
 export default class Index extends Component {
@@ -29,6 +36,8 @@ export default class Index extends Component {
     $('#filterMobile').addClass('filter-mobile--open');
   }
   render() {
+    // window.scroll(0, destinationOffsetToScroll);
+    $(window).scrollTop(47);
     return (
       <div>
         <button onClick={this.openFilter} className="filter-btn filter-btn-mobile">

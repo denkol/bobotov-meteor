@@ -1,8 +1,15 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+/* Components */
+
+/* Tranlate & Data */
+
 /* Semantic UI */
-import { Form, Input } from 'semantic-ui-react';
+import { Form, Input, Message } from 'semantic-ui-react';
 
 export default class Recovery extends Component {
   constructor(props) {
@@ -33,6 +40,12 @@ export default class Recovery extends Component {
     return re.test(value);
   }
   render() {
+    const MessageExamplePositive = () => (
+      <Message size='tiny' positive>
+        <Message.Header>Успех!</Message.Header>
+        <p>На адресс example@gmail.ocm было отправлено письмо с инструкциями по восстановлению пароля</p>
+      </Message>
+    )
     const { formData, value } = this.state;
     return (
       <div className="signin">
@@ -43,6 +56,9 @@ export default class Recovery extends Component {
             </div>
             <div className="login-item-separator"></div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
+              <div className="login-item">
+               <MessageExamplePositive/>
+              </div>
               <div className="login-item">
                 <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={this.state.emailInput.error} />
               </div>

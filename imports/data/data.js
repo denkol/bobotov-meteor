@@ -33,10 +33,8 @@ export const Cities = [
 
 export const TypeDeal = [
   { key: 'rl', value: 'rent_long', text: 'Аренда долгосрочная' },
-  { key: 'rs', value: 'rent_short', text: 'Аренда' },
-  { key: 'sl', value: 'sale', text: 'Продажа' },
-  { key: 'bs', value: 'bythesea', text: 'У Моря' },
-  { key: 'ак', value: 'forrelax', text: 'Для отдыха' }
+  { key: 'rs', value: 'rent_short', text: 'Аренда краткосрочная' },
+  { key: 'sl', value: 'sale', text: 'Продажа' }
 ];
 
 export const TypeProperty = [

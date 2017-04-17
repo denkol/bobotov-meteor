@@ -1,11 +1,25 @@
-import { Random } from 'meteor/random'
+/* React libs */
 import React, { Component } from 'react'
+
+/* Meteor libs */
+import { Random } from 'meteor/random';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
-import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
+
+/* Components */
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
 import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
+
+/* Some functions */
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
+
+/* Semantic UI */
+import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
+
+/* Material UI */
+
+/* Other */
+
 
 /* Comfort List */
 const comfortListLabel = (label, index, props) => ({
@@ -171,7 +185,7 @@ export default class Create extends Component {
       validation.headline = "Введите заголовок!";
       self.setState({ validation });
     } if(!desc) {
-    	validation.message = message;
+      validation.message = message;
       validation.desc = "Введите описание!";
       self.setState({ validation });
     } if(!paymentPeriod) {

@@ -1,6 +1,18 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
+
+/* Components */
+
+/* Tranlate & Data */
 import { ContactsList } from '../../../data/data.js';
 import { Translate } from '../../../functions/functions.js';
+
+/* Semantic UI */
+
+
+
 
 export default class ListeningContacts extends Component {
   constructor(props) {

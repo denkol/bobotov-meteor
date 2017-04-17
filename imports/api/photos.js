@@ -1,17 +1,25 @@
 import { Mongo } from 'meteor/mongo';
 import { FilesCollection } from 'meteor/ostrio:files';
 import path from 'path';
-import fs from 'fs'
+import fs from 'fs';
 
-const UPLOAD_PATH = process.env.UPLOAD_PATH || '../../public'
+const UPLOAD_PATH = process.env.UPLOAD_PATH || '../../../../../../' //outside meteor folder
 
 export const Photos = new FilesCollection({
   collectionName: 'Photos',
   storagePath: function(file) {
     if (file && file.meta) {
-      const { listeningId } = file.meta
+      const { listeningId, userId } = file.meta
       if (listeningId) {
+        /* If listening id define put to photos/id/photoId */
         const dir = path.resolve(UPLOAD_PATH, 'photos', listeningId)
+        if (!fs.existsSync(dir)){
+          fs.mkdirSync(dir, 0777);
+        }
+        return dir
+      } else if (userId) { 
+        /* If listening id NOT define put photos to photos/users/userId/photoId */
+        const dir = path.resolve(UPLOAD_PATH, 'photos', userId)
         if (!fs.existsSync(dir)){
           fs.mkdirSync(dir, 0777);
         }

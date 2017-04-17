@@ -1,7 +1,14 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import {isValidEmail} from "/imports/functions/validation.js";
+
+/* Components */
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
+
+/* Some functions */
+import { isValidEmail } from "/imports/functions/validation.js";
 
 /* Semantic UI */
 import { Form, Input, Message, Icon } from 'semantic-ui-react';
@@ -145,6 +152,4 @@ export default class SignUp extends Component {
   }
 }
 
-SignUp.propTypes = {
-  // layout: React.PropTypes.string,
-};
+SignUp.propTypes = {};

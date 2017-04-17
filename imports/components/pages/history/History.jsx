@@ -1,11 +1,23 @@
+/* React libs */
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import { Listenings } from '../../../api/listenings.js';
+
+/* Meteor libs */
+
+/* Components */
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+
+/* Some functions */
+import { Listenings } from '../../../api/listenings.js';
+
+/* Semantic UI */
 import { Dimmer, Loader, Message, Button } from 'semantic-ui-react';
 
-const limit = 9;
+/* Material UI */
 
+/* Other */
+
+const limit = 9;
 export default class History extends TrackerReact(Component) {
   constructor(props) {
     super(props);
@@ -71,32 +83,15 @@ export default class History extends TrackerReact(Component) {
                 <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
               </div>
             </div>
-
-              {/*<div className="favoritesList">
-                {listenings.map((listening, index) => {
-                  return (
-                    <div key={"favoritesListItem" + index} className="favoritesList__item">
-                      <ListeningPreview listeningData={listening} layout="history"/>
-                    </div>
-                  );
-                })}
-              </div>*/}
-
               <div className="photo-grid">
                 {listenings.map((listening, index) => {
                   return (
                     <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
-                      <ListeningPreview
-                        key={index}
-                        listeningData={listening}
-                        layout="index"
-                      />
+                      <ListeningPreview key={index} listeningData={listening} layout="index" />
                     </a>
                   );
                 })}
               </div>
-
-
               { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
                 <div className="paginate">
                   <Button primary onClick={this.loadMore}>Загрузить еще</Button>

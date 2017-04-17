@@ -1,5 +1,18 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
+
+/* Components */
+
+/* Some functions */
+
+/* Semantic UI */
+
+/* Material UI */
 import { Button } from 'semantic-ui-react';
+
+/* Other */
 
 export default class Paginate extends Component {
   constructor(props) {

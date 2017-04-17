@@ -1,13 +1,23 @@
+/* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-//Components
+
+/* Components */
 import Profile from '../profile/Profile.jsx';
+
+/* Some functions */
+import i18n from '/imports/config/i18n'
+
 /* Semantic UI */
 import { Button, Header, Icon, Modal, Dropdown } from 'semantic-ui-react';
 
-import i18n from '/imports/config/i18n'
+/* Material UI */
+
+/* Other */
 
 class HeaderLayout extends Component {
   constructor(props) {
@@ -174,7 +184,6 @@ HeaderLayout.propTypes = {
 
 export default createContainer(({ params }) => {
   const user = Meteor.user();
-
   return {
     user
   }

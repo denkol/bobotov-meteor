@@ -1,9 +1,10 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
-import { Listenings } from '../../../api/listenings.js';
-import { Translate } from '../../../functions/functions.js';
-import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
-//Components
+
+/* Components */
 import Profile from '../../profile/Profile.jsx';
 import FavoriteBtn from '../../btn-favorite/FavoriteBtn.jsx';
 import PrintBtn from '../../btn-print/PrintBtn.jsx';
@@ -12,9 +13,14 @@ import ListeningOptions from './ListeningOptions.jsx';
 import ListeningComfort from './ListeningComfort.jsx';
 import ListeningContacts from './ListeningContacts.jsx';
 
+/* Tranlate & Data */
+import { Listenings } from '../../../api/listenings.js';
+import { Translate } from '../../../functions/functions.js';
+import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
 /* Semantic UI */
 import { Message, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
+
 
 class Listening extends Component {
   constructor(props) {
@@ -22,7 +28,7 @@ class Listening extends Component {
     this.state = {}
   }
   componentDidMount() {
-    window.scrollTo(0, 0); //scroll to top
+    // window.scrollTo(0, 0); //scroll to top
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
 
@@ -149,12 +155,12 @@ class Listening extends Component {
               </div>
               <ListeningOptions options={listeningOptions} />
               <ListeningComfort comforts={listeningComfortList} />
-              <div className="listening-info-block">
+              {listeningDesc ? <div className="listening-info-block">
                 <h2 className="medium-headline">Описание автора</h2>
                 <div className="listening-info-block__item">
                   <p className="large-parag">{listeningDesc}</p>
                 </div>
-              </div>
+              </div> : null}
               <ListeningContacts contacts={listeningContacts} />
               <div className="listening-info-footer">
                 <div className="listening-info-footer__item">

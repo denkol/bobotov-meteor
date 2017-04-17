@@ -1,5 +1,12 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
+
+/* Components */
+
+/* Tranlate & Data */
 
 /* Semantic UI */
 import { Form, Input } from 'semantic-ui-react';

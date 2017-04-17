@@ -1,14 +1,26 @@
+/* React libs */
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import FooterAbout from './pages/FooterAbout.jsx';
-
-import { Dropdown, Flag } from 'semantic-ui-react';
-
 import { translate } from 'react-i18next';
+/* Meteor libs */
+import { createContainer } from 'meteor/react-meteor-data';
+
+/* Components */
+
+/* Some functions */
 import i18n from '/imports/config/i18n';
 
+/* Semantic UI */
+import { Dropdown, Flag } from 'semantic-ui-react';
+
+/* Material UI */
+
+/* Other */
+
+
+/* Global vars */
 const toggleLng = lng => i18n.changeLanguage(lng)
 
+/* Component code */
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -56,5 +68,4 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {};
-
 export default translate('nav', { wait: true })(Footer)

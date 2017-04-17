@@ -1,4 +1,5 @@
 node_modules/
 public/photos/
 public/config.codekit3
+public/scss/.sass-cache
 .vscode

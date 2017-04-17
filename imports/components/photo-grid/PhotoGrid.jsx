@@ -15,20 +15,23 @@ export default class PhotoGrid extends TrackerReact(Component) {
     this.state = {
       limit: limit,
       subscription: {
-          listenings: Meteor.subscribe('listenings.public', {})
+        listenings: Meteor.subscribe('listenings.public', {})
       }
     }
 
     this.loadMore = this.loadMore.bind(this);
   }
-
+  componentWillMount() {
+    Session.setDefault('indexLimit', limit);
+  }
   componentWillUnmount() {
     this.setState({limit: limit});
     this.state.subscription.listenings.stop();
   }
 
   loadMore() {
-    this.setState({limit: this.state.limit + limit});
+    Session.set('indexLimit', this.state.limit * 2)
+    this.setState({limit: this.state.limit * 2});
   }
 
   render() {

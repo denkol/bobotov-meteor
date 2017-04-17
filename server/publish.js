@@ -1,13 +1,11 @@
-//Listenings collection
+/* Collections */
 import { Listenings } from '../imports/api/listenings.js';
-//Images collections
 import { Photos } from '../imports/api/photos.js';
-import { Avatars } from '../imports/api/avatars.js';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { check } from 'meteor/check';
 
-const LISTENINGS_LIMIT_DEFAULT = 9;
+const LISTENINGS_LIMIT_DEFAULT = 18;
 
 Meteor.publish("listenings.all", function() {
   Counts.publish(this, 'listenings-all-count', Listenings.find({}), { noReady: true });

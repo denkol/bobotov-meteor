@@ -1,7 +1,19 @@
+/* React libs */
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
+/* Meteor libs */
+
+/* Components */
+
+/* Some functions */
 import i18n from '/imports/config/i18n'; // initialized i18next instance
+
+/* Semantic UI */
+
+/* Material UI */
+
+/* Other */
 
 export default class App extends Component {
   constructor(props) {

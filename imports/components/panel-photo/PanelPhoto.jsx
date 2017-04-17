@@ -1,8 +1,21 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
-import { Photos } from '../../api/photos.js';
-import { Dimmer, Loader } from 'semantic-ui-react';
+
+/* Components */
 import Snackbar from '../snackbar/Snackbar.jsx';
+
+/* Some functions */
+import { Photos } from '../../api/photos.js';
+
+/* Semantic UI */
+import { Dimmer, Loader } from 'semantic-ui-react';
+
+/* Material UI */
+
+/* Other */
 
 class PanelPhoto extends Component {
   constructor(props) {
@@ -137,8 +150,6 @@ class PanelPhoto extends Component {
         if(Session.get("avatar-uploaded")) {
           photoUrl = Session.get("avatar-uploaded");  
         }
-        
-        // photoUrl = {backgroundImage: 'url('+link+')'};
       }
       return (
         <div className="panel-photo">
@@ -147,14 +158,11 @@ class PanelPhoto extends Component {
           <div className={this.state.inProgress ? "panel-photo__loader" : "panel-photo__loader--hide"}>
             <div className="panel-loader-text">{this.state.progress}%</div>
           </div>
-
           <div className="panel-photo__control">
             <label htmlFor={"fileinput-avatar"} className="panel-photo-add">Загрузить</label>
             {photoUrl != "/img/unknown.jpg" ? <div onClick={this.photoRemove} className="panel-photo-remove">Удалить</div> : ""}
           </div>
-          <div className="panel-photo__tip">
-            Нажмите чтобы загрузить фотографию (макс. размер 5мб, форматы: jpg, jpeg, png)
-          </div>
+          <div className="panel-photo__tip">Нажмите чтобы загрузить фотографию (макс. размер 5мб, форматы: jpg, jpeg, png)</div>
           <input 
             onChange={this.uploadIt.bind(this)}
             name={"fileinput-avatar"}
@@ -180,7 +188,6 @@ export default createContainer( ({ params }) => {
   const docs = Photos.find({}).fetch();
   const loading = handle.ready();
 
-  //Clear all db
   return { 
     loading, docs
   };

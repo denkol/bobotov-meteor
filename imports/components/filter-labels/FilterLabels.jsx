@@ -1,14 +1,27 @@
+/* React libs */
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
-import { Icon, Label } from 'semantic-ui-react';
-import { Translate } from '../../functions/functions.js';
+/* Meteor libs */
+import { createContainer } from 'meteor/react-meteor-data';
 
+/* Components */
+
+/* Some functions */
+import { Translate } from '../../functions/functions.js';
 import { Cities, TypeDeal, TypeProperty } from '../../data/data.js';
 
-import { filterToQuery } from '/imports/actions'
+/* Semantic UI */
+import { Icon, Label } from 'semantic-ui-react';
 
+/* Material UI */
+
+/* Other */
+import { filterToQuery } from '/imports/actions';
+
+/* Global vars */
+
+/* Component code */
 export default class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
     super(props);

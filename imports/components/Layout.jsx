@@ -1,11 +1,23 @@
+/* React libs */
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
+
+/* Meteor libs */
+
+/* Components */
 import Header from './header/Header.jsx';
 import Footer from './footer/Footer.jsx';
 import MainMenu from './main-menu/MainMenu.jsx';
+
+/* Some functions */
+import i18n from '/imports/config/i18n'; // initialized i18next instance
+
+/* Semantic UI */
+
+/* Material UI */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import i18n from '/imports/config/i18n'; // initialized i18next instance
+/* Other */
 
 export default class Layout extends Component {
   constructor(props) {

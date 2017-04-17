@@ -1,11 +1,23 @@
+/* React libs */
 import React, { Component } from 'react';
+
+/* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
-import { Button, Form, Input, Select } from 'semantic-ui-react';
+
+/* Components */
+
+/* Some functions */
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../data/data.js';
 
-import { filterToQuery } from '/imports/actions'
+/* Semantic UI */
+import { Button, Form, Input, Select } from 'semantic-ui-react';
 
-//Some JQuery function
+/* Material UI */
+
+/* Other */
+import { filterToQuery } from '/imports/actions';
+
+/* Global vars */
 const FilterPanel = {
   open: function() {
     $('#filter-btn').addClass('filter-btn--close');
@@ -27,6 +39,7 @@ const Window = {
   }
 }
 
+/* Component code */
 export default class Filter extends Component {
   constructor(props) {
     super(props);
@@ -184,4 +197,3 @@ export default class Filter extends Component {
 }
 
 Filter.propTypes = {};
-

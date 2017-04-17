@@ -1,8 +1,16 @@
+/* React libs */
 import React, { Component } from 'react';
 
+/* Meteor libs */
+
+/* Components */
 import SignIn from './sign-in/SignIn.jsx';
 import SignUp from './sign-up/SignUp.jsx';
 import Recovery from './recovery/Recovery.jsx';
+
+/* Some functions */
+
+/* Semantic UI */
 
 export default class Sign extends Component {
   constructor(props) {
@@ -11,7 +19,6 @@ export default class Sign extends Component {
     this.renderLayout = this.renderLayout.bind(this);
   }
   renderLayout() {
-    // $('body').css("background-color", "#f9f9f9")
     let layout = this.props.layout;
     if(layout === "in") {
       return (

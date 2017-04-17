@@ -1,9 +1,21 @@
+/* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
-import { ActiveRoute } from 'meteor/zimme:active-route'
-import classNames from 'classnames'
-import { createContainer } from 'meteor/react-meteor-data';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+
+/* Meteor libs */
+import { ActiveRoute } from 'meteor/zimme:active-route'
+import { createContainer } from 'meteor/react-meteor-data';
+/* Components */
+
+/* Some functions */
+
+/* Semantic UI */
+
+/* Material UI */
+
+/* Other */
+import classNames from 'classnames';
 
 class MainMenu extends TrackerReact(Component) {
 

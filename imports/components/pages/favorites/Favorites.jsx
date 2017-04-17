@@ -1,9 +1,20 @@
+/* React libs */
 import React, { Component } from 'react';
-//import { createContainer } from 'meteor/react-meteor-data';
-import { Listenings } from '../../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+/* Meteor libs */
+
+/* Components */
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+
+/* Some functions */
+import { Listenings } from '../../../api/listenings.js';
+
+/* Semantic UI */
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+
+/* Material UI */
+
+/* Other */
 
 const limit = 9;
 
@@ -36,7 +47,7 @@ export default class Favorites extends TrackerReact(Component) {
     const user = Meteor.user();
     if(!user) {
       return (
-        <Message
+        <Message 
           warning
           header='Войдите или зарегистрируйтесь'
           content='Избранные объявления доступны только авторизированным пользователям'
@@ -47,7 +58,6 @@ export default class Favorites extends TrackerReact(Component) {
     const query = { _id: { $in: favouritesList } };
     const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
     if(this.state.subscription.listenings.ready()) {
-      //console.log(listenings.length, favouritesList);
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (
@@ -64,15 +74,6 @@ export default class Favorites extends TrackerReact(Component) {
                 </div>
               </div>
             </div>
-            {/*<div className="favoritesList">
-              {listenings.map((listening, index) => {
-                return (
-                  <div key={"favouritesListItem" + index} className="favoritesList__item">
-                    <ListeningPreview listeningData={listening} layout="favorites"/>
-                  </div>
-                );
-              })}
-            </div>*/}
             <div className="photo-grid">
               {listenings.map((listening, index) => {
                 return (

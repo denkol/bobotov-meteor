@@ -1,7 +1,21 @@
+/* React libs */
 import React, { Component, PropTypes } from 'react';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+
+/* Meteor libs */
+
+/* Components */
+
+/* Some functions */
 import { Translate } from '../../../functions/functions.js';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
+
+/* Semantic UI */
+
+
+/* Material UI */
+
+/* Other */
 
 export default class ListeningPreviewIndex extends Component {
   constructor(props) {

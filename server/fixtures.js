@@ -30,7 +30,7 @@ class Fixtures {
                         desc: Fake.paragraph(_.random(0, 30)),
                         price: _.random(40, 300),
                         country: "me",
-                        location: 'formData.location',
+                        location: 'location',
                         ratio: _.random(40, 300),
                         floor: _.random(0, 20),
                         bedrooms: _.random(1, 10),
