@@ -1,3 +1,5 @@
+import { translate } from 'react-i18next';
+
 export const ComfortList = [
   { key: 'we', value: 'week', text: 'Баня / Сауна' },
   { key: 'col', value: 'cool', text: 'Холодильник' },
@@ -25,10 +27,28 @@ export const Countries = [
 ];
 
 export const Cities = [
-  { key: 'be', value: 'becici', text: 'Бечичи' },
   { key: 'pg', value: 'podgorica', text: 'Подгорица' },
+  { key: 'ct', value: 'cetinje', text: 'Цетине' },
+  { key: 'an', value: 'andrijevica', text: 'Андриевица' },
   { key: 'ba', value: 'bar', text: 'Бар' },
-  { key: 'bd', value: 'budva', text: 'Будва' },
+  { key: 'br', value: 'berane', text: 'Беране' },
+  { key: 'bp', value: 'bijelo_polje', text: 'Биело-Поле' },
+  { key: 'bv', value: 'budva', text: 'Будва' },
+  { key: 'bc', value: 'becici', text: 'Бечичи' },
+  { key: 'dg', value: 'danilovgrad', text: 'Даниловград' },
+  { key: 'zj', value: 'zabljak', text: 'Жабляк' },
+  { key: 'kn', value: 'kolasin', text: 'Колашин' },
+  { key: 'ko', value: 'kotor', text: 'Котор' },
+  { key: 'mo', value: 'mojkovac', text: 'Мойковац' },
+  { key: 'ni', value: 'niksic', text: 'Никшич' },
+  { key: 'pl', value: 'pljevlja', text: 'Плевля' },
+  { key: 'pz', value: 'pluzine', text: 'Плужине' },
+  { key: 'ro', value: 'rozaje', text: 'Рожае' },
+  { key: 'ti', value: 'tivat', text: 'Тиват' },
+  { key: 'ul', value: 'ulcinj', text: 'Улцинь' },
+  { key: 'hn', value: 'herceg_novi', text: 'Херцег Нови' },
+  { key: 'sa', value: 'savnik', text: 'Шавник' },
+  
 ];
 
 export const TypeDeal = [
@@ -71,7 +91,14 @@ export const ContactsList = [
 
 /* User statuses */
 export const UserStatuses = [
-  {key: "agency", text: "Агенство недвижимости"},
-  {key: "user", text: "Пользователь"},
-  {key: "realtor", text: "Риэлтор"}
+  {key: "ag", value: 'agency', text: "Агенство недвижимости"},
+  {key: "us", value: 'user', text: "Пользователь"},
+  {key: "re", value: 'realtor', text: "Риэлтор"}
 ];
+/* User statuses */
+
+// export const UserStatuses = [
+//   {key: "ag", value: 'agency', text: t('userStatuses.agency')},
+//   {key: "us", value: 'user', text: t('userStatuses.user')},
+//   {key: "re", value: 'realtor', text: t('userStatuses.realtor')}
+// ];

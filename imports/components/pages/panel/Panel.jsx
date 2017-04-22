@@ -94,7 +94,7 @@ class Panel extends Component {
       const userPhoto = currentUser.profile.userPhoto ? currentUser.profile.userPhoto : '/img/unknown.jpg';
       const userName = currentUser.profile.userName;
       const userDesc = currentUser.profile.userDesc;
-      
+
       const BalanceLayout = () => (
         <div className="panel-header-balance">
           <div className="panel-header-balance__top">
@@ -150,10 +150,10 @@ class Panel extends Component {
                     </div>
                     <div className="panel-inputs">
                       <div className="panel-inputs__item">
-                        <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} error={username} required />
+                        <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} error={Boolean(username)} required />
                       </div>
                       <div className="panel-inputs__item">
-                        <Form.Select label='Ваш статус' name='userDesc' options={UserStatuses} defaultValue={Translate(UserStatuses, userDesc)} required placeholder='Выберите ваш статус' />
+                        <Form.Select label='Ваш статус' name='userDesc' options={UserStatuses} defaultValue={userDesc} required />
                       </div>
                     </div>
                     <div className="panel-controls">

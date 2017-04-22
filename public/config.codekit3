@@ -904,6 +904,14 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/locales\/en\/userStatuses.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/userStatuses-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/ru\/common.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -916,6 +924,14 @@
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "\/locales\/ru\/nav-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/ru\/userStatuses.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/userStatuses-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1

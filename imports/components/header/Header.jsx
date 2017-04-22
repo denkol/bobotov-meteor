@@ -122,13 +122,13 @@ class HeaderLayout extends Component {
                     <a href="/?typeDeal=sale">{t('header.sale')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="/?typeDeal=bythesea">{t('header.bythesea')}</a>
+                    <a href="/?comfortList=beach">{t('header.bythesea')}</a>
                   </li>
                   <li className="header-menu__item">
                     <a href="/?typeDeal=rent_long">{t('header.foralongtime')}</a>
                   </li>
                   <li className="header-menu__item">
-                    <a href="?typeDeal=forrelax">{t('header.forrelax')}</a>
+                    <a href="/?comfortList=internet & beach & ac & transfer">{t('header.forrelax')}</a>
                   </li>
                 </ul>
                 {/*<div className="header-menu__item header-menu__item--active">Объявления о недвижимости</div> */}

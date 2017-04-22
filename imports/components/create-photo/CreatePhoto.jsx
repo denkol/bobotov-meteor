@@ -21,63 +21,63 @@ class CreatePhoto extends Component {
     e.preventDefault();
     const self = this;
     if (e.currentTarget.files && e.currentTarget.files[0]) {
-    // We upload only one file, in case
-    // there was multiple files selected
-    const file = e.currentTarget.files[0];
-    Photos.storagePath('listenings');
-    if (file) {
-      const uploadInstance = Photos.insert({
-        file: file,
-        meta: {
-          locator: self.props.fileLocator,
-          userId: Meteor.userId(), // Optional, used to check on server for file tampering
-          listeningId: self.props.listeningId
-        },
-        streams: 'dynamic',
-        chunkSize: 'dynamic',
-        allowWebWorkers: true // If you see issues with uploads, change this to false
-      }, false);
-
-      self.setState({
-        uploading: uploadInstance, // Keep track of this instance to use below
-        inProgress: true // Show the progress bar now
-      });
-
-      // These are the event functions, don't need most of them, it shows where we are in the process
-      uploadInstance.on('start', function () {});
-      uploadInstance.on('end', function (error, fileObj) {});
-      uploadInstance.on('uploaded', function (error, fileObj) {
-        self.setState({
-          uploading: [],
-          progress: 0,
-          inProgress: false,
-          uploaded: true,
-          file: fileObj
-        });
-      });
-
-      uploadInstance.on('error', function (error, fileObj) {
-        console.log('Error during upload: ' + error);
-        self.setState({
-          snackbar: {
-            open: true,
-            message: "Ошибка! (макс. размер 2мб, jpg, jpeg, png)"
+      // We upload only one file, in case
+      // there was multiple files selected
+      const file = e.currentTarget.files[0];
+      Photos.storagePath('listenings');
+      if (file) {
+        const uploadInstance = Photos.insert({
+          file: file,
+          meta: {
+            locator: self.props.fileLocator,
+            userId: Meteor.userId(), // Optional, used to check on server for file tampering
+            listeningId: self.props.listeningId
           },
-          uploading: [],
-          progress: 0,
-          uploaded: false,
-          inProgress: false,
-          file: ""
-        });
-      });
+          streams: 'dynamic',
+          chunkSize: 'dynamic',
+          allowWebWorkers: true // If you see issues with uploads, change this to false
+        }, false);
 
-      uploadInstance.on('progress', function (progress, fileObj) {
         self.setState({
-          progress: progress
+          uploading: uploadInstance, // Keep track of this instance to use below
+          inProgress: true // Show the progress bar now
         });
-      });
 
-       uploadInstance.start(); // Must manually start the upload
+        // These are the event functions, don't need most of them, it shows where we are in the process
+        uploadInstance.on('start', function () {});
+        uploadInstance.on('end', function (error, fileObj) {});
+        uploadInstance.on('uploaded', function (error, fileObj) {
+          self.setState({
+            uploading: [],
+            progress: 0,
+            inProgress: false,
+            uploaded: true,
+            file: fileObj
+          });
+        });
+
+        uploadInstance.on('error', function (error, fileObj) {
+          console.log('Error during upload: ' + error);
+          self.setState({
+            snackbar: {
+              open: true,
+              message: "Ошибка! (макс. размер 2мб, jpg, jpeg, png)"
+            },
+            uploading: [],
+            progress: 0,
+            uploaded: false,
+            inProgress: false,
+            file: ""
+          });
+        });
+
+        uploadInstance.on('progress', function (progress, fileObj) {
+          self.setState({
+            progress: progress
+          });
+        });
+
+         uploadInstance.start(); // Must manually start the upload
       }
     }
   }

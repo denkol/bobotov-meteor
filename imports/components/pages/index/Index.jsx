@@ -36,8 +36,6 @@ export default class Index extends Component {
     $('#filterMobile').addClass('filter-mobile--open');
   }
   render() {
-    // window.scroll(0, destinationOffsetToScroll);
-    $(window).scrollTop(47);
     return (
       <div>
         <button onClick={this.openFilter} className="filter-btn filter-btn-mobile">

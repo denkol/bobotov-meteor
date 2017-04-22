@@ -1,0 +1,17 @@
+/* React libs */
+
+/* Meteor libs */
+
+/* Components */
+
+/* Some functions */
+
+/* Semantic UI */
+
+/* Material UI */
+
+/* Other */
+
+/* Global vars */
+
+/* Component code */

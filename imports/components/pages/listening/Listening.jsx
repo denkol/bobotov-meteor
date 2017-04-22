@@ -126,14 +126,14 @@ class Listening extends Component {
                       </div>
                       <div className="listening-subinfo-text">{listeningLastChange}</div>
                     </div>
-                    <div className="listening-subinfo__item">
+                    {/*<div className="listening-subinfo__item">
                       <div className="listening-subinfo-icon">
                         <svg className="ico-eye" role="img">
                           <use xlinkHref="#ico-eye" />
                         </svg>
                       </div>
                       <div className="listening-subinfo-text">{listeningViews}</div>
-                    </div>
+                    </div>*/}
                   </div>
                 </div>
                 <div className="listening-info-header__item listening-info-header__item_price">

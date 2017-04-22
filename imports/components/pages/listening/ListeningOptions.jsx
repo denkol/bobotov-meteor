@@ -25,14 +25,18 @@ export default class ListeningOptions extends Component {
       <div className="listening-info-block listening-info-block_general">
         <h2 className="medium-headline">Общая информация</h2>
         {options.map((option, index) => {
-          return (
-            <div key={"option-" + index} className="listening-info-block__item">
-              <div className="listening-info-param listening-info-param_general">
-                <span className="listening-info-param__item">{option.optionName}: </span>
-                <span className="listening-info-param__item">{option.optionValue} {option.optionName === "Площадь" ? "m²" : ""} </span>
+          if(option.optionValue) {
+            return (
+              <div key={"option-" + index} className="listening-info-block__item">
+                <div className="listening-info-param listening-info-param_general">
+                  <span className="listening-info-param__item">{option.optionName}: </span>
+                  <span className="listening-info-param__item">{option.optionValue} {option.optionName === "Площадь" ? "m²" : ""} </span>
+                </div>
               </div>
-            </div>
-          );
+            );
+          } else {
+            return '';
+          }
         })}
       </div>
     );

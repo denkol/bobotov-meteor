@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
 /* Components */
-import Snackbar from '../snackbar/Snackbar.jsx';
 
 /* Some functions */
 import { Photos } from '../../api/photos.js';
@@ -66,9 +65,6 @@ class PanelPhoto extends Component {
 
        uploadInstance.on('uploaded', function (error, fileObj) {
          // console.log('uploaded: ', fileObj);
-
-         // Remove the filename from the upload box
-         // self.refs['fileinput'].value = '';
 
          // Reset our state for the next file
          self.setState({
@@ -153,7 +149,6 @@ class PanelPhoto extends Component {
       }
       return (
         <div className="panel-photo">
-          <Snackbar open={this.state.error} text={this.state.error} />
           <div className="panel-photo__item" style={{backgroundImage: "url("+photoUrl+")"}}/>
           <div className={this.state.inProgress ? "panel-photo__loader" : "panel-photo__loader--hide"}>
             <div className="panel-loader-text">{this.state.progress}%</div>

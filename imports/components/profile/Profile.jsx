@@ -18,8 +18,7 @@ const Profile = props => {
   
   let { userPhoto, userName="Unknown", userDesc="user"} = props.data.profile;
   userPhoto = userPhoto ? userPhoto : "/img/unknown.jpg";
-  userDesc = UserStatuses.find(el => el.key == userDesc);
-
+  userDesc = UserStatuses.find(el => el.value == userDesc);
   return (
     <div onClick={props.onClick} className="profile">
       <div className="profile-img" style={{backgroundImage: `url(${userPhoto})`}}></div>
