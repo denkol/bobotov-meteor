@@ -161,3 +161,13 @@ publicRoutes.route('/recovery', {
     });
   }
 });
+
+
+publicRoutes.route('/reset/:_token', {
+  action() {
+    var token = FlowRouter.getParam('_token');
+    mount(App, {
+      page: AnimationWrapper(<Sign layout="reset" token={token}/>)
+    });
+  }
+});

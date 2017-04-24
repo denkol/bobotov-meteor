@@ -24,6 +24,7 @@ export default class Reset extends Component {
     this.setState({ formData });
   }
   render() {
+    console.log(this.props.token)
     const { formData, value } = this.state;
     return (
       <div className="signin">
@@ -35,16 +36,15 @@ export default class Reset extends Component {
             <div className="login-item-separator"></div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
-                <Form.Input label='Новый пароль' name='reset' type="password" error={this.state.emailInput.error} />
+                <Form.Input label='Новый пароль' name='reset' type="password" />
               </div>
               <div className="login-item">
-                <Form.Input label='Повторите пароль' name='reset-repeat' type="password" error={this.state.emailInput.error} />
+                <Form.Input label='Повторите пароль' name='reset-repeat' type="password"/>
               </div>
               <div className="login-item">
                 <button type='submit' className="simple-btn simple-btn_blue">Изменить пароль</button>
               </div>
             </Form>
-            <div className="login-item login-item-forgot"><a className="link-default" href="#">Не пришло письмо?</a></div>
           </div>
         </div>
       </div>
@@ -52,4 +52,6 @@ export default class Reset extends Component {
   }
 }
 
-Reset.propTypes = {};
+Reset.propTypes = {
+  token: React.PropTypes.string
+};

@@ -5,6 +5,7 @@ import Fixtures from './fixtures';
 
 
 Meteor.startup(() => {
+  process.env.MAIL_URL = 'smtp://mail%40example.com:PASSWORD@mail.nic.ru:587';
   (new Fixtures()).populateCollections();
   /* Facebook */
   ServiceConfiguration.configurations.remove({

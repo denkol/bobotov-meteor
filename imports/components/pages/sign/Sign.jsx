@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import SignIn from './sign-in/SignIn.jsx';
 import SignUp from './sign-up/SignUp.jsx';
 import Recovery from './recovery/Recovery.jsx';
+import Reset from './reset/Reset.jsx';
 
 /* Some functions */
 
@@ -32,6 +33,10 @@ export default class Sign extends Component {
       return (
         <Recovery />
       );
+    } else if(layout === "reset") {
+      return (
+        <Reset token={this.props.token} />
+      );
     }
   }
   render() {
@@ -54,4 +59,5 @@ export default class Sign extends Component {
 
 Sign.propTypes = {
   layout: React.PropTypes.string,
+  token: React.PropTypes.string
 };
