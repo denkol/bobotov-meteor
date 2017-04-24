@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base'
+
 export const listeningsFilter = (filters) => {
   const selector = {}
   const options = {}
@@ -69,3 +71,80 @@ export const filterToQuery = (data = []) => {
 
   return queryParams
 }
+
+/**
+* Auth actions
+*/
+export const login = payload =>
+  new Promise((resolve, reject) => {
+    switch (payload.type) {
+      case 'Password':
+        Meteor.loginWithPassword(payload.email, payload.password, (err, res) => {
+          if (err) {
+            return reject('Incorrect email or password')
+          }
+          return resolve(res)
+        })
+        break
+      default:
+        Meteor[`loginWith${payload.type}`](payload, (err, res) => {
+          if (err) {
+            return reject(`Incorrect ${payload.type} account`)
+          }
+          return resolve(res)
+        })
+        break
+    }
+  })
+
+export const signup = data =>
+  new Promise((resolve, reject) => {
+    Accounts.createUser(data, (err, res) => {
+      if (err) {
+        return reject(err.message)
+      }
+      alertify.success('SignUp successfully')
+      return resolve(res)
+    })
+  })
+
+export const forgotPassword = ({ email }) =>
+  new Promise((resolve, reject) => {
+    Accounts.forgotPassword({ email }, (err) => {
+      if (err) {
+        return reject(err.message)
+      }
+      return resolve('We sent you an email with instructions for reseting your password')
+    })
+  })
+
+export const resetPassword = ({ token, password, confirmPassword }) =>
+  new Promise((resolve, reject) => {
+    if (password !== confirmPassword) {
+      const error = 'Password and it\'s confirmation are not matching'
+      return reject(error)
+    }
+    Accounts.resetPassword(token, password, (err) => {
+      if (err) {
+        return reject(err.message)
+      }
+      const message = 'You successfully changed your password'
+      alertify.success(message)
+      return resolve(message)
+    })
+  })
+
+export const changePassword = ({ oldPassword, password }) =>
+  new Promise((resolve, reject) => {
+    Accounts.changePassword(oldPassword, password, (err) => {
+      if (err) {
+        return reject(err.message)
+      }
+      const message = 'You successfully changed your password'
+      alertify.success(message)
+      return resolve(message)
+    })
+  })
+
+export const logout = done =>
+  Meteor.logout(err => done(err))
