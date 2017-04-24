@@ -8,6 +8,7 @@ import { I18nextProvider } from 'react-i18next';
 import Header from './header/Header.jsx';
 import Footer from './footer/Footer.jsx';
 import MainMenu from './main-menu/MainMenu.jsx';
+import Snackbar from './snackbar/Snackbar.jsx';
 
 /* Some functions */
 import i18n from '/imports/config/i18n'; // initialized i18next instance

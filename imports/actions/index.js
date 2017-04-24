@@ -129,7 +129,6 @@ export const resetPassword = ({ token, password, confirmPassword }) =>
         return reject(err.message)
       }
       const message = 'You successfully changed your password'
-      alertify.success(message)
       return resolve(message)
     })
   })
@@ -141,7 +140,6 @@ export const changePassword = ({ oldPassword, password }) =>
         return reject(err.message)
       }
       const message = 'You successfully changed your password'
-      alertify.success(message)
       return resolve(message)
     })
   })

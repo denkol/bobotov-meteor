@@ -13,7 +13,7 @@ import { Form, Input, Message, Button } from 'semantic-ui-react';
 
 import * as actions from '/imports/actions'
 
-console.log(actions)
+// console.log(actions)
 
 export default class Recovery extends Component {
   constructor(props) {

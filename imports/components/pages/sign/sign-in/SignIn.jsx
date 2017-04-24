@@ -12,7 +12,7 @@ import VkBtn from '../../../btn-vk/VkBtn.jsx';
 import { isValidEmail } from "/imports/functions/validation.js";
 
 /* Semantic UI */
-import { Form, Input, Message } from 'semantic-ui-react';
+import { Form, Input, Message, Button } from 'semantic-ui-react';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -101,7 +101,7 @@ export default class SignIn extends Component {
                 <Form.Input label='Пароль:' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} />
               </div>
               <div className="login-item">
-                <button type='submit' className="simple-btn simple-btn_blue">Войти</button>
+                <Button primary fluid size="tiny">Войти</Button>
               </div>
             </Form>
             <div className="login-item login-item-forgot"> <a className="link-default" href="/recovery">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>

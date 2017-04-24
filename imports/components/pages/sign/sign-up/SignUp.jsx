@@ -11,7 +11,7 @@ import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
 import { isValidEmail } from "/imports/functions/validation.js";
 
 /* Semantic UI */
-import { Form, Input, Message, Icon } from 'semantic-ui-react';
+import { Form, Input, Message, Icon, Button } from 'semantic-ui-react';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -136,7 +136,7 @@ export default class SignUp extends Component {
                   <Form.Input label='Повторите пароль' name='passwordR' type="password" placeholder='Пароль еще раз' error={password ? true : false}/>
                 </div>
                 <div className="login-item">
-                  <button type="submit" className="simple-btn simple-btn_blue">Зарегистрироваться</button>
+                  <Button primary fluid size="tiny">Зарегистрироваться</Button>
                 </div>
               </Form>
               <div className="login-item login-item-forgot"> 
