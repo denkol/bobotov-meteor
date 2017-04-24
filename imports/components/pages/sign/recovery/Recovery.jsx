@@ -9,7 +9,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 /* Tranlate & Data */
 
 /* Semantic UI */
-import { Form, Input, Message } from 'semantic-ui-react';
+import { Form, Input, Message, Button } from 'semantic-ui-react';
 
 import * as actions from '/imports/actions'
 
@@ -54,7 +54,7 @@ export default class Recovery extends Component {
     actions.forgotPassword(payload)
       .then(() =>
         this.setState({
-          success: `На адресс ${payload.email} было отправлено письмо с инструкциями по восстановлению пароля`,
+          success: `На адрес ${payload.email} было отправлено письмо с инструкциями по восстановлению пароля`,
           submitting: false
         })
       )
@@ -91,7 +91,7 @@ export default class Recovery extends Component {
                 <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={this.state.emailInput.error} />
               </div>
               <div className="login-item">
-                <button type='submit' className="simple-btn simple-btn_blue">Отправить письмо</button>
+                <Button primary fluid size="tiny" loading={this.state.submitting}>Отправить письмо</Button>
               </div>
             </Form>
             <div className="login-item login-item-forgot"><a className="link-default" href="#">Не пришло письмо?</a></div>
