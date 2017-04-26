@@ -1,0 +1,10 @@
+$about-header-img__url: url("/img/about-header-bg.jpg");
+
+.about-header-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: $about-header-img__url;
+  height: 100%;
+  width: 100%;
+}

@@ -16,6 +16,7 @@ import Listening from '../../imports/components/pages/listening/Listening.jsx';
 import Sign from '../../imports/components/pages/sign/Sign.jsx';
 import Favorites from '../../imports/components/pages/favorites/Favorites.jsx';
 import History from '../../imports/components/pages/history/History.jsx';
+import About from '../../imports/components/pages/about/About.jsx';
 import My from '../../imports/components/pages/my/My.jsx';
 import Panel from '../../imports/components/pages/panel/Panel.jsx';
 import Create from '../../imports/components/pages/create/Create.jsx';
@@ -104,6 +105,16 @@ publicRoutes.route('/history', {
   action() {
     mount(Layout, {
       content: AnimationWrapper(<History />),
+      additionalContent: ""
+    });
+  }
+});
+
+publicRoutes.route('/about', {
+  name: 'about',
+  action() {
+    mount(Layout, {
+      content: AnimationWrapper(<About />),
       additionalContent: ""
     });
   }

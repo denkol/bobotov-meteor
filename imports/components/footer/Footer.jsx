@@ -36,9 +36,9 @@ class Footer extends Component {
             <div className="footer-content__item">
               <div className="footer-menu">
                 <a href="/about" className="footer-menu__item">{t('footer.about')}</a>
-                <a href="/contacts" className="footer-menu__item">{t('footer.contacts')}</a>
-                <a href="/support" className="footer-menu__item">{t('footer.support')}</a>
-                <a href="/advert" className="footer-menu__item">{t('footer.advert')}</a>
+                <a href="/about#contacts" className="footer-menu__item">{t('footer.contacts')}</a>
+                <a href="/about#support" className="footer-menu__item">{t('footer.support')}</a>
+                <a href="/about#advert" className="footer-menu__item">{t('footer.advert')}</a>
               </div>
               <div className="footer-copyright">Copyright © {moment().format('YYYY')} bobotov.me All rights reserved.</div>
             </div>
