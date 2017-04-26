@@ -1,3 +1,10 @@
+.profile-notify-circle {
+  background-color: red;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+
 .profile {
   display: flex;
   align-items: center;
@@ -24,6 +31,16 @@
   background-repeat: no-repeat;
   border-radius: 100%;
   border: 1px solid darken($bg-grey, 20%);
+  &--notify-active {
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      @extend .profile-notify-circle;
+    }
+  }
 }
 
 .profile-name {
@@ -103,12 +120,24 @@
     border-bottom: 1px solid lighten($text-color, 50%);
     font-size: 12px;
     padding: 10px;
+
     &:last-child {
       border-bottom: none;
     }
     &:hover {
       cursor: pointer;
       background-color: lighten($text-color, 55%);
+    }
+    &--notify-active {
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        @extend .profile-notify-circle;
+      }
     }
   }
 }

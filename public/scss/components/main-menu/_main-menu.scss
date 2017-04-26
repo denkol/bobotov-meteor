@@ -18,6 +18,7 @@ $menu-item_animation-duration: 500ms;
     left: auto;
     display: block;
     z-index: 0;
+    margin-bottom: 20px;
   }
   &--open {
     display: block;
@@ -120,7 +121,6 @@ $menu-item_animation-duration: 500ms;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
     background-color: white;
     // box-shadow: 0 8px 10px rgba(0,0,0,0.1)
   }

@@ -28,10 +28,7 @@ Meteor.methods({
             "profile.userPhoto": userPhoto,
           }
         });
-      } else {
-        console.log("Ошибка при попытке обновить данные пользователя, пользователь не найден в БД");
       }
     }
-
   }
 }); 

@@ -13,6 +13,7 @@ import i18n from '/imports/config/i18n';
 import { Dropdown, Flag } from 'semantic-ui-react';
 
 /* Material UI */
+import Dialog from 'material-ui/Dialog';
 
 /* Other */
 
@@ -24,7 +25,7 @@ const toggleLng = lng => i18n.changeLanguage(lng)
 class Footer extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
   render() {
     const { t } = this.props;
@@ -37,9 +38,9 @@ class Footer extends Component {
                 <a href="/about" className="footer-menu__item">{t('footer.about')}</a>
                 <a href="/contacts" className="footer-menu__item">{t('footer.contacts')}</a>
                 <a href="/support" className="footer-menu__item">{t('footer.support')}</a>
-                <a href="/contacts" className="footer-menu__item">{t('footer.contacts')}</a>
+                <a href="/advert" className="footer-menu__item">{t('footer.advert')}</a>
               </div>
-              <div className="footer-copyright">Copyright © {moment().format('YYYY')} bobotov D.O.O All rights reserved.</div>
+              <div className="footer-copyright">Copyright © {moment().format('YYYY')} bobotov.me All rights reserved.</div>
             </div>
             <div className="footer-content__item">
               <div className="footer-select-lang">

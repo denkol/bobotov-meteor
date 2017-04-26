@@ -48,7 +48,6 @@ Meteor.methods({
           "services.secret": secret
         }
       });
-      console.log(user)
     } else {
       return false;
     }

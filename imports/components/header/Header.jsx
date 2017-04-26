@@ -24,7 +24,8 @@ class HeaderLayout extends Component {
     super(props);
     this.state = {
       subMenuOpen: false,
-      exitModalOpen: false
+      exitModalOpen: false,
+      profileNotify: false
     }
     this.openSubmenu = this.openSubmenu.bind(this);
     this.logout = this.logout.bind(this);
@@ -139,7 +140,7 @@ class HeaderLayout extends Component {
                 {user
                   ?
                   <div className="header-controls__item">
-                    <Profile onClick={this.openSubmenu} data={user}/>
+                    <Profile onClick={this.openSubmenu} data={user} />
                     <div className={this.state.subMenuOpen ? "profile-menu-content profile-menu-content--expanded" : "profile-menu-content"}>
                       <ul className="profile-menu">
                         <li onClick={this.handleGo.bind(this, '/panel')} className="profile-menu__item">{t('header.myprofile')}</li>
@@ -178,9 +179,7 @@ class HeaderLayout extends Component {
   }
 }
 
-HeaderLayout.propTypes = {
-
-};
+HeaderLayout.propTypes = {};
 
 export default createContainer(({ params }) => {
   const user = Meteor.user();

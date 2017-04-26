@@ -1,4 +1,5 @@
 import { Listenings } from '../../../imports/api/listenings.js';
+import { Photos } from '../../../imports/api/photos.js';
 
 Meteor.methods({
   listeningRemove(id) {

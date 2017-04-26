@@ -41,8 +41,7 @@ Meteor.methods({
       var userListenings = user.profile.listeningsList;
       /* Insert data to DB */
       Listenings.insert(data, function(err, id) {
-        if (err) {
-          console.log(err);
+        if (err) { console.log(err);
         } else {
           userListenings.push(id);
           Meteor.users.update(userId, {
@@ -50,8 +49,6 @@ Meteor.methods({
           });
         }
       });
-    } else {
-      console.log("Пользователь не авторизован, отказано в доступе");
     }
   }
 });

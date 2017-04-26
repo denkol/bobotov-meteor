@@ -4,7 +4,6 @@ Meteor.methods({
     var userName = Meteor.user().profile.userName;
     var userFavoritesList = Meteor.user().profile.favoritesList;
     if (userFavoritesList) {
-      console.log(userName + " sign in with Facebook");
     } else {
       var secret = {
         "techInfo": {
@@ -35,7 +34,7 @@ Meteor.methods({
       var profileAdd = {
         "userDesc": "user",
         "userName": facebookUser.name,
-        "userPhoto": "http://graph.facebook.com/" + facebookUser.id + "/picture/?type=large",
+        "userPhoto": "https://graph.facebook.com/" + facebookUser.id + "/picture/?type=large",
         "favoritesList": [],
         "listeningsList": [],
         "historyList": []
@@ -52,7 +51,6 @@ Meteor.methods({
           "services.secret": secret
         }
       });
-      console.log(userName + " sign up with Facebook")
     }
   }
 });

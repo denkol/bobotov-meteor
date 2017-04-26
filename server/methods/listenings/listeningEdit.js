@@ -18,8 +18,6 @@ Meteor.methods({
           "listeningOptions" : listeningData.listeningOptions,
         } 
       });
-    } else {
-      console.log("Пользователь не найден, отказано в редактировании");
     }
   }
 });
