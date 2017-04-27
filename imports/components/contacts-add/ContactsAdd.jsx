@@ -1,23 +1,34 @@
-/* 
-  
+/*
+
   Contact Add/Remove component
 
 */
-
+import { Random } from 'meteor/random';
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { Button, Form, Input, Dropdown } from 'semantic-ui-react';
 import { ContactsList } from '../../data/data.js';
 import { Translate } from '../../functions/functions.js';
 import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
 
-export default class ContactsAdd extends Component {
+class ContactsAdd extends Component {
   constructor(props) {
     super(props);
     this.state = {
       contactsNumber: 1
     }
-
   }
+
+  contactsListOptions() {
+    const { t } = this.props
+
+    return ContactsList.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`contactsList.${value}`)
+    }))
+  }
+
   handleChange(e, data) {
     const name = data.name;
     const value = data.value;
@@ -35,8 +46,24 @@ export default class ContactsAdd extends Component {
     	return (
       <div key={"contactField" + i} className="create-block-row">
         <div className="create-block-row__item">
-          <Form.Input defaultValue={contactValue} placeholder='' actionPosition='right' name={'input' + i} fluid error={error}
-            action={<Dropdown basic floating onChange={this.handleChange} options={ContactsList} name={'dropdown' + i} defaultValue={Session.get('dropdown' + i) ? Session.get('dropdown' + i) : "email"} />} />
+          <Form.Input
+            defaultValue={contactValue}
+            placeholder=''
+            actionPosition='right'
+            name={'input' + i}
+            fluid
+            error={error}
+            action={
+              <Dropdown
+                basic
+                floating
+                onChange={this.handleChange}
+                options={this.contactsListOptions()}
+                name={'dropdown' + i}
+                defaultValue={Session.get('dropdown' + i) ? Session.get('dropdown' + i) : "email"}
+              />
+            }
+          />
         </div>
         <div className="create-block-row__item"></div>
       </div>
@@ -60,3 +87,6 @@ export default class ContactsAdd extends Component {
 ContactsAdd.propTypes = {
   defaultContacts: React.PropTypes.array
 };
+
+
+export default translate('common', { wait: true })(ContactsAdd)

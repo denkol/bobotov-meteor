@@ -3,5 +3,197 @@
   "toggleLng": {
     "ru": "Русский",
     "en": "Английский"
+  },
+  "comfortList": {
+    "week": "Баня / Сауна",
+    "cool": "Холодильник",
+    "internet": "Интернет / Wi-Fi",
+    "pool": "Открытый бессен",
+    "traning_room": "Тренажерный зал",
+    "beach": "Пляж-поблизости",
+    "disabled_equipment": "Оборудование для инвалидов",
+    "parking": "Парковка",
+    "laundry": "Прачечная",
+    "ac": "Кондиционер",
+    "tv": "Телевидение",
+    "fireplace": "Камин",
+    "coffeMaker": "Кофеварка",
+    "kettle": "Чайник",
+    "dishwasher": "Посудомоечная машина",
+    "washer": "Стиральная машина",
+    "transfer": "Трансфер из/в аэропорт",
+    "microwave": "Микроволновая печь",
+    "view": "Панорамный вид"
+  },
+  "countries": {
+    "me": "Черногория"
+  },
+  "cities":{
+    "podgorica": "Подгорица",
+    "cetinje": "Цетине",
+    "andrijevica": "Андриевица",
+    "bar": "Бар",
+    "berane": "Беране",
+    "bijelo_polje": "Биело-Поле",
+    "budva": "Будва",
+    "becici": "Бечичи",
+    "danilovgrad": "Даниловград",
+    "zabljak": "Жабляк",
+    "kolasin": "Колашин",
+    "kotor": "Котор",
+    "mojkovac": "Мойковац",
+    "niksic": "Никшич",
+    "pljevlja": "Плевля",
+    "pluzine": "Плужине",
+    "rozaje": "Рожае",
+    "tivat": "Тиват",
+    "ulcinj": "Улцинь",
+    "herceg_novi": "Херцег Нови",
+    "savnik": "Шавник"
+  },
+  "typeDeal": {
+    "rent_long": "Аренда долгосрочная",
+    "rent_short": "Аренда краткосрочная",
+    "sale": "Продажа"
+  },
+  "typeProperty": {
+    "appart": "Квартира / Аппартамент",
+    "room": "Комната",
+    "studio": "Студия",
+    "hotel": "Отель / Мотель / Гостиница",
+    "mansion": "Вилла / Особняк",
+    "home": "Дом / Коттедж",
+    "office": "Офис",
+    "land": "Земельный участок",
+    "commercial": "Коммерческое помещение",
+    "other": "Другое"
+  },
+  "paymentPeriod": {
+    "full": "За объект",
+    "month": "В месяц",
+    "day": "В сутки",
+    "week": "В неделю"
+  },
+  "contactsList": {
+    "facebook": "Facebook",
+    "vk": "Вконтакте",
+    "website": "Веб-сайт",
+    "email": "E-mail",
+    "phone": "Телефон",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram"
+  },
+  "userStatuses": {
+    "agency": "Агенство недвижимости",
+    "user": "Пользователь",
+    "realtor": "Риэлтор"
+  },
+  "listening": {
+    "comfort": "Удобства"
+  },
+  "filterListing": {
+    "price": "Цена",
+    "apply": "Применить",
+    "clear": "Очистить",
+    "more": "Подробнее",
+    "country": {
+      "label": "Страна",
+      "placeholder": "Выберите страну"
+    },
+    "city": {
+      "label": "Город",
+      "placeholder": "Не важно"
+    },
+    "typeDeal": {
+      "label": "Тип предложения",
+      "placeholder": "Не важно"
+    },
+    "typeProperty": {
+      "label": "Тип недвижимости",
+      "placeholder": "Не важно"
+    },
+    "bedrooms": {
+      "label": "Кол-во спален",
+      "placeholder": "Не важно"
+    },
+    "bathrooms": {
+      "label": "Кол-во санузлов",
+      "placeholder": "Не важно"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "От"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "До"
+    },
+    "square": {
+      "label": "Площадь",
+      "placeholder": "Площадь"
+    }
+  },
+  "createListing": {
+    "headline": "Новое объявление",
+    "step1": "Шаг 1: Общая информация",
+    "step2": "Шаг 2: Фотография",
+    "step3": "Шаг 3: Контакты",
+    "price": "Цена",
+    "apply": "Применить",
+    "clear": "Очистить",
+    "more": "Подробнее",
+    "country": {
+      "label": "Страна",
+      "placeholder": "Выберите страну"
+    },
+    "city": {
+      "label": "Город",
+      "placeholder": "Не важно"
+    },
+    "typeDeal": {
+      "label": "Тип предложения",
+      "placeholder": "Не важно"
+    },
+    "typeProperty": {
+      "label": "Тип недвижимости",
+      "placeholder": "Не важно"
+    },
+    "bedrooms": {
+      "label": "Кол-во спален",
+      "placeholder": "Не важно"
+    },
+    "bathrooms": {
+      "label": "Кол-во санузлов",
+      "placeholder": "Не важно"
+    },
+    "price": {
+      "label": "Цена",
+      "placeholder": "Введите цену в евро"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "От"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "До"
+    },
+    "square": {
+      "label": "Общая Площадь",
+      "placeholder": "Введите Площадь"
+    },
+    "paymentPeriod": {
+      "label": "Период оплаты",
+      "placeholder": "Выберите период оплаты"
+    },
+    "floor": {
+      "label": "Этаж",
+      "placeholder": ""
+    },
+    "comfortList": {
+      "label": "Удобства",
+      "placeholder": "Выберите удобства"
+    }
   }
 }

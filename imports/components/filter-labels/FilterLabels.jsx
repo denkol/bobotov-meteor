@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 /* Meteor libs */
@@ -8,8 +9,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 /* Components */
 
 /* Some functions */
-import { Translate } from '../../functions/functions.js';
-import { Cities, TypeDeal, TypeProperty } from '../../data/data.js';
+// import { Translate } from '../../functions/functions.js';
+// import { Cities, TypeDeal, TypeProperty } from '../../data/data.js';
 
 /* Semantic UI */
 import { Icon, Label } from 'semantic-ui-react';
@@ -22,7 +23,7 @@ import { filterToQuery } from '/imports/actions';
 /* Global vars */
 
 /* Component code */
-export default class FilterLabels extends TrackerReact(Component) {
+class FilterLabels extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.removeFilterLabel = this.removeFilterLabel.bind(this);
@@ -43,7 +44,8 @@ export default class FilterLabels extends TrackerReact(Component) {
   }
 
   render() {
-    const filterData = this.props.filterData;
+    const { t, filterData } = this.props
+
     if(filterData) {
       return (
         <div className="filter-labels">
@@ -52,7 +54,7 @@ export default class FilterLabels extends TrackerReact(Component) {
            {n.city ?
            <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(Cities, n.city)}
+                {t(`cities.${n.city}`)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -68,7 +70,7 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.typeDeal ?
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(TypeDeal, n.typeDeal)}
+                {t(`typeDeal.${n.typeDeal}`)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -76,7 +78,7 @@ export default class FilterLabels extends TrackerReact(Component) {
             {n.typeProperty ?
             <div key={"label-" + i} className="filter-labels__item">
               <Label as='a'>
-                {Translate(TypeProperty, n.typeProperty)}
+                {t(`typeProperty.${n.typeProperty}`)}
                 <Icon onClick={this.removeFilterLabel(n)} name='delete' />
               </Label>
             </div>
@@ -92,3 +94,5 @@ export default class FilterLabels extends TrackerReact(Component) {
 }
 
 FilterLabels.propTypes = {};
+
+export default translate('common', { wait: true })(FilterLabels)

@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react'
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { Random } from 'meteor/random';
@@ -27,7 +28,7 @@ const comfortListLabel = (label, index, props) => ({
   content: `${label.text}`
 })
 
-export default class Create extends Component {
+class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +59,66 @@ export default class Create extends Component {
   }
   componentDidMount() {
     Session.keys = {} //reset session
+  }
+
+  countriesOptions() {
+    const { t } = this.props
+
+    return Countries.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`countries.${value}`)
+    }))
+  }
+
+  citiesOptions() {
+    const { t } = this.props
+
+    return Cities.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`cities.${value}`)
+    }))
+  }
+
+  typePropertyOptions() {
+    const { t } = this.props
+
+    return TypeProperty.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`typeProperty.${value}`)
+    }))
+  }
+
+  typeDealOptions() {
+    const { t } = this.props
+
+    return TypeDeal.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`typeDeal.${value}`)
+    }))
+  }
+
+  paymentPeriodOptions() {
+    const { t } = this.props
+
+    return PaymentPeriod.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`paymentPeriod.${value}`)
+    }))
+  }
+
+  comfortListOptions() {
+    const { t } = this.props
+
+    return ComfortList.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`comfortList.${value}`)
+    }))
   }
 
   handleSubmit(e, { formData }) { //console.log(formData);
@@ -238,6 +299,7 @@ export default class Create extends Component {
     }
   }
   render() {
+    const { t } = this.props
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
     const { contactsNumber, contacts, listeningId } = this.state;
     //console.log(contactsNumber, contacts);
@@ -257,7 +319,7 @@ export default class Create extends Component {
                   <svg className="ico-create" role="img"><use xlinkHref="#ico-create" /></svg>
                 </div>
                 <div className="headline-icon__text">
-                  Новое объявление
+                  {t('createListing.headline')}
                 </div>
               </div>
             </div>
@@ -266,19 +328,37 @@ export default class Create extends Component {
             <div className="create-block">
               <div className="create-block__item">
                 <div className="create-block-headline">
-                  Шаг 1: Общая информация
+                  {t('createListing.step1')}
                 </div>
               </div>
               <div className="create-block__item">
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Страна" placeholder='Выберите страну' name='country' fluid selection options={Countries} error={country ? true : false} required/>
+                    <Form.Dropdown
+                      label={t('createListing.country.label')}
+                      placeholder={t('createListing.country.placeholder')}
+                      name='country'
+                      options={this.countriesOptions()}
+                      error={country ? true : false}
+                      fluid
+                      selection
+                      required
+                    />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Населенный пункт" placeholder='Начните вводить' name='city' fluid selection options={Cities} error={city ? true : false} required/>
+                    <Form.Dropdown
+                      label={t('createListing.city.label')}
+                      placeholder={t('createListing.city.placeholder')}
+                      name='city'
+                      options={this.citiesOptions()}
+                      error={city ? true : false}
+                      fluid
+                      selection
+                      required
+                    />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
@@ -292,21 +372,48 @@ export default class Create extends Component {
                 </div>*/}
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип предложения" placeholder='Выберите тип предложения' name='typeDeal' fluid selection options={TypeDeal} error={typeDeal ? true : false} required/>
+                    <Form.Dropdown
+                      label={t('createListing.typeDeal.label')}
+                      placeholder={t('createListing.typeDeal.placeholder')}
+                      name='typeDeal'
+                      options={this.typeDealOptions()}
+                      error={typeDeal ? true : false}
+                      fluid
+                      selection
+                      required
+                    />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Тип недвижимости" placeholder='Выберите тип вашей недвижимости' name='typeProperty' fluid selection options={TypeProperty} error={typeProperty ? true : false} required/>
+                    <Form.Dropdown
+                      label={t('createListing.typeProperty.label')}
+                      placeholder={t('createListing.typeProperty.placeholder')}
+                      name='typeProperty'
+                      options={this.typePropertyOptions()}
+                      error={typeProperty ? true : false}
+                      fluid
+                      selection
+                      required
+                    />
                   </div>
                   <div className="create-block-row__item"></div>
                 </div>
                <div className="create-block-row">
                 <div className="create-block-row__item">
                   <Form.Field>
-                    <label>Общая площадь</label>
-                    <Input label={{ basic: true, content: 'm²' }} placeholder='Введите площадь...' name='ratio' type="number" fluid  labelPosition='right' error={ratio ? true : false} required/>
+                    <label>{t('createListing.square.label')}</label>
+                    <Input
+                      label={{ basic: true, content: 'm²' }}
+                      placeholder={t('createListing.square.placeholder')}
+                      name='ratio'
+                      type="number"
+                      labelPosition='right'
+                      error={ratio ? true : false}
+                      required
+                      fluid
+                    />
                   </Form.Field>
                 </div>
                 <div className="create-block-row__item"></div>
@@ -315,10 +422,26 @@ export default class Create extends Component {
                   <div className="create-block-row__item">
                     <Form.Group widths='equal' style={{marginBottom: 0}}>
                       <Form.Field>
-                        <label>Цена</label>
-                        <Input label={{ basic: true, content: '€' }} placeholder='Введите цену в евро' name='price' type="number" fluid labelPosition='right' error={price ? true : false} required/>
+                        <label>{t('createListing.price.label')}</label>
+                        <Input
+                          label={{ basic: true, content: '€' }}
+                          placeholder={t('createListing.price.placeholder')}
+                          name='price'
+                          type="number"
+                          fluid
+                          labelPosition='right'
+                          error={price ? true : false}
+                          required
+                        />
                       </Form.Field>
-                      <Form.Select label='Период оплаты' name='paymentPeriod' options={PaymentPeriod} placeholder='Выберите период оплаты' error={paymentPeriod ? true : false} required/>
+                      <Form.Select
+                        label={t('createListing.paymentPeriod.label')}
+                        name='paymentPeriod'
+                        options={this.paymentPeriodOptions()}
+                        placeholder={t('createListing.paymentPeriod.placeholder')}
+                        error={paymentPeriod ? true : false}
+                        required
+                      />
                     </Form.Group>
                   </div>
                   <div className="create-block-row__item"></div>
@@ -327,9 +450,9 @@ export default class Create extends Component {
                 <div className="create-block-row">
                   <div className="create-block-row__item">
                     <Form.Group widths='equal' style={{marginBottom: 0}}>
-                      <Form.Input label="Кол-во спален" placeholder='1' name='bedrooms' type="number" fluid/>
-                      <Form.Input label="Кол-во санузлов" placeholder='2' name='bathrooms' type="number" fluid/>
-                      <Form.Input label="Этаж" placeholder='4' name='floor' type="number" fluid/>
+                      <Form.Input label={t('createListing.bedrooms.label')} placeholder='1' name='bedrooms' type="number" fluid/>
+                      <Form.Input label={t('createListing.bathrooms.label')} placeholder='2' name='bathrooms' type="number" fluid/>
+                      <Form.Input label={t('createListing.floor.label')} placeholder='4' name='floor' type="number" fluid/>
                     </Form.Group>
                   </div>
                   <div className="create-block-row__item"></div>
@@ -337,7 +460,16 @@ export default class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Dropdown label="Удобства" placeholder='Выберите удобства' name='comfortList' multiple fluid selection renderLabel={comfortListLabel} options={ComfortList} />
+                    <Form.Dropdown
+                      label={t('createListing.comfortList.label')}
+                      placeholder={t('createListing.comfortList.placeholder')}
+                      name='comfortList'
+                      renderLabel={comfortListLabel}
+                      options={this.comfortListOptions()}
+                      multiple
+                      fluid
+                      selection
+                    />
                   </div>
                 </div>
 
@@ -359,7 +491,7 @@ export default class Create extends Component {
             <div className="create-block">
               <div className="create-block__item">
                 <div className="create-block-headline">
-                  Шаг 2: Фотография
+                  {t('createListing.step2')}
                 </div>
               </div>
               <div className="create-block__item">
@@ -379,7 +511,7 @@ export default class Create extends Component {
               </div>
               <div className="create-block__item">
                 <div className="create-block-headline">
-                  Шаг 3: Контакты
+                  {t('createListing.step3')}
                 </div>
               </div>
               <ContactsAdd
@@ -429,3 +561,5 @@ export default class Create extends Component {
 }
 
 Create.propTypes = {};
+
+export default translate('common', { wait: true })(Create)
