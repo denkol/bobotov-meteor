@@ -3,5 +3,90 @@
   "toggleLng": {
     "ru": "Russian",
     "en": "English"
+  },
+  "comfortList": {
+    "week": "",
+    "cool": "",
+    "internet": "",
+    "pool": "",
+    "traning_room": "",
+    "beach": "",
+    "disabled_equipment": "",
+    "parking": "",
+    "laundry": "",
+    "ac": "",
+    "tv": "",
+    "fireplace": "",
+    "coffeMaker": "",
+    "kettle": "",
+    "dishwasher": "",
+    "washer": "",
+    "transfer": "",
+    "microwave": "",
+    "view": ""
+  },
+  "countries": {
+    "me": "Черногория"
+  },
+  "cities":{
+    "podgorica": "Подгорица",
+    "cetinje": "Цетине",
+    "andrijevica": "Андриевица",
+    "bar": "Бар",
+    "berane": "Беране",
+    "bijelo_polje": "Биело-Поле",
+    "budva": "Будва",
+    "becici": "Бечичи",
+    "danilovgrad": "Даниловград",
+    "zabljak": "Жабляк",
+    "kolasin": "Колашин",
+    "kotor": "Котор",
+    "mojkovac": "Мойковац",
+    "niksic": "Никшич",
+    "pljevlja": "Плевля",
+    "pluzine": "Плужине",
+    "rozaje": "Рожае",
+    "tivat": "Тиват",
+    "ulcinj": "Улцинь",
+    "herceg_novi": "Херцег Нови",
+    "savnik": "Шавник"
+  },
+  "typeDeal": {
+    "rent_long": "Аренда долгосрочная",
+    "rent_short": "Аренда краткосрочная",
+    "sale": "Продажа"
+  },
+  "typeProperty": {
+    "appart": "Квартира / Аппартамент",
+    "room": "Комната",
+    "studio": "Студия",
+    "hotel": "Отель / Мотель / Гостиница",
+    "mansion": "Вилла / Особняк",
+    "home": "Дом / Коттедж",
+    "office": "Офис",
+    "land": "Земельный участок",
+    "commercial": "Коммерческое помещение",
+    "other": "Другое"
+  },
+  "paymentPeriod": {
+    "full": "За объект",
+    "month": "В месяц",
+    "day": "В сутки",
+    "week": "В неделю"
+  },
+  "contactsList": {
+    "facebook": "Facebook",
+    "vk": "Вконтакте",
+    "website": "Веб-сайт",
+    "email": "E-mail",
+    "phone": "Телефон",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram"
+  },
+  "userStatuses": {
+    "agency": "Агенство недвижимости",
+    "user": "Пользователь",
+    "realtor": "Риэлтор"
   }
 }

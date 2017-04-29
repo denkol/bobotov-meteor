@@ -48,7 +48,7 @@ export const Cities = [
   { key: 'ul', value: 'ulcinj', text: 'Улцинь' },
   { key: 'hn', value: 'herceg_novi', text: 'Херцег Нови' },
   { key: 'sa', value: 'savnik', text: 'Шавник' },
-  
+
 ];
 
 export const TypeDeal = [

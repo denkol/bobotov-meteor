@@ -1,13 +1,15 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
+import { Random } from 'meteor/random'
 import { createContainer } from 'meteor/react-meteor-data';
 
 /* Components */
 
 /* Some functions */
-import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../data/data.js';
+import { TypeProperty, TypeDeal, Cities } from '../../data/data.js';
 
 /* Semantic UI */
 import { Button, Form, Input, Select } from 'semantic-ui-react';
@@ -40,10 +42,40 @@ const Window = {
 }
 
 /* Component code */
-export default class Filter extends Component {
+class Filter extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  citiesOptions() {
+    const { t } = this.props
+
+    return Cities.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`cities.${value}`)
+    }))
+  }
+
+  typePropertyOptions() {
+    const { t } = this.props
+
+    return TypeProperty.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`typeProperty.${value}`)
+    }))
+  }
+
+  typeDealOptions() {
+    const { t } = this.props
+
+    return TypeDeal.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`typeDeal.${value}`)
+    }))
   }
 
   closeMobileFilter() {
@@ -70,7 +102,7 @@ export default class Filter extends Component {
     const priceTo = formData.priceTo.replace(/\s/g, '');
     const typeDeal = formData.typeDeal.replace(/\s/g, '');
     const typeProperty = formData.typeProperty.replace(/\s/g, '');
-    
+
     const bedrooms = formData.bedrooms.replace(/\s/g, '');
     const bathrooms = formData.bathrooms.replace(/\s/g, '');
 
@@ -103,9 +135,10 @@ export default class Filter extends Component {
   }
 
   render() {
+    const { t } = this.props
     const FilterQuery = {};
     /* default values for field when page loading */
-    let filterDefaultValues = {}; 
+    let filterDefaultValues = {};
     /* Set default empty search query */
     Session.setDefault('filterQuery', FilterQuery);
 
@@ -127,54 +160,101 @@ export default class Filter extends Component {
           <div className="filter-items-wrapper">
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Город' name='city' options={Cities} defaultValue={filterDefaultValues.city} placeholder='Не важно' />
+                <Form.Select
+                  label={t('filterListing.city.label')}
+                  placeholder={t('filterListing.city.placeholder')}
+                  name='city'
+                  options={this.citiesOptions()}
+                  defaultValue={filterDefaultValues.city}
+                  fluid
+                />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип предложения' name='typeDeal' defaultValue={filterDefaultValues.typeDeal} options={TypeDeal} placeholder='Не важно' />
+                <Form.Select
+                  label={t('filterListing.typeDeal.label')}
+                  placeholder={t('filterListing.typeDeal.placeholder')}
+                  name='typeDeal'
+                  defaultValue={filterDefaultValues.typeDeal}
+                  options={this.typeDealOptions()}
+                />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
-                <Form.Select fluid label='Тип недвижимости' name='typeProperty' defaultValue={filterDefaultValues.typeProperty} options={TypeProperty} placeholder='Не важно' />
+                <Form.Select
+                  label={t('filterListing.typeProperty.label')}
+                  placeholder={t('filterListing.typeProperty.placeholder')}
+                  name='typeProperty'
+                  defaultValue={filterDefaultValues.typeProperty}
+                  options={this.typePropertyOptions()}
+                  fluid
+                />
               </div>
             </div>
             <div className="filter-block">
               <div className="filter-block-content">
                 <Form.Group widths='equal' style={{marginBottom: 0}}>
-                  <Form.Input label="Кол-во спален" placeholder='Не важно' name='bedrooms' type="number" fluid/>
-                  <Form.Input label="Кол-во санузлов" placeholder='Не важно' name='bathrooms' type="number" fluid/>
+                  <Form.Input
+                    label={t('filterListing.bedrooms.label')}
+                    placeholder={t('filterListing.bedrooms.placeholder')}
+                    name='bedrooms'
+                    type="number"
+                    fluid
+                  />
+                  <Form.Input
+                    label={t('filterListing.bathrooms.label')}
+                    placeholder={t('filterListing.bathrooms.placeholder')}
+                    name='bathrooms'
+                    type="number"
+                    fluid
+                  />
                 </Form.Group>
               </div>
             </div>
-            <div className="filter-block filter-block_double"><span className="filter-block-name">Цена</span>
+            <div className="filter-block filter-block_double"><span className="filter-block-name">{t('filterListing.price')}</span>
               <div className="filter-block-content">
                 <div className="filter-block-item filter-block-item_checkbox">
                   <Form.Group widths='equal' style={{marginBottom: 0}}>
                     <Form.Field>
-                      <Input defaultValue={filterDefaultValues.priceFrom} label={{ basic: true, content: '€' }} placeholder='От' name='priceFrom' type="number" fluid  labelPosition='right' />
+                      <Input
+                        defaultValue={filterDefaultValues.priceFrom}
+                        label={{ basic: true, content: t('filterListing.priceFrom.label') }}
+                        placeholder={t('filterListing.priceFrom.placeholder')}
+                        name='priceFrom'
+                        type="number"
+                        labelPosition='right'
+                        fluid
+                      />
                     </Form.Field>
                     <Form.Field>
-                      <Input defaultValue={filterDefaultValues.priceTo} label={{ basic: true, content: '€' }} placeholder='До' name='priceTo' type="number" fluid  labelPosition='right' />
+                      <Input
+                        defaultValue={filterDefaultValues.priceTo}
+                        label={{ basic: true, content: t('filterListing.priceTo.label') }}
+                        placeholder={t('filterListing.priceTo.placeholder')}
+                        name='priceTo'
+                        type="number"
+                        labelPosition='right'
+                        fluid
+                      />
                     </Form.Field>
                   </Form.Group>
-                  {/*<label className="filter-block-item__name">От</label>
-                  <input className="filter-block-item__input default-input" type="text" placeholder={0} />*/}
                 </div>
               </div>
             </div>
             <div className="filter-actions">
               <div className="filter-actions__item">
-                <Button type="reset" onClick={this.resetForm}>Очистить</Button>
+                <Button type="reset" onClick={this.resetForm}>{t('filterListing.clear')}</Button>
               </div>
               <div className="filter-actions__item">
-                <Button primary type="submit"> Применить </Button>
+                <Button primary type="submit">{t('filterListing.apply')}</Button>
               </div>
             </div>
           </div>
         </div>
       </Form>);
+
     return (
       <div className="filter-wrapper">
         <div id="filter" className="filter-desktop">
@@ -197,3 +277,5 @@ export default class Filter extends Component {
 }
 
 Filter.propTypes = {};
+
+export default translate('common', { wait: true })(Filter)

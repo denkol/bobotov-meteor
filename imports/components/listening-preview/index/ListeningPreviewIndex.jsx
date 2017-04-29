@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component, PropTypes } from 'react';
+import { translate } from 'react-i18next';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /* Meteor libs */
@@ -17,7 +18,7 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 
 /* Other */
 
-export default class ListeningPreviewIndex extends Component {
+class ListeningPreviewIndex extends Component {
   constructor(props) {
     super(props);
     this.toListeningPage = this.toListeningPage.bind(this);
@@ -25,7 +26,10 @@ export default class ListeningPreviewIndex extends Component {
   toListeningPage() {
     FlowRouter.go('/listening/' + this.props.data._id);
   }
+
   render() {
+    const { t } = this.props
+
     if(this.props.data) {
       let listeningLink = '/listening/' + this.props.data._id;
       let listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
@@ -40,7 +44,7 @@ export default class ListeningPreviewIndex extends Component {
       let listeningPropertyType = this.props.data.listeningInfo.typeProperty;
       let listeningTypeDeal = this.props.data.listeningInfo.typeDeal;
       let listeningBonuses = this.props.data.listeningTech.bonuses;
-      
+
       function defineBonusClass() {
         /* Какой бонус есть у объявления? */
         if(listeningBonuses.bonus1) {
@@ -51,13 +55,16 @@ export default class ListeningPreviewIndex extends Component {
         }
         return "";
       }
+
       return(
         <div onClick={this.toListeningPage} className="listening-preview" style={{backgroundImage: 'url('+listeningMainPhoto+')'}}>
           <div className="listening-preview-header">
             <div className="listening-preview-header__item listening-preview-header__item_headline">
               <div className="listening-preview-headline">
                 <div className="listening-preview-headline__text">{listeningHeadline}</div>
-                <div className="listening-preview-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
+                <div className="listening-preview-headline__desc">
+                  {t(`cities.${listeningCity}`)}, {t(`countries.${listeningCountry}`)}
+                </div>
               </div>
             </div>
             <div className="listening-preview-header__item listening-preview-header__item_price">
@@ -70,30 +77,30 @@ export default class ListeningPreviewIndex extends Component {
                     </svg>
                   </div>
                 </div>
-                <div className="price__desc">{ Translate(PaymentPeriod, listeningPaymentPeriod) }</div>
+                <div className="price__desc">{t(`paymentPeriod.${listeningPaymentPeriod}`)}</div>
               </div>
             </div>
           </div>
           <div className="listening-preview-footer">
             <div className="listening-preview-footer__item">
               <div className="listening-preview-params">
-                <div className="listening-preview-params__item"> 
-                  <div className="params-icon">Тип предложения:</div>
-                  <div className="params-text">{ Translate(TypeDeal, listeningTypeDeal) }</div>
+                <div className="listening-preview-params__item">
+                  <div className="params-icon">{t('filterListing.typeProperty.label')}:</div>
+                  <div className="params-text">{t(`typeDeal.${listeningTypeDeal}`)}</div>
                 </div>
                 <div className="listening-preview-params__item">
-                  <div className="params-icon">Тип недвижимости:</div>
-                  <div className="params-text">{ Translate(TypeProperty, listeningPropertyType) }</div>
+                  <div className="params-icon">{t('filterListing.typeDeal.label')}:</div>
+                  <div className="params-text">{t(`typeProperty.${listeningPropertyType}`)}</div>
                 </div>
                 <div className="listening-preview-params__item">
-                  <div className="params-icon">Площадь:</div>
+                  <div className="params-icon">{t('filterListing.square.label')}:</div>
                   <div className="params-text">{listeningRatio} m²</div>
                 </div>
                 <div className="listening-preview-params__item" />
               </div>
             </div>
             <div className="listening-preview-footer__item">
-              <div className="listening-preview-more">Подробнее</div>
+              <div className="listening-preview-more">{t('filterListing.more')}</div>
             </div>
           </div>
         </div>
@@ -107,3 +114,5 @@ export default class ListeningPreviewIndex extends Component {
 ListeningPreviewIndex.propTypes = {
   data: React.PropTypes.object
 };
+
+export default translate('common', { wait: true })(ListeningPreviewIndex)
