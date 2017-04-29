@@ -1,6 +1,6 @@
 # bobotov-meteor
 
-In this project i'm use:
+In this project we use:
 
 * [Meteor] - Open source platform for web, mobile, and desktop. (https://docs.meteor.com/)
 * [ReactJS] - JavaScript Library for building UI

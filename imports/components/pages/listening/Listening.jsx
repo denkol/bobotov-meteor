@@ -112,14 +112,6 @@ class Listening extends Component {
                 <p>Только вы можете просматривать это объявление</p>
               </Message>
             : null}
-            <div className="listening-header">
-              <div className="listening-header__item">
-                <Button href="/" content='Назад' icon='arrow left' labelPosition='left' />
-              </div>
-              <div className="listening-header__item">
-                <p>ID объявления: {data.listeningId}</p>
-              </div>
-            </div>
             <ListeningPhotos photos={listeningsPhotos}/>
             <div className="listening-info">
               <div className="listening-info-header">
