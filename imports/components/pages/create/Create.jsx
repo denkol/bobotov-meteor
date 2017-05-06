@@ -18,15 +18,15 @@ import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
 import { Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react'
 
 /* Material UI */
+import Dialog from 'material-ui/Dialog';
 
 /* Other */
-
 
 /* Comfort List */
 const comfortListLabel = (label, index, props) => ({
   color: 'blue',
   content: `${label.text}`
-})
+});
 
 class Create extends Component {
   constructor(props) {
@@ -48,11 +48,18 @@ class Create extends Component {
       },
       contacts: [],
       contactsNumber: 1,
-      listeningId: Random.id()
+      listeningId: Random.id(),
+      mapModal: {
+        open: false,
+        submitted: false
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
+    this.handleMapOpen = this.handleMapOpen.bind(this);
+    this.handleMapClose = this.handleMapClose.bind(this);
+    this.handleMapSubmit = this.handleMapSubmit.bind(this);
   }
   componentWillUnmount() {
     Session.clear()
@@ -273,6 +280,7 @@ class Create extends Component {
       alert('Загрузите главное фото')
     }
     console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
+    
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio) return;
     Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
       if(err) {console.log(err)}
@@ -280,8 +288,8 @@ class Create extends Component {
         FlowRouter.go('/mylistenings');
       }
     });
-
   }
+
   contactAdd(event) {
     event.preventDefault();
     if(this.state.contactsNumber < 10 ) {
@@ -290,6 +298,7 @@ class Create extends Component {
       });
     }
   }
+
   contactRemove(event) {
     event.preventDefault();
     if(this.state.contactsNumber > 1) {
@@ -298,20 +307,46 @@ class Create extends Component {
       });
     }
   }
+
+  handleMapOpen(event) {
+    event.preventDefault();
+    this.setState({mapModal: {open: true} });
+  }
+
+  handleMapClose() {
+    this.setState({mapModal: {open: false} });
+  }
+
+  handleMapSubmit() {
+    this.setState({mapModal: {open: false, submitted: true} });
+  }
+
   render() {
-    const { t } = this.props
+    const { t } = this.props;
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
     const { contactsNumber, contacts, listeningId } = this.state;
-    //console.log(contactsNumber, contacts);
     const userId = Meteor.userId();
-    let defaultData;
-    if(this.props.defaultData) {
-      defaultData = this.props.defaultData;
-    }
-
+    const MapModal = (props) => {
+      const actions = [
+        <Button onClick={this.handleMapClose} content="Cancel"/>,
+        <Button onClick={this.handleMapSubmit} primary content="Submit" />
+      ];
+      return (
+        <Dialog
+          actions={actions}
+          modal={false}
+          open={this.state.mapModal.open}
+          onRequestClose={this.handleMapClose}
+          style={{padding: 10 + "px"}}
+        >
+        {props.content}
+        </Dialog>
+      );
+    };
     if(userId) {
       return (
         <div>
+          <MapModal />
           <div className="headline">
             <div className="headline__item">
               <div className="headline-icon">
@@ -366,7 +401,12 @@ class Create extends Component {
                   <div className="create-block-row__item">
                     <Form.Field>
                       <label>Местоположение</label>
-                      <Button>Указать на карте</Button>
+                      <Button 
+                        onClick={this.handleMapOpen} 
+                        icon={this.state.mapModal.submitted ? "checkmark" : false}
+                        content={this.state.mapModal.submitted ? "Местоположение сохранено" : "Указать на карте"}
+                        positive={this.state.mapModal.submitted ? true : false}
+                      />
                     </Form.Field>
                   </div>
                 </div>*/}

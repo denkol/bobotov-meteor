@@ -21,7 +21,7 @@ Meteor.methods({
 
     /* listeningTech object */
     data.listeningTech = {
-      "statusCode": 2,
+      "statusCode": 1,
       "public": true,
       "bonuses": {
         "bonus1": false,

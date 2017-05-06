@@ -1,92 +1,353 @@
 {
-  "appName": "App",
+  "appName": "Application",
   "toggleLng": {
     "ru": "Russian",
-    "en": "English"
+    "en": "English",
+    "rs": "Serbian"
   },
   "comfortList": {
-    "week": "",
-    "cool": "",
-    "internet": "",
-    "pool": "",
-    "traning_room": "",
-    "beach": "",
-    "disabled_equipment": "",
-    "parking": "",
-    "laundry": "",
-    "ac": "",
-    "tv": "",
-    "fireplace": "",
-    "coffeMaker": "",
-    "kettle": "",
-    "dishwasher": "",
-    "washer": "",
-    "transfer": "",
-    "microwave": "",
-    "view": ""
+    "week": "Bathroom / Sauna",
+    "cool": "Refrigerator",
+    "internet": "Internet / Wi-Fi",
+    "pool": "Outdoor swimming pool",
+    "traning_room": "Gym",
+    "beach": "Beach-nearby",
+    "disabled_equipment": "Equipment for the disabled",
+    "parking": "Parking",
+    "laundry": "Laundry",
+    "ac": "Air conditioning",
+    "tv": "TV",
+    "fireplace": "Fireplace",
+    "coffeMaker": "Coffee Maker",
+    "kettle": "Teapot",
+    "dishwasher": "Dishwasher",
+    "washer": "Washing machine",
+    "transfer": "Transfer from / to the airport",
+    "microwave": "Microwave oven",
+    "view": "Panoramic view"
   },
   "countries": {
-    "me": "Черногория"
+    "me": "Montenegro"
   },
-  "cities":{
-    "podgorica": "Подгорица",
-    "cetinje": "Цетине",
-    "andrijevica": "Андриевица",
-    "bar": "Бар",
-    "berane": "Беране",
-    "bijelo_polje": "Биело-Поле",
-    "budva": "Будва",
-    "becici": "Бечичи",
-    "danilovgrad": "Даниловград",
-    "zabljak": "Жабляк",
-    "kolasin": "Колашин",
-    "kotor": "Котор",
-    "mojkovac": "Мойковац",
-    "niksic": "Никшич",
-    "pljevlja": "Плевля",
-    "pluzine": "Плужине",
-    "rozaje": "Рожае",
-    "tivat": "Тиват",
-    "ulcinj": "Улцинь",
-    "herceg_novi": "Херцег Нови",
-    "savnik": "Шавник"
+  "cities": {
+    "podgorica": "Podgorica",
+    "cetinje": "Cetinje",
+    "andrijevica": "Andrijevica",
+    "bar": "Bar",
+    "berane": "Berane",
+    "bijelo_polje": "Bielo-pole",
+    "budva": "Budva",
+    "becici": "Becici",
+    "danilovgrad": "Danilovgrad",
+    "zabljak": "Zabljak",
+    "kolasin": "Kolasin",
+    "kotor": "Kotor",
+    "mojkovac": "Mojkovac",
+    "niksic": "Niksic",
+    "pljevlja": "Plevly",
+    "pluzine": "Pluzhine",
+    "rozaje": "Rozhaye",
+    "tivat": "Tivat",
+    "ulcinj": "Ulcinj",
+    "herceg_novi": "Herceg Novi",
+    "savnik": "Shavnik"
   },
   "typeDeal": {
-    "rent_long": "Аренда долгосрочная",
-    "rent_short": "Аренда краткосрочная",
-    "sale": "Продажа"
+    "rent_long": "Long-term rent",
+    "rent_short": "Short-term rent",
+    "sale": "Sale"
   },
   "typeProperty": {
-    "appart": "Квартира / Аппартамент",
-    "room": "Комната",
-    "studio": "Студия",
-    "hotel": "Отель / Мотель / Гостиница",
-    "mansion": "Вилла / Особняк",
-    "home": "Дом / Коттедж",
-    "office": "Офис",
-    "land": "Земельный участок",
-    "commercial": "Коммерческое помещение",
-    "other": "Другое"
+    "appart": "Apartment / Apartment",
+    "room": "Room",
+    "studio": "Studio",
+    "hotel": "Hotel / Motel / Hotel",
+    "mansion": "Villa / Mansion",
+    "home": "House / Cottage",
+    "office": "Office",
+    "land": "Land plot",
+    "commercial": "Commercial premises",
+    "other": "Other"
   },
   "paymentPeriod": {
-    "full": "За объект",
-    "month": "В месяц",
-    "day": "В сутки",
-    "week": "В неделю"
+    "full": "Fixed price",
+    "month": "Per month",
+    "day": "Per day",
+    "week": "Per week"
   },
   "contactsList": {
     "facebook": "Facebook",
-    "vk": "Вконтакте",
-    "website": "Веб-сайт",
+    "vk": "Vkontakte",
+    "website": "Website",
     "email": "E-mail",
-    "phone": "Телефон",
+    "phone": "Phone",
     "viber": "Viber",
     "whatsapp": "WhatsApp",
     "telegram": "Telegram"
   },
   "userStatuses": {
-    "agency": "Агенство недвижимости",
-    "user": "Пользователь",
-    "realtor": "Риэлтор"
+    "agency": "Real estate agency",
+    "user": "User",
+    "realtor": "Realtor"
+  },
+  "listening": {
+    "comfort": "Facilities",
+    "summary": "General information",
+    "desc": "Description",
+    "contacts": "Contacts",
+    "onMap": "On the map",
+    "favoritesBtn": {
+      "remove": "Remove from favorites",
+      "add": "Add to favorites"
+    },
+    "printBtn": "Print"
+  },
+  "indexPage": {
+    "headlineHot": "Hot offers"
+  },
+  "panel": {
+    "name": {
+      "label": "Your name"
+    },
+    "status": {
+      "label": "Your status",
+      "placeholder": "Select status"
+    },
+    "saveBtn": "Save",
+    "helpMessage": "To apply the changes click this button"
+  },
+  "filterListing": {
+    "price": "Price",
+    "apply": "Apply",
+    "clear": "Clear",
+    "country": {
+      "label": "Country",
+      "placeholder": "Select a country"
+    },
+    "city": {
+      "label": "City",
+      "placeholder": "It does not matter"
+    },
+    "typeDeal": {
+      "label": "Offer type",
+      "placeholder": "It does not matter"
+    },
+    "typeProperty": {
+      "label": "Property type",
+      "placeholder": "It does not matter"
+    },
+    "bedrooms": {
+      "label": "Bedrooms",
+      "placeholder": "It does not matter"
+    },
+    "bathrooms": {
+      "label": "Bathrooms",
+      "placeholder": "It does not matter"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "From"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "To"
+    },
+    "square": {
+      "label": "Area",
+      "placeholder": "Area"
+    }
+  },
+  "createListing": {
+    "headline": "New ad",
+    "step1": "Step 1: General information",
+    "step2": "Step 2: Photo",
+    "step3": "Step 3: Contacts",
+    "price": "Price",
+    "apply": "Apply",
+    "clear": "Clear",
+    "more": "Details",
+    "country": {
+      "label": "Country",
+      "placeholder": "Select a country"
+    },
+    "city": {
+      "label": "City",
+      "placeholder": "It does not matter"
+    },
+    "typeDeal": {
+      "label": "Offer type",
+      "placeholder": "It does not matter"
+    },
+    "typeProperty": {
+      "label": "Property type",
+      "placeholder": "It does not matter"
+    },
+    "bedrooms": {
+      "label": "Number of bedrooms",
+      "placeholder": "It does not matter"
+    },
+    "bathrooms": {
+      "label": "Number of bathrooms",
+      "placeholder": "It does not matter"
+    },
+    "priceFiled": {
+      "label": "Price",
+      "placeholder": "Enter the price in euros"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "From"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "Before"
+    },
+    "square": {
+      "label": "Total Area",
+      "placeholder": "Enter Area"
+    },
+    "paymentPeriod": {
+      "label": "Payment period",
+      "placeholder": "Choose a payment period"
+    },
+    "floor": {      
+      "label": "Floor",
+      "placeholder": ""    
+    },
+    "comfortList": {      
+      "label": "Facilities",
+      "placeholder": "Choose the convenience"    
+    }  
+  },
+  "facebookBtn": {    
+    "text": "Sign in using Facebook"  
+  },
+  "resetPage": {    
+    "headline": "Reset password",
+    "sendBtn": "Change Password"  
+  },
+  "recoveryPage": {    
+    "headline": "Password recovery",
+    "sendBtn": "Send Email"  
+  },
+  "aboutPage": {    
+    "about": {      
+      "headline": "About us",
+      "desc": "A simple and fast site for real estate search in Montenegro"    
+    },
+    "contacts": {      
+      "headline": "Contacts",
+      "email": "E-mail",
+      "phone": "Phone"
+    },
+    "support": {      
+      "headline": "Support",
+      "desc": "If you have any difficulties using our service, write to us"    
+    },
+    "advert": {      
+      "headline": "Advertising",
+      "desc": "On advertising, we are waiting for your letters to the address"    
+    },
+      "myPage": {    
+      "headline": "My ads",
+          "wait": "Pending verification",
+          "public": "Published",
+          "disabled": "Disabled"  
+    },
+      "favoritesPage": {    
+      "headline": "Favorite ads"  
+    },
+      "createPhoto": {    
+      "helpText": "Click to download (max size 2mb, jpg, jpeg, png)",
+          "load": "Download",
+          "remove": "Delete",
+          "progressText": "Download file",
+          "errorMessage": "Image does not meet the requirements, try again"  
+    },
+      "historyPage": {    
+      "headline": "History of views",
+          "clearHistoryBtn": "Clear history"  
+    },
+      "passwordField": {    
+      "label": "Password",
+          "placeholder": "Your password"  
+    },
+      "repeatPasswordField": {    
+      "label": "Repeat password",
+          "placeholder": "Password again"  
+    },
+      "nameField": {    
+      "label": "Your name",
+          "placeholder": "For example: Fedor Dostoyevsky"  
+    },
+      "signInPage": {    
+      "headline": "Login",
+          "enterBtn": "Login",
+          "newAccountLink": {      
+        "link": "Register",
+              "text": "new account"    
+      }  
+    },
+      "signUpPage": {    
+      "headline": "Registration",
+          "enterBtn": "Register",
+          "licenseLink": {      
+        "link": "User Agreement",
+              "text": "By registering you accept the terms"    
+      },
+          "enterLink": {      
+        "link": "Login",
+              "text": "Do you have an account?"    
+      }  
+    },
+      "messages": {    
+      "positiveHeadline": "Success!",
+          "negativeHeadline": "Error!",
+          "recoveryPage": {      
+        "success": {        
+          "beforeEmail": "To address",
+                  "afterEmail": "A letter was sent with instructions on password recovery"      
+        }    
+      },
+          "resetPage": {      
+        "success": {        
+          "passwordBeenChanged": "Password changed!"      
+        }    
+      },
+          "my": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "history": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "hiddenListening": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "privateListening": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "create": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "favorites": {      
+        "headline": "",
+              "desc": ""    
+      },
+          "noListening": {      
+        "headline": "",
+              "desc": ""    
+      }  
+    },
+    "other": {    
+      "or": "or",
+          "forgotPassword": "Forgot your password?",
+          "toHomeLink": "Home",
+          "loadMoreBtn": "Load more",
+          "more": "More details"  
+    }
   }
-}

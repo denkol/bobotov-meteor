@@ -12,6 +12,7 @@ import ListeningPhotos from './ListeningPhotos.jsx';
 import ListeningOptions from './ListeningOptions.jsx';
 import ListeningComfort from './ListeningComfort.jsx';
 import ListeningContacts from './ListeningContacts.jsx';
+import ListeningMap from './ListeningMap.jsx';
 
 /* Tranlate & Data */
 import { Listenings } from '../../../api/listenings.js';
@@ -21,6 +22,8 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 /* Semantic UI */
 import { Message, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
 
+/* Other */
+import * as actions from '/imports/actions';
 
 class Listening extends Component {
   constructor(props) {
@@ -31,7 +34,6 @@ class Listening extends Component {
     // window.scrollTo(0, 0); //scroll to top
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
-
   /* Save to history */
   saveToHistory(args) {
     Meteor.call("listeningSaveToHistory", args);

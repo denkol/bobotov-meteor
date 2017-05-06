@@ -99,12 +99,12 @@ $radius-create-photo: 5px;
 .create-photo-layer_hover {
   z-index: 4;
   &__item {
+    position: relative;
     display: none;
     height: 100%;
     width: 100%;
     background-color: rgba(0,0,0,0.5);
     border-radius: $radius-create-photo;
-    padding: 80px 0;
     text-align: center;
   }
   .hover-item-text {
@@ -126,4 +126,11 @@ $radius-create-photo: 5px;
       display: block;
     }
   }
+}
+
+.create-photo-layer_hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

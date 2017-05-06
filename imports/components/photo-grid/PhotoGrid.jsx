@@ -3,8 +3,9 @@ import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
 import FilterLabels from '../filter-labels/FilterLabels.jsx';
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
-import CircularProgress from 'material-ui/CircularProgress';
+import { Button, Message, Loader, Dimmer } from 'semantic-ui-react';
+import LoaderLayout from '../loader-layout/LoaderLayout.jsx';
+import BtnLoadMore from '../btn-loadmore/BtnLoadMore.jsx';
 
 const limit = 18;
 
@@ -63,7 +64,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
               {
                 (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
                   <div className="paginate">
-                    <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                    <BtnLoadMore onClick={this.loadMore}/>
                   </div>
                 </div>
               }
@@ -77,8 +78,8 @@ export default class PhotoGrid extends TrackerReact(Component) {
     } else {
       return(
         <div>
-          <Dimmer inverted active>
-            <Loader indeterminate>Загрузка...</Loader>
+          <Dimmer active inverted>
+            <Loader>Загрузка...</Loader>
           </Dimmer>
         </div>
       );

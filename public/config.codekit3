@@ -913,14 +913,6 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"\/locales\/en\/userStatuses.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/locales\/en\/userStatuses-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
 	"\/locales\/ru\/common.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -933,14 +925,6 @@
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "\/locales\/ru\/nav-min.json",
-		"oF": 0,
-		"oO": 0,
-		"oS": 1
-		},
-	"\/locales\/ru\/userStatuses.json": {
-		"ft": 524288,
-		"oA": 1,
-		"oAP": "\/locales\/ru\/userStatuses-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
@@ -2406,6 +2390,45 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/scss\/components\/css\/_listening-subinfo.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/loader\/_all.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_all.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/loader\/_loader-wrapper.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_loader-wrapper.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/scss\/components\/loader\/_loader.scss": {
+		"aP": 1,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/scss\/components\/css\/_loader.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1

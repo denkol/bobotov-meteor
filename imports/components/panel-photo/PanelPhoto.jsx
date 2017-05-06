@@ -1,10 +1,12 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
 
 /* Components */
+import SnackbarMateiral from '../snackbar/Snackbar.jsx';
 
 /* Some functions */
 import { Photos } from '../../api/photos.js';
@@ -25,13 +27,18 @@ class PanelPhoto extends Component {
       uploaded: false,
       inProgress: false,
       file: "",
+      alert: {
+        open: false,
+        message: ""
+      }
     }
     this.photoRemove = this.photoRemove.bind(this);
   }
   uploadIt(e){
     "use strict";
     e.preventDefault();
-    let self = this;
+    const self = this;
+    const { t } = this.props;
     if (e.currentTarget.files && e.currentTarget.files[0]) {
      // We upload only one file, in case
      // there was multiple files selected
@@ -56,12 +63,10 @@ class PanelPhoto extends Component {
 
        // These are the event functions, don't need most of them, it shows where we are in the process
        uploadInstance.on('start', function () {
-         // console.log('Starting');
        });
 
-       uploadInstance.on('end', function (error, fileObj) {
-         // console.log('On end File Object: ', fileObj);
-       });
+      uploadInstance.on('end', function (error, fileObj) {
+      });
 
        uploadInstance.on('uploaded', function (error, fileObj) {
          // console.log('uploaded: ', fileObj);
@@ -77,15 +82,20 @@ class PanelPhoto extends Component {
        });
 
        uploadInstance.on('error', function (error, fileObj) {
-         console.log('Error during upload: ' + error);
          self.setState({
             error: error,
             uploading: [],
             progress: 0,
             uploaded: false,
             inProgress: false,
-            file: ""
+            file: "",
+            alert: {
+              open: true,
+              message: `${t('createPhoto.errorMessage')}`
+            }
           });
+
+         setTimeout(function() {self.setState({alert: {open: false}})}, 2000);
        });
 
        uploadInstance.on('progress', function (progress, fileObj) {
@@ -116,7 +126,10 @@ class PanelPhoto extends Component {
         progress: 0,
         uploaded: false,
         inProgress: false,
-        file: ""
+        file: "",
+        alert: {
+          open: false
+        }
       });
       if(err) {
         console.log(err);
@@ -124,9 +137,9 @@ class PanelPhoto extends Component {
     });
   }
   render() {
-    let loading = this.props.loading;
-    if (loading) {
+    const { t, loading } = this.props;
 
+    if (loading) {
       if(this.props.photoUrl) {
         Session.set('avatar-already', this.props.photoUrl)
       }
@@ -149,15 +162,16 @@ class PanelPhoto extends Component {
       }
       return (
         <div className="panel-photo">
+          <SnackbarMateiral open={this.state.alert.open} message={this.state.alert.message} />
           <div className="panel-photo__item" style={{backgroundImage: "url("+photoUrl+")"}}/>
           <div className={this.state.inProgress ? "panel-photo__loader" : "panel-photo__loader--hide"}>
             <div className="panel-loader-text">{this.state.progress}%</div>
           </div>
           <div className="panel-photo__control">
-            <label htmlFor={"fileinput-avatar"} className="panel-photo-add">Загрузить</label>
-            {photoUrl != "/img/unknown.jpg" ? <div onClick={this.photoRemove} className="panel-photo-remove">Удалить</div> : ""}
+            <label htmlFor={"fileinput-avatar"} className="panel-photo-add">{t('createPhoto.load')}</label>
+            {photoUrl != "/img/unknown.jpg" ? <div onClick={this.photoRemove} className="panel-photo-remove">{t('createPhoto.remove')}</div> : ""}
           </div>
-          <div className="panel-photo__tip">Нажмите чтобы загрузить фотографию (макс. размер 5мб, форматы: jpg, jpeg, png)</div>
+          <div className="panel-photo__tip">{t('createPhoto.helpText')}</div>
           <input 
             onChange={this.uploadIt.bind(this)}
             name={"fileinput-avatar"}
@@ -186,6 +200,6 @@ export default createContainer( ({ params }) => {
   return { 
     loading, docs
   };
-}, PanelPhoto);
+}, translate('common', { wait: true })(PanelPhoto));
 
 PanelPhoto.propTypes = {};

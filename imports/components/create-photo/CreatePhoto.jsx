@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Photos } from '../../api/photos.js';
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import SnackbarMateiral from '../snackbar/Snackbar.jsx';
 
 class CreatePhoto extends Component {
   constructor(props) {
@@ -12,17 +14,19 @@ class CreatePhoto extends Component {
       uploaded: false,
       inProgress: false,
       file: "",
+      alert: {
+        open: false,
+        message: ""
+      }
     }
     this.photoRemove = this.photoRemove.bind(this);
   }
   uploadIt(e) {
-    /* Upload file method */
     "use strict";
     e.preventDefault();
+    const { t } = this.props; //i18n
     const self = this;
     if (e.currentTarget.files && e.currentTarget.files[0]) {
-      // We upload only one file, in case
-      // there was multiple files selected
       const file = e.currentTarget.files[0];
       Photos.storagePath('listenings');
       if (file) {
@@ -57,18 +61,18 @@ class CreatePhoto extends Component {
         });
 
         uploadInstance.on('error', function (error, fileObj) {
-          console.log('Error during upload: ' + error);
           self.setState({
-            snackbar: {
-              open: true,
-              message: "Ошибка! (макс. размер 2мб, jpg, jpeg, png)"
-            },
             uploading: [],
             progress: 0,
             uploaded: false,
             inProgress: false,
-            file: ""
+            file: "",
+            alert: {
+              open: true,
+              message: `${t('createPhoto.errorMessage')}`
+            }
           });
+          setTimeout(function() {self.setState({alert: {open: false}})}, 2000);
         });
 
         uploadInstance.on('progress', function (progress, fileObj) {
@@ -77,7 +81,7 @@ class CreatePhoto extends Component {
           });
         });
 
-         uploadInstance.start(); // Must manually start the upload
+        uploadInstance.start(); // Must manually start the upload
       }
     }
   }
@@ -105,7 +109,7 @@ class CreatePhoto extends Component {
     });
   }
   render() {
-    const loading = this.props.loading;
+    const { t, loading } = this.props;
     if (loading) {
       const imageNumber = this.props.id;
       const main = this.props.main ? "photo-add-block photo-add-block_main" : "photo-add-block";
@@ -126,6 +130,7 @@ class CreatePhoto extends Component {
 
       return (
         <div className="create-block-row__item">
+          <SnackbarMateiral open={this.state.alert.open} message={this.state.alert.message} />
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
             <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>
               <div className="create-photo-layer_init__icon">
@@ -133,11 +138,11 @@ class CreatePhoto extends Component {
                   <use xlinkHref="#ico-add-photo" />
                 </svg>
               </div>
-              <div className="create-photo-layer_init__text">Нажмите чтобы загрузить (макс. размер 2мб, jpg, jpeg, png)</div>
+              <div className="create-photo-layer_init__text">{t('createPhoto.helpText')}</div>
             </label>
             <div className={this.state.inProgress ? "create-photo-layer create-photo-layer_loader" : "create-photo-hide"}>
               <Dimmer active style={{borderRadius: "5px"}}>
-                <Loader indeterminate>Загрузка файла {this.state.progress}%</Loader>
+                <Loader indeterminate>{t('createPhoto.progressText')} {this.state.progress}%</Loader>
               </Dimmer>
             </div>
             <div className={Session.get(imageNumber+"photo") || this.state.uploaded ? "create-photo-layer create-photo-layer_image" : "create-photo-hide"}>
@@ -145,8 +150,10 @@ class CreatePhoto extends Component {
             </div>
             <div className={Session.get(imageNumber+"photo") || this.state.uploaded ? "create-photo-layer create-photo-layer_hover" : "create-photo-hide"}>
               <div className="create-photo-layer_hover__item">
-                <label htmlFor={"image-" + imageNumber} className="hover-item-text">Загрузить другую</label>
-                <div onClick={this.photoRemove} className="hover-item-text hover-item-text_remove">Удалить</div>
+                <div className="create-photo-layer_hover-text">
+                  <label htmlFor={"image-" + imageNumber} className="hover-item-text">{t('createPhoto.load')}</label>
+                  <div onClick={this.photoRemove} className="hover-item-text hover-item-text_remove">{t('createPhoto.remove')}</div>
+                </div>
               </div>
             </div>
             <input
@@ -171,6 +178,6 @@ export default createContainer( ({ params }) => {
   const loading = handle.ready();
 
   return { loading, docs };
-}, CreatePhoto);
+}, translate('common', { wait: true })(CreatePhoto));
 
 CreatePhoto.propTypes = {};

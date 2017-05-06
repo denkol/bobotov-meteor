@@ -23,7 +23,7 @@ Meteor.methods({
 
 function addToFavorites(listeningId, currentFavoriteList, currentFavoritesCount) {
   currentFavoritesCount++;
-  currentFavoriteList.push(listeningId);
+  currentFavoriteList.unshift(listeningId);
   Meteor.users.update(Meteor.userId(), {
     $set: {
       'profile.favoritesList': currentFavoriteList

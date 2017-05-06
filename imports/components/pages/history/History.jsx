@@ -51,6 +51,30 @@ export default class History extends TrackerReact(Component) {
   }
   render() {
     const user = Meteor.user();
+    const historyList = user.profile.historyList;
+    const query = { _id: { $in: historyList } };
+    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+
+    const HistoryHeadline = () => {
+      return (
+        <div className="headline">
+          <div className="headline__item">
+            <div className="headline-icon">
+              <div className="headline-icon__icon">
+                <svg className="ico-history" role="img">
+                  <use xlinkHref="#ico-history"></use>
+                </svg>
+              </div>
+              <div className="headline-icon__text">История просмотров:</div>
+            </div>
+          </div>
+          <div className="headline__item">
+            <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
+          </div>
+        </div>
+      );
+    };
+
     if(!user) {
       return (
         <Message
@@ -59,61 +83,39 @@ export default class History extends TrackerReact(Component) {
           content='История просмотров доступна только авторизированным пользователям'
         />
       );
-    }
-    const historyList = user.profile.historyList;
-    const query = { _id: { $in: historyList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    };
+    
     if(this.state.subscription.listenings.ready()) {
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (
           <div>
-            <div className="headline">
-              <div className="headline__item">
-                <div className="headline-icon">
-                  <div className="headline-icon__icon">
-                    <svg className="ico-history" role="img">
-                      <use xlinkHref="#ico-history"></use>
-                    </svg>
-                  </div>
-                  <div className="headline-icon__text">История просмотров:</div>
-                </div>
-              </div>
-              <div className="headline__item">
-                <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
-              </div>
+            <HistoryHeadline />
+            <div className="photo-grid">
+              {listenings.map((listening, index) => {
+                return (
+                  <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
+                    <ListeningPreview key={index} listeningData={listening} layout="index" />
+                  </a>
+                );
+              })}
             </div>
-              <div className="photo-grid">
-                {listenings.map((listening, index) => {
-                  return (
-                    <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
-                      <ListeningPreview key={index} listeningData={listening} layout="index" />
-                    </a>
-                  );
-                })}
+            { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
+              <div className="paginate">
+                <Button primary onClick={this.loadMore}>Загрузить еще</Button>
               </div>
-              { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
-                <div className="paginate">
-                  <Button primary onClick={this.loadMore}>Загрузить еще</Button>
-                </div>
-              </div> }
+            </div> }
           </div>
         );
       } else {
         return (
           <div>
-            <div className="headline-icon">
-              <div className="headline-icon__icon">
-                <svg className="ico-history" role="img">
-                  <use xlinkHref="#ico-history"></use>
-                </svg>
-              </div>
-              <div className="headline-icon__text">Просмотренные объявления:</div>
-            </div>
+            <HistoryHeadline />
             <Message
               header='История ваших просмортров пуста'
               content='Объявления которые вы посмотрели'/>
-        </div>);
+          </div>
+        );
       }
     } else {
       return (
@@ -126,27 +128,3 @@ export default class History extends TrackerReact(Component) {
 }
 
 History.propTypes = {};
-
-/*export default createContainer(({ params }) => {
-  const subscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
-  const loading = subscription.ready();
-  const historyList = Meteor.user() ? Meteor.user().profile.historyList : [];
-  const listenings = listeningsSearchByArray(historyList);
-
-  function listeningsSearchByArray(array) {
-    var cache = [];
-    if (array) {
-      array.map(function(err, key) {
-        var listeningObj = Listenings.find({
-          _id: array[key]
-        }).fetch()[0];
-        if(listeningObj) {
-          cache.push(listeningObj);
-        }
-      });
-    }
-    return cache;
-  }
-
-  return {loading, listenings}
-}, History);*/

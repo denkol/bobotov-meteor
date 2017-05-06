@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -11,11 +12,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 /* Semantic UI */
 import { Form, Input, Message, Button } from 'semantic-ui-react';
 
+/* Other */
 import * as actions from '/imports/actions'
 
-// console.log(actions)
-
-export default class Recovery extends Component {
+class Recovery extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,11 +50,13 @@ export default class Recovery extends Component {
   }
 
   forgotPassword(payload) {
+    const { t } = this.props;
+
     this.setState({ error: false, success: false, submitting: true })
     actions.forgotPassword(payload)
       .then(() =>
         this.setState({
-          success: `На адрес ${payload.email} было отправлено письмо с инструкциями по восстановлению пароля`,
+          success: `${t('messages.recoveryPage.success.beforeEmail')} ${payload.email} ${t('messages.recoveryPage.success.afterEmail')}`,
           submitting: false
         })
       )
@@ -63,38 +65,38 @@ export default class Recovery extends Component {
 
   render() {
     const { formData, value, error, submitting, success } = this.state;
+    const { t } = this.props;
 
     return (
       <div className="signin">
         <div className="card card_login">
           <div className="login-form">
             <div className="login-item">
-              <h4 className="headline-login">Восстановление пароля</h4>
+              <h4 className="headline-login">{t('recoveryPage.headline')}</h4>
             </div>
             <div className="login-item-separator"></div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
                 {error &&
                   <Message size='tiny' negative>
-                    <Message.Header>Ошибка!</Message.Header>
+                    <Message.Header>{t('messages.negativeHeadline')}</Message.Header>
                     <p>{error}</p>
                   </Message>
                 }
                 {success &&
                   <Message size='tiny' positive>
-                    <Message.Header>Успех!</Message.Header>
+                    <Message.Header>{t('messages.positiveHeadline')}</Message.Header>
                     <p>{success}</p>
                   </Message>
                 }
               </div>
               <div className="login-item">
-                <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={this.state.emailInput.error} />
+                <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={this.state.emailInput.error} required/>
               </div>
               <div className="login-item">
-                <Button primary fluid size="tiny" loading={this.state.submitting}>Отправить письмо</Button>
+                <Button primary fluid size="tiny" loading={this.state.submitting}>{t('recoveryPage.sendBtn')}</Button>
               </div>
             </Form>
-            <div className="login-item login-item-forgot"><a className="link-default" href="#">Не пришло письмо?</a></div>
           </div>
         </div>
       </div>
@@ -103,3 +105,4 @@ export default class Recovery extends Component {
 }
 
 Recovery.propTypes = {};
+export default translate('common', { wait: true })(Recovery)

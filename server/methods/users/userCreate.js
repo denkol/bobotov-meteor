@@ -9,7 +9,9 @@ Meteor.methods({
           "country": "",
           "browserLanguage": ""
         },
-        "settings": {},
+        "settings": {
+          "admin": false
+        },
         "notification": {
           "new": 0,
           "history": []

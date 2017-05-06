@@ -21,6 +21,7 @@ import My from '../../imports/components/pages/my/My.jsx';
 import Panel from '../../imports/components/pages/panel/Panel.jsx';
 import Create from '../../imports/components/pages/create/Create.jsx';
 import CreateEdit from '../../imports/components/pages/create/CreateEdit.jsx';
+import Admin from '../../imports/components/pages/admin/Admin.jsx';
 
 //Additional components
 import Filter from '../../imports/components/filter/Filter.jsx';
@@ -42,6 +43,10 @@ var AnimationWrapper = (wrappedElement) => {
 /* Groups */
 var publicRoutes = FlowRouter.group({
   name: 'public'
+});
+
+var privateRoutes = FlowRouter.group({
+  name: 'private'
 });
 
 /* Routes */
@@ -173,12 +178,18 @@ publicRoutes.route('/recovery', {
   }
 });
 
-
 publicRoutes.route('/reset/:_token', {
   action() {
     var token = FlowRouter.getParam('_token');
     mount(App, {
       page: AnimationWrapper(<Sign layout="reset" token={token}/>)
     });
+  }
+});
+
+
+publicRoutes.route('/admin', {
+  action() {
+    mount(Admin, {});
   }
 });

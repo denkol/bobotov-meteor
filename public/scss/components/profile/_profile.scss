@@ -30,7 +30,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 100%;
-  border: 1px solid darken($bg-grey, 20%);
+  // border: 1px solid darken($bg-grey, 20%);
   &--notify-active {
     position: relative;
     &:after {

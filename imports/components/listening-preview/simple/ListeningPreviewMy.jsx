@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { translate } from 'react-i18next';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Checkbox, Button, Modal, Icon} from 'semantic-ui-react';
 import { Translate } from '../../../functions/functions.js';
@@ -7,7 +8,7 @@ import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} 
 import Snackbar from '../../snackbar/Snackbar.jsx';
 
 
-export default class ListeningPreviewMy extends Component {
+class ListeningPreviewMy extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,16 +95,18 @@ export default class ListeningPreviewMy extends Component {
     });
   }
   render() {
+    const { t } = this.props;
     if(this.props.data) {
-      let listeningLink = '/listening/' + this.props.data._id;
-      let listeningEditLink = '/edit/' + this.props.data._id;
-      let listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
-      let listeningHeadline = this.props.data.listeningInfo.headline;
-      let listeningCity = this.props.data.listeningInfo.city;
-      let listeningCountry = this.props.data.listeningInfo.country;
-      let listeningViews = this.props.data.listeningTech.views;
-      let listeningFavoritesCount = this.props.data.listeningTech.favoritesCount;
-      let listeningPublic = this.props.data.listeningTech.public;
+      const listeningLink = '/listening/' + this.props.data._id;
+      const listeningEditLink = '/edit/' + this.props.data._id;
+      const listeningMainPhoto = this.props.data.listeningPhotos.main ? this.props.data.listeningPhotos.main : "/img/no_photo.svg";
+      const listeningHeadline = this.props.data.listeningInfo.headline;
+      const listeningCity = this.props.data.listeningInfo.city;
+      const listeningCountry = this.props.data.listeningInfo.country;
+      const listeningViews = this.props.data.listeningTech.views;
+      const listeningFavoritesCount = this.props.data.listeningTech.favoritesCount;
+      const listeningPublic = this.props.data.listeningTech.public;
+      const listeningStatusCode = this.props.data.listeningTech.statusCode;
       return (
       <div>
         <Snackbar open={this.state.snackbar.open} message={this.state.snackbar.message} />
@@ -117,7 +120,7 @@ export default class ListeningPreviewMy extends Component {
             <div className="listening-preview-simple__headline-block">
               <div className="preview-simple-headline">
                 <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
-                <div className="preview-simple-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
+                <div className="preview-simple-headline__desc">{t(`cities.${listeningCity}`)}, {t(`countries.${listeningCountry}`)}</div>
               </div>
             </div>
           </div>
@@ -149,7 +152,12 @@ export default class ListeningPreviewMy extends Component {
                   </div>
                 </div>
                 <div className="preview-simple-items__item">
-                  <Checkbox checked={listeningPublic} toggle onChange={this.publishTrigger}/>
+                  <Checkbox 
+                    checked={listeningPublic} 
+                    toggle 
+                    onChange={this.publishTrigger}
+                    disabled={listeningStatusCode === 2 ? true : false}
+                  />
                 </div>
                 <div className="preview-simple-items__item preview-simple-items__item_edit-icon" onClick={this.edit} >
                  <svg className="ico-edit" role="img">
@@ -213,3 +221,5 @@ export default class ListeningPreviewMy extends Component {
 ListeningPreviewMy.propTypes = {
   data: React.PropTypes.object
 };
+
+export default translate('common', { wait: true })(ListeningPreviewMy)

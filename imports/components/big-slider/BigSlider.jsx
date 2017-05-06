@@ -1,29 +1,24 @@
+/* React libs */
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Listenings } from '../../api/listenings.js';
+import { translate } from 'react-i18next';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import {_} from 'lodash';
-
-import { Dimmer, Loader } from 'semantic-ui-react';
-//Components
+/* Meteor libs */
+import { createContainer } from 'meteor/react-meteor-data';
+/* Components */
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
+/* Some functions */
+import { Listenings } from '../../api/listenings.js';
+/* Semantic UI */
+/* Material UI */
+/* Other */
+import {_} from 'lodash';
+import classNames from 'classnames';
 
-const BigSliderHeadline = (props) =>
-    <div className="headline">
-      <div className="headline__item">
-        <div className="headline-icon headline-icon--hot">
-          <div className="headline-icon__icon">
-            <svg className="ico-hot" role="img">
-              <use xlinkHref="#ico-hot"></use>
-            </svg>
-          </div>
-          <div className="headline-icon__text">Горячие предложения:</div>
-        </div>
-      </div>
-    </div>
 
-export default class BigSlider extends TrackerReact(Component) {
+
+
+class BigSlider extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,10 +36,33 @@ export default class BigSlider extends TrackerReact(Component) {
   }
 
   componentWillUnmount() {
-		this.state.subscription.listenings.stop();
+    this.state.subscription.listenings.stop();
   }
 
   render() {
+    const { t } = this.props;
+    // const Slider = (props) => {
+    //   return(
+
+    //   );
+    // }
+    const BigSliderHeadline = (props) => {
+      return (
+        <div className="headline">
+          <div className="headline__item">
+            <div className="headline-icon headline-icon--hot">
+              <div className="headline-icon__icon">
+                <svg className="ico-hot" role="img">
+                  <use xlinkHref="#ico-hot"></use>
+                </svg>
+              </div>
+              <div className="headline-icon__text">{t('indexPage.headlineHot')}:</div>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
     var sliderSettings = {
       autoplay: true,
       dots: false,
@@ -80,14 +98,17 @@ export default class BigSlider extends TrackerReact(Component) {
         );
       } else {
         //if empty
-        return <BigSliderHeadline />;
+        return (<div></div>);
       }
     } else {
       //loading
       return (
         <div>
-        </div>
-      );
+          <BigSliderHeadline />
+      </div>);
     }
   }
 }
+
+
+export default translate('common', { wait: true })(BigSlider)

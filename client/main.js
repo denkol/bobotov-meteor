@@ -1,6 +1,6 @@
 Meteor.startup(function() {
   spinnerHide();
-  setInterval(logoLoading, 7000)
+  setInterval(logoAnimation, 7000)
 });
 
 function spinnerHide() {
@@ -8,10 +8,9 @@ function spinnerHide() {
   var spinner = $('#spinner');  
   spinnerWrapper.remove();
   spinner.remove();
-  
 }
 
-function logoLoading() {
+function logoAnimation() {
   $('#glide').addClass('glide--loading');
   setTimeout(function() {
     $('#glide').removeClass('glide--loading');

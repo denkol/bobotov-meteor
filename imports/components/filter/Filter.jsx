@@ -24,14 +24,17 @@ const FilterPanel = {
   open: function() {
     $('#filter-btn').addClass('filter-btn--close');
     $('.filter').addClass("filter--show");
+    $('html, body').addClass('overflow-hidden');
   },
   close: function() {
     $('#filter-btn').removeClass('filter-btn--close');
     $('.filter').removeClass("filter--show");
+    $('html, body').removeClass('overflow-hidden');
   },
   toggle: function() {
     $('.filter-btn').toggleClass('filter-btn--close'); //switch to red color
     $('.filter').toggleClass("filter--show");
+    $('html, body').toggleClass('overflow-hidden');
   }
 }
 
@@ -93,7 +96,7 @@ class Filter extends Component {
     $(".text").text("");
   }
 
-  handleSubmit(e, {formData}) { console.log(formData);
+  handleSubmit(e, {formData}) {
     e.preventDefault();
     FilterPanel.close(); //close desktop filter
     this.closeMobileFilter(); //close mobile filter
@@ -154,6 +157,16 @@ class Filter extends Component {
         priceTo: deafultQueryFromSession['listeningInfo.priceTo']
       }
     }
+    const FilterActions = () => (
+      <div className="filter-actions">
+        <div className="filter-actions__item">
+          <Button type="reset" onClick={this.resetForm}>{t('filterListing.clear')}</Button>
+        </div>
+        <div className="filter-actions__item">
+          <Button primary type="submit">{t('filterListing.apply')}</Button>
+        </div>
+      </div>
+    );
     const FilterForm = () => (
       <Form size="small" onSubmit={this.handleSubmit}>
         <div className="filter">
@@ -243,14 +256,7 @@ class Filter extends Component {
                 </div>
               </div>
             </div>
-            <div className="filter-actions">
-              <div className="filter-actions__item">
-                <Button type="reset" onClick={this.resetForm}>{t('filterListing.clear')}</Button>
-              </div>
-              <div className="filter-actions__item">
-                <Button primary type="submit">{t('filterListing.apply')}</Button>
-              </div>
-            </div>
+            <FilterActions />
           </div>
         </div>
       </Form>);
@@ -265,6 +271,7 @@ class Filter extends Component {
         </div>
         <div id="filterMobile" className="filter-mobile">
           <div className="filter-content">
+            <h2>Поиск по параметрам: </h2>
             <FilterForm />
             <button className="filter-btn filter-btn-mobile" onClick={this.closeMobileFilter}>
               <div className="filter-btn__icon" />

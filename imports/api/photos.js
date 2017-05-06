@@ -26,7 +26,7 @@ export const Photos = new FilesCollection({
         return dir
       }
     }
-    console.log(path.resolve(UPLOAD_PATH, 'photos'))
+    // console.log(path.resolve(UPLOAD_PATH, 'photos'))
     return path.resolve(UPLOAD_PATH, 'photos');
   },
   allowClientCode: false, // Disallow remove files from Client

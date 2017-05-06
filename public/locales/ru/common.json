@@ -2,7 +2,8 @@
   "appName": "Приложение",
   "toggleLng": {
     "ru": "Русский",
-    "en": "Английский"
+    "en": "Английский",
+    "rs": "Сербский"
   },
   "comfortList": {
     "week": "Баня / Сауна",
@@ -90,13 +91,35 @@
     "realtor": "Риэлтор"
   },
   "listening": {
-    "comfort": "Удобства"
+    "comfort": "Удобства",
+    "summary": "Общая информация",
+    "desc": "Описание",
+    "contacts": "Контакты",
+    "onMap": "На карте",
+    "favoritesBtn": {
+      "remove": "Удалить из избранного",
+      "add": "Добавить в избранное"
+    },
+    "printBtn": "Распечатать"
+  },
+  "indexPage": {
+    "headlineHot": "Горячие предложения"
+  },
+  "panel": {
+    "name" : {
+      "label" : "Ваше имя"
+    },
+    "status" : {
+      "label" : "Ваш статус",
+      "placeholder" : "Выберите статус"
+    },
+    "saveBtn": "Сохранить",
+    "helpMessage": "Чтобы применить изменения нажмите эту кнопку"
   },
   "filterListing": {
     "price": "Цена",
     "apply": "Применить",
     "clear": "Очистить",
-    "more": "Подробнее",
     "country": {
       "label": "Страна",
       "placeholder": "Выберите страну"
@@ -167,7 +190,7 @@
       "label": "Кол-во санузлов",
       "placeholder": "Не важно"
     },
-    "price": {
+    "priceFiled": {
       "label": "Цена",
       "placeholder": "Введите цену в евро"
     },
@@ -195,5 +218,137 @@
       "label": "Удобства",
       "placeholder": "Выберите удобства"
     }
+  },
+  "facebookBtn": {
+    "text": "Войти с помощью Facebook"
+  },
+  "resetPage": {
+    "headline": "Сброс пароля",
+    "sendBtn": "Изменить пароль"
+  },
+  "recoveryPage": {
+    "headline": "Воостановление пароля",
+    "sendBtn": "Отправить письмо"
+  },
+  "aboutPage": {
+    "about": {
+      "headline" : "О нас",
+      "desc" : "Простой и быстрый сайт для поиска недвижимости в Черногории"
+    },
+    "contacts": {
+      "headline" : "Контакты",
+      "email": "E-mail",
+      "phone" : "Телефон"
+    },
+    "support": {
+      "headline" : "Поддержка",
+      "desc" : "Если у вас возникли трудности с использованием нашего сервиса, напишите нам"
+    },
+    "advert": {
+      "headline" : "Реклама",
+      "desc" : "По вопросам рекламы ждем ваших писем по адресу"
+    }
+  },
+  "myPage": {
+    "headline": "Мои объявления",
+    "wait": "Ожидают проверки",
+    "public": "Опубликованные",
+    "disabled": "Отключенные"
+  },
+  "favoritesPage": {
+    "headline" : "Избранные объявления"
+  },
+  "createPhoto": {
+    "helpText": "Нажмите чтобы загрузить (макс. размер 2мб, jpg, jpeg, png)",
+    "load": "Загрузить",
+    "remove": "Удалить",
+    "progressText": "Загрузка файла",
+    "errorMessage": "Изображение не соответствует требованиям, попробуйте снова"
+  },
+  "historyPage": {
+    "headline": "История просмотров",
+    "clearHistoryBtn": "Очистить историю"
+  },
+  "passwordField" : {
+    "label": "Пароль",
+    "placeholder": "Ваш пароль"
+  },
+  "repeatPasswordField" : {
+    "label": "Повторите пароль",
+    "placeholder": "Пароль еще раз"
+  },
+  "nameField" : {
+    "label": "Ваше имя",
+    "placeholder": "Например: Фёдор Достоевский"
+  },
+  "signInPage": {
+    "headline": "Войти",
+    "enterBtn": "Войти",
+    "newAccountLink": {
+      "link":"Зарегистрироваться",
+      "text": "новый аккаунт"
+    }
+  },
+  "signUpPage": {
+    "headline": "Регистрация",
+    "enterBtn": "Зарегистрироваться",
+    "licenseLink": {
+      "link": "Пользовательского соглашения",
+      "text": "Регистрируясь вы принимаете условия"
+    },
+    "enterLink": {
+      "link": "Войти",
+      "text": "Есть аккаунт?"
+    }
+  },
+  "messages": {
+    "positiveHeadline": "Успех!",
+    "negativeHeadline": "Ошибка!",
+    "recoveryPage": {
+      "success": {
+        "beforeEmail": "На адрес",
+        "afterEmail": "было отправлено письмо с инструкциями по восстановлению пароля"
+      }
+    },
+    "resetPage": {
+      "success": {
+        "passwordBeenChanged": "Пароль изменен!"
+      }
+    },
+    "my": {
+      "headline": "",
+      "desc": ""
+    },
+    "history": {
+      "headline": "",
+      "desc": ""
+    },
+    "hiddenListening": {
+      "headline": "",
+      "desc": ""
+    },
+    "privateListening" : {
+      "headline": "",
+      "desc": ""
+    },
+    "create": {
+      "headline": "",
+      "desc": ""
+    },
+    "favorites": {
+      "headline": "",
+      "desc": ""
+    },
+    "noListening": {
+      "headline": "",
+      "desc": ""
+    }
+  },
+  "other": {
+    "or": "или",
+    "forgotPassword": "Забыли пароль?",
+    "toHomeLink": "На главную",
+    "loadMoreBtn": "Загрузить еще",
+    "more": "Подробнее"
   }
 }

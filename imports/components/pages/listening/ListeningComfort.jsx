@@ -4,8 +4,6 @@ import { translate } from 'react-i18next';
 /* Meteor libs */
 /* Components */
 /* Tranlate & Data */
-import { ComfortList } from '../../../data/data.js';
-import { Translate } from '../../../functions/functions.js';
 /* Semantic UI */
 
 class ListeningComfort extends Component {

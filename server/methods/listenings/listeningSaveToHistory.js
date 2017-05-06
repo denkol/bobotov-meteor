@@ -22,7 +22,7 @@ Meteor.methods({
       var currentHistoryList = Meteor.user().profile.historyList;
       var currentHistoryListLast = Meteor.user().profile.historyList.length - 1;
       if (currentHistoryList[currentHistoryListLast] !== viewedId) {
-        currentHistoryList.push(viewedId);
+        currentHistoryList.unshift(viewedId);
         Meteor.users.update(Meteor.userId(), {
           $set: {
             "profile.historyList": currentHistoryList

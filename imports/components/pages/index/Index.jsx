@@ -7,12 +7,11 @@ import { createContainer } from 'meteor/react-meteor-data';
 /* Components */
 import BigSlider from '../../big-slider/BigSlider.jsx';
 import PhotoGrid from '../../photo-grid/PhotoGrid.jsx';
-import TopFilterDemo from '../../TopFilterDemo/TopFilterDemo.jsx';
 
 /* Tranlate & Data */
 
 /* Semantic UI */
-import { Loader, Dimmer, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 export default class Index extends Component {
   constructor(props) {
@@ -37,7 +36,7 @@ export default class Index extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="index-page-wrapper">
         <button onClick={this.openFilter} className="filter-btn filter-btn-mobile">
           <div className="filter-btn__icon" />
         </button>

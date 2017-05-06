@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -11,9 +12,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 /* Semantic UI */
 import { Form, Input, Button, Message } from 'semantic-ui-react';
 
+/* Other */
 import * as actions from '/imports/actions'
 
-export default class Reset extends Component {
+class Reset extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,12 +47,13 @@ export default class Reset extends Component {
   }
 
   resetPassword(payload) {
-    console.log(payload)
+    const { t } = this.props;
+
     this.setState({ error: false, success: false, submitting: true })
     actions.resetPassword(payload)
       .then(() =>
         this.setState({
-          success: `Пароль изменен`,
+          success: t('messages.resetPage.success.passwordBeenChanged'),
           submitting: false
         })
       )
@@ -59,38 +62,39 @@ export default class Reset extends Component {
 
   render() {
     const { formData, value, error, submitting, success } = this.state;
-    
+    const { t } = this.props;
+
     return (
       <div className="signin">
         <div className="card card_login">
           <div className="login-form">
             <div className="login-item"> 
-              <h4 className="headline-login">Сброс пароля</h4>
+              <h4 className="headline-login">{t('resetPage.headline')}</h4>
             </div>
             <div className="login-item-separator"></div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
                 {error &&
                   <Message size='tiny' negative>
-                    <Message.Header>Ошибка!</Message.Header>
+                    <Message.Header>{t('messages.negativeHeadline')}</Message.Header>
                     <p>{error}</p>
                   </Message>
                 }
                 {success &&
                   <Message size='tiny' positive>
-                    <Message.Header>Успех!</Message.Header>
-                    <p>{success}</p>
+                    <Message.Header>{t('messages.positiveHeadline')}</Message.Header>
+                    <p>{success} <a href="/">{t('other.toHomeLink')}</a></p>
                   </Message>
                 }
               </div>
               <div className="login-item">
-                <Form.Input label='Новый пароль' name='password' type="password" />
+                <Form.Input label={t('passwordField.label')} name='password' type="password" required/>
               </div>
               <div className="login-item">
-                <Form.Input label='Повторите пароль' name='confirmPassword' type="password"/>
+                <Form.Input label={t('repeatPasswordField.label')} name='confirmPassword' type="password" required/>
               </div>
               <div className="login-item">
-                <Button primary fluid size="tiny" loading={this.state.submitting}>Изменить пароль</Button>
+                <Button primary fluid size="tiny" loading={this.state.submitting}>{t('resetPage.sendBtn')}</Button>
               </div>
             </Form>
           </div>
@@ -103,3 +107,5 @@ export default class Reset extends Component {
 Reset.propTypes = {
   token: React.PropTypes.string
 };
+
+export default translate('common', { wait: true })(Reset)

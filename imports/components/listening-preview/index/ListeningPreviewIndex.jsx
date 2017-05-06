@@ -85,11 +85,11 @@ class ListeningPreviewIndex extends Component {
             <div className="listening-preview-footer__item">
               <div className="listening-preview-params">
                 <div className="listening-preview-params__item">
-                  <div className="params-icon">{t('filterListing.typeProperty.label')}:</div>
+                  <div className="params-icon">{t('filterListing.typeDeal.label')}:</div>
                   <div className="params-text">{t(`typeDeal.${listeningTypeDeal}`)}</div>
                 </div>
                 <div className="listening-preview-params__item">
-                  <div className="params-icon">{t('filterListing.typeDeal.label')}:</div>
+                  <div className="params-icon">{t('filterListing.typeProperty.label')}:</div>
                   <div className="params-text">{t(`typeProperty.${listeningPropertyType}`)}</div>
                 </div>
                 <div className="listening-preview-params__item">
@@ -100,7 +100,7 @@ class ListeningPreviewIndex extends Component {
               </div>
             </div>
             <div className="listening-preview-footer__item">
-              <div className="listening-preview-more">{t('filterListing.more')}</div>
+              <div className="listening-preview-more">{t('other.more')}</div>
             </div>
           </div>
         </div>

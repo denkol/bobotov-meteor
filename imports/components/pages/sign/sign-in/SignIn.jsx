@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -14,7 +15,7 @@ import { isValidEmail } from "/imports/functions/validation.js";
 /* Semantic UI */
 import { Form, Input, Message, Button } from 'semantic-ui-react';
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +30,8 @@ export default class SignIn extends Component {
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
+    
+
     const validation = {
       email: false,
       password: false,
@@ -68,19 +71,21 @@ export default class SignIn extends Component {
   }
 
   render() {
+    const { t } = this.props;
     const { email, password, message } = this.state.validation;
+
     return (
       <div className="signin">
         <div className="card card_login">
           <div className="login-form">
             <div className="login-item"> 
-              <h4 className="headline-login">Войти</h4>
+              <h4 className="headline-login">{t('signInPage.headline')}</h4>
             </div>
             <div className="login-item">
               <FacebookBtn />
             </div>
             <div className="login-item-separator">
-              <div className="login-item-separator__text">или</div>
+              <div className="login-item-separator__text">{t('other.or')}</div>
             </div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
@@ -98,21 +103,21 @@ export default class SignIn extends Component {
                 <Form.Input label='E-mail:' name='email' type="email" placeholder='example@mail.com' error={email ? true : false} />
               </div>
               <div className="login-item">
-                <Form.Input label='Пароль:' name='password' type="password" placeholder='Ваш пароль' error={password ? true : false} />
+                <Form.Input label={t('passwordField.label')} name='password' type="password" placeholder={t('passwordField.placeholder')} error={password ? true : false} />
               </div>
               <div className="login-item">
-                <Button primary fluid size="tiny">Войти</Button>
+                <Button primary fluid size="tiny">{t('signInPage.enterBtn')}</Button>
               </div>
             </Form>
-            <div className="login-item login-item-forgot"> <a className="link-default" href="/recovery">Забыли пароль </a>или <a className="link-default" href="#">не пришло письмо?</a></div>
+            <div className="login-item login-item-forgot"> <a className="link-default" href="/recovery">{t('other.forgotPassword')}</a></div>
           </div>
         </div>
-        <div className="login-item-forgot login-item-forgot_center"><a className="link-default" href="/signup">Зарегистрируйте</a> новый аккаунт</div>
+        <div className="login-item-forgot login-item-forgot_center"><a className="link-default" href="/signup">{t('signInPage.newAccountLink.link')}</a> {t('signInPage.newAccountLink.text')}</div>
       </div>
     );
   }
 }
 
-SignIn.propTypes = {
-  // layout: React.PropTypes.string,
-};
+SignIn.propTypes = {};
+
+export default translate('common', { wait: true })(SignIn)

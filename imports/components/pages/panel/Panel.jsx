@@ -14,9 +14,9 @@ import { Translate } from '../../../functions/functions.js';
 
 /* Semantic UI */
 import { Dimmer, Loader, Form, Message, Input, Dropdown, Select, Button } from 'semantic-ui-react';
-
 /* Other */
-  //paste here
+import Snackbar from 'material-ui/Snackbar';
+
 
 
 class Panel extends Component {
@@ -26,8 +26,13 @@ class Panel extends Component {
       validation: {
         username: '',
         message: ''
+      },
+      snackbar: {
+        open: false,
+        message: ""
       }
     }
+    this.snakcbarClose = this.snakcbarClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
@@ -52,11 +57,13 @@ class Panel extends Component {
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
+
     const validation = {
       username: '',
       message: ''
     };
     this.setState({ validation });
+
     const userName = formData.userName.trim();
     const userDesc = formData.userDesc;
     const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
@@ -76,7 +83,14 @@ class Panel extends Component {
       }
     });
   }
-  
+  snakcbarClose() {
+    this.setState({
+      snakcbar: {
+        open: false,
+        message: ""
+      }
+    })
+  }
   render() {
     const { username, message } = this.state.validation;
     const currentUser = this.props.currentUser;
@@ -94,6 +108,15 @@ class Panel extends Component {
       const userPhoto = currentUser.profile.userPhoto ? currentUser.profile.userPhoto : '/img/unknown.jpg';
       const userName = currentUser.profile.userName;
       const userDesc = currentUser.profile.userDesc;
+
+      const SnackbarMaterial = () => (
+        <Snackbar
+          open={this.state.snackbar.open}
+          message={this.state.snackbar.message}
+          autoHideDuration={4000}
+          onRequestClose={this.snakcbarClose}
+        />
+      );
 
       const BalanceLayout = () => (
         <div className="panel-header-balance">
@@ -127,6 +150,7 @@ class Panel extends Component {
       
       return (
         <div>
+          <SnackbarMaterial />
           <div className="panel-wrapper">
             <div className="panel-header">
               {/*<BalanceLayout />*/}
