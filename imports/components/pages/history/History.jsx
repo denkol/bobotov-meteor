@@ -1,45 +1,55 @@
 /* React libs */
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 
 /* Components */
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+import BtnLoadMore from '../../btn-loadmore/BtnLoadMore.jsx';
+import Loading from '../../loading/Loading.jsx';
 
 /* Some functions */
 import { Listenings } from '../../../api/listenings.js';
 
 /* Semantic UI */
-import { Dimmer, Loader, Message, Button } from 'semantic-ui-react';
+import { Message, Button } from 'semantic-ui-react';
 
 /* Material UI */
 
 /* Other */
 
 const limit = 9;
-export default class History extends TrackerReact(Component) {
+
+class History extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = { 
       limit: limit,
       subscription: {
          listenings: Meteor.subscribe('listenings.public', {})
-      } 
+      }
     };
     this.loadMore = this.loadMore.bind(this);
     this.removeHistory = this.removeHistory.bind(this);
+    
+
   }
   componentDidMount() {
     window.scrollTo(0, 0); //scroll to top
   }
+
+
+  
+
   removeHistory(event) {
+    
     event.preventDefault();
+    
     Meteor.call('removeAllHistory', (err, res) => {
       if(err) {console.log(err)}
-      if(res) {
-        alert("История удалена");
-      }
+      
     })
   }
   componentWillUnmount() {
@@ -50,8 +60,9 @@ export default class History extends TrackerReact(Component) {
     this.setState({limit: this.state.limit + limit});
   }
   render() {
+    const { t } = this.props;
     const user = Meteor.user();
-    const historyList = user.profile.historyList;
+    const historyList = user ? user.profile.historyList : [];
     const query = { _id: { $in: historyList } };
     const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
 
@@ -65,11 +76,11 @@ export default class History extends TrackerReact(Component) {
                   <use xlinkHref="#ico-history"></use>
                 </svg>
               </div>
-              <div className="headline-icon__text">История просмотров:</div>
+              <div className="headline-icon__text">{t('historyPage.headline')}:</div>
             </div>
           </div>
           <div className="headline__item">
-            <a className="history-clear-btn" onClick={this.removeHistory}>Очистить историю</a>
+            <a href="/history" className="history-clear-btn" onClick={this.removeHistory}>{t('historyPage.clearHistoryBtn')}</a>
           </div>
         </div>
       );
@@ -102,7 +113,7 @@ export default class History extends TrackerReact(Component) {
             </div>
             { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">
               <div className="paginate">
-                <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                <BtnLoadMore onClick={this.loadMore}/>
               </div>
             </div> }
           </div>
@@ -119,12 +130,12 @@ export default class History extends TrackerReact(Component) {
       }
     } else {
       return (
-        <Dimmer active inverted>
-          <Loader size='medium'>Загрузка...</Loader>
-        </Dimmer>
+        <Loading />
       );
     }
   }
 }
 
 History.propTypes = {};
+
+export default translate('common', { wait: true })(History);

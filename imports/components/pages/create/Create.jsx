@@ -462,10 +462,10 @@ class Create extends Component {
                   <div className="create-block-row__item">
                     <Form.Group widths='equal' style={{marginBottom: 0}}>
                       <Form.Field>
-                        <label>{t('createListing.price.label')}</label>
+                        <label>{t('createListing.priceFiled.label')}</label>
                         <Input
                           label={{ basic: true, content: '€' }}
-                          placeholder={t('createListing.price.placeholder')}
+                          placeholder={t('createListing.priceFiled.placeholder')}
                           name='price'
                           type="number"
                           fluid
@@ -515,7 +515,14 @@ class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Input label="Заголовок объявления" placeholder='' name='headline' type="text" fluid error={headline ? true : false} required/>
+                    <Form.Input 
+                      label={t('createListing.yourHeadline.label')}
+                      placeholder={t('createListing.yourHeadline.placeholder')} 
+                      name='headline' 
+                      type="text" 
+                      fluid 
+                      error={headline ? true : false} 
+                      required/>
                   </div>
                   <div className="create-block-row__item">
                   </div>
@@ -523,7 +530,12 @@ class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.TextArea name='description' label='Описание объявления' rows='3' error={desc ? true : false} required/>
+                    <Form.TextArea 
+                      name='description' 
+                      label={t('createListing.description.label')}
+                      rows='3' 
+                      error={desc ? true : false} 
+                      required/>
                   </div>
                 </div>
               </div>
@@ -582,7 +594,7 @@ class Create extends Component {
             : null}
             <div className="create-block-confirm">
               <div className="create-block-confirm__item">
-                <Button type="submit" size='big' primary>Готово</Button>
+                <Button type="submit" size='big' primary>{t('createListing.apply')}</Button>
               </div>
             </div>
           </Form>

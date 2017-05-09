@@ -8,7 +8,7 @@ Meteor.methods({
     var userDesc = data.userDesc + "";
 
     /* Validate */
-    if(userDesc !== "agency" && userDesc !== "user" && userDesc !== "realtor") { 
+    if(userDesc !== "agency" && userDesc !== "user" && userDesc !== "realtor" && userDesc !== "owner") { 
       userDesc = "user";
     }
     if(userPhoto.indexOf(validHost) === -1) {

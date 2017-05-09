@@ -88,7 +88,8 @@
   "userStatuses": {
     "agency": "Агенство недвижимости",
     "user": "Пользователь",
-    "realtor": "Риэлтор"
+    "realtor": "Риэлтор",
+    "owner": "Собственник"
   },
   "listening": {
     "comfort": "Удобства",
@@ -107,7 +108,8 @@
   },
   "panel": {
     "name" : {
-      "label" : "Ваше имя"
+      "label" : "Ваше имя",
+      "placeholder": "Введите ваше имя"
     },
     "status" : {
       "label" : "Ваш статус",
@@ -163,9 +165,7 @@
     "step2": "Шаг 2: Фотография",
     "step3": "Шаг 3: Контакты",
     "price": "Цена",
-    "apply": "Применить",
-    "clear": "Очистить",
-    "more": "Подробнее",
+    "apply": "Готово",
     "country": {
       "label": "Страна",
       "placeholder": "Выберите страну"
@@ -217,6 +217,13 @@
     "comfortList": {
       "label": "Удобства",
       "placeholder": "Выберите удобства"
+    },
+    "yourHeadline": {
+      "label": "Заголовок объявления",
+      "placeholder": "Введите заголовок объявления"
+    },
+    "description": {
+      "label": "Описание объявления"
     }
   },
   "facebookBtn": {
@@ -349,6 +356,7 @@
     "forgotPassword": "Забыли пароль?",
     "toHomeLink": "На главную",
     "loadMoreBtn": "Загрузить еще",
-    "more": "Подробнее"
+    "more": "Подробнее",
+    "loading": "Загрузка"
   }
 }

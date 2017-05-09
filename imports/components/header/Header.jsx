@@ -8,6 +8,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /* Components */
 import Profile from '../profile/Profile.jsx';
+import BtnAdd from '../btn-add/BtnAdd.jsx';
 
 /* Some functions */
 import i18n from '/imports/config/i18n'
@@ -168,7 +169,7 @@ class HeaderLayout extends Component {
                   </Dropdown>
                 </div>*/}
                 <div className="header-controls__item header-controls__item_add">
-                  <button onClick={this.handleGo.bind(this, '/create')} className="simple-btn simple-btn_add">{t('header.addadv')}</button>
+                  <BtnAdd mobile={false} />
                 </div>
               </div>
             </div>

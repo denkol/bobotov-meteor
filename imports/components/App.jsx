@@ -1,7 +1,7 @@
 /* React libs */
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { Head } from './Head.jsx';
+import {Helmet} from "react-helmet";
 
 /* Meteor libs */
 
@@ -25,7 +25,6 @@ export default class App extends Component {
     return (
       <I18nextProvider i18n={i18n}>
         <div id="app">
-          <Head />
           {this.props.page}
         </div>
       </I18nextProvider>

@@ -1,16 +1,19 @@
 /* React libs */
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import { translate } from 'react-i18next';
 /* Meteor libs */
 
 /* Components */
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
+import BtnLoadMore from '../../btn-loadmore/BtnLoadMore.jsx';
+import Loading from '../../loading/Loading.jsx';
 
 /* Some functions */
 import { Listenings } from '../../../api/listenings.js';
 
 /* Semantic UI */
-import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 
 /* Material UI */
 
@@ -18,7 +21,7 @@ import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 
 const limit = 9;
 
-export default class Favorites extends TrackerReact(Component) {
+class Favorites extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +47,26 @@ export default class Favorites extends TrackerReact(Component) {
   }
 
   render() {
+    const { t } = this.props;
     const user = Meteor.user();
+    const favouritesList = user.profile.favoritesList;
+    const query = { _id: { $in: favouritesList } };
+    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    const Headline = () => (
+      <div className="headline">
+        <div className="headline__item">
+          <div className="headline-icon">
+            <div className="headline-icon__icon">
+              <svg className="ico-love loved" role="img">
+                <use xlinkHref="#ico-love"></use>
+              </svg>
+            </div>
+            <div className="headline-icon__text">{t('favoritesPage.headline')}:</div>
+          </div>
+        </div>
+      </div>
+    );
+
     if(!user) {
       return (
         <Message 
@@ -54,26 +76,13 @@ export default class Favorites extends TrackerReact(Component) {
         />
       );
     }
-    const favouritesList = user.profile.favoritesList;
-    const query = { _id: { $in: favouritesList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    
     if(this.state.subscription.listenings.ready()) {
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (
           <div>
-            <div className="headline">
-              <div className="headline__item">
-                <div className="headline-icon">
-                  <div className="headline-icon__icon">
-                    <svg className="ico-love loved" role="img">
-                      <use xlinkHref="#ico-love"></use>
-                    </svg>
-                  </div>
-                  <div className="headline-icon__text">Избранные объявления:</div>
-                </div>
-              </div>
-            </div>
+            <Headline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
                 return (
@@ -85,7 +94,7 @@ export default class Favorites extends TrackerReact(Component) {
             </div>
               {(listeningsTotal > listenings.length) && <div className="paginate-wrapper">
                 <div className="paginate">
-                  <Button primary onClick={this.loadMore}>Загрузить еще</Button>
+                  <BtnLoadMore onClick={this.loadMore}/>
                 </div>
               </div>}
           </div>
@@ -93,26 +102,19 @@ export default class Favorites extends TrackerReact(Component) {
       } else {
         return(
           <div>
-            <div className="headline-icon">
-              <div className="headline-icon__icon">
-                <svg className="ico-love loved" role="img">
-                  <use xlinkHref="#ico-love"></use>
-                </svg>
-              </div>
-              <div className="headline-icon__text">Избранные объявления:</div>
-            </div>
+            <Headline />
             <Message header='У вас нет избранных объявлений' content='Добавьте какое-нибудь объявление в избранное'/>
           </div>
         );
       }
     } else {
       return (
-        <Dimmer active inverted>
-          <Loader size='medium'>Загрузка...</Loader>
-        </Dimmer>
+        <Loading />
       );
     }
   }
 }
 
 Favorites.propTypes = {};
+
+export default translate('common', { wait: true })(Favorites);

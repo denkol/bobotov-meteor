@@ -15,13 +15,13 @@
     "disabled_equipment": "Equipment for the disabled",
     "parking": "Parking",
     "laundry": "Laundry",
-    "ac": "Air conditioning",
+    "ac": "AC",
     "tv": "TV",
     "fireplace": "Fireplace",
     "coffeMaker": "Coffee Maker",
     "kettle": "Teapot",
-    "dishwasher": "Dishwasher",
-    "washer": "Washing machine",
+    "dishwasher": "Washing machine",
+    "washer": "Dishwasher",
     "transfer": "Transfer from / to the airport",
     "microwave": "Microwave oven",
     "view": "Panoramic view"
@@ -88,7 +88,8 @@
   "userStatuses": {
     "agency": "Real estate agency",
     "user": "User",
-    "realtor": "Realtor"
+    "realtor": "Realtor",
+    "owner": "Owner"
   },
   "listening": {
     "comfort": "Facilities",
@@ -164,8 +165,6 @@
     "step3": "Step 3: Contacts",
     "price": "Price",
     "apply": "Apply",
-    "clear": "Clear",
-    "more": "Details",
     "country": {
       "label": "Country",
       "placeholder": "Select a country"
@@ -194,14 +193,6 @@
       "label": "Price",
       "placeholder": "Enter the price in euros"
     },
-    "priceFrom": {
-      "label": "€",
-      "placeholder": "From"
-    },
-    "priceTo": {
-      "label": "€",
-      "placeholder": "Before"
-    },
     "square": {
       "label": "Total Area",
       "placeholder": "Enter Area"
@@ -210,144 +201,182 @@
       "label": "Payment period",
       "placeholder": "Choose a payment period"
     },
-    "floor": {      
+    "floor": {
       "label": "Floor",
-      "placeholder": ""    
+      "placeholder": ""
     },
-    "comfortList": {      
+    "comfortList": {
       "label": "Facilities",
-      "placeholder": "Choose the convenience"    
-    }  
-  },
-  "facebookBtn": {    
-    "text": "Sign in using Facebook"  
-  },
-  "resetPage": {    
-    "headline": "Reset password",
-    "sendBtn": "Change Password"  
-  },
-  "recoveryPage": {    
-    "headline": "Password recovery",
-    "sendBtn": "Send Email"  
-  },
-  "aboutPage": {    
-    "about": {      
-      "headline": "About us",
-      "desc": "A simple and fast site for real estate search in Montenegro"    
+      "placeholder": "Choose the convenience"
     },
-    "contacts": {      
+    "yourHeadline": {
+      "label": "Your headline",
+      "placeholder": "Type headline here"
+    },
+    "description": {
+      "label": "Your description"
+    }
+  },
+  "facebookBtn": {
+
+    "text": "Sign in using Facebook"
+  },
+  "resetPage": {
+
+    "headline": "Reset password",
+    "sendBtn": "Change Password"
+  },
+  "recoveryPage": {
+
+    "headline": "Password recovery",
+    "sendBtn": "Send Email"
+  },
+  "aboutPage": {
+
+    "about": {
+
+      "headline": "About us",
+      "desc": "A simple and fast site for real estate search in Montenegro"
+    },
+    "contacts": {
+
       "headline": "Contacts",
       "email": "E-mail",
       "phone": "Phone"
     },
-    "support": {      
+    "support": {
+
       "headline": "Support",
-      "desc": "If you have any difficulties using our service, write to us"    
+      "desc": "If you have any difficulties using our service, write to us"
     },
-    "advert": {      
+    "advert": {
+
       "headline": "Advertising",
-      "desc": "On advertising, we are waiting for your letters to the address"    
-    },
-      "myPage": {    
-      "headline": "My ads",
-          "wait": "Pending verification",
-          "public": "Published",
-          "disabled": "Disabled"  
-    },
-      "favoritesPage": {    
-      "headline": "Favorite ads"  
-    },
-      "createPhoto": {    
-      "helpText": "Click to download (max size 2mb, jpg, jpeg, png)",
-          "load": "Download",
-          "remove": "Delete",
-          "progressText": "Download file",
-          "errorMessage": "Image does not meet the requirements, try again"  
-    },
-      "historyPage": {    
-      "headline": "History of views",
-          "clearHistoryBtn": "Clear history"  
-    },
-      "passwordField": {    
-      "label": "Password",
-          "placeholder": "Your password"  
-    },
-      "repeatPasswordField": {    
-      "label": "Repeat password",
-          "placeholder": "Password again"  
-    },
-      "nameField": {    
-      "label": "Your name",
-          "placeholder": "For example: Fedor Dostoyevsky"  
-    },
-      "signInPage": {    
-      "headline": "Login",
-          "enterBtn": "Login",
-          "newAccountLink": {      
-        "link": "Register",
-              "text": "new account"    
-      }  
-    },
-      "signUpPage": {    
-      "headline": "Registration",
-          "enterBtn": "Register",
-          "licenseLink": {      
-        "link": "User Agreement",
-              "text": "By registering you accept the terms"    
-      },
-          "enterLink": {      
-        "link": "Login",
-              "text": "Do you have an account?"    
-      }  
-    },
-      "messages": {    
-      "positiveHeadline": "Success!",
-          "negativeHeadline": "Error!",
-          "recoveryPage": {      
-        "success": {        
-          "beforeEmail": "To address",
-                  "afterEmail": "A letter was sent with instructions on password recovery"      
-        }    
-      },
-          "resetPage": {      
-        "success": {        
-          "passwordBeenChanged": "Password changed!"      
-        }    
-      },
-          "my": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "history": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "hiddenListening": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "privateListening": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "create": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "favorites": {      
-        "headline": "",
-              "desc": ""    
-      },
-          "noListening": {      
-        "headline": "",
-              "desc": ""    
-      }  
-    },
-    "other": {    
-      "or": "or",
-          "forgotPassword": "Forgot your password?",
-          "toHomeLink": "Home",
-          "loadMoreBtn": "Load more",
-          "more": "More details"  
+      "desc": "On advertising, we are waiting for your letters to the address"
     }
+  },
+  "myPage": {
+
+    "headline": "My ads",
+    "wait": "Pending verification",
+    "public": "Published",
+    "disabled": "Disabled"
+  },
+  "favoritesPage": {
+
+    "headline": "Favorite ads"
+  },
+  "createPhoto": {
+    "helpText": "Click to download (max size 2mb, jpg, jpeg, png)",
+    "load": "Download",
+    "remove": "Delete",
+    "progressText": "Download file",
+    "errorMessage": "Image does not meet the requirements, try again"
+  },
+  "historyPage": {
+
+    "headline": "History of views",
+    "clearHistoryBtn": "Clear history"
+  },
+  "passwordField": {
+
+    "label": "Password",
+    "placeholder": "Your password"
+  },
+  "repeatPasswordField": {
+
+    "label": "Repeat password",
+    "placeholder": "Password again"
+  },
+  "nameField": {
+
+    "label": "Your name",
+    "placeholder": "You name type here"
+  },
+  "signInPage": {
+
+    "headline": "Login",
+    "enterBtn": "Login",
+    "newAccountLink": {
+      "link": "Register",
+      "text": "new account"
+    }
+  },
+  "signUpPage": {
+
+    "headline": "Registration",
+    "enterBtn": "Register",
+    "licenseLink": {
+
+      "link": "User Agreement",
+      "text": "By registering you accept the terms"
+    },
+    "enterLink": {
+
+      "link": "Login",
+      "text": "Do you have an account?"
+    }
+  },
+  "messages": {
+
+    "positiveHeadline": "Success!",
+    "negativeHeadline": "Error!",
+    "recoveryPage": {
+
+      "success": {
+
+        "beforeEmail": "To address",
+        "afterEmail": "A letter was sent with instructions on password recovery"
+      }
+    },
+    "resetPage": {
+
+      "success": {
+
+        "passwordBeenChanged": "Password changed!"
+      }
+    },
+    "my": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "history": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "hiddenListening": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "privateListening": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "create": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "favorites": {
+
+      "headline": "",
+      "desc": ""
+    },
+    "noListening": {
+      "headline": "",
+      "desc": ""
+    }
+  },
+  "other": {
+    "or": "or",
+    "forgotPassword": "Forgot your password?",
+    "toHomeLink": "Home",
+    "loadMoreBtn": "Load more",
+    "more": "More details",
+    "loading": "Loading"
   }
+}

@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 
@@ -11,26 +12,23 @@ import React, { Component } from 'react';
 
 
 
-export default class ListeningOptions extends Component {
+class ListeningOptions extends Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
   render() {
-    let options;
-    if(this.props.options) {
-      options = this.props.options;
-    }
+    const { options, t } = this.props;
     return (
       <div className="listening-info-block listening-info-block_general">
-        <h2 className="medium-headline">Общая информация</h2>
+        <h2 className="medium-headline">{t('listening.summary')}</h2>
         {options.map((option, index) => {
           if(option.optionValue) {
             return (
               <div key={"option-" + index} className="listening-info-block__item">
                 <div className="listening-info-param listening-info-param_general">
                   <span className="listening-info-param__item">{option.optionName}: </span>
-                  <span className="listening-info-param__item">{option.optionValue} {option.optionName === "Площадь" ? "m²" : ""} </span>
+                  <span className="listening-info-param__item">{option.optionValue}</span>
                 </div>
               </div>
             );
@@ -46,3 +44,6 @@ export default class ListeningOptions extends Component {
 ListeningOptions.propTypes = {
   options: React.PropTypes.array
 };
+
+
+export default translate('common', { wait: true }) (ListeningOptions);

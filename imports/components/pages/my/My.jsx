@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -7,13 +8,13 @@ import { createContainer } from 'meteor/react-meteor-data';
 /* Components */
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
 import EmptyBanner from '../../empty-banner/EmptyBanner.jsx';
+import Loading from '../../loading/Loading.jsx';
 
 /* Some functions */
 import { Listenings } from '../../../api/listenings.js';
 
 /* Semantic UI */
-import { Dimmer, Loader, Message } from 'semantic-ui-react';
-
+import { Message } from 'semantic-ui-react';
 
 class My extends Component {
   constructor(props) {
@@ -23,34 +24,48 @@ class My extends Component {
   componentDidMount() {
     window.scrollTo(0, 0); //scroll to top
   }
-  render() {
-    let loading = this.props.loading;
-    let listenings = this.props.listenings; 
-    let userId = Meteor.userId();
-
-
-    let waitingApprove = [];
-    let disabled = [];
-    let published = [];
-
-    if(loading) {
-      
-      for(let i = 0; i < listenings.length; i++) {
-        // console.log(listenings[i]);
-        let listeningStatusCode = listenings[i].listeningTech.statusCode;
-
-        if(listeningStatusCode === 1) {
-          published.push(listenings[i]);
-        }
-        if(listeningStatusCode === 2) {
-          waitingApprove.push(listenings[i]);
-        }
-        if(listeningStatusCode === 3) {
-          disabled.push(listenings[i]);
-        }
-      }
-
+  sortListeningByStatusCode(listenings) {
+    let sortedListenings = {
+      published: [],
+      waitingApprove: [],
+      disabled: []
     }
+    
+    for(let i = 0; i < listenings.length; i++) {
+      let listeningStatusCode = listenings[i].listeningTech.statusCode;
+
+      if(listeningStatusCode === 1) {
+        sortedListenings.published.push(listenings[i]);
+      }
+      if(listeningStatusCode === 2) {
+        sortedListenings.waitingApprove.push(listenings[i]);
+      }
+      if(listeningStatusCode === 3) {
+        sortedListenings.disabled.push(listenings[i]);
+      }
+    }
+
+    return sortedListenings;
+  }
+  render() {
+    const { t, loading, listenings } = this.props;
+    const userId = Meteor.userId();
+    const sortedListenings = this.sortListeningByStatusCode(listenings);
+
+    const Headline = () => (
+      <div className="headline">
+        <div className="headline__item">
+          <div className="headline-icon">
+            <div className="headline-icon__icon">
+              <svg className="ico-receipt" role="img">
+                <use xlinkHref="#ico-receipt" />
+              </svg>
+            </div>
+            <div className="headline-icon__text">{t('myPage.headline')}</div>
+          </div>
+        </div>
+      </div>
+    );
     
     if(!userId) {
       <Message
@@ -63,65 +78,47 @@ class My extends Component {
       if(listenings.length){
         return (
         <div>
-          <div className="headline">
-            <div className="headline__item">
-              <div className="headline-icon">
-                <div className="headline-icon__icon">
-                  <svg className="ico-receipt" role="img">
-                    <use xlinkHref="#ico-receipt" />
-                  </svg>
-                </div>
-                <div className="headline-icon__text">Мои объявления:</div>
-              </div>
-            </div>
-          </div>
-
-          {waitingApprove.length > 0 ?
+          <Headline />
+          {sortedListenings.waitingApprove.length > 0 ?
           <div className="favoritesList">
             <div className="separator">
-              <div className="separator__text">Ожидают проверки</div>
+              <div className="separator__text">{t('myPage.wait')}</div>
             </div>
-            {waitingApprove.map((listening, index) => {
-              // if(listening.listeningTech.statusCode === 2) {
-                return (
-                  <div key={"favoritesListItem" + index} className="favoritesList__item">
-                    <ListeningPreview listeningData={listening} layout="my"/>
-                  </div>
-                );
-              // }
+            {sortedListenings.waitingApprove.map((listening, index) => {
+              return (
+                <div key={"favoritesListItem" + index} className="favoritesList__item">
+                  <ListeningPreview listeningData={listening} layout="my"/>
+                </div>
+              );
             })}
           </div> : ""}
 
-          {published.length > 0 ?
+          {sortedListenings.published.length > 0 ?
           <div className="favoritesList">
             <div className="separator">
-              <div className="separator__text">Опубликованные</div>
+              <div className="separator__text">{t('myPage.public')}</div>
             </div>
-            {published.map((listening, index) => {
-              // if(listening.listeningTech.statusCode === 1) {
-                return (
-                  <div key={"favoritesListItem" + index} className="favoritesList__item">
-                    <ListeningPreview listeningData={listening} layout="my"/>
-                  </div>
-                );
-              // }
+            {sortedListenings.published.map((listening, index) => {
+              return (
+                <div key={"favoritesListItem" + index} className="favoritesList__item">
+                  <ListeningPreview listeningData={listening} layout="my"/>
+                </div>
+              );
             })}
           </div> : ""}
           
 
-          {disabled.length > 0 ?
+          {sortedListenings.disabled.length > 0 ?
           <div className="favoritesList">
             <div className="separator">
-              <div className="separator__text">Отключенные</div>
+              <div className="separator__text">{t('myPage.disabled')}</div>
             </div>
-            {disabled.map((listening, index) => {
-              // if(listening.listeningTech.statusCode === 3) {
-                return (
-                  <div key={"favoritesListItem" + index} className="favoritesList__item">
-                    <ListeningPreview listeningData={listening} layout="my"/>
-                  </div>
-                );
-              // }
+            {sortedListenings.disabled.map((listening, index) => {
+              return (
+                <div key={"favoritesListItem" + index} className="favoritesList__item">
+                  <ListeningPreview listeningData={listening} layout="my"/>
+                </div>
+              );
             })}
           </div> : ""}
         </div>
@@ -129,25 +126,13 @@ class My extends Component {
       } else {
         return(
           <div>
-          <div className="headline-icon">
-            <div className="headline-icon__icon">
-              <svg className="ico-receipt" role="img">
-                <use xlinkHref="#ico-receipt" />
-              </svg>
-            </div>
-            <div className="headline-icon__text">Мои объявления:</div>
-          </div>
-          <Message
-              header='Пусто!'
-              content='Добавьте объявление кликнув на кнопку "Добавить объявление", это бесплатно'/>
+            <Message header='Пусто!' content='Добавьте объявление кликнув на кнопку "Добавить объявление", это бесплатно'/>
           </div>
         );
       }
     } else {
       return (
-        <Dimmer active inverted>
-          <Loader size='medium'>Загрузка...</Loader>
-        </Dimmer>
+        <Loading />
       );
     }
   }
@@ -162,4 +147,4 @@ export default createContainer(({ params }) => {
   const listenings = Listenings.find({"listeningTech.ownerId" : ownerId} ).fetch();
 
   return {loading, listenings}
-}, My);
+}, translate('common', { wait: true })(My));

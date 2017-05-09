@@ -12,11 +12,8 @@ import { Listenings } from '../../api/listenings.js';
 /* Semantic UI */
 /* Material UI */
 /* Other */
-import {_} from 'lodash';
+import { _ } from 'lodash';
 import classNames from 'classnames';
-
-
-
 
 class BigSlider extends TrackerReact(Component) {
   constructor(props) {
@@ -30,9 +27,8 @@ class BigSlider extends TrackerReact(Component) {
 
   listenings() {
     return Listenings.find(
-        {"listeningTech.bonuses.bonus3": true},
-        {sort: {"listeningTech.createdAt": -1}}
-      ).fetch();
+      {"listeningTech.bonuses.bonus3": true}, 
+      {sort: {"listeningTech.createdAt": -1}}).fetch();
   }
 
   componentWillUnmount() {
@@ -41,11 +37,6 @@ class BigSlider extends TrackerReact(Component) {
 
   render() {
     const { t } = this.props;
-    // const Slider = (props) => {
-    //   return(
-
-    //   );
-    // }
     const BigSliderHeadline = (props) => {
       return (
         <div className="headline">
@@ -105,10 +96,10 @@ class BigSlider extends TrackerReact(Component) {
       return (
         <div>
           <BigSliderHeadline />
-      </div>);
+        </div>
+      );
     }
   }
 }
-
 
 export default translate('common', { wait: true })(BigSlider)

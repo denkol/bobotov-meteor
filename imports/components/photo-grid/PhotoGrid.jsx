@@ -4,7 +4,9 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
 import FilterLabels from '../filter-labels/FilterLabels.jsx';
 import { Button, Message, Loader, Dimmer } from 'semantic-ui-react';
-import LoaderLayout from '../loader-layout/LoaderLayout.jsx';
+
+import Loading from '../loading/Loading.jsx';
+
 import BtnLoadMore from '../btn-loadmore/BtnLoadMore.jsx';
 
 const limit = 18;
@@ -12,7 +14,6 @@ const limit = 18;
 export default class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-
     this.state = {
       limit: limit,
       subscription: {
@@ -77,21 +78,11 @@ export default class PhotoGrid extends TrackerReact(Component) {
           </div>);
     } else {
       return(
-        <div>
-          <Dimmer active inverted>
-            <Loader>Загрузка...</Loader>
-          </Dimmer>
-        </div>
+        /* If loading */
+        <Loading />
       );
     }
   }
 }
 
 PhotoGrid.propTypes = {};
-
-// export default createContainer(({ params }) => {
-//   const listeningsSubscription = Meteor.subscribe('listenings.public', {}, {limit: Session.get('pageLimit')});
-//   const loading = listeningsSubscription.ready();
-//   const listenings = Listenings.find({}, {sort:{"listeningTech.createdAt": -1}}).fetch();
-//   return {loading, listenings}
-// }, PhotoGrid);

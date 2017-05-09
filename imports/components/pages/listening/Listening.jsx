@@ -1,5 +1,6 @@
 /* React libs */
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -13,6 +14,7 @@ import ListeningOptions from './ListeningOptions.jsx';
 import ListeningComfort from './ListeningComfort.jsx';
 import ListeningContacts from './ListeningContacts.jsx';
 import ListeningMap from './ListeningMap.jsx';
+import Loading from '../../loading/Loading.jsx';
 
 /* Tranlate & Data */
 import { Listenings } from '../../../api/listenings.js';
@@ -31,10 +33,9 @@ class Listening extends Component {
     this.state = {}
   }
   componentDidMount() {
-    // window.scrollTo(0, 0); //scroll to top
     this.saveToHistory({id: this.props.listeningId}); //save to history
   }
-  /* Save to history */
+
   saveToHistory(args) {
     Meteor.call("listeningSaveToHistory", args);
   }
@@ -46,7 +47,7 @@ class Listening extends Component {
   }
 
   render() {
-    const loading = this.props.loading;
+    const { loading, t } = this.props;
     const data = {
       loading : this.props.loading,
       listening : this.props.listening,
@@ -85,20 +86,19 @@ class Listening extends Component {
         const listeningContacts = data.listening.listeningContacts;
         const listeningTypeDeal = data.listening.listeningInfo.typeDeal;
         const listeningTypeProperty = data.listening.listeningInfo.typeProperty;
-
         const listeningOptions = [
-          { optionName: "Страна", optionValue: Translate(Countries, listeningCountry)},
-          { optionName: "Город", optionValue: Translate(Cities, listeningCity)},
-          { optionName: "Тип недвижимости", optionValue: Translate(TypeProperty, listeningTypeProperty)},
-          { optionName: "Тип предложения", optionValue: Translate(TypeDeal, listeningTypeDeal) },
-          { optionName: "Площадь", optionValue: listeningRatio },
-          { optionName: "Этаж", optionValue: listeningFloor },
-          { optionName: "Спален", optionValue: listeningBedrooms },
-          { optionName: "Ванных комнат", optionValue: listeningBathrooms },
+          { optionName: t('createListing.country.label'), optionValue: t('countries.' + listeningCountry) },
+          { optionName: t('createListing.city.label'), optionValue: t('cities.' + listeningCity) },
+          { optionName: t('createListing.typeProperty.label'), optionValue: t('typeProperty.' + listeningTypeProperty) },
+          { optionName: t('createListing.typeDeal.label'), optionValue: t('typeDeal.' + listeningTypeDeal)},
+          { optionName: t('createListing.square.label'), optionValue: listeningRatio + " m²" },
+          { optionName: t('createListing.floor.label'), optionValue: listeningFloor },
+          { optionName: t('createListing.bedrooms.label'), optionValue: listeningBedrooms },
+          { optionName: t('createListing.bathrooms.label'), optionValue: listeningBathrooms },
         ];
 
-
         if(listeningPublic == false && data.owner._id !== Meteor.userId()) {
+          /* If listening hidden by autor */
           return (
             <Message warning>
               <Message.Header>Автор выключил это объявление</Message.Header>
@@ -128,14 +128,14 @@ class Listening extends Component {
                       </div>
                       <div className="listening-subinfo-text">{listeningLastChange}</div>
                     </div>
-                    {/*<div className="listening-subinfo__item">
+                    <div className="listening-subinfo__item">
                       <div className="listening-subinfo-icon">
                         <svg className="ico-eye" role="img">
                           <use xlinkHref="#ico-eye" />
                         </svg>
                       </div>
                       <div className="listening-subinfo-text">{listeningViews}</div>
-                    </div>*/}
+                    </div>
                   </div>
                 </div>
                 <div className="listening-info-header__item listening-info-header__item_price">
@@ -148,7 +148,7 @@ class Listening extends Component {
                         </svg>
                       </div>
                     </div>
-                    <div className="price__desc">{Translate(PaymentPeriod, listeningPeriod)}</div>
+                    <div className="price__desc">{t('paymentPeriod.' + listeningPeriod)}</div>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ class Listening extends Component {
               <ListeningOptions options={listeningOptions} />
               <ListeningComfort comforts={listeningComfortList} />
               {listeningDesc ? <div className="listening-info-block">
-                <h2 className="medium-headline">Описание автора</h2>
+                <h2 className="medium-headline">{t('listening.desc')}</h2>
                 <div className="listening-info-block__item">
                   <p className="large-parag">{listeningDesc}</p>
                 </div>
@@ -204,7 +204,8 @@ class Listening extends Component {
         );
       } else {
         return (
-          <Message warning>
+          <Message
+            warning>
             <Message.Header>Ошибка!</Message.Header>
             <p>Что-то пошло не так...</p>
           </Message>
@@ -212,11 +213,7 @@ class Listening extends Component {
       }
     } else {
       return (
-        <div>
-          <Dimmer inverted active>
-            <Loader indeterminate>Загрузка...</Loader>
-          </Dimmer>
-         </div>
+        <Loading />
       );
     }
   }
@@ -249,7 +246,7 @@ export default createContainer(({ listeningId }) => {
 
   return { listeningId, loading, owner, listening, isFavorite };
 
-}, Listening);
+}, translate('common', { wait: true }) (Listening) );
 
 Listening.propTypes = {
   loading: React.PropTypes.bool,

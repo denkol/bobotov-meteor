@@ -93,7 +93,8 @@ export const ContactsList = [
 export const UserStatuses = [
   {key: "ag", value: 'agency', text: "Агенство недвижимости"},
   {key: "us", value: 'user', text: "Пользователь"},
-  {key: "re", value: 'realtor', text: "Риэлтор"}
+  {key: "re", value: 'realtor', text: "Риэлтор"},
+  {key: "ow", value: 'owner', text: "Собственник"}
 ];
 /* User statuses */
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
 function animateLoveMenu() {
   $('#love-menu-item').addClass('favorites-menu-animation');
@@ -7,7 +8,7 @@ function animateLoveMenu() {
   }, 500);
 }
 
-export default class FavoriteBtn extends Component {
+class FavoriteBtn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,14 +38,19 @@ export default class FavoriteBtn extends Component {
     }
   }
   render() {
+    const { t } = this.props;
+    const favoritesStatus = this.state.isFavorite;
+    const favoritesText = favoritesStatus ? t('listening.favoritesBtn.remove') : t('listening.favoritesBtn.add');
+    const user = Meteor.userId();
+
     return (
-      <div className={Meteor.userId() ? "favorite-btn" : "favorite-btn disabled"} onClick={this.handleFavoriteBtn}>
-        <div className={this.state.isFavorite ? "favorite-btn__icon favorite-btn__icon--active" : "favorite-btn__icon"}>
+      <div className={user ? "favorite-btn" : "favorite-btn disabled"} onClick={this.handleFavoriteBtn}>
+        <div className={favoritesStatus ? "favorite-btn__icon favorite-btn__icon--active" : "favorite-btn__icon"}>
           <svg className="ico-love" role="img">
             <use xlinkHref="#ico-love" />
           </svg>
         </div>
-        <div className="favorite-btn__text">{this.state.isFavorite ? "Удалить из избранного" : "Добавить в избранное"}</div>
+        <div className="favorite-btn__text">{favoritesText}</div>
       </div>
     );
   }
@@ -54,3 +60,5 @@ FavoriteBtn.propTypes = {
   isFavorite: React.PropTypes.bool,
   listeningId: React.PropTypes.string
 };
+
+export default translate('common', { wait: true }) (FavoriteBtn);

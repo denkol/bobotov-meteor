@@ -1,9 +1,11 @@
 /* React libs */
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
+import { Random } from 'meteor/random';
 
 /* Components */
 import PanelPhoto from '../../panel-photo/PanelPhoto.jsx';
@@ -14,6 +16,7 @@ import { Translate } from '../../../functions/functions.js';
 
 /* Semantic UI */
 import { Dimmer, Loader, Form, Message, Input, Dropdown, Select, Button } from 'semantic-ui-react';
+
 /* Other */
 import Snackbar from 'material-ui/Snackbar';
 
@@ -35,17 +38,19 @@ class Panel extends Component {
     this.snakcbarClose = this.snakcbarClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   componentDidMount() {
     window.scrollTo(0, 0); //scroll to top
   }
+
   componentWillUnmount() {
     Session.clear()
   }
-  
+
   Check(validation) {
     this.setState({validation: Object.assign(this.state.validation, validation)});
-  } 
-  
+  }
+
   validationError() {
     const { username, message } = this.state.validation;
     if (username) {
@@ -53,7 +58,16 @@ class Panel extends Component {
     } else if (message) {
       return message;
     };
-  } 
+  }
+
+  userStatuses() {
+    const { t } = this.props
+    return UserStatuses.map(({ value }) => ({
+      key: Random.id(4),
+      value: value,
+      text: t(`userStatuses.${value}`)
+    }))
+  }
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
@@ -63,13 +77,21 @@ class Panel extends Component {
       message: ''
     };
     this.setState({ validation });
+    
 
+    setTimeout
     const userName = formData.userName.trim();
     const userDesc = formData.userDesc;
     const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
     
     if (userName.length < 3) {
-      validation.username = "Имя пользователя слишком короткое!";
+      this.setState({
+        snackbar: {
+          open: true,
+          message: "Имя пользователя слишком короткое!"
+        }
+      });
+      validation.username = true;
       return this.Check(validation);
     }
     
@@ -77,25 +99,33 @@ class Panel extends Component {
 
     Meteor.call('userUpdate', data, (err, res) => {
       const { validation } = this.state;
+      this.setState({
+        snackbar: {
+          open: true,
+          message: "Данные успешно сохранены!"
+        }
+      });
+
       if(err) {
         validation.message = err.message;
         return this.Check(validation);
       }
     });
   }
-  snakcbarClose() {
+  snackbarClose() {
     this.setState({
-      snakcbar: {
+      snackbar: {
         open: false,
         message: ""
       }
     })
   }
   render() {
+    const { t, currentUser } = this.props;
+    const userId = Meteor.userId();
     const { username, message } = this.state.validation;
-    const currentUser = this.props.currentUser;
     
-    if(!Meteor.userId()) {
+    if(!userId) {
       return (
         <Message info>
           <Message.Header>У вас еще нет профиля на Bobotov?</Message.Header>
@@ -104,19 +134,10 @@ class Panel extends Component {
       );
     }
 
-    if(this.props.currentUser) {
+    if(currentUser) {
       const userPhoto = currentUser.profile.userPhoto ? currentUser.profile.userPhoto : '/img/unknown.jpg';
       const userName = currentUser.profile.userName;
       const userDesc = currentUser.profile.userDesc;
-
-      const SnackbarMaterial = () => (
-        <Snackbar
-          open={this.state.snackbar.open}
-          message={this.state.snackbar.message}
-          autoHideDuration={4000}
-          onRequestClose={this.snakcbarClose}
-        />
-      );
 
       const BalanceLayout = () => (
         <div className="panel-header-balance">
@@ -150,7 +171,12 @@ class Panel extends Component {
       
       return (
         <div>
-          <SnackbarMaterial />
+          <Snackbar
+            open={this.state.snackbar.open}
+            message={this.state.snackbar.message}
+            autoHideDuration={4000}
+            onRequestClose={this.snackbarClose}
+          />
           <div className="panel-wrapper">
             <div className="panel-header">
               {/*<BalanceLayout />*/}
@@ -161,12 +187,6 @@ class Panel extends Component {
                 {/*<PanelBodyMenu />*/}
                 <Form onSubmit={this.handleSubmit}>
                   <div className="panel-body-menucontent">
-                    <div className="login-item">
-                      {this.validationError() ? 
-                      <Message size='tiny' negative>
-                        <Message.Header>{this.validationError()}</Message.Header>
-                      </Message> : null}
-                    </div>
                     <div className="panel-headline">
                       <div className="panel-headline__headline">
                       </div>
@@ -174,17 +194,17 @@ class Panel extends Component {
                     </div>
                     <div className="panel-inputs">
                       <div className="panel-inputs__item">
-                        <Form.Input label="Ваше имя" name="userName" placeholder='Введите ваше имя' defaultValue={userName} error={Boolean(username)} required />
+                        <Form.Input label={t('panel.name.label')} name="userName" placeholder={t('panel.name.placeholder')} defaultValue={userName} error={Boolean(username)} required />
                       </div>
                       <div className="panel-inputs__item">
-                        <Form.Select label='Ваш статус' name='userDesc' options={UserStatuses} defaultValue={userDesc} required />
+                        <Form.Select label={t('panel.status.label')} name='userDesc' options={this.userStatuses()} defaultValue={userDesc} required />
                       </div>
                     </div>
                     <div className="panel-controls">
                       <div className="panel-controls__item">
-                        <Button type="submit" primary>Сохранить</Button>
+                        <Button type="submit" primary>{t('panel.saveBtn')}</Button>
                       </div>
-                      <div className="panel-controls__item">Чтобы применить изменения нажмите эту кнопку</div>
+                      <div className="panel-controls__item">{t('panel.helpMessage')}</div>
                     </div>
                   </div>
                 </Form>
@@ -212,4 +232,4 @@ Panel.propTypes = {};
 export default createContainer(({ params }) => {
   const currentUser = Meteor.user();
   return {currentUser};
-}, Panel);
+}, translate('common', { wait: true })(Panel));
