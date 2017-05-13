@@ -1,6 +1,7 @@
 /* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -101,18 +102,21 @@ class Listening extends Component {
           /* If listening hidden by autor */
           return (
             <Message warning>
-              <Message.Header>Автор выключил это объявление</Message.Header>
-              <p>Оно будет доступно по этому адресу когда автор его снова включит</p>
+              <Message.Header>{t('messages:listeningPrivate.headline')}</Message.Header>
+              <p>{t('messages:listeningPrivate.desc')}</p>
             </Message>
           );
         }
         return (
           <div>
+            <Helmet>
+              <title>{listeningHeadline+" "+t('head:titles.app')}</title>
+            </Helmet>
             {!listeningPublic ?
-              <Message warning>
-                <Message.Header>Это объявление выключено</Message.Header>
-                <p>Только вы можете просматривать это объявление</p>
-              </Message>
+              <Message info>
+              <Message.Header>{t('messages:ownerListeningPrivate.headline')}</Message.Header>
+              <p>{t('messages:ownerListeningPrivate.desc')}</p>
+            </Message>
             : null}
             <ListeningPhotos photos={listeningsPhotos}/>
             <div className="listening-info">
@@ -204,10 +208,9 @@ class Listening extends Component {
         );
       } else {
         return (
-          <Message
-            warning>
-            <Message.Header>Ошибка!</Message.Header>
-            <p>Что-то пошло не так...</p>
+          <Message warning>
+            <Message.Header>{t('messages:justError.headline')}</Message.Header>
+              <p>{t('messages:justError.desc')}</p>
           </Message>
         );
       }

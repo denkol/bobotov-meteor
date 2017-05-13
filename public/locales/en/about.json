@@ -1,0 +1,19 @@
+{
+  "about": {
+    "headline": "About",
+    "desc": "Simple and fast site for real estate search in Montenegro"
+  },
+  "contacts": {
+    "headline": "Contacts",
+    "email": "E-mail",
+    "phone": "Phone"
+  },
+  "support": {
+    "headline": "Support",
+    "desc": "If you have any difficulties using our service, write to us"
+  },
+  "advert": {
+    "headline": "Advert",
+    "desc": "For advertising, we are waiting for your letters at"
+  }
+}

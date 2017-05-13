@@ -11,7 +11,6 @@ import Profile from '../profile/Profile.jsx';
 import BtnAdd from '../btn-add/BtnAdd.jsx';
 
 /* Some functions */
-import i18n from '/imports/config/i18n'
 
 /* Semantic UI */
 import { Button, Header, Icon, Modal, Dropdown } from 'semantic-ui-react';
@@ -184,7 +183,5 @@ HeaderLayout.propTypes = {};
 
 export default createContainer(({ params }) => {
   const user = Meteor.user();
-  return {
-    user
-  }
+  return { user }
 }, translate('nav', { wait: true })(HeaderLayout));

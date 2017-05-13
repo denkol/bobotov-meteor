@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 /* Meteor libs */
 
 /* Components */
@@ -49,9 +50,28 @@ class Favorites extends TrackerReact(Component) {
   render() {
     const { t } = this.props;
     const user = Meteor.user();
-    const favouritesList = user.profile.favoritesList;
+    const favouritesList = user ? user.profile.favoritesList : [];
     const query = { _id: { $in: favouritesList } };
     const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    
+    const MessageEmpty = () => (
+      <Message
+        header={t('messages:listeningsEmpty.headline')} 
+        content={t('messages:listeningsEmpty.desc')} />
+    );
+
+    const MessageNeedLogin = () => (
+      <Message info
+        header={t('messages:needLogin.headline')} 
+        content={t('messages:needLogin.desc')} />
+    );
+
+    const Head = () => (
+      <Helmet>
+        <title>{t('head:titles.favorites')+" "+t('head:titles.app')}</title>
+      </Helmet>
+    );
+
     const Headline = () => (
       <div className="headline">
         <div className="headline__item">
@@ -69,11 +89,10 @@ class Favorites extends TrackerReact(Component) {
 
     if(!user) {
       return (
-        <Message 
-          warning
-          header='Войдите или зарегистрируйтесь'
-          content='Избранные объявления доступны только авторизированным пользователям'
-        />
+        <div>
+          <Head/>
+          <MessageNeedLogin />
+        </div>
       );
     }
     
@@ -82,6 +101,7 @@ class Favorites extends TrackerReact(Component) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (
           <div>
+            <Head />
             <Headline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
@@ -102,8 +122,9 @@ class Favorites extends TrackerReact(Component) {
       } else {
         return(
           <div>
+            <Head />
             <Headline />
-            <Message header='У вас нет избранных объявлений' content='Добавьте какое-нибудь объявление в избранное'/>
+            <MessageEmpty />
           </div>
         );
       }

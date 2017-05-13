@@ -1,6 +1,7 @@
 /* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -51,6 +52,12 @@ class My extends Component {
     const { t, loading, listenings } = this.props;
     const userId = Meteor.userId();
     const sortedListenings = this.sortListeningByStatusCode(listenings);
+    
+    const Head = () => (
+      <Helmet>
+        <title>{t('head:titles.my')+" "+t('head:titles.app')}</title>
+      </Helmet>
+    );
 
     const Headline = () => (
       <div className="headline">
@@ -66,18 +73,33 @@ class My extends Component {
         </div>
       </div>
     );
-    
-    if(!userId) {
+
+    const MessageEmpty = () => (
       <Message
-        warning
-        header='Войдите или зарегистрируйтесь'
-        content='Список "Мои объявления" доступен только авторизированным пользователям'
-      />
+        header={t('messages:listeningsEmpty.headline')} 
+        content={t('messages:listeningsEmpty.desc')} />
+    );
+
+    const MessageNeedLogin = () => (
+      <Message info
+        header={t('messages:needLogin.headline')} 
+        content={t('messages:needLogin.desc')} />
+    );
+
+    if(!userId) {
+      return (
+        <div>
+          <Head/>
+          <MessageNeedLogin />
+        </div>
+      );
     }
+
     if(loading) {
       if(listenings.length){
         return (
         <div>
+          <Head />
           <Headline />
           {sortedListenings.waitingApprove.length > 0 ?
           <div className="favoritesList">
@@ -126,7 +148,9 @@ class My extends Component {
       } else {
         return(
           <div>
-            <Message header='Пусто!' content='Добавьте объявление кликнув на кнопку "Добавить объявление", это бесплатно'/>
+            <Head />
+            <Headline />
+            <MessageEmpty />
           </div>
         );
       }

@@ -1,0 +1,17 @@
+{
+  "titles": {
+    "app": "| Bobotov - Search real estate in Montenegro",
+    "index": "Home",
+    "favorites": "Favorites",
+    "history": "History",
+    "my": "My advs",
+    "create": "New ad",
+    "panel": "My profile",
+    "about": "About",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "recovery": "Recovery password",
+    "reset": "Reset password",
+    "edit": "Edit ad"
+  }
+}

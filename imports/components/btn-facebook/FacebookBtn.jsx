@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
 
-export default class FacebookBtn extends Component {
+class FacebookBtn extends Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -22,11 +23,15 @@ export default class FacebookBtn extends Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <div onClick={this.signFacebook} className="simple-btn_fb">
         <div className="simple-btn_fb__icon"/>
-        <span>Войти с помощью Facebook</span>
+        <span>{t('facebookBtn.text')}</span>
       </div>
     );
   }
 }
+
+export default translate('common', { wait: true })(FacebookBtn)

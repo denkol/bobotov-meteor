@@ -1,0 +1,25 @@
+{
+  "needLogin": {
+    "headline": "Log in or register",
+    "desc": "This page is only available to authorized users."
+  },
+  "noListenings": {
+    "headline": "No ads found",
+    "desc": "Try to moderate the search criteria"
+  },
+  "dinamiclyErrors": {
+    "formError": "You have errors while completing the form, correct errors and try again",
+    "invalidPhone": "Enter the correct phone number",
+    "invalidEmail": "Please enter a valid postal address",
+    "emptyPriceField": "Enter price",
+    "emptyCountryField": "Enter country",
+    "emptyHeadlineField": "Enter a title",
+    "emptyDescField": "Enter a description",
+    "emptyPaymentField": "Enter payment period",
+    "emptyCityField": "Enter the locality",
+    "emptyDealField": "Specify the offer type",
+    "emptyTypeField": "Enter the type of real estate",
+    "emptyRatioField": "Enter area!",
+    "emptyPhotoField": "Upload the main photo"
+  }
+}

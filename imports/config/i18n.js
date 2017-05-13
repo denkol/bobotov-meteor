@@ -11,7 +11,7 @@ i18n
     fallbackLng: 'ru',
 
     // have a common namespace used around the full app
-    ns: ['common'],
+    ns: ['common', 'messages', 'head'],
     defaultNS: 'common',
 
     debug: true,

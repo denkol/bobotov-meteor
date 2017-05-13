@@ -7,7 +7,7 @@
       max-width: 800px;
       line-height: 42px;
       @include mq('tablet-small', max) {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 20px;
       }
     }

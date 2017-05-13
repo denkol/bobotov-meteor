@@ -1,6 +1,7 @@
 /* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -102,6 +103,9 @@ class SignUp extends Component {
 
     return (
       <div className="signup">
+        <Helmet>
+          <title>{t('head:titles.signUp')+" "+t('head:titles.app')}</title>
+        </Helmet>
         <div className="card card_login">
           <div className="login-form">
               <div className="login-item"> 

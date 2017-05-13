@@ -897,10 +897,34 @@
 		"opt": 0,
 		"q": 100
 		},
+	"\/locales\/en\/about.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/about-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/en\/common.json": {
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "\/locales\/en\/common-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/en\/head.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/head-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/en\/messages.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/messages-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
@@ -913,6 +937,14 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/locales\/ru\/about.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/about-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/ru\/common.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -921,10 +953,26 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/locales\/ru\/messages.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/messages-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/ru\/nav.json": {
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "\/locales\/ru\/nav-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/ru\/titles.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/titles-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1

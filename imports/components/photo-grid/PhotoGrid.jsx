@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { translate } from 'react-i18next';
+
 import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ListeningPreview from '../listening-preview/ListeningPreview.jsx';
@@ -11,7 +13,7 @@ import BtnLoadMore from '../btn-loadmore/BtnLoadMore.jsx';
 
 const limit = 18;
 
-export default class PhotoGrid extends TrackerReact(Component) {
+class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +39,7 @@ export default class PhotoGrid extends TrackerReact(Component) {
   }
 
   render() {
-
+    const { t } = this.props;
     const query = Session.get('filterQuery');
     // const query = window.location.pathname;
     const listenings = Listenings.find(query, {limit: this.state.limit, sort: {"listeningTech.createdAt": -1} }).fetch();
@@ -72,8 +74,8 @@ export default class PhotoGrid extends TrackerReact(Component) {
             </div> :
             <div className="main-listening-stream">
               <Message
-                header='Объявлений не найдено'
-                content='Попробуйте смягчить критерии поиска'/>
+                header={t('messages:noListenings.headline')}
+                content={t('messages:noListenings.desc')}/>
             </div>}
           </div>);
     } else {
@@ -86,3 +88,5 @@ export default class PhotoGrid extends TrackerReact(Component) {
 }
 
 PhotoGrid.propTypes = {};
+
+export default translate('common', { wait: true })(PhotoGrid)

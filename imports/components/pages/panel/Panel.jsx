@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -35,7 +36,7 @@ class Panel extends Component {
         message: ""
       }
     }
-    this.snakcbarClose = this.snakcbarClose.bind(this);
+    this.snackbarClose = this.snackbarClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -71,38 +72,35 @@ class Panel extends Component {
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
-
     const validation = {
       username: '',
       message: ''
     };
-    this.setState({ validation });
-    
-
-    setTimeout
+    const { t } = this.props;
+    const data = { userName, userDesc, userPhoto };
     const userName = formData.userName.trim();
     const userDesc = formData.userDesc;
     const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
     
+    this.setState({ validation });
+
     if (userName.length < 3) {
       this.setState({
         snackbar: {
           open: true,
-          message: "Имя пользователя слишком короткое!"
+          message: t('messages:dinamiclyErrors.userNameLength')
         }
       });
       validation.username = true;
       return this.Check(validation);
     }
-    
-    const data = { userName, userDesc, userPhoto };
 
     Meteor.call('userUpdate', data, (err, res) => {
       const { validation } = this.state;
       this.setState({
         snackbar: {
           open: true,
-          message: "Данные успешно сохранены!"
+          message: t('messages:dinamiclyErrors.dataSaved')
         }
       });
 
@@ -127,10 +125,9 @@ class Panel extends Component {
     
     if(!userId) {
       return (
-        <Message info>
-          <Message.Header>У вас еще нет профиля на Bobotov?</Message.Header>
-          <p>Создайте его нажав на кнопку в верхней части экрана</p>
-        </Message>
+        <Message info
+          header={t('messages:needLogin.headline')} 
+          content={t('messages:needLogin.desc')} />
       );
     }
 
@@ -138,7 +135,6 @@ class Panel extends Component {
       const userPhoto = currentUser.profile.userPhoto ? currentUser.profile.userPhoto : '/img/unknown.jpg';
       const userName = currentUser.profile.userName;
       const userDesc = currentUser.profile.userDesc;
-
       const BalanceLayout = () => (
         <div className="panel-header-balance">
           <div className="panel-header-balance__top">
@@ -171,6 +167,9 @@ class Panel extends Component {
       
       return (
         <div>
+          <Helmet>
+            <title>{t('head:titles.panel')+" "+t('head:titles.app')}</title>
+          </Helmet>
           <Snackbar
             open={this.state.snackbar.open}
             message={this.state.snackbar.message}

@@ -1,6 +1,8 @@
 /* React libs */
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
+
 
 /* Meteor libs */
 import { FlowRouter } from 'meteor/kadira:flow-router';
@@ -69,6 +71,9 @@ class Recovery extends Component {
 
     return (
       <div className="signin">
+        <Helmet>
+          <title>{t('head:titles.recovery')+" "+t('head:titles.app')}</title>
+        </Helmet>
         <div className="card card_login">
           <div className="login-form">
             <div className="login-item">

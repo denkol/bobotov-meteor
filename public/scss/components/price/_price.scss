@@ -16,7 +16,7 @@
     color: white;
     text-align: right;
     @include mq('tablet-small', max) {
-      font-size: 13px;
+      font-size: 11px;
     }
   }
   @include mq('phone', max) {

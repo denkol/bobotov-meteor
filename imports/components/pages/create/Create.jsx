@@ -1,6 +1,7 @@
 /* React libs */
 import React, { Component } from 'react'
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { Random } from 'meteor/random';
@@ -57,9 +58,6 @@ class Create extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
-    this.handleMapOpen = this.handleMapOpen.bind(this);
-    this.handleMapClose = this.handleMapClose.bind(this);
-    this.handleMapSubmit = this.handleMapSubmit.bind(this);
   }
   componentWillUnmount() {
     Session.clear()
@@ -130,6 +128,8 @@ class Create extends Component {
 
   handleSubmit(e, { formData }) { //console.log(formData);
     e.preventDefault();
+    const { t } = this.props;
+
     const validation = {
       message: '',
       phone: '',
@@ -148,7 +148,7 @@ class Create extends Component {
 
     const self = this;
 
-    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+    const message = t('messages:dinamiclyErrors.formError');
 
     function getContacts() {
       const contacts = [];
@@ -160,13 +160,13 @@ class Create extends Component {
         //console.log(contactKey, contactValue);
         if(contactKey === "phone" && !isValidPhone(contactValue)) {
           validation.message = message;
-          validation.phone = "Введите корректный телефонный номер!";
+          validation.phone = t('messages:dinamiclyErrors.invalidPhone');
           self.setState({ validation });
         }
 
         if(contactKey === "email" && !isValidEmail(contactValue)) {
           validation.message = message;
-          validation.email = "Введите корректный почтовый адрес!";
+          validation.email = t('messages:dinamiclyErrors.invalidEmail');
           self.setState({ validation });
         }
 
@@ -199,18 +199,12 @@ class Create extends Component {
     const headline = formData.headline;
     const desc = formData.description;
 
-    const photos = {
+    let photos = {
       main: Session.get('0photo'),
       other: getOtherPhotos()
     }
-
-    const options = [
-      { optionName: "Страна", optionValue: "Черногория" },
-      { optionName: "Город", optionValue: "Будва" },
-      { optionName: "Площадь", optionValue: "32" },
-      { optionName: "ratio", optionValue: "32" },
-      { optionName: "ratio", optionValue: "32" }
-    ];
+    
+    let options = [];
 
     const contacts = getContacts();
     self.setState({ contacts });
@@ -242,44 +236,47 @@ class Create extends Component {
 
     if(!price) {
       validation.message = message;
-      validation.price = "Введите цену!";
+      validation.price = t('messages:dinamiclyErrors.emptyPriceField');
       self.setState({ validation });
     } if(!country) {
       validation.message = message;
-      validation.country = "Укажите страну!";
+      validation.country = t('messages:dinamiclyErrors.emptyCountryField');
       self.setState({ validation });
     } if(!headline) {
       validation.message = message;
-      validation.headline = "Введите заголовок!";
+      validation.headline = t('messages:dinamiclyErrors.emptyHeadlineField');
       self.setState({ validation });
     } if(!desc) {
       validation.message = message;
-      validation.desc = "Введите описание!";
+      validation.desc = t('messages:dinamiclyErrors.emptyDescField');
       self.setState({ validation });
     } if(!paymentPeriod) {
       validation.message = message;
-      validation.paymentPeriod = "Укажите период оплаты!";
+      validation.paymentPeriod = t('messages:dinamiclyErrors.emptyPaymentField');
       self.setState({ validation });
     } if(!city) {
       validation.message = message;
-      validation.city = "Укажите населенный пункт!";
+      validation.city = t('messages:dinamiclyErrors.emptyCityField');
       self.setState({ validation });
     } if(!typeDeal) {
       validation.message = message;
-      validation.typeDeal = "Укажите тип предложения!";
+      validation.typeDeal = t('messages:dinamiclyErrors.emptyDealField');
       self.setState({ validation });
     } if(!typeProperty) {
       validation.message = message;
-      validation.typeProperty = "Укажите тип недвижимости!";
+      validation.typeProperty = t('messages:dinamiclyErrors.emptyTypeField');
       self.setState({ validation });
     } if(!ratio) {
       validation.message = message;
-      validation.ratio = "Укажите площадь!";
+      validation.ratio =  t('messages:dinamiclyErrors.emptyRatioField');
       self.setState({ validation });
-    } if(!Session.get('0photo')) {
-      alert('Загрузите главное фото')
+    } if(!photos.main) {
+      validation.message = message;
+      validation.ratio =  t('messages:dinamiclyErrors.emptyPhotoField');
+      self.setState({ validation });
     }
-    console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
+
+    // console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
     
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio) return;
     Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
@@ -308,19 +305,6 @@ class Create extends Component {
     }
   }
 
-  handleMapOpen(event) {
-    event.preventDefault();
-    this.setState({mapModal: {open: true} });
-  }
-
-  handleMapClose() {
-    this.setState({mapModal: {open: false} });
-  }
-
-  handleMapSubmit() {
-    this.setState({mapModal: {open: false, submitted: true} });
-  }
-
   render() {
     const { t } = this.props;
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
@@ -345,8 +329,10 @@ class Create extends Component {
     };
     if(userId) {
       return (
-        <div>
-          <MapModal />
+        <div className="createWrapper">
+          <Helmet>
+            <title>{t('head:titles.create')+" "+t('head:titles.app')}</title>
+          </Helmet>
           <div className="headline">
             <div className="headline__item">
               <div className="headline-icon">
@@ -604,8 +590,8 @@ class Create extends Component {
       return(
         <Message
           warning
-          header='Войдите или зарегистрируйтесь'
-          content='Добавление объявления доступно только авторизированным пользователям'
+          header={t('messages:needLogin.headline')}
+          content={t('messages:needLogin.desc')}
         />
       );
     }

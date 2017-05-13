@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { translate } from 'react-i18next';
+import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 
@@ -40,9 +41,6 @@ class History extends TrackerReact(Component) {
     window.scrollTo(0, 0); //scroll to top
   }
 
-
-  
-
   removeHistory(event) {
     
     event.preventDefault();
@@ -65,6 +63,24 @@ class History extends TrackerReact(Component) {
     const historyList = user ? user.profile.historyList : [];
     const query = { _id: { $in: historyList } };
     const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
+    
+    const Head = () => (
+      <Helmet>
+        <title>{t('head:titles.history')+" "+t('head:titles.app')}</title>
+      </Helmet>
+    );
+
+    const MessageEmpty = () => (
+      <Message
+        header={t('messages:listeningsEmpty.headline')} 
+        content={t('messages:listeningsEmpty.desc')} />
+    );
+
+    const MessageNeedLogin = () => (
+      <Message info
+        header={t('messages:needLogin.headline')} 
+        content={t('messages:needLogin.desc')} />
+    );
 
     const HistoryHeadline = () => {
       return (
@@ -88,11 +104,10 @@ class History extends TrackerReact(Component) {
 
     if(!user) {
       return (
-        <Message
-          warning
-          header='Войдите или зарегистрируйтесь'
-          content='История просмотров доступна только авторизированным пользователям'
-        />
+        <div>
+          <Head/>
+          <MessageNeedLogin />
+        </div>
       );
     };
     
@@ -100,7 +115,8 @@ class History extends TrackerReact(Component) {
       if(listenings.length) {
         const listeningsTotal = Listenings.find(query).count() || 0;
         return (
-          <div>
+          <div className="historyPage">
+            <Head />
             <HistoryHeadline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
@@ -121,10 +137,9 @@ class History extends TrackerReact(Component) {
       } else {
         return (
           <div>
+            <Head />
             <HistoryHeadline />
-            <Message
-              header='История ваших просмортров пуста'
-              content='Объявления которые вы посмотрели'/>
+            <MessageEmpty/>
           </div>
         );
       }

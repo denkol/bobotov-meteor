@@ -1,5 +1,7 @@
 /* React libs */
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
+import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -13,24 +15,28 @@ import BtnAdd from '../../btn-add/BtnAdd.jsx';
 /* Semantic UI */
 import { Message } from 'semantic-ui-react';
 
-export default class Index extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
   componentWillUnmount() {
+    $('body, html').removeClass('overflow-hidden');
     $('.filter-btn').removeClass('filter-btn--close');
-    $('.main-content').removeClass("main-content--slide-to-left");
     $('.filter').removeClass("filter--show");
   }
   openFilter() {
-    $('body').css('overflow', 'hidden'); //lock scroll when filter open
+    $('body, html').addClass('overflow-hidden'); //lock scroll when filter open
     $('.filter-btn').addClass('filter-btn--close'); //switch buttons to red color
     $('#filterMobile').addClass('filter-mobile--open');
   }
   render() {
+    const { t } = this.props;
     return (
       <div className="index-page-wrapper">
+        <Helmet>
+          <title>{t('head:titles.index')+" "+t('head:titles.app')}</title>
+        </Helmet>
         <button onClick={this.openFilter} className="filter-btn filter-btn-mobile">
           <div className="filter-btn__icon" />
         </button>
@@ -43,3 +49,5 @@ export default class Index extends Component {
 }
 
 Index.propTypes = {};
+
+export default translate('common', { wait: true })(Index)

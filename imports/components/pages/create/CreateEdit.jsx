@@ -6,6 +6,8 @@ import ContactsAdd from '../../contacts-add/ContactsAdd.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Listenings } from '../../../api/listenings.js';
 import {isValidEmail, isValidPhone} from "/imports/functions/validation.js";
+import { Helmet } from "react-helmet";
+import { translate } from 'react-i18next';
 
 /* Semantic UI */
 import { Loader, Dimmer, Button, Checkbox, Form, Input, Message, Radio, Select, TextArea, Dropdown } from 'semantic-ui-react';
@@ -236,7 +238,7 @@ class CreateEdit extends Component {
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
     const { contacts } = this.state;
     let { contactsNumber } = this.state;
-    const { loading, listening } = this.props;
+    const { loading, listening, t } = this.props;
     const userId = Meteor.userId();
 
     if(loading) {
@@ -278,6 +280,9 @@ class CreateEdit extends Component {
       if(userId) {
         return (
           <div>
+            <Helmet>
+              <title>{t('head:titles.edit')+" "+t('head:titles.app')}</title>
+            </Helmet>
             <div className="headline">
               <div className="headline__item">
                 <div className="headline-icon">
@@ -453,7 +458,6 @@ class CreateEdit extends Component {
 
 CreateEdit.propTypes = {};
 
-
 export default createContainer(({ listeningId }) => {
   const id = listeningId;
   const listeningSubs = Meteor.subscribe('listenings.all');
@@ -461,4 +465,4 @@ export default createContainer(({ listeningId }) => {
   const listening = Listenings.findOne({_id: id});
   const listeningContacts = listening ? listening.listeningContacts : [];
   return { loading, listening, listeningContacts };
-}, CreateEdit);
+}, translate('common', { wait: true })(CreateEdit));

@@ -271,7 +271,6 @@ class Filter extends Component {
         </div>
         <div id="filterMobile" className="filter-mobile">
           <div className="filter-content">
-            <h2>Поиск по параметрам: </h2>
             <FilterForm />
             <button className="filter-btn filter-btn-mobile" onClick={this.closeMobileFilter}>
               <div className="filter-btn__icon" />
