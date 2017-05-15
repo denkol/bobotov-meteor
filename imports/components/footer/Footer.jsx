@@ -40,7 +40,7 @@ class Footer extends Component {
                 <a href="/about#support" className="footer-menu__item">{t('footer.support')}</a>
                 <a href="/about#advert" className="footer-menu__item">{t('footer.advert')}</a>
               </div>
-              <div className="footer-copyright">Copyright © {moment().format('YYYY')} {t('common:appName')} - {t('footer.copyrightText')}.</div>
+              <div className="footer-copyright">Copyright © {moment().format('YYYY')} {t('footer.copyrightText')}.</div>
             </div>
             <div className="footer-content__item">
               <div className="footer-select-lang">
