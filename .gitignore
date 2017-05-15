@@ -5,3 +5,4 @@ public/scss/.sass-cache
 server/keys.js
 nginx.conf
 .vscode
+.backup

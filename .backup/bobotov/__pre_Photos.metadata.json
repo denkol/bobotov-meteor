@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"bobotov.__pre_Photos"},{"v":2,"key":{"createdAt":1},"name":"createdAt_1","ns":"bobotov.__pre_Photos","expireAfterSeconds":10800,"background":true}]}
