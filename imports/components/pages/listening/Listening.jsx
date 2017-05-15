@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { Helmet } from "react-helmet";
+import i18n from '/imports/config/i18n';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
@@ -67,8 +68,8 @@ class Listening extends Component {
           listeningAutorName = data.owner.profile.username;
           listeningAutorDesc = data.owner.profile.userType;
         }
-
-        const listeningLastChange = data.listening.listeningTech.lastChangeDate + "";
+        const currentLang = i18n.language;
+        const listeningLastChange = moment(data.listening.listeningTech.lastChangeDate).locale(currentLang).format('LL');
         const listeningDesc = data.listening.listeningInfo.desc;
         const listeningViews = data.listening.listeningTech.views;
         const listeningHeadline = data.listening.listeningInfo.headline;
