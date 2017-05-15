@@ -128,14 +128,6 @@ class CreateEdit extends Component {
       other: getOtherPhotos()
     }
 
-    const options = [
-      { optionName: "Страна", optionValue: "Черногория" },
-      { optionName: "Город", optionValue: "Будва" },
-      { optionName: "Площадь", optionValue: "32" },
-      { optionName: "ratio", optionValue: "32" },
-      { optionName: "ratio", optionValue: "32" }
-    ];
-
     const contacts = getContacts();
     self.setState({ contacts });
 
@@ -157,10 +149,8 @@ class CreateEdit extends Component {
         "desc": desc
       },
       "listeningPhotos": photos,
-      "listeningContacts": contacts,
-      "listeningOptions": options
+      "listeningContacts": contacts
     }
-    //console.log(listeningCandidate);
 
     const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
 

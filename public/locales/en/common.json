@@ -312,63 +312,23 @@
       "text": "By registering you accept the terms"
     },
     "enterLink": {
-
       "link": "Login",
       "text": "Do you have an account?"
     }
   },
   "messages": {
-
     "positiveHeadline": "Success!",
     "negativeHeadline": "Error!",
     "recoveryPage": {
-
       "success": {
-
         "beforeEmail": "To address",
         "afterEmail": "A letter was sent with instructions on password recovery"
       }
     },
     "resetPage": {
-
       "success": {
-
         "passwordBeenChanged": "Password changed!"
       }
-    },
-    "my": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "history": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "hiddenListening": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "privateListening": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "create": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "favorites": {
-
-      "headline": "",
-      "desc": ""
-    },
-    "noListening": {
-      "headline": "",
-      "desc": ""
     }
   },
   "other": {

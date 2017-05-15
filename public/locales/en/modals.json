@@ -1,0 +1,14 @@
+{
+  "modalSignOut": {
+    "title": "Sign Out Account",
+    "content": "Are you sure sign out?",
+    "btnOk": "Yes",
+    "btnCancel": "No"
+  },
+  "modalDeleteListening": {
+    "title": "Deleting ad",
+    "content": "Are you sure want delete this ad?",
+    "btnOk": "Yes, sure",
+    "btnCancel": "Cancel"
+  }
+}

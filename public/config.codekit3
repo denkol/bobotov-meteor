@@ -929,6 +929,14 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/locales\/en\/modals.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/en\/modals-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/en\/nav.json": {
 		"ft": 524288,
 		"oA": 1,
@@ -965,6 +973,14 @@
 		"ft": 524288,
 		"oA": 1,
 		"oAP": "\/locales\/ru\/messages-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/ru\/modals.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/ru\/modals-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1

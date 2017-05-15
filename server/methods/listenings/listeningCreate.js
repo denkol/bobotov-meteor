@@ -13,7 +13,8 @@ Meteor.methods({
     var user = Meteor.user();
     var ownerName = user.profile.userName;
     var ownerListeningList = user.profile.listeningsList;
-
+    var date = new Date();
+    
     /* reset listeningTech */
     if (data.listeningTech) {
       data.listeningTech = "";
@@ -28,8 +29,8 @@ Meteor.methods({
         "bonus2": false,
         "bonus3": Math.random() < 0.5 ? true : false
       },
-      "createdAt": new Date(),
-      "lastChangeDate": new Date(),
+      "createdAt": date,
+      "lastChangeDate": date,
       "ownerId": userId,
       "ownerName": ownerName,
       "views": 0,

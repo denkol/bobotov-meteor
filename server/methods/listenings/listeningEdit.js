@@ -7,7 +7,11 @@ Meteor.methods({
     var userId = this.userId;
     var ownerId = listening.listeningTech.ownerId;
     var listeningTech = listening.listeningTech;
-    
+
+    /* Update last change date */
+    var date = new Date();
+    listeningTech.lastChangeDate = date;
+
     if (userId === ownerId) {
       Listenings.update({_id: listeningId}, { 
         $set: {

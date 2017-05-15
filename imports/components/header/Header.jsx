@@ -71,18 +71,18 @@ class HeaderLayout extends Component {
     const { user, t } = this.props;
     const ExitModal = () => (
       <Modal trigger={<li className="profile-menu__item">{t('header.logout')}</li>} basic size='small'>
-        <Header icon='log out' content={t('modal.title')} />
+        <Header icon='log out' content={t('modals:modalSignOut.title')} />
         <Modal.Content>
-          <p>{t('modal.content')}</p>
+          <p>{t('modals:modalSignOut.content')}</p>
         </Modal.Content>
         <Modal.Actions>
           <Button basic color='red' onClick={this.closeModal} inverted>
             <Icon name='remove' />
-            {t('modal.btnCancel')}
+            {t('modals:modalSignOut.btnCancel')}
           </Button>
           <Button color='green' onClick={this.logout} inverted>
             <Icon name='checkmark' />
-            {t('modal.btnOk')}
+            {t('modals:modalSignOut.btnOk')}
           </Button>
         </Modal.Actions>
       </Modal>

@@ -19,12 +19,6 @@
     "favorite": "Favorite",
     "history": "History"
   },
-  "modal": {
-    "title": "Sign Out Account",
-    "content": "Are you sure sign out?",
-    "btnOk": "Yes",
-    "btnCancel": "No"
-  },
   "footer" : {
     "about": "About",
     "contacts": "Contacts",
