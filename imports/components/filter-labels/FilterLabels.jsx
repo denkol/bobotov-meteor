@@ -50,40 +50,40 @@ class FilterLabels extends TrackerReact(Component) {
       return (
         <div className="filter-labels">
           {filterData.map((n, i) =>
-          <Label.Group color='blue'>
-           {n.city ?
-           <div key={"label-" + i} className="filter-labels__item">
-              <Label as='a'>
-                {t(`cities.${n.city}`)}
-                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-              </Label>
-            </div>
-            : null}
-            {n.price && (n.price.to || n.price.from) ?
-            <div key={"label-" + i} className="filter-labels__item">
-              <Label as='a'>
-                {(n.price.from || 0) + " - " + n.price.to} €
-                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-              </Label>
-            </div>
-            : null}
-            {n.typeDeal ?
-            <div key={"label-" + i} className="filter-labels__item">
-              <Label as='a'>
-                {t(`typeDeal.${n.typeDeal}`)}
-                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-              </Label>
-            </div>
-            : null}
-            {n.typeProperty ?
-            <div key={"label-" + i} className="filter-labels__item">
-              <Label as='a'>
-                {t(`typeProperty.${n.typeProperty}`)}
-                <Icon onClick={this.removeFilterLabel(n)} name='delete' />
-              </Label>
-            </div>
-            : null}
-            </Label.Group>
+            <Label.Group color='blue' key={"label-group", i}>
+             {n.city ?
+             <div key={"label-" + i} className="filter-labels__item">
+                <Label as='a'>
+                  {t(`cities.${n.city}`)}
+                  <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+                </Label>
+              </div>
+              : null}
+              {n.price && (n.price.to || n.price.from) ?
+              <div key={"label-" + i} className="filter-labels__item">
+                <Label as='a'>
+                  {(n.price.from || 0) + " - " + n.price.to} €
+                  <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+                </Label>
+              </div>
+              : null}
+              {n.typeDeal ?
+              <div key={"label-" + i} className="filter-labels__item">
+                <Label as='a'>
+                  {t(`typeDeal.${n.typeDeal}`)}
+                  <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+                </Label>
+              </div>
+              : null}
+              {n.typeProperty ?
+              <div key={"label-" + i} className="filter-labels__item">
+                <Label as='a'>
+                  {t(`typeProperty.${n.typeProperty}`)}
+                  <Icon onClick={this.removeFilterLabel(n)} name='delete' />
+                </Label>
+              </div>
+              : null}
+              </Label.Group>
             )}
         </div>
       );

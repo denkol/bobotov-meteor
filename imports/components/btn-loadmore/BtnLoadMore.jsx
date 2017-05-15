@@ -20,7 +20,7 @@ class BtnLoadMore extends Component {
 }
 
 BtnLoadMore.propTypes = {
-  onClick: React.PropTypes.function,
+  // onClick: React.PropTypes.function,
 };
 
 export default translate('common', { wait: true })(BtnLoadMore)

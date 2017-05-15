@@ -107,8 +107,8 @@ class HeaderLayout extends Component {
                   </div>
                 </div>
                 <div className="header-logo__item">
-                  <div className="header-logo-name">bobotov</div>
-                  <div className="header-logo-desc">Montenegro</div>
+                  <div className="header-logo-name">{t('common:appName')}</div>
+                  <div className="header-logo-desc">{t('common:appDesc')}</div>
                 </div>
               </a>
               <nav className="header-menu">

@@ -82,7 +82,7 @@ class Filter extends Component {
   }
 
   closeMobileFilter() {
-    $('body').css('overflow', 'initial'); //unlock scroll when filter open
+    $('html, body').removeClass('overflow-hidden'); //unlock scroll when filter open
     $('.filter-btn').removeClass('filter-btn--close'); //switch button to blue color
     $('#filterMobile').removeClass('filter-mobile--open');
   }
