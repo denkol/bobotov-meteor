@@ -130,6 +130,7 @@ class CreatePhoto extends Component {
 
       return (
         <div className="create-block-row__item">
+
           <SnackbarMateiral open={this.state.alert.open} message={this.state.alert.message} />
           <div className={this.props.main ? "create-photo create-photo_main" : "create-photo"}>
             <label htmlFor={"image-" + imageNumber} className={this.state.uploaded || Session.get(imageNumber+"photo") ? "create-photo-hide" : "create-photo-layer create-photo-layer_init"}>

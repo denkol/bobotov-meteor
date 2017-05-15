@@ -24,7 +24,7 @@ import { Translate } from '../../../functions/functions.js';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
 /* Semantic UI */
-import { Message, Dimmer, Loader, Button, Icon } from 'semantic-ui-react';
+import { Message, Dimmer, Loader, Button, Icon, Breadcrumb } from 'semantic-ui-react';
 
 /* Other */
 import * as actions from '/imports/actions';
@@ -113,10 +113,27 @@ class Listening extends Component {
             <Helmet>
               <title>{listeningHeadline+" "+t('head:titles.app')}</title>
             </Helmet>
+            <div className="listening-breadcrumbs">
+              <div className="listening-breadcrumbs__item">
+                <Button 
+                  onClick={this.handleGo.bind(this, '/')}
+                  size="small" 
+                  content='Back' 
+                  icon='left arrow' 
+                  labelPosition='left' />
+              </div>
+              <div className="listening-breadcrumbs__item">
+                <Breadcrumb>
+                  <Breadcrumb.Section link>{t('nav:main.home')}</Breadcrumb.Section>
+                  <Breadcrumb.Divider icon='right angle' />
+                  <Breadcrumb.Section active>{listeningHeadline}</Breadcrumb.Section>
+                </Breadcrumb>
+              </div>
+            </div>
             {!listeningPublic ?
               <Message info>
-              <Message.Header>{t('messages:ownerListeningPrivate.headline')}</Message.Header>
-              <p>{t('messages:ownerListeningPrivate.desc')}</p>
+                <Message.Header>{t('messages:ownerListeningPrivate.headline')}</Message.Header>
+                <p>{t('messages:ownerListeningPrivate.desc')}</p>
             </Message>
             : null}
             <div className="listening-media">

@@ -81,7 +81,7 @@ class SignUp extends Component {
     Accounts.createUser(userInfo, (err) => {
     	const { validation } = this.state;
       if (err) {
-        validation.message = err.message;
+        validation.message = err.reason;
         return this.setState({ validation });
       } else {
         Meteor.call("userCreate", userInfo, (err, res) => {

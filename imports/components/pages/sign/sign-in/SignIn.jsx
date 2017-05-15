@@ -57,7 +57,10 @@ class SignIn extends Component {
     Meteor.loginWithPassword(email, password, (err) => {
       const { validation } = this.state;
       if(err) {
-        validation.message = err.message;
+        if(err.error === 403) {
+          /* "User not found" or "Incorrect password" */
+          validation.message = t('messages:dinamiclyErrors.incorrectPassword');
+        }
         return this.setState({ validation });
       }
       var isVerificated = Meteor.user().emails[0].verified;
@@ -95,10 +98,12 @@ class SignIn extends Component {
                 {message ? 
                   <Message size='tiny'>
                     <Message.Header>{message}</Message.Header>
-                    <Message.List>
-                    {email ?  <Message.Item>{email}</Message.Item> : null}
-                    {password ? <Message.Item>{password}</Message.Item> : null}
-                    </Message.List>
+                    {email || password ?
+                      <Message.List>
+                      {email ?  <Message.Item>{email}</Message.Item> : null}
+                      {password ? <Message.Item>{password}</Message.Item> : null}
+                      </Message.List>
+                    : null}
                   </Message>
                 : null}
               </div>

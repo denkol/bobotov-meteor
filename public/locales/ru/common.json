@@ -287,13 +287,13 @@
   },
   "nameField" : {
     "label": "Ваше имя",
-    "placeholder": "Например: Фёдор Достоевский"
+    "placeholder": "Денис Сыроежкин"
   },
   "signInPage": {
     "headline": "Войти",
     "enterBtn": "Войти",
     "newAccountLink": {
-      "link":"Зарегистрироваться",
+      "link":"Создать",
       "text": "новый аккаунт"
     }
   },

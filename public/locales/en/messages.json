@@ -44,6 +44,7 @@
     "dataSaved": "Data saved successfully!",
     "userNameLength": "Username is too short!",
     "emptyPassword": "Enter password!",
-    "passwordsNotMatch": "Passwords do not match!"
+    "passwordsNotMatch": "Passwords do not match!",
+    "incorrectPassword": "This user does not exist or the password was entered incorrectly"
   }
 }
