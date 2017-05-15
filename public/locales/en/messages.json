@@ -7,6 +7,26 @@
     "headline": "No ads found",
     "desc": "Try to moderate the search criteria"
   },
+  "listeningPrivate": {
+    "headline": "This ad is not available",
+    "desc": "The author has disabled this ad or it has been removed"
+  },
+  "ownerListeningPrivate": {
+    "headline": "This ad is off",
+    "desc": "Only you can view this ad"
+  },
+  "justError": {
+    "headline": "Error!",
+    "desc": "Something went wrong..."
+  },
+  "listeningsEmpty": {
+    "headline": "Emtpy!",
+    "desc": "No ads found"
+  },
+  "myListeningsEmpty": {
+    "headline": "Emtpy!",
+    "desc": "Add an ad by clicking the \"Add ad\" button, it's free"
+  },
   "dinamiclyErrors": {
     "formError": "You have errors while completing the form, correct errors and try again",
     "invalidPhone": "Enter the correct phone number",
@@ -20,6 +40,10 @@
     "emptyDealField": "Specify the offer type",
     "emptyTypeField": "Enter the type of real estate",
     "emptyRatioField": "Enter area!",
-    "emptyPhotoField": "Upload the main photo"
+    "emptyPhotoField": "Upload the main photo",
+    "dataSaved": "Data saved successfully!",
+    "userNameLength": "Username is too short!",
+    "emptyPassword": "Enter password!",
+    "passwordsNotMatch": "Passwords do not match!"
   }
 }

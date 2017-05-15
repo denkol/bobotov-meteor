@@ -118,7 +118,11 @@ class Listening extends Component {
               <p>{t('messages:ownerListeningPrivate.desc')}</p>
             </Message>
             : null}
-            <ListeningPhotos photos={listeningsPhotos}/>
+            <div className="listening-media">
+              <div className="listening-media__item">
+                <ListeningPhotos photos={listeningsPhotos}/>
+              </div>
+            </div>  
             <div className="listening-info">
               <div className="listening-info-header">
                 <div className="listening-info-header__item listening-info-header__item_headline">

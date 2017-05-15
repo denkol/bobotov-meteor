@@ -203,9 +203,6 @@ class Create extends Component {
       main: Session.get('0photo'),
       other: getOtherPhotos()
     }
-    
-    let options = [];
-
     const contacts = getContacts();
     self.setState({ contacts });
 
@@ -230,8 +227,7 @@ class Create extends Component {
         "desc": desc
       },
       "listeningPhotos": photos,
-      "listeningContacts": contacts,
-      "listeningOptions": options
+      "listeningContacts": contacts
     }
 
     if(!price) {

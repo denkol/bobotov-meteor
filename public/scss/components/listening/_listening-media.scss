@@ -1,0 +1,10 @@
+.listening-media {
+  display: flex;
+  &__item {
+    width: 100%;
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

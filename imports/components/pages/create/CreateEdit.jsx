@@ -238,8 +238,7 @@ class CreateEdit extends Component {
     const { message, phone, email, price, country, headline, desc, paymentPeriod, city, typeDeal, typeProperty, ratio } = this.state.validation;
     const { contacts } = this.state;
     let { contactsNumber } = this.state;
-    const { loading, listening, t } = this.props;
-    const userId = Meteor.userId();
+    const { loading, listening, t, ownerId} = this.props;
 
     if(loading) {
       contactsNumber = contactsNumber || _.size(listening.listeningContacts);
@@ -277,7 +276,7 @@ class CreateEdit extends Component {
         contacts: listening.listeningContacts
       }
 
-      if(userId) {
+      if(ownerId === Meteor.userId()) {
         return (
           <div>
             <Helmet>
@@ -464,5 +463,7 @@ export default createContainer(({ listeningId }) => {
   const loading = listeningSubs.ready();
   const listening = Listenings.findOne({_id: id});
   const listeningContacts = listening ? listening.listeningContacts : [];
-  return { loading, listening, listeningContacts };
+  const ownerId = listening ? listening.listeningTech.ownerId : "";
+  return { loading, listening, listeningContacts, ownerId};
+  
 }, translate('common', { wait: true })(CreateEdit));

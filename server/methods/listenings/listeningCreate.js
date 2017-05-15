@@ -29,7 +29,7 @@ Meteor.methods({
         "bonus3": Math.random() < 0.5 ? true : false
       },
       "createdAt": new Date(),
-      "lastChangeDate": moment().locale('ru').format('LL'),
+      "lastChangeDate": moment().locale('en').format('LL'),
       "ownerId": userId,
       "ownerName": ownerName,
       "views": 0,

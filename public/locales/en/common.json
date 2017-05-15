@@ -267,10 +267,10 @@
     "headline": "Favorite ads"
   },
   "createPhoto": {
-    "helpText": "Click to download (max size 2mb, jpg, jpeg, png)",
-    "load": "Download",
+    "helpText": "Click to upload image (max size 2mb, jpg, jpeg, png)",
+    "load": "Upload",
     "remove": "Delete",
-    "progressText": "Download file",
+    "progressText": "Upload file",
     "errorMessage": "Image does not meet the requirements, try again"
   },
   "historyPage": {

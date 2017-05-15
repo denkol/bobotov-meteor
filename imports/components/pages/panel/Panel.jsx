@@ -72,17 +72,24 @@ class Panel extends Component {
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
+    
+    const { t } = this.props;
+    
+    const userName = formData.userName.trim();
+    const userDesc = formData.userDesc;
+    const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
+    const data = { userName, userDesc, userPhoto };
+    
+
+
+    
     const validation = {
       username: '',
       message: ''
     };
-    const { t } = this.props;
-    const data = { userName, userDesc, userPhoto };
-    const userName = formData.userName.trim();
-    const userDesc = formData.userDesc;
-    const userPhoto = Session.get('avatar-uploaded') ? Session.get('avatar-uploaded') : Meteor.user().profile.userPhoto;
-    
+
     this.setState({ validation });
+    
 
     if (userName.length < 3) {
       this.setState({

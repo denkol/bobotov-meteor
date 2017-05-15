@@ -31,6 +31,7 @@ class SignIn extends Component {
 
   handleSubmit(e, { formData }) {
     e.preventDefault();
+    const { t } = this.props;
     const validation = {
       email: false,
       password: false,
@@ -40,15 +41,15 @@ class SignIn extends Component {
     const email = formData.email;
     const password = formData.password;
     
-    const message = "Возможные ошибки:";
+    const message = t('messages:dinamiclyErrors.formError');
     if (!isValidEmail(email)) {
     	validation.message = message;
-      validation.email = "Введите корректный адрес!";
+      validation.email = t('messages:dinamiclyErrors.invalidEmail'); 
       this.setState({ validation });
     }
     if (!password) {
     	validation.message = message;
-      validation.password = "Введите пароль!";
+      validation.password = t('messages:dinamiclyErrors.emptyPassword');
       this.setState({ validation });
     }
     if (validation.message) return;

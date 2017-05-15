@@ -46,26 +46,26 @@ class SignUp extends Component {
     const email = formData.email;
     const password = formData.password.trim();
     const passwordR = formData.passwordR.trim();
-    
-    const message = "У вас ошибки при заполнении формы, исправьте ошибки и попробуйте снова";
+    const message = t('messages:dinamiclyErrors.formError');
+
     if (username.length < 3) {
       validation.message = message;
-      validation.username = "Имя пользователя слишком короткое!";
+      validation.username = t('messages:dinamiclyErrors.userNameLength');
       this.setState({ validation });
     }
     if (!isValidEmail(email)) {
     	validation.message = message;
-      validation.email = "Введите корректный адрес!";
+      validation.email = t('messages:dinamiclyErrors.invalidEmail'); 
       this.setState({ validation });
     }
     if (!password || !passwordR) {
     	validation.message = message;
-      validation.password = "Введите пароль!";
+      validation.password = t('messages:dinamiclyErrors.emptyPassword');
       this.setState({ validation });
     }
     if (!!password && !!passwordR && password !== passwordR) {
     	validation.message = message;
-      validation.password = "Пароли не совпадают!";
+      validation.password = t('messages:dinamiclyErrors.passwordsNotMatch');
       this.setState({ validation });
     } 
     if (validation.message) return;

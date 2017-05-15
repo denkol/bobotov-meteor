@@ -41,9 +41,9 @@
     "emptyTypeField": "Укажите тип недвижимости!",
     "emptyRatioField": "Укажите площадь!",
     "emptyPhotoField": "Загрузите главное фото",
-
     "dataSaved": "Данные успешно сохранены!",
     "userNameLength": "Имя пользователя слишком короткое!",
-
+    "emptyPassword": "Введите пароль!",
+    "passwordsNotMatch": "Пароли не совпадают!"
   }
 }
