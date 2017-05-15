@@ -3,19 +3,19 @@
     "all": "All",
     "rent": "Rent",
     "sale": "Sale",
-    "bythesea": "By the Sea",
-    "foralongtime": "Long Time",
-    "forrelax": "For Rest",
-    "myprofile": "My Profile",
-    "myadvs": "My Advs",
+    "bythesea": "By the sea",
+    "foralongtime": "Long time",
+    "forrelax": "For rest",
+    "myprofile": "My profile",
+    "myadvs": "My advs",
     "signup": "Sign Up",
     "signin": "Login",
-    "addadv": "Add Ad",
+    "addadv": "Add ad",
     "logout": "Logout"
   },
   "main": {
     "home": "Home",
-    "advs": "My Advs",
+    "advs": "My advs",
     "favorite": "Favorite",
     "history": "History"
   },
@@ -25,6 +25,6 @@
     "support": "Support",
     "advert": "Advert",
     "connectWithUs": "Connect with us",
-    "copyrightText": "bobotov.me - Real estate ads in Montenegro"
+    "copyrightText": "bobotov.me All rights reserved."
   }
 }

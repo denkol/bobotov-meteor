@@ -118,16 +118,9 @@ class Listening extends Component {
                 <Button 
                   onClick={this.handleGo.bind(this, '/')}
                   size="small" 
-                  content='Back' 
+                  content={t('listening.backBtn')}
                   icon='left arrow' 
                   labelPosition='left' />
-              </div>
-              <div className="listening-breadcrumbs__item">
-                <Breadcrumb>
-                  <Breadcrumb.Section link>{t('nav:main.home')}</Breadcrumb.Section>
-                  <Breadcrumb.Divider icon='right angle' />
-                  <Breadcrumb.Section active>{listeningHeadline}</Breadcrumb.Section>
-                </Breadcrumb>
               </div>
             </div>
             {!listeningPublic ?

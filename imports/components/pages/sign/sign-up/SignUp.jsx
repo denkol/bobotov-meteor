@@ -28,8 +28,14 @@ class SignUp extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).trim();
+  }
 
   handleSubmit(e, {formData}) {
+    const { t } = this.props;
+
     e.preventDefault();
     const validation = {
       email: false,
@@ -39,10 +45,7 @@ class SignUp extends Component {
     };
     this.setState({ validation });
 
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1).trim();
-    }
-    const username = capitalizeFirstLetter(formData.name);
+    const username = this.capitalizeFirstLetter(formData.name);
     const email = formData.email;
     const password = formData.password.trim();
     const passwordR = formData.passwordR.trim();
@@ -81,15 +84,17 @@ class SignUp extends Component {
     Accounts.createUser(userInfo, (err) => {
     	const { validation } = this.state;
       if (err) {
-        validation.message = err.reason;
+        if(err.error === 403) {
+          validation.message = t('messages:dinamiclyErrors.emailAlreadyExists');
+        }
         return this.setState({ validation });
       } else {
         Meteor.call("userCreate", userInfo, (err, res) => {
           if(err) {
-            validation.message = err.message;
+            validation.message = err.reason;
             return this.setState({ validation });
           } else {
-            FlowRouter.go('Home');  
+            FlowRouter.go('Home');
           };
         });
       };
@@ -122,11 +127,13 @@ class SignUp extends Component {
                 {message ? 
                   <Message size='tiny'>
                     <Message.Header>{message}</Message.Header>
-                    <Message.List>
-                    {username ?  <Message.Item>{username}</Message.Item> : null}
-                    {email ?  <Message.Item>{email}</Message.Item> : null}
-                    {password ? <Message.Item>{password}</Message.Item> : null}
-                    </Message.List>
+                    {username || email || password ?
+                      <Message.List>
+                      {username ?  <Message.Item>{username}</Message.Item> : null}
+                      {email ?  <Message.Item>{email}</Message.Item> : null}
+                      {password ? <Message.Item>{password}</Message.Item> : null}
+                      </Message.List>
+                    : null }
                   </Message>
                 : null}
                 </div>

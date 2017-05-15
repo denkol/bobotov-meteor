@@ -102,7 +102,8 @@
       "remove": "Remove from favorites",
       "add": "Add to favorites"
     },
-    "printBtn": "Print"
+    "printBtn": "Print",
+    "backBtn": "Back"
   },
   "indexPage": {
     "headlineHot": "Hot offers"

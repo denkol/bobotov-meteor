@@ -6,8 +6,8 @@
     "bythesea": "У моря",
     "foralongtime": "На долгий срок",
     "forrelax": "Для отдыха",
-    "myprofile": "Мой Профиль",
-    "myadvs": "Мои Объявления",
+    "myprofile": "Мой профиль",
+    "myadvs": "Мои объявления",
     "signup": "Регистрация",
     "signin": "Войти",
     "addadv": "Добавить объявление",
@@ -15,7 +15,7 @@
   },
   "main": {
     "home": "Главная",
-    "advs": "Мои Объявления",
+    "advs": "Мои объявления",
     "favorite": "Избранное",
     "history": "История"
   },
@@ -25,6 +25,6 @@
     "support": "Поддержка",
     "advert": "Реклама",
     "connectWithUs": "Свяжитесь с нами",
-    "copyrightText": "bobotov.me - Объявления о недвижимости в Черногории"
+    "copyrightText": "bobotov.me All rights reserved."
   }
 }
