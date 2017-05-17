@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "UPLOAD_PATH=../bobotov-meteor/public MONGO_URL=mongodb://127.0.0.1/bobotov meteor run",
-    "deploy": "meteor build ../ --architecture os.linux.x86_64 && cd .. && scp bobotov-meteor.tar.gz root@bobotov.me:/home/bobotov/bobotov.tar.gz"
+    "deploy": "meteor build ../ --architecture os.linux.x86_64 && cd .. && scp bobotov-meteor.tar.gz meteor@bobotov.me:/home/meteor/bobotov.tar.gz"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",

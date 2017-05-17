@@ -37,7 +37,7 @@ class HeaderLayout extends Component {
   }
 
   openSubmenu(e) {
-    var container = $('.profile-menu')
+    var container = $('.profile-menu-content');
     if (!container.is(e.target) // if the target of the click isn't the container...
       && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
@@ -48,7 +48,6 @@ class HeaderLayout extends Component {
     this.setState({
       subMenuOpen: !this.state.subMenuOpen
     });
-
   }
 
   logout() {

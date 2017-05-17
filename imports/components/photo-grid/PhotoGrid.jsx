@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
@@ -24,6 +25,7 @@ class PhotoGrid extends TrackerReact(Component) {
     }
 
     this.loadMore = this.loadMore.bind(this);
+    // this.listeningClick = this.listeningClick.bind(this);
   }
   componentWillMount() {
     Session.setDefault('indexLimit', limit);
@@ -37,7 +39,12 @@ class PhotoGrid extends TrackerReact(Component) {
     Session.set('indexLimit', this.state.limit * 2)
     this.setState({limit: this.state.limit * 2});
   }
-
+  listeningClick(url, e) {
+    /* Scroll position then user click on the listening */
+    const ScrollPosition = e.target.scrollTop;
+    Session.set('index_scroll_position', ScrollPosition);
+    FlowRouter.go(url);
+  }
   render() {
     const { t } = this.props;
     const query = Session.get('filterQuery');
@@ -54,7 +61,7 @@ class PhotoGrid extends TrackerReact(Component) {
               <div className="photo-grid">
                 {listenings.map((listening, index) => {
                   return (
-                    <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
+                    <a onClick={this.listeningClick.bind(this, "/listening/" + listening._id)} key={"photo-grid-" + index} className="photo-grid__item">
                       <ListeningPreview
                         key={index}
                         listeningData={listening}

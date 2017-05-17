@@ -63,13 +63,15 @@ class SignIn extends Component {
         }
         return this.setState({ validation });
       }
-      var isVerificated = Meteor.user().emails[0].verified;
-      if (!isVerificated) {
-        FlowRouter.go('Home');
-      } else {
-        validation.message = "Аккаунт не верифицирован, на почту которую вы указывали при регистрици отправлено письмо";
-        return this.setState({ validation });
-      }
+      FlowRouter.go('Home', {msg: "Добро пожаловать!"});
+
+      // var isVerificated = Meteor.user().emails[0].verified;
+      // if (!isVerificated) {
+      //   FlowRouter.go('Home');
+      // } else {
+      //   validation.message = "Аккаунт не верифицирован, на почту которую вы указывали при регистрици отправлено письмо";
+      //   return this.setState({ validation });
+      // }
     });
   }
 

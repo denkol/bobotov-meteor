@@ -20,6 +20,11 @@ class Index extends Component {
     super(props);
     this.state = {}
   }
+  componentWillMount() {
+    if(Session.get('index_scroll_position')) {
+      console.log(Session.get('index_scroll_position') )
+    }
+  }
   componentWillUnmount() {
     $('body, html').removeClass('overflow-hidden');
     $('.filter-btn').removeClass('filter-btn--close');
@@ -41,8 +46,8 @@ class Index extends Component {
           <div className="filter-btn__icon" />
         </button>
         <BtnAdd mobile={true} />
-        <BigSlider/>
-        <PhotoGrid/>
+        <BigSlider />
+        <PhotoGrid />
       </div>
     );
   }

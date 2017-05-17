@@ -21,11 +21,7 @@
 
 .listening-subinfo-text {
   font-size: 18px;
-
-  @include mq('tablet-small', max) {
-    font-size: 14px;
-  }
   @include mq('phone', max) {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
