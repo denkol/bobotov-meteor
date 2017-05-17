@@ -1,0 +1,51 @@
+{
+  "needLogin": {
+    "headline": "Prijavite se ili se registrujte",
+    "desc": "Ova stranica je dostupna samo ovlašćenim korisnicima"
+  },
+  "noListenings": {
+    "headline": "Oglasi found",
+    "desc": "Pokušajte da ublaži kriterijima pretrage"
+  },
+  "listeningPrivate": {
+    "headline": "Ova reklama nije dostupan",
+    "desc": "Autor je onemogućio ovaj oglas ili je uklonjena"
+  },
+  "ownerListeningPrivate": {
+    "headline": "Ova najava je isključen",
+    "desc": "Samo vi možete da vidite ovaj oglas"
+  },
+  "justError": {
+    "headline": "Greška!",
+    "desc": "Nešto nije u redu..."
+  },
+  "listeningsEmpty": {
+    "headline": "Prazan!",
+    "desc": "Oglasi found"
+  },
+  "myListeningsEmpty": {
+    "headline": "Prazan!",
+    "desc": "Dodajte reklame klikom na \"Dodaj obaveštenje\""
+  },
+  "dinamiclyErrors": {
+    "formError": "Imate grešku u popunjavanju formulara, ispravne greške i pokušajte ponovo",
+    "invalidPhone": "Unesite važeći broj telefona!",
+    "invalidEmail": "Molimo unesite ispravnu email adresu!",
+    "emptyPriceField": "Unesite cenu!",
+    "emptyCountryField": "Unesite zemlju!",
+    "emptyHeadlineField": "Unesite naslov!",
+    "emptyDescField": "Unesite opis!",
+    "emptyPaymentField": "Navedite period otplate!",
+    "emptyCityField": "Navedite lokacije!",
+    "emptyDealField": "Odredite vrstu ponude!",
+    "emptyTypeField": "Odredite vrstu nekretnina!",
+    "emptyRatioField": "Odredite površinu!",
+    "emptyPhotoField": "Load glavnu sliku",
+    "dataSaved": "Podaci saved successfulli!",
+    "userNameLength": "Korisničko ime je prekratak!",
+    "emptyPassword": "Unesite šifru!",
+    "passwordsNotMatch": "Lozinke se ne poklapaju!",
+    "incorrectPassword": "Ovaj korisnik ne postoji ili je lozinka neispravna.",
+    "emailAlreadyExists": "Korisnik sa ovom e-pošte već postoji."
+  }
+}

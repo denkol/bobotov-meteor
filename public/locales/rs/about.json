@@ -1,0 +1,19 @@
+{
+  "about": {
+    "headline": "O nama",
+    "desc": "Jednostavno i brzo da pronađu nekretnina u Crnoj Gori"
+  },
+  "contacts": {
+    "headline": "Kontakti",
+    "email": "E-mail",
+    "phone": "Telefon"
+  },
+  "support": {
+    "headline": "Podrška",
+    "desc": "Ako imate problema sa korišćenjem naših usluga, pišite nam"
+  },
+  "advert": {
+    "headline": "Reklama",
+    "desc": "Za oglašavanje čekaju svoje pisma na adresu"
+  }
+}

@@ -68,8 +68,11 @@ class Listening extends Component {
           listeningAutorName = data.owner.profile.username;
           listeningAutorDesc = data.owner.profile.userType;
         }
-        const currentLang = i18n.language;
+        
+        /* Reverse "rs" to "sr" for moment (sorry) */
+        const currentLang = i18n.language == "rs" ? "sr" : i18n.language;
         const listeningLastChange = moment(data.listening.listeningTech.lastChangeDate).locale(currentLang).format('LL');
+        
         const listeningDesc = data.listening.listeningInfo.desc;
         const listeningViews = data.listening.listeningTech.views;
         const listeningHeadline = data.listening.listeningInfo.headline;

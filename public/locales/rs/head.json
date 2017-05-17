@@ -1,0 +1,17 @@
+{
+  "titles": {
+    "app": "| Bobotov - Pretraga nekretnina u Crnoj Gori",
+    "index": "Glavni",
+    "favorites": "Favorites",
+    "history": "Istorija",
+    "my": "Moji oglasi",
+    "create": "Novi oglas",
+    "panel": "Moj profil",
+    "about": "O nama",
+    "signIn": "Log in",
+    "signUp": "Registracija",
+    "recovery": "Resetovanje lozinke",
+    "reset": "Passvord reset",
+    "edit": "Uređivanje oglasa"
+  }
+}

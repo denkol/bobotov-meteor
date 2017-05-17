@@ -1,0 +1,14 @@
+{
+  "modalSignOut": {
+    "title": "Prijavite se",
+    "content": "Da li ste sigurni da želite da otkaz?",
+    "btnOk": "Da",
+    "btnCancel": "Ne"
+  },
+  "modalDeleteListening": {
+    "title": "Uklanjanje reklama",
+    "content": "Da li ste sigurni da želite da izbrišete",
+    "btnOk": "Da",
+    "btnCancel": "Poništenje"
+  }
+}

@@ -45,7 +45,7 @@ class Footer extends Component {
             <div className="footer-content__item">
               <div className="footer-select-lang">
                 <div className="footer-select-lang__item">
-                  <Flag name='rs'/>
+                  <Flag name='rs' onClick={() => toggleLng('rs')} />
                 </div>
                 <div className="footer-select-lang__item" >
                   <Flag name='ru' onClick={() => toggleLng('ru')} />
@@ -53,9 +53,9 @@ class Footer extends Component {
                 <div className="footer-select-lang__item" >
                   <Flag name='gb' onClick={() => toggleLng('en')}/>
                 </div>
-                <div className="footer-select-lang__item" >
+                {/*<div className="footer-select-lang__item" >
                   <Flag name='de'/>
-                </div>
+                </div>*/}
               </div>
               <div className="footer-copyright">
                 <span>{t('footer.connectWithUs')} </span><a href="mailto:hello@bobotov.me">hello@bobotov.me</a>

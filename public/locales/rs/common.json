@@ -1,0 +1,345 @@
+{
+  "appName": "bobotov",
+  "appDesc": "Crna Gora",
+  "toggleLng": {
+    "ru": "Ruski",
+    "en": "Engleski",
+    "rs": "Srpski"
+  },
+  "comfortList": {
+    "week": "Kupatilo / sauna",
+    "cool": "Frižider",
+    "internet": "Internet / Wi-Fi",
+    "pool": "Otvoreni bazen",
+    "traning_room": "Teretana",
+    "beach": "Plaža-zatvori",
+    "disabled_equipment": "Onemogućen pristup",
+    "parking": "Parkiranje",
+    "laundry": "Veš",
+    "ac": "klima uređaj",
+    "tv": "Televizor",
+    "fireplace": "Kamin",
+    "coffeMaker": "Aparat za kafu",
+    "kettle": "Kotao",
+    "dishwasher": "Mašina za pranje sudova",
+    "washer": "Mašina za veš",
+    "transfer": "Transfer od / do aerodroma",
+    "microwave": "Mikrotalasni",
+    "view": "Panoramski pogled"
+  },
+  "countries": {
+    "me": "Crna Gora"
+  },
+  "cities":{
+    "podgorica": "Podgorica",
+    "cetinje": "Cetinje",
+    "andrijevica": "Andrijevici",
+    "bar": "Bar",
+    "berane": "Berane",
+    "bijelo_polje": "Bijelo-Polje",
+    "budva": "Budva",
+    "becici": "Bečići",
+    "danilovgrad": "Danilovgradu",
+    "zabljak": "Žabljak",
+    "kolasin": "Kolašin",
+    "kotor": "Kotor",
+    "mojkovac": "Mojkovcu",
+    "niksic": "Niksic",
+    "pljevlja": "Pljevljima",
+    "pluzine": "Plužine",
+    "rozaje": "Rožaje",
+    "tivat": "Tivat",
+    "ulcinj": "Ulcinj",
+    "herceg_novi": "Herceg Novi",
+    "savnik": "Shavnik"
+  },
+  "typeDeal": {
+    "rent_long": "Rent Duži",
+    "rent_short": "Rent kratkoročne",
+    "sale": "Prodaja"
+  },
+  "typeProperty": {
+    "appart": "Stan / apartman",
+    "room": "Soba",
+    "studio": "Atelje",
+    "hotel": "Studio apartman",
+    "mansion": "Villa / Dom",
+    "home": "Kuća / Vila",
+    "office": "Kancelarija",
+    "land": "Parcela",
+    "commercial": "Poslovni prostor",
+    "other": "Drugi"
+  },
+  "paymentPeriod": {
+    "full": "Po imovine",
+    "month": "Za mesec",
+    "day": "Za dan",
+    "week": "Za sedmica"
+  },
+  "contactsList": {
+    "facebook": "Facebook",
+    "vk": "Vkontakte",
+    "website": "Vebsajt",
+    "email": "Email",
+    "phone": "Telefon",
+    "viber": "Viber",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram"
+  },
+  "userStatuses": {
+    "agency": "Agencija za nekretnine",
+    "user": "Korisnik",
+    "realtor": "Realtor",
+    "owner": "Vlasnik"
+  },
+  "listening": {
+    "comfort": "Pogodnost",
+    "summary": "Opšte informacije",
+    "desc": "Opis",
+    "contacts": "Kontakti",
+    "onMap": "Mapa",
+    "favoritesBtn": {
+      "remove": "Uklonite iz favorita",
+      "add": "Dodaj u omiljene"
+    },
+    "printBtn": "Print",
+    "backBtn": "Pre"
+  },
+  "indexPage": {
+    "headlineHot": "Hot ponude"
+  },
+  "panel": {
+    "name" : {
+      "label" : "Vaše ime",
+      "placeholder": "Unesite svoje ime"
+    },
+    "status" : {
+      "label" : "Vaš status",
+      "placeholder" : "Izbor statusa"
+    },
+    "saveBtn": "Zadržati",
+    "helpMessage": "Da biste primenili promene, pritisnite dugme"
+  },
+  "filterListing": {
+    "price": "Cena",
+    "apply": "Primeniti",
+    "clear": "Čist",
+    "country": {
+      "label": "Zemlja",
+      "placeholder": "Izaberite zemlju"
+    },
+    "city": {
+      "label": "Grad",
+      "placeholder": "Nije bitno"
+    },
+    "typeDeal": {
+      "label": "Tip ponude",
+      "placeholder": "Nije bitno"
+    },
+    "typeProperty": {
+      "label": "Tip nekretnine",
+      "placeholder": "Nije bitno"
+    },
+    "bedrooms": {
+      "label": "Broj spavaćih soba",
+      "placeholder": "Nije bitno"
+    },
+    "bathrooms": {
+      "label": "Broj kupatila",
+      "placeholder": "Nije bitno"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "od"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "u"
+    },
+    "square": {
+      "label": "Oblast",
+      "placeholder": "45"
+    }
+  },
+  "createListing": {
+    "headline": "Novi oglas",
+    "step1": "Korak 1: Opšte informacije",
+    "step2": "Korak 2: Slika",
+    "step3": "Korak 3: Kontakt",
+    "price": "Cena",
+    "apply": "Done",
+    "country": {
+      "label": "Zemlja",
+      "placeholder": "Izaberite zemlju"
+    },
+    "city": {
+      "label": "Grad",
+      "placeholder": "Nije bitno"
+    },
+    "typeDeal": {
+      "label": "Tip ponude",
+      "placeholder": "Nije bitno"
+    },
+    "typeProperty": {
+      "label": "Tip nekretnine",
+      "placeholder": "Nije bitno"
+    },
+    "bedrooms": {
+      "label": "Broj spavaćih soba",
+      "placeholder": "Nije bitno"
+    },
+    "bathrooms": {
+      "label": "Broj kupatila",
+      "placeholder": "Nije bitno"
+    },
+    "priceFiled": {
+      "label": "Cena",
+      "placeholder": "134"
+    },
+    "priceFrom": {
+      "label": "€",
+      "placeholder": "od"
+    },
+    "priceTo": {
+      "label": "€",
+      "placeholder": "u"
+    },
+    "square": {
+      "label": "Površina",
+      "placeholder": "23"
+    },
+    "paymentPeriod": {
+      "label": "Period otplate",
+      "placeholder": "Izaberite period plaćanja"
+    },
+    "floor": {
+      "label": "Sprat",
+      "placeholder": ""
+    },
+    "comfortList": {
+      "label": "Pogodnost",
+      "placeholder": "Izbor pogodnost"
+    },
+    "yourHeadline": {
+      "label": "oglas Naslov",
+      "placeholder": "Unesite oglas naslov"
+    },
+    "description": {
+      "label": "Oglas opis"
+    }
+  },
+  "facebookBtn": {
+    "text": "Prijavite se sa Facebook"
+  },
+  "resetPage": {
+    "headline": "Passvord reset",
+    "sendBtn": "Promenite lozinku"
+  },
+  "recoveryPage": {
+    "headline": "Resetovanje lozinke",
+    "sendBtn": "Pošalji"
+  },
+  "myPage": {
+    "headline": "Moji oglasi",
+    "wait": "Čeka verifikaciju",
+    "public": "Objavljen",
+    "disabled": "Onemogućen"
+  },
+  "favoritesPage": {
+    "headline" : "Istaknuti oglas"
+  },
+  "createPhoto": {
+    "helpText": "Kliknite da preuzmete (maks. 2MB veličina, JPG, JPEG, PNG)",
+    "load": "Dovnload",
+    "remove": "Izbrisati",
+    "progressText": "Dovnload file",
+    "errorMessage": "Slika ne ispunjava uslove, pokušajte ponovo"
+  },
+  "historyPage": {
+    "headline": "Istorija",
+    "clearHistoryBtn": "Brisanje istorije"
+  },
+  "passwordField" : {
+    "label": "Lozinka",
+    "placeholder": ""
+  },
+  "repeatPasswordField" : {
+    "label": "Ponovite lozinku",
+    "placeholder": ""
+  },
+  "nameField" : {
+    "label": "Vaše ime",
+    "placeholder": "Marko Jovetić"
+  },
+  "signInPage": {
+    "headline": "Log in",
+    "enterBtn": "Log in",
+    "newAccountLink": {
+      "link": "Stvoriti",
+      "text": "Novi profil"
+    }
+  },
+  "signUpPage": {
+    "headline": "Registracija",
+    "enterBtn": "Prijavi se",
+    "licenseLink": {
+      "link": "Korisnik sporazum",
+      "text": "Registracijom prihvatate uslove"
+    },
+    "enterLink": {
+      "link": "Log in",
+      "text": "Imam nalog?"
+    }
+  },
+  "messages": {
+    "positiveHeadline": "Uspeh!",
+    "negativeHeadline": "Greška!",
+    "recoveryPage": {
+      "success": {
+        "beforeEmail": "На adresa",
+        "afterEmail": "on je poslao e-mail sa uputstvima za ponovno lozinku"
+      }
+    },
+    "resetPage": {
+      "success": {
+        "passwordBeenChanged": "Lozinka je promenjena!"
+      }
+    },
+    "my": {
+      "headline": "",
+      "desc": ""
+    },
+    "history": {
+      "headline": "",
+      "desc": ""
+    },
+    "hiddenListening": {
+      "headline": "",
+      "desc": ""
+    },
+    "privateListening" : {
+      "headline": "",
+      "desc": ""
+    },
+    "create": {
+      "headline": "",
+      "desc": ""
+    },
+    "favorites": {
+      "headline": "",
+      "desc": ""
+    },
+    "noListening": {
+      "headline": "",
+      "desc": ""
+    }
+  },
+  "other": {
+    "or": "ili",
+    "forgotPassword": "Zaboravili ste lozinku?",
+    "toHomeLink": "Kući",
+    "loadMoreBtn": "Opterećenje",
+    "more": "Više",
+    "loading": "Utovar"
+  }
+}

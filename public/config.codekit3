@@ -945,6 +945,54 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"\/locales\/rs\/about.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/about-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/rs\/common.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/common-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/rs\/head.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/head-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/rs\/messages.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/messages-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/rs\/modals.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/modals-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/locales\/rs\/nav.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/locales\/rs\/nav-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"\/locales\/ru\/about.json": {
 		"ft": 524288,
 		"oA": 1,

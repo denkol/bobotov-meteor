@@ -1,0 +1,30 @@
+{
+  "header": {
+    "all": "Sve",
+    "rent": "Najam",
+    "sale": "Prodaja",
+    "bythesea": "Od mora",
+    "foralongtime": "Na duge staze",
+    "forrelax": "Za rekreaciju",
+    "myprofile": "Moj profil",
+    "myadvs": "Moji oglasi",
+    "signup": "Registracija",
+    "signin": "Log in",
+    "addadv": "Dodaj obaveštenje",
+    "logout": "Izlaz"
+  },
+  "main": {
+    "home": "Glavni",
+    "advs": "Moji oglasi",
+    "favorite": "Favorites",
+    "history": "Istorija"
+  },
+  "footer" : {
+    "about": "O projektu",
+    "contacts": "Kontakti",
+    "support": "Podrška",
+    "advert": "Reklama",
+    "connectWithUs": "Kontaktirajte nas",
+    "copyrightText": "bobotov.me All rights reserved."
+  }
+}

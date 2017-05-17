@@ -1,6 +1,6 @@
 {
   "appName": "bobotov",
-  "appDesc": "Montenegro",
+  "appDesc": "Черногория",
   "toggleLng": {
     "ru": "Русский",
     "en": "Английский",
@@ -10,7 +10,7 @@
     "week": "Баня / Сауна",
     "cool": "Холодильник",
     "internet": "Интернет / Wi-Fi",
-    "pool": "Открытый бессен",
+    "pool": "Открытый бассейн",
     "traning_room": "Тренажерный зал",
     "beach": "Пляж-поблизости",
     "disabled_equipment": "Оборудование для инвалидов",
@@ -87,7 +87,7 @@
     "telegram": "Telegram"
   },
   "userStatuses": {
-    "agency": "Агенство недвижимости",
+    "agency": "Агентство недвижимости",
     "user": "Пользователь",
     "realtor": "Риэлтор",
     "owner": "Собственник"
@@ -236,7 +236,7 @@
     "sendBtn": "Изменить пароль"
   },
   "recoveryPage": {
-    "headline": "Воостановление пароля",
+    "headline": "Восстановление пароля",
     "sendBtn": "Отправить письмо"
   },
   "aboutPage": {
