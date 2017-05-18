@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { AccountsCommon } from 'meteor/accounts-base';
 import { ServiceConfiguration } from 'meteor/service-configuration';
 import { keys } from './keys';
+// import { ga } from 'react-google-analytics';
 
 Meteor.startup(() => {
   ServiceConfiguration.configurations.remove({
@@ -12,6 +13,8 @@ Meteor.startup(() => {
     "appId" : "695731333928670",
     "secret" : keys.facebook
   });
+  
+  
   
   /* Inject before render (loader, meta) */
   Inject.rawHead('meta', '<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="fragment" content="!"><title>Loading...</title><meta property="og:image" content="/img/favicon/image.jpg"><link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png"><link rel="manifest" href="/img/favicon/manifest.json"><meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png"><meta name="theme-color" content="#EEE"><meta name="msapplication-navbutton-color" content="#EEE"><meta name="msapplication-TileColor" content="#EEE"><meta name="apple-mobile-web-app-status-bar-style" content="#EEE"><link rel="stylesheet" href="/css/main.css"> <link rel="stylesheet" href="/css/fonts.css">');

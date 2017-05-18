@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 
+import { Initializer } from 'react-google-analytics';
+const GAInitiailizer = Initializer;
+
+
 /* Meteor libs */
 
 /* Components */
@@ -26,6 +30,9 @@ export default class Layout extends Component {
     this.state = {}
   }
   render() {
+    ga('create', 'UA-56444632-5', 'auto');
+    ga('send', 'pageview');
+    
     return (
       <I18nextProvider i18n={i18n}>
         <MuiThemeProvider>
@@ -38,6 +45,7 @@ export default class Layout extends Component {
               </div>
               {this.props.additionalContent}
             </div>
+            <GAInitiailizer />
             <Footer />
           </div>
         </MuiThemeProvider>

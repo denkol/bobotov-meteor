@@ -1,6 +1,7 @@
 Meteor.startup(function() {
   spinnerHide();
   setInterval(logoAnimation, 7000)
+
 });
 
 function spinnerHide() {
@@ -16,3 +17,5 @@ function logoAnimation() {
     $('#glide').removeClass('glide--loading');
   }, 1500);
 }
+
+

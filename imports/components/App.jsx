@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import {Helmet} from "react-helmet";
-
 /* Meteor libs */
 
 /* Components */
@@ -22,6 +21,8 @@ export default class App extends Component {
     this.state = {}
   }
   render() {
+    
+    
     return (
       <I18nextProvider i18n={i18n}>
         <div id="app">
