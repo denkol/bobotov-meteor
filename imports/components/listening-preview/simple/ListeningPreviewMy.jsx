@@ -62,11 +62,10 @@ class ListeningPreviewMy extends Component {
   }
   publishTrigger(event, data) {
     // let message = data.checked ? "Объявление включено" : "Объявление выключено"
-    let statusCode = data.checked ? 1 : 3;
     let publicNow = data.checked;
     let listeningId = this.props.data._id;
 
-    Meteor.call('listeningChangeStatus', statusCode, listeningId, (err, res) => {
+    Meteor.call('listeningChangeStatus', listeningId, (err, res) => {
       if(err) {
         console.log(err)
       };
@@ -96,6 +95,16 @@ class ListeningPreviewMy extends Component {
       const listeningFavoritesCount = this.props.data.listeningTech.favoritesCount;
       const listeningPublic = this.props.data.listeningTech.public;
       const listeningStatusCode = this.props.data.listeningTech.statusCode;
+      
+      const CheckboxEnableDisable = () => (
+        <Checkbox 
+          checked={listeningPublic} 
+          toggle 
+          onChange={this.publishTrigger}
+          disabled={listeningStatusCode === 2 ? true : false}
+        />
+      );
+
       const DeleteModal = () => (
         <Modal 
           trigger = {
@@ -169,12 +178,7 @@ class ListeningPreviewMy extends Component {
                     </div>
                   </div>
                   <div className="preview-simple-items__item">
-                    <Checkbox 
-                      checked={listeningPublic} 
-                      toggle 
-                      onChange={this.publishTrigger}
-                      disabled={listeningStatusCode === 2 ? true : false}
-                    />
+                    <CheckboxEnableDisable/>
                   </div>
                   <div className="preview-simple-items__item preview-simple-items__item_edit-icon" onClick={this.edit} >
                    <svg className="ico-edit" role="img">

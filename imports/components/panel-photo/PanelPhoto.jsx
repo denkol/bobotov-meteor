@@ -185,7 +185,7 @@ class PanelPhoto extends Component {
       return (
         <div className="panel-photo">
           <div className="panel-photo__loader">
-            <Loader size='mini'>Loading</Loader>
+            <Loader size='mini'>{t('other.loading')}</Loader>
           </div>
         </div>
       );

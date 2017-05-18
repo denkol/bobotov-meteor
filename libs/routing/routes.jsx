@@ -188,8 +188,10 @@ publicRoutes.route('/reset/:_token', {
 });
 
 
-publicRoutes.route('/admin', {
+publicRoutes.route('/master', {
   action() {
-    mount(Admin, {});
+    mount(App, {
+      page: AnimationWrapper(<Admin />)
+    });
   }
 });

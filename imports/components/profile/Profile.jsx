@@ -3,9 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { UserStatuses } from '../../data/data.js';
 import { translate } from 'react-i18next';
 
-
 class Profile extends Component {
-
   render() {
     const { t } = this.props
     const unknownPhotoUrl = "/img/unknown.jpg";

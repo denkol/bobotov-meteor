@@ -22,12 +22,13 @@ Meteor.methods({
 
     /* listeningTech object */
     data.listeningTech = {
-      "statusCode": 1,
-      "public": true,
+      "statusCode": 2,
+      "public": false,
       "bonuses": {
         "bonus1": false,
         "bonus2": false,
-        "bonus3": Math.random() < 0.5 ? true : false
+        // "bonus3": Math.random() < 0.5 ? true : false
+        "bonus3": false
       },
       "createdAt": date,
       "lastChangeDate": date,

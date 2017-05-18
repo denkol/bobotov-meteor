@@ -56,6 +56,28 @@ class Listening extends Component {
       owner : this.props.owner,
       listeningId : this.props.listeningId
     }
+    
+    const MessageError = () => (
+      <Message warning>
+        <Message.Header>{t('messages:justError.headline')}</Message.Header>
+          <p>{t('messages:justError.desc')}</p>
+      </Message>
+    );
+
+    const MessageListeningPrivate = () => (
+      <Message warning>
+        <Message.Header>{t('messages:listeningPrivate.headline')}</Message.Header>
+        <p>{t('messages:listeningPrivate.desc')}</p>
+      </Message>
+    );
+
+    const MessageOwnerListeningPrivate = () => (
+      <Message info>
+        <Message.Header>{t('messages:ownerListeningPrivate.headline')}</Message.Header>
+        <p>{t('messages:ownerListeningPrivate.desc')}</p>
+      </Message>
+    );
+
     if(loading) {
       if(data.listening) {
         let listeningAutorName;
@@ -72,7 +94,6 @@ class Listening extends Component {
         /* Reverse "rs" to "sr" for moment (sorry) */
         const currentLang = i18n.language == "rs" ? "sr" : i18n.language;
         const listeningLastChange = moment(data.listening.listeningTech.lastChangeDate).locale(currentLang).format('LL');
-        
         const listeningDesc = data.listening.listeningInfo.desc;
         const listeningViews = data.listening.listeningTech.views;
         const listeningHeadline = data.listening.listeningInfo.headline;
@@ -102,15 +123,15 @@ class Listening extends Component {
           { optionName: t('createListing.bathrooms.label'), optionValue: listeningBathrooms },
         ];
 
-        if(listeningPublic == false && data.owner._id !== Meteor.userId()) {
+        if(listeningPublic == false 
+            && data.owner._id !== Meteor.userId() 
+            && !Meteor.user().profile.master) {
           /* If listening hidden by autor */
           return (
-            <Message warning>
-              <Message.Header>{t('messages:listeningPrivate.headline')}</Message.Header>
-              <p>{t('messages:listeningPrivate.desc')}</p>
-            </Message>
+            <MessageListeningPrivate/>
           );
-        }
+        };
+
         return (
           <div>
             <Helmet>
@@ -127,10 +148,7 @@ class Listening extends Component {
               </div>
             </div>
             {!listeningPublic ?
-              <Message info>
-                <Message.Header>{t('messages:ownerListeningPrivate.headline')}</Message.Header>
-                <p>{t('messages:ownerListeningPrivate.desc')}</p>
-            </Message>
+              <MessageOwnerListeningPrivate/>
             : null}
             <div className="listening-media">
               <div className="listening-media__item">
@@ -226,10 +244,7 @@ class Listening extends Component {
         );
       } else {
         return (
-          <Message warning>
-            <Message.Header>{t('messages:justError.headline')}</Message.Header>
-              <p>{t('messages:justError.desc')}</p>
-          </Message>
+          <MessageError/>
         );
       }
     } else {

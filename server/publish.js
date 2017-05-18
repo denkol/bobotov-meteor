@@ -56,3 +56,17 @@ Meteor.publish('photos.public', function () {
 Meteor.publish('avatars.public', function () {
   return Avatars.find().cursor;
 });
+
+
+// Deny all client-side updates on the Listenings collection
+Listenings.deny({
+  insert() { return true; },
+  update() { return true; },
+  remove() { return true; },
+});
+// Deny all client-side updates on the Users collection
+Meteor.users.deny({
+  insert() { return true; },
+  update() { return true; },
+  remove() { return true; },
+});

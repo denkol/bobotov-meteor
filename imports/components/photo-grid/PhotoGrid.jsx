@@ -50,6 +50,11 @@ class PhotoGrid extends TrackerReact(Component) {
     const query = Session.get('filterQuery');
     // const query = window.location.pathname;
     const listenings = Listenings.find(query, {limit: this.state.limit, sort: {"listeningTech.createdAt": -1} }).fetch();
+    const MessageNoListenings = () => (
+      <Message
+        header={t('messages:noListenings.headline')}
+        content={t('messages:noListenings.desc')}/>
+    );
     if (this.state.subscription.listenings.ready()) {
       const listeningsTotal = Listenings.find(query).count();
       const filterData = Session.get('filterData');
@@ -80,9 +85,7 @@ class PhotoGrid extends TrackerReact(Component) {
               }
             </div> :
             <div className="main-listening-stream">
-              <Message
-                header={t('messages:noListenings.headline')}
-                content={t('messages:noListenings.desc')}/>
+              <MessageNoListenings />
             </div>}
           </div>);
     } else {
