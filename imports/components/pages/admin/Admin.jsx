@@ -27,7 +27,7 @@ export default class Admin extends TrackerReact(Component) {
   render() {
     const user = Meteor.user() ? Meteor.user().profile.master : "";
     if(user) {
-      const listenings = Listenings.find({}, {sort: {"listeningTech.createdAt": -1} }).fetch();
+      const listenings = Listenings.find({}, {sort: {"listeningTech.lastChangeDate": -1} }).fetch();
       if (this.state.subscription.listenings.ready()) {
         return (
           <div className="photo-grid">

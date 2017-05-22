@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 
-function animateLoveMenu() {
-  $('#love-menu-item').addClass('favorites-menu-animation');
-  setTimeout(function() {
-    $('#love-menu-item').removeClass('favorites-menu-animation');
-  }, 500);
-}
-
 class FavoriteBtn extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +9,12 @@ class FavoriteBtn extends Component {
     }
     this.handleFavoriteBtn = this.handleFavoriteBtn.bind(this);
   }
-
+  animateLoveMenu() {
+    $('#love-menu-item').addClass('favorites-menu-animation');
+    setTimeout(function() {
+      $('#love-menu-item').removeClass('favorites-menu-animation');
+    }, 500);
+  }
   handleFavoriteBtn() {
     this.setState({ //Toggle state
       isFavorite : !this.state.isFavorite
@@ -28,13 +26,11 @@ class FavoriteBtn extends Component {
     };
 
     Meteor.call('listeningAddToFavorite', sendData, (err, res) => {
-      if(err) {
-        console.log(err);
-      }
+      if(err) { console.log(err); }
     });
     
     if(this.state.isFavorite == false) {
-      animateLoveMenu(); //only when add to favorites
+      this.animateLoveMenu(); //only when add to favorites
     }
   }
   render() {

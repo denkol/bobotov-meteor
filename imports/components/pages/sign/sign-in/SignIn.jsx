@@ -8,7 +8,6 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 /* Components */
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
-import VkBtn from '../../../btn-vk/VkBtn.jsx';
 
 /* Some funtctions */
 import { isValidEmail } from "/imports/functions/validation.js";
