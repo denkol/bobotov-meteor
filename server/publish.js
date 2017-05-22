@@ -24,6 +24,17 @@ Meteor.publish("listenings.bigslider", function() {
     );
 });
 
+Meteor.publish("listenings.needVerify", function() {
+  return Listenings.find(
+      {
+        "listeningTech": {
+          "statusCode": 2
+        }
+      },
+      {sort: {"listeningTech.createdAt": -1}}
+    );
+});
+
 Meteor.publish("listenings.public", function(query = {}, params = {}) {
     check(query, Object);
     check(params, Object);

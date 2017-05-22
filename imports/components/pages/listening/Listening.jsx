@@ -47,7 +47,14 @@ class Listening extends Component {
     this.setState({subMenuOpen: false});
     FlowRouter.go(path);
   }
-
+  ok(id) {
+    const master = Meteor.user().profile.master;
+    if(master) {
+      Meteor.call('listeningApprove', id, (err, res) => {
+        if(err) {console.log(err)}
+      });
+    }
+  }
   render() {
     const { loading, t } = this.props;
     const data = {
@@ -56,7 +63,24 @@ class Listening extends Component {
       owner : this.props.owner,
       listeningId : this.props.listeningId
     }
-    
+    const BackBtn = () => (
+      <Button 
+        onClick={this.handleGo.bind(this, '/')}
+        size="small" 
+        content={t('listening.backBtn')}
+        icon='left arrow' 
+        labelPosition='left' />
+    );
+
+    const ApproveBtn = () => (
+      <Button 
+        onClick={this.ok.bind(this, data.listeningId)}
+        size="small" 
+        content="Ok"
+        inverted color='green'
+      />
+    );
+
     const MessageError = () => (
       <Message warning>
         <Message.Header>{t('messages:justError.headline')}</Message.Header>
@@ -90,6 +114,8 @@ class Listening extends Component {
           listeningAutorName = data.owner.profile.username;
           listeningAutorDesc = data.owner.profile.userType;
         }
+
+        const master = Meteor.user() ? Meteor.user().profile.master : "";
         
         /* Reverse "rs" to "sr" for moment (sorry) */
         const currentLang = i18n.language == "rs" ? "sr" : i18n.language;
@@ -112,6 +138,7 @@ class Listening extends Component {
         const listeningContacts = data.listening.listeningContacts;
         const listeningTypeDeal = data.listening.listeningInfo.typeDeal;
         const listeningTypeProperty = data.listening.listeningInfo.typeProperty;
+        const listeningStatusCode = data.listening.listeningTech.statusCode;
         const listeningOptions = [
           { optionName: t('createListing.country.label'), optionValue: t('countries.' + listeningCountry) },
           { optionName: t('createListing.city.label'), optionValue: t('cities.' + listeningCity) },
@@ -122,7 +149,6 @@ class Listening extends Component {
           { optionName: t('createListing.bedrooms.label'), optionValue: listeningBedrooms },
           { optionName: t('createListing.bathrooms.label'), optionValue: listeningBathrooms },
         ];
-
         if(listeningPublic == false 
             && data.owner._id !== Meteor.userId() 
             && !Meteor.user().profile.master) {
@@ -139,12 +165,8 @@ class Listening extends Component {
             </Helmet>
             <div className="listening-breadcrumbs">
               <div className="listening-breadcrumbs__item">
-                <Button 
-                  onClick={this.handleGo.bind(this, '/')}
-                  size="small" 
-                  content={t('listening.backBtn')}
-                  icon='left arrow' 
-                  labelPosition='left' />
+                <BackBtn />
+                {master && listeningStatusCode == 2 ? <ApproveBtn /> : null}
               </div>
             </div>
             {!listeningPublic ?

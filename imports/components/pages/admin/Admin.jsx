@@ -12,7 +12,7 @@ export default class Admin extends TrackerReact(Component) {
     super(props);
     this.state = {
       subscription: {
-        listenings: Meteor.subscribe('listenings.all', {})
+        listenings: Meteor.subscribe('listenings.all')
       }
     }
   }
@@ -25,9 +25,10 @@ export default class Admin extends TrackerReact(Component) {
     FlowRouter.go(url);
   }
   render() {
-    const user = Meteor.user() ? Meteor.user().profile.master : "";
-    if(user) {
-      const listenings = Listenings.find({}, {sort: {"listeningTech.lastChangeDate": -1} }).fetch();
+    const master = Meteor.user() ? Meteor.user().profile.master : "";
+    if(master) {
+
+      const listenings = Listenings.find({"listeningTech.statusCode": 2}, {sort: {"listeningTech.createdAt": -1}}).fetch();
       if (this.state.subscription.listenings.ready()) {
         return (
           <div className="photo-grid">
