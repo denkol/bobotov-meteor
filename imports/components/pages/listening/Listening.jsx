@@ -116,7 +116,6 @@ class Listening extends Component {
         }
 
         const master = Meteor.user() ? Meteor.user().profile.master : "";
-        
         /* Reverse "rs" to "sr" for moment (sorry) */
         const currentLang = i18n.language == "rs" ? "sr" : i18n.language;
         const listeningLastChange = moment(data.listening.listeningTech.lastChangeDate).locale(currentLang).format('LL');

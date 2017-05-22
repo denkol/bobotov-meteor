@@ -14,7 +14,7 @@ i18n
     ns: ['common', 'messages', 'head', 'modals'],
     defaultNS: 'common',
 
-    debug: true,
+    debug: false,
 
     // cache: {
     //   enabled: true
