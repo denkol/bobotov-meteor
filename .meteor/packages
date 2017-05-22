@@ -30,5 +30,7 @@ aldeed:simple-schema
 ultimatejs:tracker-react
 anti:fake
 tmeasday:publish-counts
+dburles:collection-helpers
+matb33:collection-hooks
 
 react-meteor-data
