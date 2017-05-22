@@ -6,6 +6,14 @@ function randomWithProbability(probability) {
   return notRandomNumbers[idx];
 }
 
+function sendMeNotification() {
+  Email.send({
+    from: "admin@bobotov.me",
+    to: "denis@kolpak.pro",
+    subject: "New listening on Bobotov",
+    text: "Hello Admin! Check out new listening on bobotov.me"
+  });
+}
 
 Meteor.methods({
   listeningCreate(data) {
@@ -49,6 +57,7 @@ Meteor.methods({
           Meteor.users.update(userId, {
             $set: { "profile.listeningsList": userListenings }
           });
+          sendMeNotification()
         }
       });
     }
