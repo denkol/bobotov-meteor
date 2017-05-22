@@ -26,7 +26,8 @@ class Loading extends Component {
     return (
       <div className="loader">
         <Dimmer active inverted>
-          <Loader size='medium'>{t('other.loading')}...</Loader>
+          {/*<Loader size='medium'>{t('other.loading')}...</Loader>*/}
+          <Loader size='medium'></Loader>
         </Dimmer>
       </div>
     );

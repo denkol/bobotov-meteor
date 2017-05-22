@@ -4,41 +4,10 @@
   padding-bottom: 16px;
   position: relative;
   z-index: 6;
-  -webkit-transition: -webkit-transform .2s ease;
-  transition: -webkit-transform .2s ease;
-  transition: transform .2s ease;
-  transition: transform .2s ease,-webkit-transform .2s ease;
-  &--slide-to-left {
-    -webkit-transform: translate3d(-300px,0,0);
-    transform: translate3d(-300px,0,0);
-  }
-  &--slide-to-right {
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-  }
+  animation: fadeInDown 0.2s ease 0.2s both;
   @include mq('tablet-wide', max) {
     padding-bottom: 16px;
     padding-left: 10px;
     padding-right: 10px;
   }
-}
-
-@-webkit-keyframes slideLeft { 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1}
-  100% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5} 
-}
-
-@keyframes slideLeft { 
-  0% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1}
-  100% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5} 
-}
-
-@-webkit-keyframes slideRight { 
-  0% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5}
-  100% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1} 
-}
-
-@keyframes slideRight { 
-  0% { -webkit-transform: translateX(-300px); transform: translateX(-300px); opacity: 0.5}
-  100% { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1} 
 }

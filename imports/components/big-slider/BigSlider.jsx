@@ -94,9 +94,7 @@ class BigSlider extends TrackerReact(Component) {
     } else {
       //loading
       return (
-        <div>
-          <BigSliderHeadline />
-        </div>
+        <div></div>
       );
     }
   }
