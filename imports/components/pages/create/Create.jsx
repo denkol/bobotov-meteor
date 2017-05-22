@@ -72,7 +72,8 @@ class Create extends Component {
     return Countries.map(({ value }) => ({
       key: Random.id(4),
       value: value,
-      text: t(`countries.${value}`)
+      text: t(`countries.${value}`),
+      flag: value
     }))
   }
 
