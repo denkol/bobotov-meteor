@@ -116,7 +116,8 @@ export const Photos = new FilesCollection({
       if (triesSend == null) {
         triesSend = 0;
       }
-      client.writeFile(fileRef._id + "-" + version + "." + fileRef.extension, data, function(error, stat) {
+      console.log(fileRef)
+      client.writeFile(`listenings/${fileRef.meta.listeningId}/${fileRef._id}-${version}.${fileRef.extension}`, data, function(error, stat) {
         bound(function() {
           if (error) {
             if (triesSend < 10) {
