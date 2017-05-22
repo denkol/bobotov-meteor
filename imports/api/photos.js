@@ -17,7 +17,7 @@ export const Photos = new FilesCollection({
           fs.mkdirSync(dir, 0777);
         }
         return dir
-      } else if (userId) { 
+      } else if (userId) {
         /* If listening id NOT define put photos to photos/users/userId/photoId */
         const dir = path.resolve(UPLOAD_PATH, 'photos', userId)
         if (!fs.existsSync(dir)){

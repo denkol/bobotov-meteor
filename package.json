@@ -2,7 +2,7 @@
   "name": "new-bobotov",
   "private": true,
   "scripts": {
-    "start": "UPLOAD_PATH=../bobotov-meteor/public MONGO_URL=mongodb://127.0.0.1/bobotov meteor run",
+    "start": "UPLOAD_PATH=../bobotov-meteor/public ROOT_URL=http://192.168.0.64 MONGO_URL=mongodb://127.0.0.1/bobotov meteor run",
     "deploy": "meteor build ../ --architecture os.linux.x86_64 && cd .. && scp ../bobotov.tar.gz meteor@bobotov.me:/home/meteor/bobotov.tar.gz"
   },
   "dependencies": {
