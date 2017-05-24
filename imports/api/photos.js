@@ -201,7 +201,6 @@ if (Meteor.isServer) {
               if (error) {
                 console.error(error);
               }
-              console.log(vRef.meta.pipePath)
             });
           });
         }

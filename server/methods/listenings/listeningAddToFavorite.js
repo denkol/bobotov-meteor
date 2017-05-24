@@ -11,7 +11,7 @@ Meteor.methods({
 
       if (isFavorite) {
         removeFromFavorites(listeningId, currentFavoriteList, currentFavoritesCount);
-      } else { 
+      } else {
         addToFavorites(listeningId, currentFavoriteList, currentFavoritesCount);
       }
     } else {

@@ -52,6 +52,26 @@ Meteor.publish("listenings.my", function() {
   return Listenings.find({"listeningTech.ownerId" : this.userId});
 });
 
+Meteor.publish("listenings.favorites", function() {
+  const user = Meteor.users.findOne(this.userId)
+  if (!user) {
+    return this.ready()
+  }
+  const favouritesList = user ? user.profile.favoritesList : [];
+  const selector = { _id: { $in: favouritesList } };
+  return Listenings.find(selector);
+})
+
+Meteor.publish("listenings.history", function() {
+  const user = Meteor.users.findOne(this.userId)
+  if (!user) {
+    return this.ready()
+  }
+  const historyList = user ? user.profile.historyList : [];
+  const selector = { _id: { $in: historyList } };
+  return Listenings.find(selector);
+})
+
 Meteor.publish("user", function (userId) {
   new SimpleSchema({
     userId: {type: String}

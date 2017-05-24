@@ -26,15 +26,15 @@ const limit = 9;
 class History extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       limit: limit,
       subscription: {
-         listenings: Meteor.subscribe('listenings.public', {})
+         listenings: Meteor.subscribe('listenings.history')
       }
     };
     this.loadMore = this.loadMore.bind(this);
     this.removeHistory = this.removeHistory.bind(this);
-    
+
 
   }
   componentDidMount() {
@@ -42,28 +42,29 @@ class History extends TrackerReact(Component) {
   }
 
   removeHistory(event) {
-    
     event.preventDefault();
-    
     Meteor.call('removeAllHistory', (err, res) => {
       if(err) {console.log(err)}
-      
     })
   }
+
   componentWillUnmount() {
     this.setState({limit: limit});
     this.state.subscription.listenings.stop();
   }
+
   loadMore() {
     this.setState({limit: this.state.limit + limit});
   }
+
   render() {
     const { t } = this.props;
     const user = Meteor.user();
     const historyList = user ? user.profile.historyList : [];
     const query = { _id: { $in: historyList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
-    
+    const listenings = historyList.slice(0, this.state.limit).map(listeningId => Listenings.findOne(listeningId))
+    const listeningsTotal = Listenings.find(query).count() || 0;
+
     const Head = () => (
       <Helmet>
         <title>{t('head:titles.history')+" "+t('head:titles.app')}</title>
@@ -72,13 +73,13 @@ class History extends TrackerReact(Component) {
 
     const MessageEmpty = () => (
       <Message
-        header={t('messages:listeningsEmpty.headline')} 
+        header={t('messages:listeningsEmpty.headline')}
         content={t('messages:listeningsEmpty.desc')} />
     );
 
     const MessageNeedLogin = () => (
       <Message info
-        header={t('messages:needLogin.headline')} 
+        header={t('messages:needLogin.headline')}
         content={t('messages:needLogin.desc')} />
     );
 
@@ -110,17 +111,16 @@ class History extends TrackerReact(Component) {
         </div>
       );
     };
-    
+
     if(this.state.subscription.listenings.ready()) {
-      if(listenings.length) {
-        const listeningsTotal = Listenings.find(query).count() || 0;
+      if(listeningsTotal) {
         return (
           <div className="historyPage">
             <Head />
             <HistoryHeadline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
-                return (
+                return listening && (
                   <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
                     <ListeningPreview key={index} listeningData={listening} layout="index" />
                   </a>

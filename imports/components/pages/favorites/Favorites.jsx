@@ -28,7 +28,7 @@ class Favorites extends TrackerReact(Component) {
     this.state = {
       limit: limit,
       subscription: {
-         listenings: Meteor.subscribe('listenings.public', {})
+         listenings: Meteor.subscribe('listenings.favorites')
       }
     };
     this.loadMore = this.loadMore.bind(this);
@@ -52,17 +52,18 @@ class Favorites extends TrackerReact(Component) {
     const user = Meteor.user();
     const favouritesList = user ? user.profile.favoritesList : [];
     const query = { _id: { $in: favouritesList } };
-    const listenings = Listenings.find(query, {limit: this.state.limit}).fetch();
-    
+    const listenings = favouritesList.slice(0, this.state.limit).map(listeningId => Listenings.findOne(listeningId))
+    const listeningsTotal = Listenings.find(query).count() || 0;
+
     const MessageEmpty = () => (
       <Message
-        header={t('messages:listeningsEmpty.headline')} 
+        header={t('messages:listeningsEmpty.headline')}
         content={t('messages:listeningsEmpty.desc')} />
     );
 
     const MessageNeedLogin = () => (
       <Message info
-        header={t('messages:needLogin.headline')} 
+        header={t('messages:needLogin.headline')}
         content={t('messages:needLogin.desc')} />
     );
 
@@ -95,17 +96,16 @@ class Favorites extends TrackerReact(Component) {
         </div>
       );
     }
-    
-    if(this.state.subscription.listenings.ready()) {
-      if(listenings.length) {
-        const listeningsTotal = Listenings.find(query).count() || 0;
+
+    if (this.state.subscription.listenings.ready()) {
+      if (listeningsTotal) {
         return (
           <div>
             <Head />
             <Headline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
-                return (
+                return listening && (
                   <a href={"/listening/" + listening._id} key={"favouritesListItem" + index} className="photo-grid__item">
                     <ListeningPreview listeningData={listening} layout="index" />
                   </a>
