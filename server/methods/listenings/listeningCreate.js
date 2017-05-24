@@ -6,13 +6,17 @@ function randomWithProbability(probability) {
   return notRandomNumbers[idx];
 }
 
-function sendMeNotification() {
-  Email.send({
+function sendMeNotification(data) {
+  var masterEmail = Meteor.user().emails[0].address; //first email
+  
+  var sendObj = {
     from: "admin@bobotov.me",
-    to: "denis@kolpak.pro",
+    to: "kol9743@gmail.com",
     subject: "New listening on Bobotov",
-    text: "Hello Admin! Check out new listening on bobotov.me"
-  });
+    text: 'Hello Admin! Check out new listening on bobotov.me <a href="' + data.url + '">' + data.url + '</a>'
+  }
+
+  Email.send(sendObj);
 }
 
 Meteor.methods({
@@ -53,11 +57,17 @@ Meteor.methods({
       Listenings.insert(data, function(err, id) {
         if (err) { console.log(err);
         } else {
+          
           userListenings.push(id);
+          
           Meteor.users.update(userId, {
             $set: { "profile.listeningsList": userListenings }
           });
-          sendMeNotification()
+
+          /* Send email notif */
+          sendMeNotification({
+            url: "https://bobotov.me/listenings/" + id
+          });
         }
       });
     }
