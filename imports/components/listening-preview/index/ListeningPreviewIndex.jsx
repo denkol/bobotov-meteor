@@ -1,7 +1,7 @@
 /* React libs */
 import React, { Component, PropTypes } from 'react';
 import { translate } from 'react-i18next';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Meteor libs */
 

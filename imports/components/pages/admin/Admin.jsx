@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import { Listenings } from '../../../api/listenings.js';
 import ListeningPreview from '../../listening-preview/ListeningPreview.jsx';
@@ -25,7 +25,7 @@ export default class Admin extends TrackerReact(Component) {
   }
   render() {
     const master = Meteor.user() ? Meteor.user().profile.master : "";
-    
+
     const Head = () => (
       <Helmet>
         <title>Master</title>

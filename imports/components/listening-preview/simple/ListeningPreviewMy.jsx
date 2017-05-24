@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { translate } from 'react-i18next';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import { Checkbox, Button, Modal, Icon} from 'semantic-ui-react';
 import { Translate } from '../../../functions/functions.js';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
@@ -95,18 +95,18 @@ class ListeningPreviewMy extends Component {
       const listeningFavoritesCount = this.props.data.listeningTech.favoritesCount;
       const listeningPublic = this.props.data.listeningTech.public;
       const listeningStatusCode = this.props.data.listeningTech.statusCode;
-      
+
       const CheckboxEnableDisable = () => (
-        <Checkbox 
-          checked={listeningPublic} 
-          toggle 
+        <Checkbox
+          checked={listeningPublic}
+          toggle
           onChange={this.publishTrigger}
           disabled={listeningStatusCode === 2 ? true : false}
         />
       );
 
       const DeleteModal = () => (
-        <Modal 
+        <Modal
           trigger = {
             <div className="remove-icon" onClick={this.modalOpen}>
               <div className="remove-icon__icon">
@@ -186,7 +186,7 @@ class ListeningPreviewMy extends Component {
                     </svg>
                   </div>
                 </div>
-              </div> 
+              </div>
               {/*<div className="listening-preview-simple__price-block">
                 <div className="price">
                   <div className="price__text">

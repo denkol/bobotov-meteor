@@ -21,8 +21,7 @@ export default class App extends Component {
     this.state = {}
   }
   render() {
-    
-    
+
     return (
       <I18nextProvider i18n={i18n}>
         <div id="app">

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 import { Random } from 'meteor/random';
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
@@ -345,30 +345,30 @@ class CreateEdit extends Component {
                 <div className="create-block__item">
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown 
+                      <Form.Dropdown
                         label={t('createListing.country.label')}
                         placeholder={t('createListing.country.placeholder')}
-                        name='country' 
-                        fluid 
-                        selection 
-                        options={this.countriesOptions()} 
-                        defaultValue={defaultValue.country} 
-                        error={country ? true : false} 
+                        name='country'
+                        fluid
+                        selection
+                        options={this.countriesOptions()}
+                        defaultValue={defaultValue.country}
+                        error={country ? true : false}
                         required/>
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown 
+                      <Form.Dropdown
                         label={t('createListing.city.label')}
                         placeholder={t('createListing.city.placeholder')}
-                        name='city' 
-                        fluid 
-                        selection 
-                        options={this.citiesOptions()} 
-                        defaultValue={defaultValue.city} 
-                        error={city ? true : false} 
+                        name='city'
+                        fluid
+                        selection
+                        options={this.citiesOptions()}
+                        defaultValue={defaultValue.city}
+                        error={city ? true : false}
                         required/>
                     </div>
                     <div className="create-block-row__item"></div>
@@ -383,30 +383,30 @@ class CreateEdit extends Component {
                   </div>*/}
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown 
+                      <Form.Dropdown
                         label={t('createListing.typeDeal.label')}
                         placeholder={t('createListing.typeDeal.placeholder')}
-                        name='typeDeal' 
-                        fluid 
-                        selection 
-                        options={this.typeDealOptions()} 
-                        defaultValue={defaultValue.typeDeal} 
-                        error={typeDeal ? true : false} 
+                        name='typeDeal'
+                        fluid
+                        selection
+                        options={this.typeDealOptions()}
+                        defaultValue={defaultValue.typeDeal}
+                        error={typeDeal ? true : false}
                         required/>
                     </div>
                     <div className="create-block-row__item"></div>
                   </div>
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown 
+                      <Form.Dropdown
                       label={t('createListing.typeProperty.label')}
                       placeholder={t('createListing.typeProperty.placeholder')}
-                      name='typeProperty' 
-                      fluid 
-                      selection 
-                      options={this.typePropertyOptions()} 
-                      defaultValue={defaultValue.typeProperty} 
-                      error={typeProperty ? true : false} 
+                      name='typeProperty'
+                      fluid
+                      selection
+                      options={this.typePropertyOptions()}
+                      defaultValue={defaultValue.typeProperty}
+                      error={typeProperty ? true : false}
                       required/>
                     </div>
                     <div className="create-block-row__item"></div>
@@ -415,15 +415,15 @@ class CreateEdit extends Component {
                   <div className="create-block-row__item">
                     <Form.Field>
                       <label>{t('createListing.square.label')}</label>
-                      <Input 
-                        label={{ basic: true, content: 'm²' }} 
+                      <Input
+                        label={{ basic: true, content: 'm²' }}
                         placeholder={t('createListing.square.placeholder')}
-                        name='ratio' 
-                        type="number" 
-                        fluid 
-                        labelPosition='right' 
-                        defaultValue={defaultValue.ratio} 
-                        error={ratio ? true : false} 
+                        name='ratio'
+                        type="number"
+                        fluid
+                        labelPosition='right'
+                        defaultValue={defaultValue.ratio}
+                        error={ratio ? true : false}
                         required/>
                     </Form.Field>
                   </div>
@@ -434,24 +434,24 @@ class CreateEdit extends Component {
                       <Form.Group widths='equal' style={{marginBottom: 0}}>
                         <Form.Field>
                           <label>{t('createListing.priceFiled.label')}</label>
-                          <Input 
-                          label={{ basic: true, content: '€' }} 
+                          <Input
+                          label={{ basic: true, content: '€' }}
                           placeholder={t('createListing.priceFiled.placeholder')}
-                          name='price' 
-                          type="number" 
-                          fluid 
-                          labelPosition='right' 
-                          defaultValue={defaultValue.price} 
-                          error={price ? true : false} 
+                          name='price'
+                          type="number"
+                          fluid
+                          labelPosition='right'
+                          defaultValue={defaultValue.price}
+                          error={price ? true : false}
                           required/>
                         </Form.Field>
-                        <Form.Select 
+                        <Form.Select
                           label={t('createListing.paymentPeriod.label')}
-                          name='paymentPeriod' 
-                          options={this.paymentPeriodOptions()} 
+                          name='paymentPeriod'
+                          options={this.paymentPeriodOptions()}
                           placeholder={t('createListing.paymentPeriod.placeholder')}
-                          defaultValue={defaultValue.paymentPeriod} 
-                          error={paymentPeriod ? true : false} 
+                          defaultValue={defaultValue.paymentPeriod}
+                          error={paymentPeriod ? true : false}
                           required/>
                       </Form.Group>
                     </div>
@@ -461,26 +461,26 @@ class CreateEdit extends Component {
                   <div className="create-block-row">
                     <div className="create-block-row__item">
                       <Form.Group widths='equal' style={{marginBottom: 0}}>
-                        <Form.Input 
-                          defaultValue={defaultValue.bedrooms} 
+                        <Form.Input
+                          defaultValue={defaultValue.bedrooms}
                           label={t('createListing.bedrooms.label')}
-                          placeholder='1' 
-                          name='bedrooms' 
-                          type="number" 
+                          placeholder='1'
+                          name='bedrooms'
+                          type="number"
                           fluid/>
-                        <Form.Input 
-                          defaultValue={defaultValue.bathrooms} 
+                        <Form.Input
+                          defaultValue={defaultValue.bathrooms}
                           label={t('createListing.bathrooms.label')}
-                          placeholder='2' 
-                          name='bathrooms' 
-                          type="number" 
+                          placeholder='2'
+                          name='bathrooms'
+                          type="number"
                           fluid/>
-                        <Form.Input 
-                          defaultValue={defaultValue.floor} 
-                          label={t('createListing.floor.label')} 
-                          placeholder='4' 
-                          name='floor' 
-                          type="number" 
+                        <Form.Input
+                          defaultValue={defaultValue.floor}
+                          label={t('createListing.floor.label')}
+                          placeholder='4'
+                          name='floor'
+                          type="number"
                           fluid/>
                       </Form.Group>
                     </div>
@@ -489,29 +489,29 @@ class CreateEdit extends Component {
 
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Dropdown 
+                      <Form.Dropdown
                         label={t('createListing.comfortList.label')}
                         placeholder={t('createListing.comfortList.placeholder')}
-                        name='comfortList' 
-                        multiple 
-                        fluid 
-                        selection 
-                        renderLabel={comfortListLabel} 
-                        options={this.comfortListOptions()} 
+                        name='comfortList'
+                        multiple
+                        fluid
+                        selection
+                        renderLabel={comfortListLabel}
+                        options={this.comfortListOptions()}
                         defaultValue={defaultValue.comfortList} />
                     </div>
                   </div>
 
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.Input 
-                        defaultValue={defaultValue.headline} 
+                      <Form.Input
+                        defaultValue={defaultValue.headline}
                         label={t('createListing.yourHeadline.label')}
                         placeholder={t('createListing.yourHeadline.placeholder')}
-                        name='headline' 
-                        type="text" 
-                        fluid 
-                        error={headline ? true : false} 
+                        name='headline'
+                        type="text"
+                        fluid
+                        error={headline ? true : false}
                         required/>
                     </div>
                     <div className="create-block-row__item">
@@ -520,12 +520,12 @@ class CreateEdit extends Component {
 
                   <div className="create-block-row">
                     <div className="create-block-row__item">
-                      <Form.TextArea 
-                        defaultValue={defaultValue.desc} 
-                        name='description' 
+                      <Form.TextArea
+                        defaultValue={defaultValue.desc}
+                        name='description'
                         label={t('createListing.description.label')}
-                        rows='3' 
-                        error={desc ? true : false} 
+                        rows='3'
+                        error={desc ? true : false}
                         required/>
                     </div>
                   </div>
@@ -608,5 +608,5 @@ export default createContainer(({ listeningId }) => {
   const listeningContacts = listening ? listening.listeningContacts : [];
   const ownerId = listening ? listening.listeningTech.ownerId : "";
   return { loading, listening, listeningContacts, ownerId};
-  
+
 }, translate('common', { wait: true })(CreateEdit));

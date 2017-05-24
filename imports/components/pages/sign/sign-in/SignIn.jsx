@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { Helmet } from "react-helmet";
 
 /* Meteor libs */
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
@@ -39,11 +39,11 @@ class SignIn extends Component {
     this.setState({ validation });
     const email = formData.email;
     const password = formData.password;
-    
+
     const message = t('messages:dinamiclyErrors.formError');
     if (!isValidEmail(email)) {
     	validation.message = message;
-      validation.email = t('messages:dinamiclyErrors.invalidEmail'); 
+      validation.email = t('messages:dinamiclyErrors.invalidEmail');
       this.setState({ validation });
     }
     if (!password) {
@@ -85,7 +85,7 @@ class SignIn extends Component {
         </Helmet>
         <div className="card card_login">
           <div className="login-form">
-            <div className="login-item"> 
+            <div className="login-item">
               <h4 className="headline-login">{t('signInPage.headline')}</h4>
             </div>
             <div className="login-item">
@@ -96,7 +96,7 @@ class SignIn extends Component {
             </div>
             <Form size={'tiny'} onSubmit={this.handleSubmit}>
               <div className="login-item">
-                {message ? 
+                {message ?
                   <Message size='tiny'>
                     <Message.Header>{message}</Message.Header>
                     {email || password ?

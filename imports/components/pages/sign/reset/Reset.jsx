@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { Helmet } from "react-helmet";
 
 /* Meteor libs */
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 
@@ -72,7 +72,7 @@ class Reset extends Component {
         </Helmet>
         <div className="card card_login">
           <div className="login-form">
-            <div className="login-item"> 
+            <div className="login-item">
               <h4 className="headline-login">{t('resetPage.headline')}</h4>
             </div>
             <div className="login-item-separator"></div>

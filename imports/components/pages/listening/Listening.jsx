@@ -64,18 +64,18 @@ class Listening extends Component {
       listeningId : this.props.listeningId
     }
     const BackBtn = () => (
-      <Button 
+      <Button
         onClick={this.handleGo.bind(this, '/')}
-        size="small" 
+        size="small"
         content={t('listening.backBtn')}
-        icon='left arrow' 
+        icon='left arrow'
         labelPosition='left' />
     );
 
     const ApproveBtn = () => (
-      <Button 
+      <Button
         onClick={this.ok.bind(this, data.listeningId)}
-        size="small" 
+        size="small"
         content="Ok"
         inverted color='green'
       />
@@ -148,8 +148,8 @@ class Listening extends Component {
           { optionName: t('createListing.bedrooms.label'), optionValue: listeningBedrooms },
           { optionName: t('createListing.bathrooms.label'), optionValue: listeningBathrooms },
         ];
-        if(listeningPublic == false 
-            && data.owner._id !== Meteor.userId() 
+        if(listeningPublic == false
+            && data.owner._id !== Meteor.userId()
             && !Meteor.user().profile.master) {
           /* If listening hidden by autor */
           return (
@@ -175,7 +175,7 @@ class Listening extends Component {
               <div className="listening-media__item">
                 <ListeningPhotos photos={listeningsPhotos}/>
               </div>
-            </div>  
+            </div>
             <div className="listening-info">
               <div className="listening-info-header">
                 <div className="listening-info-header__item listening-info-header__item_headline">
@@ -285,21 +285,10 @@ export default createContainer(({ listeningId }) => {
   const listeningSubs = Meteor.subscribe('listenings.all');
   const userSubs = Meteor.subscribe('user', ownerId);
   const loading = listeningSubs.ready() && userSubs.ready();
-  const owner = Meteor.users.find({_id: ownerId}).fetch()[0];
-
+  const owner = Meteor.users.findOne(ownerId);
 
   const favoritesList = Meteor.user() ? Meteor.user().profile.favoritesList : [];
-  const isFavorite = checkerFavorite(favoritesList, id);
-  function checkerFavorite(e, curId) {
-    if(e && curId) {
-      for(var i = 0; i < e.length; i++) {
-        if(e[i] == curId) {
-          return true
-        }
-      }
-    }
-    return false;
-  }
+  const isFavorite = favoritesList.includes(id);
 
   return { listeningId, loading, owner, listening, isFavorite };
 

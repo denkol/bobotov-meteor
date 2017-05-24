@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import { Translate } from '../../../functions/functions.js';
 import { PaymentPeriod, TypeProperty, TypeDeal, Cities, Countries, ComfortList} from '../../../data/data.js';
 
@@ -72,7 +72,7 @@ export default class ListeningPreviewSimple extends Component {
                   <a href={listeningLink} className="preview-simple-headline__head">{listeningHeadline}</a>
                   <div className="preview-simple-headline__desc">{Translate(Cities, listeningCity)}, {Translate(Countries, listeningCountry)}</div>
                 </div>
-              </div> 
+              </div>
               <div className="listening-preview-simple__price-block">
                 <div className="price">
                   <div className="price__text">

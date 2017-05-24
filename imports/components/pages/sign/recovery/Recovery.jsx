@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 
 /* Meteor libs */
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 

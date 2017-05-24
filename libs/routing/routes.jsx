@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 import { mount } from 'react-mounter';
 import React, { Component } from 'react';
 
@@ -75,15 +75,14 @@ publicRoutes.route('/', {
   ]
 });
 
-publicRoutes.route('/listening/:_id', {
-  action() {
-    var listeningId = FlowRouter.getParam('_id');
+FlowRouter.route('/listening/:_id', {
+  action({ _id: listeningId }) {
     mount(Layout, {
-      content: AnimationWrapper(<Listening listeningId={listeningId} />),
+      content: <Listening listeningId={listeningId} />,
       additionalContent: ""
-    });
+    })
   }
-});
+})
 
 publicRoutes.route('/edit/:_id', {
   action() {

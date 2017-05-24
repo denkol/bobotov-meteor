@@ -30,9 +30,9 @@ export default class Layout extends Component {
     this.state = {}
   }
   render() {
-    ga('create', 'UA-56444632-5', 'auto');
-    ga('send', 'pageview');
-    
+    typeof ga !== 'undefined' && ga('create', 'UA-56444632-5', 'auto');
+    typeof ga !== 'undefined' && ga('send', 'pageview');
+
     return (
       <I18nextProvider i18n={i18n}>
         <MuiThemeProvider>

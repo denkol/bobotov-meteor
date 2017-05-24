@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 
 /* Meteor libs */
 import { createContainer } from 'meteor/react-meteor-data';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 import Profile from '../profile/Profile.jsx';

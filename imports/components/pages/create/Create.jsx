@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 
 /* Meteor libs */
 import { Random } from 'meteor/random';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 import CreatePhoto from '../../create-photo/CreatePhoto.jsx';
@@ -274,7 +274,7 @@ class Create extends Component {
     }
 
     // console.log(hasError, !price, !country, !headline, !desc, !paymentPeriod, !city, !typeDeal, !typeProperty, !ratio)
-    
+
     if(hasError || !price || !country || !headline || !desc || !paymentPeriod || !city || !typeDeal || !typeProperty || !ratio) return;
     Meteor.call('listeningCreate', listeningCandidate, (err, res) => {
       if(err) {console.log(err)}
@@ -384,8 +384,8 @@ class Create extends Component {
                   <div className="create-block-row__item">
                     <Form.Field>
                       <label>Местоположение</label>
-                      <Button 
-                        onClick={this.handleMapOpen} 
+                      <Button
+                        onClick={this.handleMapOpen}
                         icon={this.state.mapModal.submitted ? "checkmark" : false}
                         content={this.state.mapModal.submitted ? "Местоположение сохранено" : "Указать на карте"}
                         positive={this.state.mapModal.submitted ? true : false}
@@ -498,13 +498,13 @@ class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.Input 
+                    <Form.Input
                       label={t('createListing.yourHeadline.label')}
-                      placeholder={t('createListing.yourHeadline.placeholder')} 
-                      name='headline' 
-                      type="text" 
-                      fluid 
-                      error={headline ? true : false} 
+                      placeholder={t('createListing.yourHeadline.placeholder')}
+                      name='headline'
+                      type="text"
+                      fluid
+                      error={headline ? true : false}
                       required/>
                   </div>
                   <div className="create-block-row__item">
@@ -513,11 +513,11 @@ class Create extends Component {
 
                 <div className="create-block-row">
                   <div className="create-block-row__item">
-                    <Form.TextArea 
-                      name='description' 
+                    <Form.TextArea
+                      name='description'
                       label={t('createListing.description.label')}
-                      rows='3' 
-                      error={desc ? true : false} 
+                      rows='3'
+                      error={desc ? true : false}
                       required/>
                   </div>
                 </div>

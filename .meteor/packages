@@ -18,6 +18,7 @@ facebook-config-ui@1.0.0
 mrt:accounts-vk
 
 kadira:flow-router
+kadira:flow-router-ssr
 zimme:active-route
 
 meteortoys:allthings

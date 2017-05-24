@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 import { Listenings } from '../../api/listenings.js';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';

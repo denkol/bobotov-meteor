@@ -4,7 +4,7 @@ import { translate } from 'react-i18next';
 import { Helmet } from "react-helmet";
 
 /* Meteor libs */
-import { FlowRouter } from 'meteor/kadira:flow-router';
+import { FlowRouter } from 'meteor/kadira:flow-router-ssr';
 
 /* Components */
 import FacebookBtn from '../../../btn-facebook/FacebookBtn.jsx';
@@ -28,7 +28,7 @@ class SignUp extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).trim();
   }
@@ -58,7 +58,7 @@ class SignUp extends Component {
     }
     if (!isValidEmail(email)) {
     	validation.message = message;
-      validation.email = t('messages:dinamiclyErrors.invalidEmail'); 
+      validation.email = t('messages:dinamiclyErrors.invalidEmail');
       this.setState({ validation });
     }
     if (!password || !passwordR) {
@@ -70,10 +70,10 @@ class SignUp extends Component {
     	validation.message = message;
       validation.password = t('messages:dinamiclyErrors.passwordsNotMatch');
       this.setState({ validation });
-    } 
+    }
     if (validation.message) return;
 
-    const userInfo = { 
+    const userInfo = {
       email : email,
       password : password,
       profile : {
@@ -113,7 +113,7 @@ class SignUp extends Component {
         </Helmet>
         <div className="card card_login">
           <div className="login-form">
-              <div className="login-item"> 
+              <div className="login-item">
                 <div className="headline-login">{t('signUpPage.headline')}</div>
               </div>
               <div className="login-item">
@@ -124,7 +124,7 @@ class SignUp extends Component {
               </div>
               <Form size={'tiny'} onSubmit={this.handleSubmit}>
                 <div className="login-item">
-                {message ? 
+                {message ?
                   <Message size='tiny'>
                     <Message.Header>{message}</Message.Header>
                     {username || email || password ?
@@ -153,7 +153,7 @@ class SignUp extends Component {
                   <Button primary fluid size="tiny">{t('signUpPage.enterBtn')}</Button>
                 </div>
               </Form>
-              <div className="login-item login-item-forgot"> 
+              <div className="login-item login-item-forgot">
                 <p>{t('signUpPage.licenseLink.text')}</p><a className="link-default" href="#">{t('signUpPage.licenseLink.link')}</a>
               </div>
           </div>

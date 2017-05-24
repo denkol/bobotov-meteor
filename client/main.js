@@ -1,12 +1,11 @@
 Meteor.startup(function() {
-  spinnerHide();
-  setInterval(logoAnimation, 7000)
-
+  //spinnerHide();
+  //setInterval(logoAnimation, 7000)
 });
 
 function spinnerHide() {
   var spinnerWrapper = $('#spinnerWrapper');
-  var spinner = $('#spinner');  
+  var spinner = $('#spinner');
   spinnerWrapper.remove();
   spinner.remove();
 }
