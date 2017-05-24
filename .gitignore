@@ -4,5 +4,6 @@ public/config.codekit3
 public/scss/.sass-cache
 server/keys.js
 nginx.conf
+yarn.lock
 .vscode
 .backup
