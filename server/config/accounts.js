@@ -24,7 +24,7 @@ Accounts.onLogin((attempt) => {
 })
 
 Accounts.emailTemplates.siteName = 'Bobotov'
-Accounts.emailTemplates.from = 'Bobotov <admin@bobotov.me>'
+Accounts.emailTemplates.from = 'Bobotov <hello@bobotov.me>'
 
 Accounts.emailTemplates.verifyEmail.subject = () => 'Welcome to Bobotov!'
 Accounts.emailTemplates.verifyEmail.text = false

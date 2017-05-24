@@ -105,11 +105,13 @@ class Favorites extends TrackerReact(Component) {
             <Headline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
-                return (
-                  <a href={"/listening/" + listening._id} key={"favouritesListItem" + index} className="photo-grid__item">
-                    <ListeningPreview listeningData={listening} layout="index" />
-                  </a>
-                );
+                if(listening) {
+                  return (
+                    <a href={"/listening/" + listening._id} key={"favouritesListItem" + index} className="photo-grid__item">
+                      <ListeningPreview listeningData={listening} layout="index" />
+                    </a>
+                  );
+                }
               })}
             </div>
               {(listeningsTotal > listenings.length) && <div className="paginate-wrapper">

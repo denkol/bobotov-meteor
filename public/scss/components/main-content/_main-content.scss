@@ -4,7 +4,7 @@
   padding-bottom: 16px;
   position: relative;
   z-index: 6;
-  animation: fadeInDown 0.2s ease 0.2s both;
+  // animation: fadeInDown 0.2s ease 0.2s both;
   @include mq('tablet-wide', max) {
     padding-bottom: 16px;
     padding-left: 10px;
