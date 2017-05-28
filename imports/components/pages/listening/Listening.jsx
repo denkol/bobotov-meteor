@@ -150,7 +150,7 @@ class Listening extends Component {
         ];
         if(listeningPublic == false 
             && data.owner._id !== Meteor.userId() 
-            && !Meteor.user().profile.master) {
+            && !master) {
           /* If listening hidden by autor */
           return (
             <MessageListeningPrivate/>

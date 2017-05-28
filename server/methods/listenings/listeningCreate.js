@@ -13,7 +13,7 @@ function sendMeNotification(data) {
     from: "admin@bobotov.me",
     to: "kol9743@gmail.com",
     subject: "New listening on Bobotov",
-    text: 'Hello Admin! Check out new listening on bobotov.me <a href="' + data.url + '">' + data.url + '</a>'
+    text: 'Hello Admin! Check out new listening on bobotov.me ' + data.url
   }
 
   Email.send(sendObj);
@@ -66,7 +66,7 @@ Meteor.methods({
 
           /* Send email notif */
           sendMeNotification({
-            url: "https://bobotov.me/listenings/" + id
+            url: "https://bobotov.me/listening/" + id
           });
         }
       });

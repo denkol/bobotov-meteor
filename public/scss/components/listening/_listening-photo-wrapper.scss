@@ -4,7 +4,7 @@
     border-radius: 0 5px 0 0;
   }
   .image-gallery-image {
-    height: 600px;
+    height: 100%;
     border-radius: 5px;
     @include mq('tablet-wide', max) {
       // height: 500;
@@ -17,15 +17,15 @@
     }
   }
   .image-gallery-slides {
-    height: 600px;
+    height: 100%;
     @include mq('tablet-wide', max) {
-      height: 500;
+      height: 100%;
     }
     @include mq('tablet-small', max) {
-      height: 350px;
+      height: 100%;
     }
     @include mq('phone', max) {
-      height: 250px;
+      height: 100%;
     }
   }
   &__item {
