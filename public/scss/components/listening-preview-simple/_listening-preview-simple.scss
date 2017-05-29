@@ -62,23 +62,23 @@
       margin-right: 16px;
     }
   }
-  &__control-block {
-    position: absolute;
-    right: -50px;
-    // height: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    &:hover {
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    @include mq('tablet-wide', max) {
-      position: static;
-      right: auto;
-      top: auto;
-      transform: none;
-    }
-  }
+  // &__control-block {
+  //   position: absolute;
+  //   right: -50px;
+  //   // height: 100%;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   &:hover {
+  //     cursor: pointer;
+  //     opacity: 0.8;
+  //   }
+  //   @include mq('tablet-wide', max) {
+  //     position: static;
+  //     right: auto;
+  //     top: auto;
+  //     transform: none;
+  //   }
+  // }
   @include mq('phone', max) {
     padding-bottom: 8px;
     padding-top: 8px;
