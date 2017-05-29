@@ -29,14 +29,13 @@ class History extends TrackerReact(Component) {
     this.state = {
       limit: limit,
       subscription: {
-         listenings: Meteor.subscribe('listenings.history')
+         listenings: Meteor.subscribe('listenings.public')
       }
     };
     this.loadMore = this.loadMore.bind(this);
     this.removeHistory = this.removeHistory.bind(this);
-
-
   }
+
   componentDidMount() {
     window.scrollTo(0, 0); //scroll to top
   }
@@ -120,11 +119,13 @@ class History extends TrackerReact(Component) {
             <HistoryHeadline />
             <div className="photo-grid">
               {listenings.map((listening, index) => {
-                return listening && (
-                  <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
-                    <ListeningPreview key={index} listeningData={listening} layout="index" />
-                  </a>
-                );
+                if(listening) {
+                  return (
+                    <a href={"/listening/" + listening._id} key={"photo-grid-" + index} className="photo-grid__item">
+                      <ListeningPreview key={index} listeningData={listening} layout="index" />
+                    </a>
+                  );
+                }
               })}
             </div>
             { (listeningsTotal > listenings.length) && <div className="paginate-wrapper">

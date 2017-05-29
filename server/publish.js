@@ -58,7 +58,7 @@ Meteor.publish("listenings.favorites", function() {
     return this.ready()
   }
   const favouritesList = user ? user.profile.favoritesList : [];
-  const selector = { _id: { $in: favouritesList } };
+  const selector = { _id: { $in: favouritesList }, "listeningTech.public" : true };
   return Listenings.find(selector);
 })
 
@@ -68,7 +68,7 @@ Meteor.publish("listenings.history", function() {
     return this.ready()
   }
   const historyList = user ? user.profile.historyList : [];
-  const selector = { _id: { $in: historyList } };
+  const selector = { _id: { $in: historyList }, "listeningTech.public" : true };
   return Listenings.find(selector);
 })
 

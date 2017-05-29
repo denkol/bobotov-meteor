@@ -1,41 +1,14 @@
 .listening-photo-wrapper {
-  // height: 600px;
-  .image-gallery-index {
-    border-radius: 0 5px 0 0;
-  }
   .image-gallery-image {
     height: 100%;
-    border-radius: 5px;
-    @include mq('tablet-wide', max) {
-      // height: 500;
-    }
-    @include mq('tablet-small', max) {
-      height: 350px;
-    }
-    @include mq('phone', max) {
-      height: 250px;
-    }
+  }
+  .image-gallery-slide {
+    height: 100%;
   }
   .image-gallery-slides {
-    height: 100%;
-    @include mq('tablet-wide', max) {
-      height: 100%;
-    }
-    @include mq('tablet-small', max) {
-      height: 100%;
-    }
-    @include mq('phone', max) {
-      height: 100%;
-    }
-  }
-  &__item {
     height: 600px;
-    img {
-      height: 100%;
-      width: 100%;
-    }
     @include mq('tablet-wide', max) {
-      height: 500;
+      height: 500px;
     }
     @include mq('tablet-small', max) {
       height: 350px;
@@ -43,14 +16,5 @@
     @include mq('phone', max) {
       height: 250px;
     }
-  }
-  @include mq('tablet-wide', max) {
-    // height: 500;
-  }
-  @include mq('tablet-small', max) {
-    // height: 350px;
-  }
-  @include mq('phone', max) {
-    // height: 250px;
   }
 }
