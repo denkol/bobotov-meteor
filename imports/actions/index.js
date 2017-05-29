@@ -66,6 +66,8 @@ export const filterToQuery = (data = []) => {
       if (value.price.to) {
         queryParams.priceTo = value.price.to
       }
+    } else if (value.limit) {
+      queryParams.limit = value.limit
     }
   })
 
