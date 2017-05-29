@@ -32,6 +32,9 @@ import * as actions from '/imports/actions';
 class Listening extends Component {
   constructor(props) {
     super(props);
+
+    this.handleGo = this.handleGo.bind(this)
+
     this.state = {}
   }
   componentDidMount() {
@@ -42,10 +45,10 @@ class Listening extends Component {
     Meteor.call("listeningSaveToHistory", args);
   }
 
-  handleGo(path, e) {
-    e.preventDefault();
+  handleGo(event, path, data, query) {
+    event.preventDefault();
     this.setState({subMenuOpen: false});
-    FlowRouter.go(path);
+    FlowRouter.go(path, data, query);
   }
   ok(id) {
     const master = Meteor.user().profile.master;
@@ -64,18 +67,23 @@ class Listening extends Component {
       listeningId : this.props.listeningId
     }
     const BackBtn = () => (
-      <Button 
-        onClick={this.handleGo.bind(this, '/')}
-        size="small" 
+      <Button
+        onClick={event =>
+          this.handleGo(event, '/', {}, actions.filterToQuery([
+            ...Session.get('filterData'),
+            { limit: Session.get('indexLimit') || 18 }
+          ]))
+        }
+        size="small"
         content={t('listening.backBtn')}
-        icon='left arrow' 
+        icon='left arrow'
         labelPosition='left' />
     );
 
     const ApproveBtn = () => (
-      <Button 
+      <Button
         onClick={this.ok.bind(this, data.listeningId)}
-        size="small" 
+        size="small"
         content="Ok"
         inverted color='green'
       />
@@ -148,8 +156,8 @@ class Listening extends Component {
           { optionName: t('createListing.bedrooms.label'), optionValue: listeningBedrooms },
           { optionName: t('createListing.bathrooms.label'), optionValue: listeningBathrooms },
         ];
-        if(listeningPublic == false 
-            && data.owner._id !== Meteor.userId() 
+        if(listeningPublic == false
+            && data.owner._id !== Meteor.userId()
             && !master) {
           /* If listening hidden by autor */
           return (
@@ -175,7 +183,7 @@ class Listening extends Component {
               <div className="listening-media__item">
                 <ListeningPhotos photos={listeningsPhotos}/>
               </div>
-            </div>  
+            </div>
             <div className="listening-info">
               <div className="listening-info-header">
                 <div className="listening-info-header__item listening-info-header__item_headline">

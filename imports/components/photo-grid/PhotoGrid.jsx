@@ -12,11 +12,12 @@ import Loading from '../loading/Loading.jsx';
 
 import BtnLoadMore from '../btn-loadmore/BtnLoadMore.jsx';
 
-const limit = 18;
-
 class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
+
+    const limit = FlowRouter.getQueryParam('limit') || Session.get('indexLimit') || 18
+
     this.state = {
       limit: limit,
       subscription: {
@@ -25,12 +26,23 @@ class PhotoGrid extends TrackerReact(Component) {
     }
 
     this.loadMore = this.loadMore.bind(this);
-    // this.listeningClick = this.listeningClick.bind(this);
+    this.listeningClick = this.listeningClick.bind(this);
   }
+
+  componentDidMount() {
+    const scrollY = Session.get('index_scroll_position')
+    if (scrollY > 0) {
+      window.scrollTo( 0, scrollY )
+    }
+  }
+
   componentWillMount() {
+    const { limit } = this.state
     Session.setDefault('indexLimit', limit);
   }
+
   componentWillUnmount() {
+    const { limit } = this.state
     this.setState({limit: limit});
     this.state.subscription.listenings.stop();
   }
@@ -39,17 +51,21 @@ class PhotoGrid extends TrackerReact(Component) {
     Session.set('indexLimit', this.state.limit * 2)
     this.setState({limit: this.state.limit * 2});
   }
-  listeningClick(url, e) {
+
+  listeningClick(event, url) {
     /* Scroll position then user click on the listening */
-    const ScrollPosition = e.target.scrollTop;
+    const ScrollPosition = event.pageY//event.target.scrollTop;
     Session.set('index_scroll_position', ScrollPosition);
     FlowRouter.go(url);
   }
+
   render() {
     const { t } = this.props;
     const query = Session.get('filterQuery');
-    // const query = window.location.pathname;
-    const listenings = Listenings.find(query, {limit: this.state.limit, sort: {"listeningTech.createdAt": -1} }).fetch();
+    const listenings = Listenings.find(_.omit(query, 'limit'), {
+      limit: Number(this.state.limit),
+      sort: {"listeningTech.createdAt": -1}
+    }).fetch();
     const MessageNoListenings = () => (
       <Message
         header={t('messages:noListenings.headline')}
@@ -66,7 +82,14 @@ class PhotoGrid extends TrackerReact(Component) {
               <div className="photo-grid">
                 {listenings.map((listening, index) => {
                   return (
-                    <a onClick={this.listeningClick.bind(this, "/listening/" + listening._id)} key={"photo-grid-" + index} className="photo-grid__item">
+                    <a
+                      onClick={event =>
+                        this.listeningClick(event, "/listening/" + listening._id)
+                      }
+                      id={listening._id}
+                      key={"photo-grid-" + index}
+                      className="photo-grid__item"
+                    >
                       <ListeningPreview
                         key={index}
                         listeningData={listening}
@@ -90,10 +113,10 @@ class PhotoGrid extends TrackerReact(Component) {
           </div>);
     } else {
       return(
-        /* If loading */
         <Loading />
       );
     }
+    return <span />
   }
 }
 
