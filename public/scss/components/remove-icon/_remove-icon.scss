@@ -17,4 +17,10 @@
       fill: $remove-color;
     }
   }
+  &:hover {
+    cursor: pointer;
+    svg {
+      fill: darken($remove-color, 10%);
+    }
+  }
 }

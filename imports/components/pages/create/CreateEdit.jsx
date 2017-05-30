@@ -337,6 +337,18 @@ class CreateEdit extends Component {
             <Helmet>
               <title>{t('head:titles.edit')+" "+t('head:titles.app')}</title>
             </Helmet>
+            <div className="headline">
+              <div className="headline__item">
+                <div className="headline-icon">
+                  <div className="headline-icon__icon">
+                    <svg className="ico-edit" role="img"><use xlinkHref="#ico-edit" /></svg>
+                  </div>
+                  <div className="headline-icon__text">
+                    {t('createListing.edit')}
+                  </div>
+                </div>
+              </div>
+            </div>
             <Form className={"create-wrapper"} onSubmit={this.handleSubmit}>
               <div className="create-block">
                 <div className="create-block__item">

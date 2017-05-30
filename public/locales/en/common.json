@@ -167,6 +167,7 @@
     "step3": "Step 3: Contacts",
     "price": "Price",
     "apply": "Apply",
+    "edit": "Editing ad",
     "country": {
       "label": "Country",
       "placeholder": "Select a country"
