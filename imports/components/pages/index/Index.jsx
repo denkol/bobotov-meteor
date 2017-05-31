@@ -22,7 +22,7 @@ class Index extends Component {
   }
   componentWillMount() {
     if(Session.get('index_scroll_position')) {
-      console.log(Session.get('index_scroll_position') )
+      //console.log(Session.get('index_scroll_position') )
     }
   }
   componentWillUnmount() {

@@ -68,12 +68,14 @@ class Listening extends Component {
     }
     const BackBtn = () => (
       <Button
-        onClick={event =>
+        onClick={event => {
+          history.back()
+          /*
           this.handleGo(event, '/', {}, actions.filterToQuery([
             ...Session.get('filterData'),
             { limit: Session.get('indexLimit') || 18 }
-          ]))
-        }
+          ]))*/
+        }}
         size="small"
         content={t('listening.backBtn')}
         icon='left arrow'

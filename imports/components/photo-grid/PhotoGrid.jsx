@@ -83,9 +83,9 @@ class PhotoGrid extends TrackerReact(Component) {
                 {listenings.map((listening, index) => {
                   return (
                     <a
-                      onClick={event =>
+                      onClick={event => {
                         this.listeningClick(event, "/listening/" + listening._id)
-                      }
+                      }}
                       id={listening._id}
                       key={"photo-grid-" + index}
                       className="photo-grid__item"
