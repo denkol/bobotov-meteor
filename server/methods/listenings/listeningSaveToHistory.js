@@ -5,9 +5,9 @@ Meteor.methods({
     var viewedId = data.id;
     var viewedListening = Listenings.find({
       _id: viewedId
-    }).fetch();
-    var listeningOwnerId = viewedListening[0].listeningTech.ownerId;
-    var currentListeningsViews = viewedListening[0].listeningTech.views;
+    }).fetch()[0];
+    var listeningOwnerId = viewedListening.listeningTech.ownerId;
+    var currentListeningsViews = viewedListening.listeningTech.views;
     var newListeningViews = currentListeningsViews + 1;
 
     if (listeningOwnerId != Meteor.userId()) {
