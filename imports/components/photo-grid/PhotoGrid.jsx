@@ -54,7 +54,7 @@ class PhotoGrid extends TrackerReact(Component) {
 
   listeningClick(event, url) {
     /* Scroll position then user click on the listening */
-    const ScrollPosition = event.pageY//event.target.scrollTop;
+    const ScrollPosition = event.pageY //event.target.scrollTop;
     Session.set('index_scroll_position', ScrollPosition);
     FlowRouter.go(url);
   }
@@ -62,15 +62,26 @@ class PhotoGrid extends TrackerReact(Component) {
   render() {
     const { t } = this.props;
     const query = Session.get('filterQuery');
+
     const listenings = Listenings.find(_.omit(query, 'limit'), {
       limit: Number(this.state.limit),
       sort: {"listeningTech.createdAt": -1}
     }).fetch();
+
+    const isFilter = Session.get('filterQuery');
+
     const MessageNoListenings = () => (
       <Message
         header={t('messages:noListenings.headline')}
-        content={t('messages:noListenings.desc')}/>
+        content={t('messages:noListenings.desc')} />
     );
+    
+    const MessageFilterNotFound = () => (
+      <Message
+        header={t('messages:noListeningsFilter.headline')}
+        content={t('messages:noListeningsFilter.desc')} />
+    );
+
     if (this.state.subscription.listenings.ready()) {
       const listeningsTotal = Listenings.find(query).count();
       const filterData = Session.get('filterData');
@@ -108,8 +119,9 @@ class PhotoGrid extends TrackerReact(Component) {
               }
             </div> :
             <div className="main-listening-stream">
-              <MessageNoListenings />
-            </div>}
+              {isFilter ? <MessageFilterNotFound /> : <MessageNoListenings />}
+            </div>
+          }
           </div>);
     } else {
       return(

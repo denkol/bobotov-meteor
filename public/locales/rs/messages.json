@@ -5,6 +5,10 @@
   },
   "noListenings": {
     "headline": "Oglasi found",
+    "desc": ""
+  },
+  "noListeningsFilter": {
+    "headline": "Oglasi found",
     "desc": "Pokušajte da ublaži kriterijima pretrage"
   },
   "listeningPrivate": {

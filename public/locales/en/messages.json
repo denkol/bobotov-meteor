@@ -5,6 +5,10 @@
   },
   "noListenings": {
     "headline": "No ads found",
+    "desc": ""
+  },
+  "noListeningsFilter": {
+    "headline": "No ads found",
     "desc": "Try to moderate the search criteria"
   },
   "listeningPrivate": {

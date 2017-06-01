@@ -5,6 +5,10 @@
   },
   "noListenings": {
     "headline": "Объявлений не найдено",
+    "desc": ""
+  },
+  "noListeningsFilter": {
+    "headline": "Объявлений не найдено",
     "desc": "Попробуйте смягчить критерии поиска"
   },
   "listeningPrivate": {
