@@ -14,10 +14,10 @@ blaze@2.3.2
 blaze-tools@1.0.10
 boilerplate-generator@1.1.0
 caching-compiler@1.1.9
-caching-html-compiler@1.1.2
+caching-html-compiler@1.0.7
 callback-hook@1.0.10
 check@1.2.5
-coffeescript@1.12.3_1
+coffeescript@1.11.1_4
 dburles:collection-helpers@1.1.0
 ddp@1.2.5
 ddp-client@1.3.4
@@ -33,7 +33,6 @@ ecmascript-runtime-server@0.4.1
 ejson@1.0.13
 email@1.2.1
 es5-shim@4.6.15
-facebook-config-ui@1.0.0
 facebook-oauth@1.3.1
 geojson-utils@1.0.10
 hot-code-push@1.0.4
@@ -47,7 +46,7 @@ livedata@1.0.18
 localstorage@1.1.0
 logging@1.1.17
 matb33:collection-hooks@0.8.4
-mdg:validation-error@0.5.1
+mdg:validation-error@0.2.0
 meteor@1.6.1
 meteor-base@1.0.4
 meteorhacks:inject-initial@1.0.4
@@ -106,11 +105,9 @@ spiderable@1.0.13
 srp@1.0.10
 standard-minifier-css@1.3.4
 standard-minifier-js@2.1.0
-templating@1.3.2
-templating-compiler@1.3.2
-templating-runtime@1.3.2
+templating@1.1.14
 templating-tools@1.1.2
-tmeasday:check-npm-versions@0.3.1
+tmeasday:check-npm-versions@0.2.0
 tmeasday:publish-counts@0.8.0
 tomwasd:flow-router-autoscroll@0.0.2
 tracker@1.1.3

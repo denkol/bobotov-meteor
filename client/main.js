@@ -6,7 +6,7 @@ Meteor.startup(function() {
 
 function spinnerHide() {
   var spinnerWrapper = $('#spinnerWrapper');
-  var spinner = $('#spinner');  
+  var spinner = $('#spinner');
   spinnerWrapper.remove();
   spinner.remove();
 }
