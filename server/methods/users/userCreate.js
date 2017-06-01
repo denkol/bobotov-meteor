@@ -1,8 +1,30 @@
+function sendEmailUser(data) {
+  if(data) {
+    /* Save all data to vars */
+    var email = data.email;
+    var name = data.name;
+
+
+    var sendObj = {
+      from: "hello@bobotov.me",
+      to: email,
+      subject: "Welcome to Bobotov!",
+      text: "Hello " + name + "! \n\n" + "Thank you for registration on Bobotov! You're welcome!" + '\n\n' + 'Yours faithfully, '+'\n'+'The team of Bobotov'
+    }
+
+    /* Send to email */
+    Email.send(sendObj);
+  }
+}
+
 Meteor.methods({
   userCreate(userInfo) {
     if(userInfo) {
       var user = Meteor.user();
-       var secret = {
+      var userEmail = user.emails[0].address;
+      var userName = user.profile.userName;
+
+      var secret = {
         "techInfo": {
           "browser": "",
           "resolution": "",
@@ -50,6 +72,13 @@ Meteor.methods({
           "services.secret": secret
         }
       });
+      if(userEmail) {
+        sendEmailUser({
+          email: userEmail,
+          name: userName,
+        });
+      }
+      
     } else {
       return false;
     }
