@@ -4,7 +4,7 @@ $radius-create-photo: 5px;
   display: block;
   position: relative;
   height: 200px;
-  width: 252px;
+  width: 100%;
   background-color: transparent;
   @include mq('tablet-wide', max) {
     width: 100%;
@@ -13,6 +13,7 @@ $radius-create-photo: 5px;
   }
   @include mq('phablet', max) {}
   &_main {
+    width: 25%;
     .create-photo-layer_init {
       border: 3px dashed $accent-blue;
       &__icon {

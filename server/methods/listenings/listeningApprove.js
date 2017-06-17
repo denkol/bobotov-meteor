@@ -9,7 +9,7 @@ function sendEmailToOwner(data) {
 
 
     var sendObj = {
-      from: "noreply@bobotov.me",
+      from: "Bobotov",
       to: email,
       subject: "Your ad on Bobotov has been approved!",
       text: 'Dear, '+name+'!' + '\n\n' + 'Thank you for publishing your ad on our website! Your ad has been verified, and published!' + '\n\n' + 'Now your ad is available by the link: ' + listeningLink + '\n\n' + 'Yours faithfully, '+'\n'+'The team of Bobotov'

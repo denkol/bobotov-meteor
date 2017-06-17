@@ -50,7 +50,7 @@ class Create extends Component {
       contacts: [],
       contactsNumber: 1,
       listeningId: Random.id(),
-      createMap: {
+      mapModal: {
         open: false,
         submitted: false
       }
@@ -58,7 +58,6 @@ class Create extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.contactAdd = this.contactAdd.bind(this);
     this.contactRemove = this.contactRemove.bind(this);
-    this.locationCreateHandler = this.locationCreateHandler.bind(this);
   }
   componentWillUnmount() {
     Session.clear()
@@ -127,59 +126,16 @@ class Create extends Component {
       text: t(`comfortList.${value}`)
     }))
   }
-
+  
   capitalizeFirstLetter(string) {
     return string ? string.charAt(0).toUpperCase() + string.slice(1).trim() : "";
   }
 
-  getContacts() {
-    const contacts = [];
-    for(let i = 0; i < self.state.contactsNumber; i++) {
-      const dropdownDeafultValue = "email";
-      const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
-      const contactValue = formData["input"+i];
-
-      contacts.push({contactKey, contactValue});
-    }
-    return contacts;
-  }
-
-  getOtherPhotos() {
-    const listeningPhotos = [];
-    for (let i = 1; i <= 4; i++) {
-      if(Session.get(i + "photo")) {
-        listeningPhotos.push( Session.get(i + "photo") );
-      }
-    }
-    return listeningPhotos;
-  }
-  locationCreateHandler() {
-    const isSubmit = this.state.createMap.open;
-
-    this.setState({
-      createMap: {
-        open: !this.state.createMap.open,
-        submitted: isSubmit
-      }
-    });
-
-    if(isSubmit) {
-      /* Get & Save location code here */
-
-      console.log('Местоположение сохранено')
-
-      this.setState({
-        createMap: {
-          submitted: true
-        }
-      });
-
-    }
-  }
   handleSubmit(e, { formData }) { //console.log(formData);
     e.preventDefault();
     const { t } = this.props;
     const userId = Meteor.userId();
+
     const validation = {
       message: '',
       phone: '',
@@ -197,13 +153,51 @@ class Create extends Component {
       username: false
     };
     this.setState({ validation });
+
+    const self = this;
+
     const message = t('messages:dinamiclyErrors.formError');
+
+    function getContacts() {
+      const contacts = [];
+      for(let i = 0; i < self.state.contactsNumber; i++) {
+        const dropdownDeafultValue = "email";
+        const contactKey = Session.get('dropdown'+i) ? Session.get('dropdown'+i) : dropdownDeafultValue;
+        const contactValue = formData["input"+i];
+
+        //console.log(contactKey, contactValue);
+        if(contactKey === "phone" && !isValidPhone(contactValue)) {
+          validation.message = message;
+          validation.phone = t('messages:dinamiclyErrors.invalidPhone');
+          self.setState({ validation });
+        }
+
+        if(contactKey === "email" && !isValidEmail(contactValue)) {
+          validation.message = message;
+          validation.email = t('messages:dinamiclyErrors.invalidEmail');
+          self.setState({ validation });
+        }
+
+        contacts.push({contactKey, contactValue, message: validation.message});
+      }
+      return contacts;
+    }
+    function getOtherPhotos() {
+      const listeningPhotos = [];
+      for (let i = 1; i <= 4; i++) {
+        if(Session.get(i + "photo")) {
+          listeningPhotos.push( Session.get(i + "photo") );
+        }
+      }
+      return listeningPhotos;
+    }
+
     const comfortList = formData.comfortList;
     const typeDeal = formData.typeDeal;
     const typeProperty = formData.typeProperty;
     const country = formData.country;
     const city = formData.city;
-    const location = null;
+    const location = "formData.location";
     const ratio = parseInt(formData.ratio);
     const bedrooms = parseInt(formData.bedrooms);
     const bathrooms = parseInt(formData.bathrooms);
@@ -212,19 +206,22 @@ class Create extends Component {
     const paymentPeriod = formData.paymentPeriod;
     const headline = formData.headline;
     const desc = formData.description;
+
     const username = formData.username ? this.capitalizeFirstLetter(formData.username) : "";
     const signEmail = formData.signEmail ? formData.signEmail : "";
     const password = formData.password ? formData.password.trim() : "";
     const passwordR = formData.passwordR ? formData.passwordR.trim() : "";
-    const contacts = this.getContacts();
-    const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
 
     let photos = {
       main: Session.get('0photo'),
-      other: this.getOtherPhotos()
+      other: getOtherPhotos()
     }
 
-    /* Listening object */
+    const contacts = getContacts();
+    self.setState({ contacts });
+
+    const hasError = _.some(contacts, contact => !_.isEmpty(contact.message));
+
     const listeningCandidate = {
       _id: this.state.listeningId,
       "listeningInfo": {
@@ -245,15 +242,6 @@ class Create extends Component {
       },
       "listeningPhotos": photos,
       "listeningContacts": contacts
-    }
-
-    /* User object */
-    const userCandidate = {
-      email : signEmail,
-      password : password,
-      profile : {
-        userName : username
-      }
     }
 
     if(!price) {
@@ -293,7 +281,7 @@ class Create extends Component {
       validation.ratio =  t('messages:dinamiclyErrors.emptyPhotoField');
       self.setState({ validation });
     }
-
+      
     if(!userId) {
       if (username.length < 3) {
         validation.message = message;
@@ -302,7 +290,7 @@ class Create extends Component {
       }
       if (!isValidEmail(signEmail)) {
         validation.message = message;
-        validation.signEmail = t('messages:dinamiclyErrors.invalidEmail');
+        validation.signEmail = t('messages:dinamiclyErrors.invalidEmail'); 
         this.setState({ validation });
       }
       if (!password || !passwordR) {
@@ -317,26 +305,36 @@ class Create extends Component {
       }
     }
 
+      const userInfo = { 
+        email : signEmail,
+        password : password,
+        profile : {
+          userName : username
+        }
+      }
 
 
-
-    if(hasError ||
+    if(hasError || 
       (!!password && !!passwordR && password !== passwordR) ||
       (!password || !passwordR) ||
-      !price ||
-      !country ||
-      !headline ||
-      !desc ||
-      !paymentPeriod ||
-      !city ||
-      !typeDeal ||
-      !typeProperty ||
+      !price || 
+      !country || 
+      !headline || 
+      !desc || 
+      !paymentPeriod || 
+      !city || 
+      !typeDeal || 
+      !typeProperty || 
       !ratio) return;
+
+    /* 
+      Callback hell, sry :( 
+    */
 
     if(!userId) {
 
       /* If user dont't sign */
-      Accounts.createUser(userCandidate, (err) => {
+      Accounts.createUser(userInfo, (err) => {
         const { validation } = this.state;
         if (err) {
           if(err.error === 403) {
@@ -345,7 +343,7 @@ class Create extends Component {
           return this.setState({ validation });
         }
         /* Create user */
-        Meteor.call("userCreate", userCandidate, (err, res) => {
+        Meteor.call("userCreate", userInfo, (err, res) => {
           if(err) {
             validation.message = err.reason;
             return this.setState({ validation });
@@ -390,20 +388,20 @@ class Create extends Component {
     const { t } = this.props;
     const userId = Meteor.userId();
     const {
-      message,
-      phone,
-      email,
-      price,
-      country,
-      headline,
-      desc,
-      paymentPeriod,
-      city,
-      typeDeal,
-      typeProperty,
+      message, 
+      phone, 
+      email, 
+      price, 
+      country, 
+      headline, 
+      desc, 
+      paymentPeriod, 
+      city, 
+      typeDeal, 
+      typeProperty, 
       ratio } = this.state.validation;
-
-
+    
+    
     const { signEmail, password, username } = this.state.validation;
 
     const { contactsNumber, contacts, listeningId } = this.state;
@@ -480,39 +478,19 @@ class Create extends Component {
                 </div>
                 <div className="create-block-row__item"></div>
               </div>
-              <div className="create-block-row">
+              {/*<div className="create-block-row">
                 <div className="create-block-row__item">
                   <Form.Field>
                     <label>Местоположение</label>
-
-                  <div className={this.state.createMap.open ? "create-map" : "create-map create-map--hide"}>
-                    <div className="create-map__item create-map__item_desc">
-                      <p>Укажите местоположение вашего жилья на карте, затем нажмите кнопку "Сохранить"</p>
-                    </div>
-                    <div className="create-map__item create-map__item_map">
-                      Зона карты
-                    </div>
-                  </div>
-                  {this.state.createMap.submitted ?
-                    <div className="create-map-submitted">
-                      <div className="create-map-submitted__item">
-                        <p>50.121212,8.6365638</p>
-                      </div>
-                      <div className="create-map-submitted__item">
-                        <Button
-                          content="Изменить местоположение"
-                          onClick={this.locationCreateHandler}
-                        />
-                      </div>
-                    </div>
-                  : <Button
-                    content={this.state.createMap.open ? "Сохранить местоположение" : "Указать на карте"}
-                    onClick={this.locationCreateHandler}
-                    primary={this.state.createMap.open}
-                  /> }
+                    <Button 
+                      onClick={this.handleMapOpen} 
+                      icon={this.state.mapModal.submitted ? "checkmark" : false}
+                      content={this.state.mapModal.submitted ? "Местоположение сохранено" : "Указать на карте"}
+                      positive={this.state.mapModal.submitted ? true : false}
+                    />
                   </Form.Field>
                 </div>
-              </div>
+              </div>*/}
               <div className="create-block-row">
                 <div className="create-block-row__item">
                   <Form.Dropdown
@@ -618,13 +596,13 @@ class Create extends Component {
 
               <div className="create-block-row">
                 <div className="create-block-row__item">
-                  <Form.Input
+                  <Form.Input 
                     label={t('createListing.yourHeadline.label')}
-                    placeholder={t('createListing.yourHeadline.placeholder')}
-                    name='headline'
-                    type="text"
-                    fluid
-                    error={headline ? true : false}
+                    placeholder={t('createListing.yourHeadline.placeholder')} 
+                    name='headline' 
+                    type="text" 
+                    fluid 
+                    error={headline ? true : false} 
                     required/>
                 </div>
                 <div className="create-block-row__item">
@@ -633,10 +611,10 @@ class Create extends Component {
 
               <div className="create-block-row">
                 <div className="create-block-row__item">
-                  <Form.TextArea
-                    name='description'
+                  <Form.TextArea 
+                    name='description' 
                     label={t('createListing.description.label')}
-                    rows='3'
+                    rows='3' 
                   />
                 </div>
               </div>
@@ -683,66 +661,43 @@ class Create extends Component {
                 <div className="create-block-headline">
                   {t('createListing.step4')}
                 </div>
-                <p>Есть аккаунт? <a href="#">Войти</a></p>
               </div>
-              <div className="signup-create-block">
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label={t('nameField.label')} name='username' type="text" placeholder={t('nameField.placeholder')} required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
+              <div className="create-block__item">
+                <div className="create-block-row">
+                  <div className="create-block-row__item">
+                    <Form.Input label={t('nameField.label')} name='username' type="text" placeholder={t('nameField.placeholder')} required/>
                   </div>
-                </div>
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label='E-mail:' name='signEmail' type="email" placeholder='example@mail.com' required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
-                  </div>
-                </div>
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label={t('passwordField.label')} name='password' type="password" placeholder={t('passwordField.placeholder')} required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
-                  </div>
-                </div>
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label={t('repeatPasswordField.label')} name='passwordR' type="password" placeholder={t('repeatPasswordField.label')} required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
+                  <div className="create-block-row__item">
                   </div>
                 </div>
               </div>
-              {/*<div className="signin-create-block">
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label='E-mail:' name='signEmail' type="email" placeholder='example@mail.com' required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
+              <div className="create-block__item">
+                <div className="create-block-row">
+                  <div className="create-block-row__item">
+                    <Form.Input label='E-mail:' name='signEmail' type="email" placeholder='example@mail.com' required/>
+                  </div>
+                  <div className="create-block-row__item">
                   </div>
                 </div>
-                <div className="create-block__item">
-                  <div className="create-block-row">
-                    <div className="create-block-row__item">
-                      <Form.Input label={t('passwordField.label')} name='password' type="password" placeholder={t('passwordField.placeholder')} required/>
-                    </div>
-                    <div className="create-block-row__item">
-                    </div>
+              </div>
+              <div className="create-block__item">
+                <div className="create-block-row">
+                  <div className="create-block-row__item">
+                    <Form.Input label={t('passwordField.label')} name='password' type="password" placeholder={t('passwordField.placeholder')} required/>
+                  </div>
+                  <div className="create-block-row__item">
                   </div>
                 </div>
-              </div> */}
+              </div>
+              <div className="create-block__item">
+                <div className="create-block-row">
+                  <div className="create-block-row__item">
+                    <Form.Input label={t('repeatPasswordField.label')} name='passwordR' type="password" placeholder={t('repeatPasswordField.label')} required/>
+                  </div>
+                  <div className="create-block-row__item">
+                  </div>
+                </div>
+              </div>
             </div>
           : null}
           {message ?

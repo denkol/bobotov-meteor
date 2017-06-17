@@ -1,0 +1,18 @@
+.create-map {
+  width: 100%;
+  margin: 16px 0;
+  &__item {
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &_map {
+      height: 450px;
+      background-color: #eee;
+      width: 100%;
+    }
+  }
+  &--hide {
+    display: none;
+  }
+}

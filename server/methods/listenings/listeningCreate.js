@@ -10,7 +10,7 @@ function sendMeNotification(data) {
   var masterEmail = Meteor.user().emails[0].address; //first email
   
   var sendObj = {
-    from: "admin@bobotov.me",
+    from: "Bobotov",
     to: "kol9743@gmail.com",
     subject: "New listening on Bobotov",
     text: 'Hello Admin! Check out new listening on bobotov.me ' + data.url

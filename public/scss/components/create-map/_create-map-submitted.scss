@@ -1,0 +1,10 @@
+.create-map-submitted {
+  // margin: 16px 0;
+  margin-top: 16px;
+  &__item {
+    margin-bottom: 16px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

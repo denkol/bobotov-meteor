@@ -9,6 +9,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 /* Components */
 import Profile from '../profile/Profile.jsx';
 import BtnAdd from '../btn-add/BtnAdd.jsx';
+import BtnFind from '../btn-find/BtnFind.jsx';
 
 /* Some functions */
 

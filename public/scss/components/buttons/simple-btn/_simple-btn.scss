@@ -13,6 +13,33 @@
   &:active {
     background-color: darken(darken($bg-grey, 5%), 10%);
   }
+  &_find {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: orange;
+    color: $sky-light;
+    margin-right: 10px;
+    &:hover {
+      background-color: darken(orange, 5%);
+    }
+    &:active {
+      background-color: darken(orange, 10%);
+    }
+    .free {
+      font-weight: normal;
+      display: block;
+      font-size: 11px;
+    }
+    &--mobile {
+      display: none;
+      width: 100%;
+      margin-bottom: 16px;
+      @include mq('tablet-small', max) {
+        display: block;
+      }
+    }
+  }
   &_add {
     padding: 10px;
     font-size: 13px;
