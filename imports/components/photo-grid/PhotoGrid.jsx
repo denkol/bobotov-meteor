@@ -15,9 +15,7 @@ import BtnLoadMore from '../btn-loadmore/BtnLoadMore.jsx';
 class PhotoGrid extends TrackerReact(Component) {
   constructor(props) {
     super(props);
-
     const limit = FlowRouter.getQueryParam('limit') || Session.get('indexLimit') || 18
-
     this.state = {
       limit: limit,
       subscription: {

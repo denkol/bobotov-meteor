@@ -47,7 +47,7 @@ class Fixtures {
                     },
                     listeningTech: {
                         "statusCode": 2,
-                        "public": !!(Math.random() < 0.5),
+                        "public": true,
                         "bonuses": {
                             "bonus1": false,
                             "bonus2": false,
@@ -71,9 +71,7 @@ class Fixtures {
                     }
                 });
             }
-            Meteor
-                .users
-                .update(user._id, {
+            Meteor.users.update(user._id, {
                     $set: {
                         "profile.listeningsList": userListenings
                     }
